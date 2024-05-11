@@ -1,0 +1,48 @@
+.button {
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+
+  // types
+  &_simple {
+    background-color: var(--background-2-color);
+    color: var(--text-white-grey-color);
+    padding: 7px 15px;
+
+    &:hover {
+      background-color: var(--background-5-color);
+    }
+  }
+
+  &_light {
+    background-color: var(--background-3-color);
+    color: var(--text-white-grey-color);
+    padding: 8px 20px;
+
+    &:hover {
+      background-color: var(--border-color);
+      color: var(--text-color);
+    }
+  }
+
+  &_primary {
+    background-color: var(--active-2-color);
+    color: var(--text-color);
+    padding: 8px 30px;
+
+    &:hover {
+      background-color: var(--active-2-hover-color);
+    }
+  }
+
+  // disabled
+  &_disabled {
+    cursor: initial;
+    background-color: var(--background-4-color);
+    color: var(--light-text-color);
+
+    &:hover {
+      background-color: var(--background-4-color);
+    }
+  }
+}
