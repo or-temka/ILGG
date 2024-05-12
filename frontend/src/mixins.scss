@@ -24,7 +24,7 @@
 }
 
 @mixin background-main-lg($direction: 180deg) {
-  background: linear-gradient($direction, #171b2a, #0a0d17);
+  background: linear-gradient($direction, #171b2a 55%, #0a0d17 110%);
 }
 
 @mixin background-main-transparent-lg($direction: 180deg) {
