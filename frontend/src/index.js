@@ -11,3 +11,6 @@ root.render(
     <App />
   </React.StrictMode>
 )
+
+// Without StrictMode
+// root.render(<App />)
