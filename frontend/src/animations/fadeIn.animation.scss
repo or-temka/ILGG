@@ -1,0 +1,163 @@
+@mixin fadeIn(
+  $direction: 'right',
+  $startTranslateX: 0%,
+  $startTranslateY: 0%,
+  $translatePower: 50%,
+  $startOpacity: 0,
+  $endOpacity: 1
+) {
+  @if ($direction == 'right') {
+    @include fadeInRight(
+      $startTranslateX,
+      $startTranslateY,
+      $translatePower,
+      $startOpacity,
+      $endOpacity
+    );
+  } @else if ($direction == 'left') {
+    @include fadeInLeft(
+      $startTranslateX,
+      $startTranslateY,
+      $translatePower,
+      $startOpacity,
+      $endOpacity
+    );
+  } @else if ($direction == 'top') {
+    @include fadeInTop(
+      $startTranslateX,
+      $startTranslateY,
+      $translatePower,
+      $startOpacity,
+      $endOpacity
+    );
+  } @else if ($direction == 'bottom') {
+    @include fadeInBottom(
+      $startTranslateX,
+      $startTranslateY,
+      $translatePower,
+      $startOpacity,
+      $endOpacity
+    );
+  } @else if ($direction == 'all') {
+    @include fadeInRight(
+      $startTranslateX,
+      $startTranslateY,
+      $translatePower,
+      $startOpacity,
+      $endOpacity
+    );
+    @include fadeInLeft(
+      $startTranslateX,
+      $startTranslateY,
+      $translatePower,
+      $startOpacity,
+      $endOpacity
+    );
+    @include fadeInTop(
+      $startTranslateX,
+      $startTranslateY,
+      $translatePower,
+      $startOpacity,
+      $endOpacity
+    );
+    @include fadeInBottom(
+      $startTranslateX,
+      $startTranslateY,
+      $translatePower,
+      $startOpacity,
+      $endOpacity
+    );
+  }
+}
+
+// mixins for enter
+@mixin fadeInRight(
+  $startTranslateX,
+  $startTranslateY,
+  $translatePower,
+  $startOpacity,
+  $endOpacity
+) {
+  @keyframes fadeInRight {
+    0% {
+      transform: translate(
+        $startTranslateX + $translatePower,
+        $startTranslateY
+      );
+      opacity: $startOpacity;
+    }
+    100% {
+      transform: translate($startTranslateX, $startTranslateY);
+      opacity: $endOpacity;
+    }
+  }
+}
+@mixin fadeInLeft(
+  $startTranslateX,
+  $startTranslateY,
+  $translatePower,
+  $startOpacity,
+  $endOpacity
+) {
+  @keyframes fadeInLeft {
+    0% {
+      transform: translate(
+        $startTranslateX - $translatePower,
+        $startTranslateY
+      );
+      opacity: $startOpacity;
+    }
+    100% {
+      transform: translate($startTranslateX, $startTranslateY);
+      opacity: $endOpacity;
+    }
+  }
+}
+@mixin fadeInTop(
+  $startTranslateX,
+  $startTranslateY,
+  $translatePower,
+  $startOpacity,
+  $endOpacity
+) {
+  @keyframes fadeInTop {
+    0% {
+      transform: translate(
+        $startTranslateX,
+        $startTranslateY - $translatePower
+      );
+      opacity: $startOpacity;
+    }
+    100% {
+      transform: translate($startTranslateX, $startTranslateY);
+      opacity: $endOpacity;
+    }
+  }
+}
+@mixin fadeInBottom(
+  $startTranslateX,
+  $startTranslateY,
+  $translatePower,
+  $startOpacity,
+  $endOpacity
+) {
+  @keyframes fadeInBottom {
+    0% {
+      transform: translate(
+        $startTranslateX,
+        $startTranslateY + $translatePower
+      );
+      opacity: $startOpacity;
+    }
+    100% {
+      transform: translate($startTranslateX, $startTranslateY);
+      opacity: $endOpacity;
+    }
+  }
+}
+
+// USE:
+
+// animation: fadeInTop 0.4s;
+
+// @include fadeIn(top);
