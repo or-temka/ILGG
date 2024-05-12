@@ -5,6 +5,7 @@
   gap: 5px;
 
   &__label {
+    width: fit-content;
     color: var(--grey-text-color);
     margin-left: 10px;
   }

@@ -1,7 +1,8 @@
 import { v4 as uuidv4 } from 'uuid'
+import { useMemo, useRef, useState } from 'react'
 
 import styles from './Input.module.scss'
-import { useMemo, useRef, useState } from 'react'
+
 
 function Input({
   placeholder = '',
