@@ -1,0 +1,53 @@
+const [deletItemId, setDeleteItemId] = useState()
+  const [notifications, setNotifications] = useState([
+    {
+      id: 1,
+      item: (
+        <FloatingNotification
+          text="Привет 1"
+          onClose={() => setDeleteItemId(1)}
+        />
+      ),
+      lifeTime: 10000,
+    },
+    {
+      id: 2,
+      item: (
+        <FloatingNotification
+          text="Привет 2"
+          onClose={() => setDeleteItemId(2)}
+        />
+      ),
+    },
+    {
+      id: 3,
+      item: (
+        <FloatingNotification
+          text="Привет 3"
+          onClose={() => setDeleteItemId(3)}
+        />
+      ),
+    },
+  ])
+
+  return (
+      <Button
+        title="Добавить"
+        onClick={() => {
+          setNotifications((prev) => [
+            ...prev,
+            {
+              id: uuidv4(),
+              item: <FloatingNotification text="Привет 4" onClose={() => setDeleteItemId(4)} />,
+            },
+          ])
+        }}
+      />
+
+      <FloatingPanelsQueue
+        queue={notifications}
+        setQueue={setNotifications}
+        deleteItemId={deletItemId}
+      />
+  )
+}
