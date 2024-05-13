@@ -1,0 +1,30 @@
+@import '../../../mixins.scss';
+
+.link {
+  &_simple {
+    @include link;
+    color: var(--active-2-color);
+
+    &:hover {
+      color: var(--active-2-hover-color);
+    }
+  }
+
+  &_text {
+    @include text;
+    color: var(--active-2-color);
+
+    &:hover {
+      color: var(--active-2-hover-color);
+    }
+  }
+
+  &_bold {
+    @include h3;
+    color: var(--text-color);
+
+    &:hover {
+      color: var(--link-blue-color);
+    }
+  }
+}
