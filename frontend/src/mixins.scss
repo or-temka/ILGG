@@ -7,6 +7,12 @@
 }
 //#endregion
 
+//#region effects
+@mixin simple-blur() {
+  backdrop-filter: blur(5px);
+}
+//#endregion
+
 //#region gradients
 // linear gradients
 @mixin background-green-lg($direction: 180deg) {
@@ -40,6 +46,20 @@
     $direction,
     rgba(26, 28, 45, 1) 0%,
     rgba(29, 32, 51, 0) 100%
+  );
+}
+@mixin background-main-transparent-3-lg($direction: 180deg) {
+  background: linear-gradient(
+    $direction,
+    rgba(29, 32, 51, 0) 0%,
+    rgba(29, 32, 51, 0.5) 15%,
+    rgba(29, 32, 51, 0.72) 25%,
+    rgba(29, 32, 51, 0.88) 38%,
+    rgba(29, 32, 51, 0.94) 50%,
+    rgba(29, 32, 51, 0.96) 63%,
+    rgba(29, 32, 51, 0.98) 75%,
+    rgba(29, 32, 51, 0.99) 88%,
+    rgba(29, 32, 51, 1) 100%
   );
 }
 
