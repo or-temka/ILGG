@@ -1,0 +1,38 @@
+.input {
+  &__input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &__inputContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__inputBtn {
+    width: 50px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+
+    &_simple {
+      background-color: var(--background-3-color);
+      &:hover {
+        background-color: var(--background-3-hover-color);
+      }
+    }
+
+    &_light {
+      background-color: var(--background-4-color);
+      &:hover {
+        background-color: var(--background-4-hover-color);
+      }
+    }
+  }
+}
