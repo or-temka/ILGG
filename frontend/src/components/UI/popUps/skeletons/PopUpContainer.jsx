@@ -6,11 +6,18 @@ function PopUpContainer({
   children,
   headerText = '',
   onClose = () => {},
+  showCloseButton = true,
+  showBack = true,
   className = '',
   ...params
 }) {
   return (
-    <PopUpSkeleton {...params} onClose={onClose}>
+    <PopUpSkeleton
+      {...params}
+      onClose={onClose}
+      showCloseButton={showCloseButton}
+      showBack={showBack}
+    >
       <div className={[styles.popUpContainer, className].join(' ')}>
         {headerText && (
           <header className={styles.popUpContainer__header}>

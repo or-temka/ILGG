@@ -7,7 +7,8 @@ import styles from './PopUpSkeleton.module.scss'
 function PopUpSkeleton({
   children,
   onClose = () => {}, // Common method: onClickBack, onClickCloseButton
-  isShowCloseButton = true,
+  showCloseButton = true,
+  showBack = true,
   backgroundBlur = true,
   className = '',
   backClassName = '',
@@ -16,19 +17,22 @@ function PopUpSkeleton({
 }) {
   return (
     <div {...params} className={[styles.popUpSkeleton, className].join(' ')}>
-      <div
-        className={[
-          styles.popUpSkeleton__back,
-          backgroundBlur ? styles.popUpSkeleton__back_blur : '',
-          backClassName,
-        ].join(' ')}
-        onClick={onClose}
-      ></div>
+      {showBack && (
+        <div
+          className={[
+            styles.popUpSkeleton__back,
+            backgroundBlur ? styles.popUpSkeleton__back_blur : '',
+            backClassName,
+          ].join(' ')}
+          onClick={onClose}
+        ></div>
+      )}
+
       <div
         className={[styles.popUpSkeleton__content, contentClassName].join(' ')}
       >
         {children}
-        {isShowCloseButton && (
+        {showCloseButton && (
           <CloseButton
             className={styles.popUpSkeleton__closeButton}
             onClick={onClose}
