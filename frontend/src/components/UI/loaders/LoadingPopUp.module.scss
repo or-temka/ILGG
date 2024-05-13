@@ -1,0 +1,17 @@
+.loading {
+  &__loading {
+    width: 23px;
+    height: 23px;
+
+    animation: rotation 3s linear infinite;
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
