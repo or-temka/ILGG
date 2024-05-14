@@ -1,0 +1,137 @@
+//#region shadow mixins
+@mixin light-shadow() {
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.06);
+}
+@mixin big-shadow() {
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
+}
+//#endregion
+
+//#region effects
+@mixin simple-blur() {
+  backdrop-filter: blur(5px);
+}
+//#endregion
+
+//#region gradients
+// linear gradients
+@mixin background-green-lg($direction: 180deg) {
+  background: linear-gradient($direction, #8ed629, #6ba721);
+}
+@mixin background-green-lg-hover($direction: 180deg) {
+  background: linear-gradient($direction, #84c726, #5f941d);
+}
+
+@mixin background-blue-lg($direction: 180deg) {
+  background: linear-gradient($direction, #3d79fc, #1c47a7);
+}
+@mixin background-blue-lg-hover($direction: 180deg) {
+  background: linear-gradient($direction, #3970e9, #183d8f);
+}
+
+@mixin background-main-lg($direction: 180deg) {
+  background: linear-gradient($direction, #171b2a 55%, #0a0d17 110%);
+}
+
+@mixin background-main-transparent-lg($direction: 180deg) {
+  background: linear-gradient(
+    $direction,
+    rgba(23, 27, 42, 1) 42%,
+    rgba(13, 17, 28, 0.25) 74%,
+    rgba(10, 13, 23, 0) 92%
+  );
+}
+@mixin background-main-transparent-2-lg($direction: 180deg) {
+  background: linear-gradient(
+    $direction,
+    rgba(26, 28, 45, 1) 0%,
+    rgba(29, 32, 51, 0) 100%
+  );
+}
+@mixin background-main-transparent-3-lg($direction: 180deg) {
+  background: linear-gradient(
+    $direction,
+    rgba(29, 32, 51, 0) 0%,
+    rgba(29, 32, 51, 0.5) 15%,
+    rgba(29, 32, 51, 0.72) 25%,
+    rgba(29, 32, 51, 0.88) 38%,
+    rgba(29, 32, 51, 0.94) 50%,
+    rgba(29, 32, 51, 0.96) 63%,
+    rgba(29, 32, 51, 0.98) 75%,
+    rgba(29, 32, 51, 0.99) 88%,
+    rgba(29, 32, 51, 1) 100%
+  );
+}
+
+@mixin soft-lg($direction: 180deg) {
+  background: linear-gradient($direction, #622f94, #ff8474);
+}
+
+//radial gradients
+@mixin blue-transparent-rg() {
+  background: radial-gradient(
+    rgba(85, 95, 180, 0.3) 0%,
+    rgba(85, 95, 180, 0.05) 50%,
+    rgba(85, 95, 180, 0) 70%
+  );
+}
+//#endregion
+
+//#region fonts mixins
+@mixin text() {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: var(--regular-fw);
+}
+@mixin textBold() {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: var(--semibold-fw);
+}
+@mixin textUnderline() {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: var(--regular-fw);
+  text-decoration: underline;
+}
+
+@mixin paragraph() {
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: var(--regular-fw);
+}
+@mixin paragraphUnderline() {
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: var(--regular-fw);
+  text-decoration: underline;
+}
+
+@mixin link() {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: var(--regular-fw);
+}
+
+@mixin smallText() {
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: var(--regular-fw);
+}
+
+@mixin h1() {
+  font-size: 22px;
+  line-height: 26px;
+  font-weight: var(--semibold-fw);
+}
+@mixin h2() {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: var(--semibold-fw);
+}
+@mixin h3() {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: var(--semibold-fw);
+}
+//#endregion

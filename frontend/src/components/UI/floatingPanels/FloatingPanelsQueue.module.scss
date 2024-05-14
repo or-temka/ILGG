@@ -1,0 +1,20 @@
+.queue {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__item {
+    width: fit-content;
+    height: fit-content;
+
+    & > * {
+      position: relative;
+      margin: 0;
+    }
+
+    &_delete {
+      transition: 0.4s opacity;
+      opacity: 0;
+    }
+  }
+}

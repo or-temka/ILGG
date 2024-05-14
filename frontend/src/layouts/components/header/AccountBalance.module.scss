@@ -1,0 +1,46 @@
+@import '../../../mixins.scss';
+
+.balance {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+
+  &__account {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    height: 100%;
+    cursor: pointer;
+    padding: 0px 20px;
+    box-sizing: border-box;
+    flex: 1;
+
+    &:hover {
+      background-color: var(--background-4-color);
+    }
+  }
+
+  &__accountText {
+    @include text;
+  }
+
+  &__accountTextLabel {
+    color: var(--grey-text-color);
+  }
+}
+
+.addBtn {
+  height: 100%;
+  width: 53px;
+  max-height: 53px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--background-4-color);
+  }
+}

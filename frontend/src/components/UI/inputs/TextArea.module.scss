@@ -1,0 +1,60 @@
+.textArea {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  &__label {
+    width: fit-content;
+    color: var(--grey-text-color);
+    margin-left: 10px;
+  }
+
+  &__input {
+    width: 100%;
+    resize: none;
+    border: none;
+    outline: none;
+    white-space: nowrap;
+    box-sizing: border-box;
+
+    &_error {
+      border: 1px solid var(--error-color);
+    }
+
+    // types
+    &_simple {
+      background-color: var(--background-3-color);
+      padding: 15px 20px;
+      border-radius: 5px;
+      &:hover {
+        background-color: var(--background-3-hover-color);
+      }
+      &:focus {
+        background-color: var(--background-3-active-color);
+      }
+      &::placeholder {
+        color: var(--grey-text-color);
+      }
+    }
+
+    &_light {
+      background-color: var(--background-4-color);
+      padding: 10px 20px;
+      border-radius: 5px;
+      &:hover {
+        background-color: var(--background-4-hover-color);
+      }
+      &:focus {
+        background-color: var(--background-4-active-color);
+      }
+      &::placeholder {
+        color: var(--light-text-color);
+      }
+    }
+  }
+
+  &__errorText {
+    margin-left: 10px;
+    color: var(--error-color);
+  }
+}

@@ -1,0 +1,73 @@
+@import 'variables';
+@import 'mixins';
+@import 'styles';
+
+* {
+  font-family: var(--main-font-family);
+  color: var(--text-color);
+}
+
+.App {
+  height: 100vh;
+}
+
+.wrapper {
+  padding: 20px 40px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+span {
+  @include text;
+}
+
+p {
+  @include paragraph;
+}
+
+a {
+  @include text;
+  text-decoration: none;
+}
+
+// initial classes
+h1,
+.h1 {
+  @include h1;
+  margin: 0;
+}
+h2,
+.h2 {
+  @include h2;
+  margin: 0;
+}
+h3,
+.h3 {
+  @include h3;
+  margin: 0;
+}
+.text {
+  @include text;
+}
+.text-bold {
+  @include textBold;
+}
+.text-underline {
+  @include textUnderline;
+}
+.paragraph {
+  @include paragraph;
+}
+.paragraph-underline {
+  @include paragraphUnderline;
+}
+.link {
+  @include link;
+}
+.small-text {
+  @include smallText;
+}
