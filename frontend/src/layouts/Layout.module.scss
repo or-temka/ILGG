@@ -1,0 +1,28 @@
+@import '../mixins.scss';
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  &__menu {
+    width: 280px;
+  }
+
+  &__leftMenu {
+  }
+
+  &__main {
+    flex: 1;
+  }
+
+  &__rightMenu {
+  }
+}
