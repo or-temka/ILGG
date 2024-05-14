@@ -1,6 +1,11 @@
 import { useEffect } from 'react'
 
-function Main({ addNewFloatingPanel = () => {}, setPageName }) {
+interface MainProps {
+  addNewFloatingPanel?: () => void
+  setPageName: (name: string) => void
+}
+
+function Main({ addNewFloatingPanel = () => {}, setPageName }: MainProps) {
   useEffect(() => {
     setPageName('Главная')
   }, [])

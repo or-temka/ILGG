@@ -1,22 +1,31 @@
+import { ChangeEventHandler, MouseEventHandler, useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import styles from './Checkbox.module.scss'
-import { useRef } from 'react'
+
+interface CheckboxProps {
+  label: string
+  style?: any
+  checked?: boolean
+  disabled?: boolean
+  onClick?: MouseEventHandler<HTMLInputElement>
+  onChange?: ChangeEventHandler<HTMLInputElement>
+  className?: string
+}
 
 function Checkbox({
   label = '',
   style,
-  className = '',
   checked = false,
   disabled = false,
   onClick = () => {},
   onChange = () => {},
-  ...params
-}) {
+  className = '',
+}: CheckboxProps) {
   const htmlIdRef = useRef(uuidv4())
 
   return (
-    <div {...params} className={[styles.checkbox, className].join(' ')}>
+    <div className={[styles.checkbox, className].join(' ')}>
       <input
         id={htmlIdRef.current}
         type="checkbox"

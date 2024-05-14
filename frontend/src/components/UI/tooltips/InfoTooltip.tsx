@@ -1,17 +1,31 @@
-import { useEffect, useRef, useState } from 'react'
 import { ReactComponent as InfoTooltipSVG } from '../../../assets/svgs/infoTooltip.svg'
 
 import styles from './InfoTooltip.module.scss'
 
+export enum HorizontalDirection {
+  right = 'right',
+  left = 'left',
+}
+export enum VerticalDirection {
+  top = 'top',
+  bottom = 'bottom',
+}
+
+interface InfoTooltipProps {
+  text: string
+  positionHorizontal?: HorizontalDirection
+  positionVertical?: VerticalDirection
+  className?: string
+}
+
 function InfoTooltip({
   text = '',
-  positionVertical = 'top',
-  positionHorizontal = 'right',
+  positionHorizontal = HorizontalDirection.right,
+  positionVertical = VerticalDirection.top,
   className = '',
-  ...params
-}) {
+}: InfoTooltipProps) {
   return (
-    <div className={styles.tooltip}>
+    <div className={[styles.tooltip, className].join(' ')}>
       <div
         className={[
           styles.tooltip__textContainer,

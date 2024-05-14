@@ -1,6 +1,17 @@
+import { ReactNode } from 'react'
+
 import PopUpSkeleton from './PopUpSkeleton'
 
 import styles from './PopUpContainer.module.scss'
+
+interface PopUpContainerProps {
+  children: ReactNode
+  headerText?: string
+  onClose?: (...args: any[]) => any
+  showCloseButton?: boolean
+  showBack?: boolean
+  className?: string
+}
 
 function PopUpContainer({
   children,
@@ -9,11 +20,9 @@ function PopUpContainer({
   showCloseButton = true,
   showBack = true,
   className = '',
-  ...params
-}) {
+}: PopUpContainerProps) {
   return (
     <PopUpSkeleton
-      {...params}
       onClose={onClose}
       showCloseButton={showCloseButton}
       showBack={showBack}

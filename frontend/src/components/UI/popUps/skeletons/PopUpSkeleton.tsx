@@ -1,22 +1,32 @@
-import { useState } from 'react'
+import { ReactNode } from 'react'
 
 import CloseButton from '../../buttons/CloseButton'
 
 import styles from './PopUpSkeleton.module.scss'
 
+interface PopUpSkeletonProps {
+  children: ReactNode
+  onClose?: (...args: any[]) => any
+  showCloseButton?: boolean
+  showBack?: boolean
+  backgroundBlur?: boolean
+  className?: string
+  backClassName?: string
+  contentClassName?: string
+}
+
 function PopUpSkeleton({
   children,
-  onClose = () => {}, // Common method: onClickBack, onClickCloseButton
+  onClose = () => {},
   showCloseButton = true,
   showBack = true,
   backgroundBlur = true,
   className = '',
   backClassName = '',
   contentClassName = '',
-  ...params
-}) {
+}: PopUpSkeletonProps) {
   return (
-    <div {...params} className={[styles.popUpSkeleton, className].join(' ')}>
+    <div className={[styles.popUpSkeleton, className].join(' ')}>
       {showBack && (
         <div
           className={[

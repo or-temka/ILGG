@@ -1,14 +1,18 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import HeaderSearchInput from './HeaderSearchInput'
 import { ReactComponent as LogoSVG } from '../../../assets/svgs/logo.svg'
-
-import styles from './Header.module.scss'
-import { Link } from 'react-router-dom'
 import AccountBalance from './AccountBalance'
 
-function Header() {
-  const [searchValue, setSearchValue] = useState('')
+import styles from './Header.module.scss'
+
+interface HeaderProps {
+  pageName?: string | null
+}
+
+function Header({ pageName = '' }: HeaderProps) {
+  const [searchValue, setSearchValue] = useState<string>('')
 
   return (
     <header className={styles.header}>
@@ -24,7 +28,7 @@ function Header() {
         </Link>
       </div>
       <div className={styles.header__aside}>
-        <AccountBalance balanceValue="333" />
+        <AccountBalance balanceValue={333} />
       </div>
     </header>
   )

@@ -1,21 +1,36 @@
+import { ChangeEventHandler, MouseEventHandler, useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import { useRef } from 'react'
 
 import styles from './Input.module.scss'
 
+export enum Variant {
+  simple = 'simple',
+  light = 'light',
+}
+
+interface InputProps {
+  value: string
+  placeholder?: string
+  label?: string
+  variant?: Variant
+  errorText?: string
+  onChange?: ChangeEventHandler<HTMLInputElement>
+  onClick?: MouseEventHandler<HTMLInputElement>
+  className?: string
+  wrapperClassName?: string
+}
 
 function Input({
-  placeholder = '',
   value = '',
+  placeholder = '',
   label = '',
-  type = 'simple', // types: simple, light
+  variant = Variant.simple, // types: simple, light
   errorText = '',
   onChange = () => {},
   onClick = () => {},
   className = '',
   wrapperClassName = '',
-  ...params
-}) {
+}: InputProps) {
   const htmlIdRef = useRef(uuidv4())
 
   return (
@@ -26,17 +41,16 @@ function Input({
         </label>
       )}
       <input
-        {...params}
         id={htmlIdRef.current}
         value={value}
-        type='text'
+        type="text"
         onChange={onChange}
         onClick={onClick}
         placeholder={placeholder}
         className={[
           styles.input__input,
           errorText && styles.input__input_error,
-          type === 'light'
+          variant === 'light'
             ? styles.input__input_light
             : styles.input__input_simple,
           className,

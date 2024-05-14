@@ -1,22 +1,39 @@
+import { ChangeEventHandler, MouseEventHandler, ReactNode, useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import { useRef } from 'react'
 
 import btnStyles from './Input.module.scss'
 import styles from './InputWithBtnIcon.module.scss'
 
+export enum Variant {
+  simple = 'simple',
+  light = 'light',
+}
+
+interface InputWithBtnIconProps {
+  value: string
+  placeholder?: string
+  label?: string
+  variant?: Variant
+  errorText?: string
+  svgComponent?: ReactNode
+  onChange?: ChangeEventHandler<HTMLInputElement>
+  onClick?: MouseEventHandler<HTMLDivElement>
+  className?: string
+  wrapperClassName?: string
+}
+
 function InputWithBtnIcon({
-  placeholder = '',
   value = '',
+  placeholder = '',
   label = '',
-  type = 'simple', // types: simple, light
+  variant = Variant.simple,
   errorText = '',
   svgComponent,
   onChange = () => {},
   onClick = () => {},
   className = '',
   wrapperClassName = '',
-  ...params
-}) {
+}: InputWithBtnIconProps) {
   const htmlIdRef = useRef(uuidv4())
 
   return (
@@ -31,7 +48,6 @@ function InputWithBtnIcon({
       )}
       <div className={styles.input__inputContainer}>
         <input
-          {...params}
           id={htmlIdRef.current}
           value={value}
           type="text"
@@ -41,7 +57,7 @@ function InputWithBtnIcon({
             btnStyles.input__input,
             styles.input__input,
             errorText && btnStyles.input__input_error,
-            type === 'light'
+            variant === 'light'
               ? btnStyles.input__input_light
               : btnStyles.input__input_simple,
             className,
@@ -51,7 +67,7 @@ function InputWithBtnIcon({
           <div
             className={[
               styles.input__inputBtn,
-              type === 'light'
+              variant === 'light'
                 ? styles.input__inputBtn_light
                 : styles.input__inputBtn_simple,
             ].join(' ')}

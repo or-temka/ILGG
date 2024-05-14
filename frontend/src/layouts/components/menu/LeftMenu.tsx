@@ -12,12 +12,13 @@ import menuStyles from './Menu.module.scss'
 import styles from './LeftMenu.module.scss'
 import { Link } from 'react-router-dom'
 
-function LeftMenu({ className, ...params }) {
+interface LeftMenuProps {
+  className?: string
+}
+
+function LeftMenu({ className = '' }: LeftMenuProps) {
   return (
-    <aside
-      {...params}
-      className={[menuStyles.menu, styles.leftMenu, className].join(' ')}
-    >
+    <aside className={[menuStyles.menu, styles.leftMenu, className].join(' ')}>
       <nav className={styles.nav}>
         <ButtonPage name="Главная страница" svgComponent={<HomeSVG />} active />
         <ButtonPage name="Магазин" svgComponent={<GamepadSVG />} />

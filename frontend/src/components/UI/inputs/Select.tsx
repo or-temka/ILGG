@@ -1,24 +1,48 @@
-import { useState } from 'react'
+import {
+  ChangeEvent,
+  ChangeEventHandler,
+  MouseEventHandler,
+  useState,
+} from 'react'
 
 import styles from './Select.module.scss'
 
+interface IOption {
+  value: string | number
+  label: string
+}
+
+interface SelectProps {
+  options: IOption[]
+  placeholder?: string
+  errorText?: string
+  defaultValue?: string | number
+  disabledNotEntered?: boolean
+  notEnteredColor?: string
+  onClick?: MouseEventHandler<HTMLSelectElement>
+  onChange?: (...args: any[]) => any
+  className?: string
+  containerClassName?: string
+}
+
 function Select({
+  options = [],
   placeholder = 'Выберите...',
-  options = [], // [0: {value: "someValue", label: "someLabel" }, 1: {...}, ...] <Array of objects>
   errorText = '',
-  className = '',
-  onClick = () => {},
-  onChange = () => {},
-  containerClassName = '',
   defaultValue = 'default',
   disabledNotEntered = false,
   notEnteredColor = 'var(--text-color)',
-  ...params
-}) {
+  onClick = () => {},
+  onChange = () => {},
+  className = '',
+  containerClassName = '',
+}: SelectProps) {
   const [selectedValue, setSelectedValue] = useState(defaultValue)
 
-  const onChangeHandler = (e) => {
-    const value = e.target.value
+  const onChangeHandler: ChangeEventHandler<HTMLSelectElement> = (
+    e: ChangeEvent<HTMLSelectElement>
+  ) => {
+    const value: string = e.target.value
     onChange(value)
     setSelectedValue(value)
   }
@@ -26,7 +50,6 @@ function Select({
   return (
     <div className={[styles.select, containerClassName].join(' ')}>
       <select
-        {...params}
         onClick={onClick}
         onChange={onChangeHandler}
         className={[
@@ -39,7 +62,7 @@ function Select({
         <option
           value="default"
           className={styles.select__option}
-          disable={disabledNotEntered.toString()}
+          disabled={disabledNotEntered}
           style={{ color: notEnteredColor }}
         >
           {placeholder}

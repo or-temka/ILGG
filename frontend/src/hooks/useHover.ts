@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-function useHover(ref) {
+function useHover(ref: React.RefObject<any>) {
   const [isHovering, setIsHovering] = useState(false)
 
   const on = () => setIsHovering(true)

@@ -1,16 +1,38 @@
+import { MouseEventHandler, ReactNode } from 'react'
+
 import styles from './Tooltip.module.scss'
+
+export enum HorizontalDirection {
+  left = 'left',
+  center = 'center',
+  right = 'right',
+}
+export enum VerticalDirection {
+  top = 'top',
+  bottom = 'bottom',
+}
+
+interface TooltipProps {
+  children?: ReactNode
+  text?: string
+  postitionHorizontal?: HorizontalDirection
+  postitionVertical?: VerticalDirection
+  className?: string
+  tooltipClassName?: string
+  onClick?: MouseEventHandler<HTMLDivElement>
+}
 
 function Tooltip({
   children,
   text = '',
-  postitionVertical = 'top',
-  postitionHorizontal = 'center',
+  postitionHorizontal = HorizontalDirection.center,
+  postitionVertical = VerticalDirection.top,
   className = '',
   tooltipClassName = '',
-  ...params
-}) {
+  onClick = () => {},
+}: TooltipProps) {
   return (
-    <div {...params} className={[styles.tooltip, className].join(' ')}>
+    <div className={[styles.tooltip, className].join(' ')} onClick={onClick}>
       <div
         className={[
           styles.tooltip__tooltip,

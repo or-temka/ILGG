@@ -1,22 +1,36 @@
+import { MouseEventHandler } from 'react'
+
 import styles from './Button.module.scss'
+
+export enum Variant {
+  simple = 'simple',
+  light = 'light',
+  primary = 'primary',
+}
+
+interface ButtonProps {
+  title: string | number
+  variant?: Variant
+  disabled?: boolean
+  className?: string
+  onClick?: MouseEventHandler<HTMLButtonElement>
+}
 
 function Button({
   title = '',
-  type = '', // types: simple, light, primary
+  variant = Variant.simple,
   disabled = false,
   className = '',
   onClick = () => {},
-  ...params
-}) {
+}: ButtonProps) {
   return (
     <button
-      {...params}
       disabled={disabled}
       className={[
         styles.button,
-        type === 'light'
+        variant === 'light'
           ? styles.button_light
-          : type === 'primary'
+          : variant === 'primary'
           ? styles.button_primary
           : styles.button_simple,
         disabled && styles.button_disabled,

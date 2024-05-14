@@ -1,22 +1,38 @@
 import { ReactComponent as PlusSVG } from '../../../assets/svgs/plus.svg'
-import Tooltip from '../../../components/UI/tooltips/Tooltip'
-import SkeletonText from '../../../components/skeletons/SkeletonText'
+import Tooltip, {
+  VerticalDirection,
+} from '../../../components/UI/tooltips/Tooltip'
+import SkeletonText, {
+  Variant,
+} from '../../../components/skeletons/SkeletonText'
 
 import styles from './AccountBalance.module.scss'
 
+export enum Currency {
+  rus = 'руб',
+  us = 'usd',
+}
+
+interface AccountBalanceProps {
+  balanceValue?: number
+  currency?: Currency
+  onClickAccount?: (...args: any[]) => any
+  onClickToReplenish?: (...args: any[]) => any
+  className?: string
+}
+
 function AccountBalance({
   balanceValue,
-  currency = 'руб',
+  currency = Currency.rus,
   onClickAccount = () => {},
   onClickToReplenish = () => {},
   className = '',
-  ...params
-}) {
+}: AccountBalanceProps) {
   return (
-    <div {...params} className={[styles.balance, className].join(' ')}>
+    <div className={[styles.balance, className].join(' ')}>
       <Tooltip
         className={styles.addBtn}
-        postitionVertical="bottom"
+        postitionVertical={VerticalDirection.bottom}
         text="Пополнить баланс"
         onClick={onClickToReplenish}
       >
@@ -25,7 +41,7 @@ function AccountBalance({
       <Tooltip
         className={styles.balance__account}
         onClick={onClickAccount}
-        postitionVertical="bottom"
+        postitionVertical={VerticalDirection.bottom}
         text="Управление балансом"
       >
         {/* Вывод скелетона */}
@@ -40,10 +56,10 @@ function AccountBalance({
         {balanceValue ? (
           <>
             <span className={styles.balance__accountText}>{balanceValue}</span>
-            <span className={styles.balance__accountText}>{currency}.</span>
+            <span className={styles.balance__accountText}>{currency}</span>
           </>
         ) : (
-          <SkeletonText type="light" />
+          <SkeletonText variant={Variant.light} />
         )}
       </Tooltip>
     </div>

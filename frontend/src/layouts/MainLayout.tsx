@@ -6,7 +6,11 @@ import RightMenu from './components/menu/RightMenu'
 
 import styles from './Layout.module.scss'
 
-function MainLayout({ pageName }) {
+interface MainLayoutProps {
+  pageName?: string | null
+}
+
+function MainLayout({ pageName }: MainLayoutProps) {
   return (
     <>
       <div className={styles.layout}>

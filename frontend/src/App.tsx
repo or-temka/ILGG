@@ -12,18 +12,18 @@ import { SITE_NAME } from './variables'
 
 function App() {
   // set page name
-  const [pageName, setPageName] = useState('')
+  const [pageName, setPageName] = useState<string | null>('')
   useEffect(() => {
     document.title = pageName ? SITE_NAME + ' | ' + pageName : SITE_NAME
   }, [pageName])
 
   // for floating panels queue
-  const [deletItemId, setDeleteItemId] = useState()
-  const [floatingPanels, setFloatingPanels] = useState([])
+  const [deletItemId, setDeleteItemId] = useState<number | string>()
+  const [floatingPanels, setFloatingPanels] = useState<[]>([])
 
   const addNewFloatingPanelHandler = (text = '', lifeTime = 0) => {
     const id = uuidv4()
-    setFloatingPanels((prev) => [
+    setFloatingPanels((prev: any): any => [
       ...prev,
       {
         id,

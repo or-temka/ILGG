@@ -1,26 +1,44 @@
-import { useRef } from 'react'
+import { ChangeEventHandler, MouseEventHandler, useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import styles from './TextArea.module.scss'
 
+export enum Variant {
+  simple = 'simple',
+  light = 'light',
+}
+
+interface TextAreaProps {
+  value: string
+  placeholder?: string
+  variant?: Variant
+  label?: string
+  errorText?: string
+  cols?: number
+  rows?: number
+  onChange?: ChangeEventHandler<HTMLTextAreaElement>
+  onClick?: MouseEventHandler<HTMLTextAreaElement>
+  className?: string
+  wrapperClassName?: string
+}
+
 function TextArea({
+  value = '',
   placeholder = '',
-  type = 'simple', // types: simple, light
+  variant = Variant.simple,
   label = '',
   errorText = '',
-  value = '',
-  cols = '45',
-  rows = '5',
+  cols = 45,
+  rows = 5,
   onChange = () => {},
   onClick = () => {},
   className = '',
   wrapperClassName = '',
-  ...params
-}) {
+}: TextAreaProps) {
   const htmlIdRef = useRef(uuidv4())
 
   return (
-    <div {...params} className={[styles.textArea, wrapperClassName].join(' ')}>
+    <div className={[styles.textArea, wrapperClassName].join(' ')}>
       {label && (
         <label htmlFor={htmlIdRef.current} className={styles.textArea__label}>
           {label}
@@ -36,7 +54,7 @@ function TextArea({
         onClick={onClick}
         className={[
           styles.textArea__input,
-          type === 'simple'
+          variant === 'simple'
             ? styles.textArea__input_simple
             : styles.textArea__input_light,
           errorText ? styles.textArea__input_error : '',

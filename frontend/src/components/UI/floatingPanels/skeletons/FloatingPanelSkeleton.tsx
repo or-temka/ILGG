@@ -1,12 +1,29 @@
 import styles from './FloatingPanelSkeleton.module.scss'
 
+export enum horizontalDirection {
+  left = 'left',
+  center = 'center',
+  right = 'right',
+}
+export enum verticalDirection {
+  top = 'top',
+  center = 'center',
+  bottom = 'bottom',
+}
+
+interface FloatingPanelSkeletonProps {
+  children?: any
+  posHorizontal?: horizontalDirection
+  posVertical?: verticalDirection
+  className?: string
+}
+
 function FloatingPanelSkeleton({
   children,
-  posHorizontal = 'right',
-  posVertical = 'bottom',
-  className,
-  ...params
-}) {
+  posHorizontal = horizontalDirection.right,
+  posVertical = verticalDirection.bottom,
+  className = '',
+}: FloatingPanelSkeletonProps) {
   // Определение выравнивания
   // По горизонтали
   const classNamePosHorizontal =
@@ -25,7 +42,6 @@ function FloatingPanelSkeleton({
 
   return (
     <div
-      {...params}
       className={[
         styles.skeleton,
         classNamePosHorizontal,

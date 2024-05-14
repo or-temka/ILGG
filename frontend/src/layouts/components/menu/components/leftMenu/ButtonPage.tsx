@@ -2,6 +2,15 @@ import { Link } from 'react-router-dom'
 
 import styles from './ButtonPage.module.scss'
 
+interface ButtonPageProps {
+  name?: string
+  svgComponent?: any
+  active?: boolean
+  notificationsCount?: number
+  to?: string
+  className?: string
+}
+
 function ButtonPage({
   name = '',
   svgComponent,
@@ -9,16 +18,15 @@ function ButtonPage({
   notificationsCount = 0,
   to = '/',
   className,
-  ...params
-}) {
+}: ButtonPageProps) {
   return (
     <Link
-      {...params}
       className={[
         styles.button,
         active ? styles.button_active : '',
         className,
       ].join(' ')}
+      to={to}
     >
       <div
         className={[

@@ -1,22 +1,36 @@
+import { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
+
 import styles from './TextLink.module.scss'
 
+export enum Variant {
+  simple = 'simple',
+  text = 'text',
+  bold = 'bold',
+}
+
+interface TextLinkProps {
+  to: string
+  children?: ReactNode
+  variant?: Variant
+  text?: string
+  className?: string
+}
+
 function TextLink({
+  to = '/',
   children,
-  type = 'simple', // types: simple, text, bold
+  variant = Variant.simple, // types: simple, text, bold
   text = '',
-  to = '',
   className = '',
-  ...params
-}) {
+}: TextLinkProps) {
   return (
     <Link
-      {...params}
       className={[
         styles.link,
-        type === 'simple'
+        variant === 'simple'
           ? styles.link_simple
-          : type === 'text'
+          : variant === 'text'
           ? styles.link_text
           : styles.link_bold,
         className,

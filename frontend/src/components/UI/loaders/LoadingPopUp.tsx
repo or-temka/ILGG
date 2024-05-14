@@ -4,17 +4,22 @@ import { ReactComponent as LoadingSVG } from '../../../assets/svgs/loading.svg'
 
 import styles from './LoadingPopUp.module.scss'
 
-function LoadingPopUp({ containerClassName, className, ...params }) {
+interface LoadingPopUpProps {
+  containerClassName?: string
+  className?: string
+}
+
+function LoadingPopUp({
+  containerClassName = '',
+  className = '',
+}: LoadingPopUpProps) {
   return (
     <PopUpContainer
       showCloseButton={false}
       className={[styles.loading, containerClassName].join(' ')}
       showBack={false}
     >
-      <div
-        {...params}
-        className={[styles.loading__loading, className].join(' ')}
-      >
+      <div className={[styles.loading__loading, className].join(' ')}>
         <LoadingSVG />
       </div>
     </PopUpContainer>

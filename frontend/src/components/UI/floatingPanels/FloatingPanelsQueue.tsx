@@ -1,26 +1,34 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo } from 'react'
 
 import FloatingPanelSkeleton from './skeletons/FloatingPanelSkeleton'
 
 import styles from './FloatingPanelsQueue.module.scss'
 
+interface FloatingPanelsQueueProps {
+  queue?: []
+  setQueue?: any
+  itemLifeTime?: number
+  deleteItemId?: string | number
+  className?: string
+  panelsClassName?: string
+}
+
 function FloatingPanelsQueue({
   queue = [],
-  setQueue,
+  setQueue = () => {},
   itemLifeTime = 5000,
   deleteItemId = '',
   className = '',
   panelsClassName,
-  ...params
-}) {
+}: FloatingPanelsQueueProps) {
   // deleting item
   // delete from original
-  const deleteItemFromQueueHandler = (itemId) => {
-    setQueue((prev) => [...prev].filter((item) => item.id !== itemId))
+  const deleteItemFromQueueHandler = (itemId: number | string) => {
+    setQueue((prev: any) => [...prev].filter((item) => item.id !== itemId))
   }
   // smooth delete from original
-  const smoothDeleteItemFromQueueHandler = (itemId) => {
-    setQueue((prev) =>
+  const smoothDeleteItemFromQueueHandler = (itemId: number | string) => {
+    setQueue((prev: any) =>
       [...prev].map((item) => {
         if (item.id !== itemId) return item
         item.delete = true
@@ -28,7 +36,7 @@ function FloatingPanelsQueue({
       })
     )
     setTimeout(() => {
-      setQueue((prev) => [...prev].filter((item) => item.id !== itemId))
+      setQueue((prev: any) => [...prev].filter((item) => item.id !== itemId))
     }, 400)
   }
   // delete handler
@@ -40,7 +48,7 @@ function FloatingPanelsQueue({
 
   // Auto destroy items
   useMemo(() => {
-    queue.map((item) => {
+    queue.map((item: any) => {
       setTimeout(() => {
         smoothDeleteItemFromQueueHandler(item.id)
       }, item.lifeTime || itemLifeTime)
@@ -48,11 +56,8 @@ function FloatingPanelsQueue({
   }, [queue])
 
   return (
-    <FloatingPanelSkeleton
-      {...params}
-      className={[styles.queue, className].join(' ')}
-    >
-      {queue.map((item) => {
+    <FloatingPanelSkeleton className={[styles.queue, className].join(' ')}>
+      {queue.map((item: any) => {
         return (
           <div
             key={item.id}

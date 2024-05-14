@@ -1,16 +1,22 @@
+import { ChangeEventHandler, MouseEventHandler } from 'react'
 import styles from './HeaderSearchInput.module.scss'
+
+interface HeaderSearchInputProps {
+  value?: string
+  onChange?: ChangeEventHandler<HTMLInputElement>
+  onClick?: MouseEventHandler<HTMLInputElement>
+  className?: string
+}
 
 function HeaderSearchInput({
   value = '',
   onChange = () => {},
   onClick = () => {},
   className = '',
-  ...params
-}) {
+}: HeaderSearchInputProps) {
   return (
     <input
       type="text"
-      {...params}
       value={value}
       onClick={onClick}
       onChange={onChange}
