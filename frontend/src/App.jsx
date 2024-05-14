@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import MainLayout from './layouts/MainLayout'
-import UserLayout from './layouts/UserLayout'
 import Main from './pages/Main'
 
 import FloatingPanelsQueue from './components/UI/floatingPanels/FloatingPanelsQueue'
