@@ -10,6 +10,17 @@
   animation: pulse 1.2s ease-in-out infinite;
 }
 
+.pulse-light {
+  background: linear-gradient(
+    -90deg,
+    var(--background-3-color) 0%,
+    var(--background-2-color) 50%,
+    var(--background-3-color) 100%
+  );
+  background-size: 400% 400%;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
 @keyframes pulse {
   0% {
     background-position: 0% 0%;
