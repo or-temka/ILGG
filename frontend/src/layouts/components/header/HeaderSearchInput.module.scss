@@ -1,0 +1,29 @@
+@import '../../../mixins.scss';
+
+.input {
+  background-color: var(--background-4-color);
+  background-image: url('../../../assets/svgs/magnifier.svg');
+  background-repeat: no-repeat;
+  background-position: center right 20px;
+  border: 0;
+  outline: none;
+  padding: 15px 20px;
+  padding-right: 55px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 53px;
+  @include textBold;
+
+  &:hover {
+    background-color: var(--background-3-color);
+  }
+  &:active,
+  &:focus {
+    color: var(--text-reverse-color);
+    background-color: var(--active-color);
+  }
+
+  &::placeholder {
+    color: var(--light-text-color);
+  }
+}
