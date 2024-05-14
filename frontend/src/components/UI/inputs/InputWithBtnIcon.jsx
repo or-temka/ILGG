@@ -34,6 +34,7 @@ function InputWithBtnIcon({
           {...params}
           id={htmlIdRef.current}
           value={value}
+          type="text"
           onChange={onChange}
           placeholder={placeholder}
           className={[

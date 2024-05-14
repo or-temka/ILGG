@@ -29,6 +29,7 @@ function Input({
         {...params}
         id={htmlIdRef.current}
         value={value}
+        type='text'
         onChange={onChange}
         onClick={onClick}
         placeholder={placeholder}

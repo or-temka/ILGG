@@ -6,18 +6,20 @@
 
   &:hover {
     .tooltip__tooltip {
-      visibility: visible;
+      display: block;
+      animation: goes 0.2s forwards;
     }
   }
 
   &__tooltip {
     @include smallText;
-    visibility: hidden;
+
     width: fit-content;
     background-color: var(--background-3-color);
     color: var(--text-color);
+    display: none;
+    opacity: 0;
     text-align: center;
-    opacity: 0.8;
     border-radius: 5px;
     padding: 5px 10px;
     position: absolute;
@@ -25,11 +27,11 @@
 
     // Vertical pos
     &_top {
-      bottom: 125%;
+      bottom: 110%;
     }
 
     &_bottom {
-      top: 125%;
+      top: 110%;
     }
 
     // Horizontal pos
@@ -45,5 +47,14 @@
     &_right {
       left: 100%;
     }
+  }
+}
+
+@keyframes goes {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
