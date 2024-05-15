@@ -1,3 +1,5 @@
+@import '../../../mixins.scss';
+
 .button {
   border: none;
   cursor: pointer;
@@ -32,6 +34,18 @@
 
     &:hover {
       background-color: var(--active-2-hover-color);
+    }
+  }
+
+  &_shy {
+    @include textBold;
+    background-color: var(--background-4-color);
+    color: var(--light-text-color);
+    padding: 5px 30px;
+
+    &:hover {
+      background-color: var(--background-3-color);
+      color: var(--text-color);
     }
   }
 

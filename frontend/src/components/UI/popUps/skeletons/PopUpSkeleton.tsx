@@ -10,9 +10,11 @@ interface PopUpSkeletonProps {
   showCloseButton?: boolean
   showBack?: boolean
   backgroundBlur?: boolean
-  className?: string
-  backClassName?: string
-  contentClassName?: string
+  classNames?: {
+    className?: string
+    backClassName?: string
+    contentClassName?: string
+  }
 }
 
 function PopUpSkeleton({
@@ -21,25 +23,26 @@ function PopUpSkeleton({
   showCloseButton = true,
   showBack = true,
   backgroundBlur = true,
-  className = '',
-  backClassName = '',
-  contentClassName = '',
+  classNames = {},
 }: PopUpSkeletonProps) {
   return (
-    <div className={[styles.popUpSkeleton, className].join(' ')}>
+    <div className={[styles.popUpSkeleton, classNames.className].join(' ')}>
       {showBack && (
         <div
           className={[
             styles.popUpSkeleton__back,
             backgroundBlur ? styles.popUpSkeleton__back_blur : '',
-            backClassName,
+            classNames.backClassName,
           ].join(' ')}
           onClick={onClose}
         ></div>
       )}
 
       <div
-        className={[styles.popUpSkeleton__content, contentClassName].join(' ')}
+        className={[
+          styles.popUpSkeleton__content,
+          classNames.contentClassName,
+        ].join(' ')}
       >
         {children}
         {showCloseButton && (

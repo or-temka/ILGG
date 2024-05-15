@@ -14,6 +14,7 @@ export enum Currency {
 }
 
 interface AccountBalanceProps {
+  loading?: boolean
   balanceValue?: number
   currency?: Currency
   onClickAccount?: (...args: any[]) => any
@@ -22,6 +23,7 @@ interface AccountBalanceProps {
 }
 
 function AccountBalance({
+  loading = false,
   balanceValue,
   currency = Currency.rus,
   onClickAccount = () => {},
@@ -53,13 +55,13 @@ function AccountBalance({
         >
           Баланс:
         </span>
-        {balanceValue ? (
+        {loading ? (
+          <SkeletonText variant={Variant.light} />
+        ) : (
           <>
             <span className={styles.balance__accountText}>{balanceValue}</span>
             <span className={styles.balance__accountText}>{currency}</span>
           </>
-        ) : (
-          <SkeletonText variant={Variant.light} />
         )}
       </Tooltip>
     </div>

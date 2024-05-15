@@ -10,7 +10,12 @@ interface PopUpContainerProps {
   onClose?: (...args: any[]) => any
   showCloseButton?: boolean
   showBack?: boolean
-  className?: string
+  classNames?: {
+    className?: string
+    wrapperClassName?: string
+    contentClassName?: string
+    headerClassName?: string
+  }
 }
 
 function PopUpContainer({
@@ -19,21 +24,34 @@ function PopUpContainer({
   onClose = () => {},
   showCloseButton = true,
   showBack = true,
-  className = '',
+  classNames = {},
 }: PopUpContainerProps) {
   return (
     <PopUpSkeleton
       onClose={onClose}
       showCloseButton={showCloseButton}
       showBack={showBack}
+      classNames={{ contentClassName: classNames.wrapperClassName }}
     >
-      <div className={[styles.popUpContainer, className].join(' ')}>
+      <div className={[styles.popUpContainer, classNames.className].join(' ')}>
         {headerText && (
-          <header className={styles.popUpContainer__header}>
+          <header
+            className={[
+              styles.popUpContainer__header,
+              classNames.headerClassName,
+            ].join(' ')}
+          >
             {headerText}
           </header>
         )}
-        <main className={styles.popUpContainer__main}>{children}</main>
+        <main
+          className={[
+            styles.popUpContainer__main,
+            classNames.contentClassName,
+          ].join(' ')}
+        >
+          {children}
+        </main>
       </div>
     </PopUpSkeleton>
   )

@@ -16,7 +16,10 @@ function LoadingPopUp({
   return (
     <PopUpContainer
       showCloseButton={false}
-      className={[styles.loading, containerClassName].join(' ')}
+      classNames={{
+        className: styles.loading,
+        wrapperClassName: containerClassName,
+      }}
       showBack={false}
     >
       <div className={[styles.loading__loading, className].join(' ')}>
