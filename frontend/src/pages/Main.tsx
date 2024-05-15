@@ -67,16 +67,7 @@ function Main() {
               }}
             />
           </div>
-          <div
-            className={styles.section__contentWrapper}
-            onClick={() =>
-              dispatch(
-                addPanel({
-                  item: { type: PanelVariant.textNotification, text: 'Привет' },
-                })
-              )
-            }
-          >
+          <div className={styles.section__contentWrapper}>
             <div className={styles.section__contnet}>
               {gameBigCards.map((gameBigCard, index) => (
                 <GameBigCard
