@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { IMyProfile } from '../../components/interfaces/myProfile'
+import { IMyProfile } from '../../interfaces/myProfile'
 
 //#region reduces interfaces
 interface SetUserAction {

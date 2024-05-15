@@ -1,4 +1,8 @@
 import { ReactNode, useState } from 'react'
+
+import { IUserProfile } from '../../../../../interfaces/userProfile'
+import { IMyProfile } from '../../../../../interfaces/myProfile'
+
 import styles from './MiniProfile.module.scss'
 
 export interface Button {
@@ -6,16 +10,9 @@ export interface Button {
   handler: (...args: any[]) => any
 }
 
-export interface UserData {
-  name: string
-  login: string
-  isOnline: boolean
-  imgName: string
-}
-
 interface MiniProfileProps {
   buttons: Button[] | []
-  userData: UserData
+  userData: IUserProfile & IMyProfile
   loading?: boolean
   iconComponent?: ReactNode
   onClickProfile?: (showProfile: boolean) => any

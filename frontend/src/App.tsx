@@ -1,7 +1,7 @@
+import { useMemo } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
 
-import { setUser } from './redux/slices/myProfileSlice'
+import useInitialization from './initialize'
 
 import MainLayout from './layouts/MainLayout'
 import Main from './pages/Main'
@@ -10,17 +10,9 @@ import PageNotFound from './pages/PageNotFound'
 import FloatingPanelsQueue from './components/UI/floatingPanels/FloatingPanelsQueue'
 
 function App() {
-  const dispatch = useDispatch()
-
-  dispatch(
-    setUser({
-      id: 1,
-      name: 'Приора',
-      login: 'sversys',
-      isOnline: true,
-      imgName: 'profileImage.jpg',
-    })
-  )
+  // init all data
+  const initialize = useInitialization()
+  useMemo(initialize, [])
 
   return (
     <>
