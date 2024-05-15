@@ -2,7 +2,7 @@
 
 .skeleton {
   position: fixed;
-  z-index: 100;
+  z-index: 101;
 
   // postitions
   &_horizontal {
@@ -46,4 +46,3 @@
 @include fadeIn(left);
 @include fadeIn(right);
 @include fadeIn(top, -50%);
-

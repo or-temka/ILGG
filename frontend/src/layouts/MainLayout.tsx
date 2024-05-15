@@ -1,3 +1,4 @@
+import React from 'react'
 import { Outlet } from 'react-router-dom'
 
 import Header from './components/header/Header'
@@ -7,8 +8,6 @@ import RightMenu from './components/menu/RightMenu'
 import styles from './Layout.module.scss'
 
 function MainLayout() {
-  console.log(1)
-
   return (
     <>
       <div className={styles.layout}>
