@@ -5,6 +5,11 @@
   flex-direction: column;
   height: 100%;
 
+  &__header {
+    position: fixed;
+    z-index: 11;
+  }
+
   &__content {
     display: flex;
     flex-direction: row;
@@ -14,15 +19,24 @@
 
   &__menu {
     width: 280px;
+    position: fixed;
+    height: 100%;
+    z-index: 10;
+    padding-top: 53px;
+    box-sizing: border-box;
   }
 
   &__leftMenu {
+    left: 0;
   }
 
   &__main {
     flex: 1;
+    padding-bottom: 50px;
+    margin: 53px 280px 0px;
   }
 
   &__rightMenu {
+    right: 0;
   }
 }
