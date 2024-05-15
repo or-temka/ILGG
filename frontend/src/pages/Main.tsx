@@ -1,15 +1,9 @@
-import React from 'react'
 import { useState } from 'react'
 
 import Input from '../components/UI/inputs/Input'
 import GameBigCard from '../components/cards/GameBigCard'
 
 import styles from './Main.module.scss'
-import { useDispatch } from 'react-redux'
-import {
-  PanelVariant,
-  addPanel,
-} from '../redux/slices/floatingPanelsQueueSlice'
 
 interface IGameBigCard {
   name: string
@@ -48,8 +42,6 @@ const gameBigCards: IGameBigCard[] = [
 
 function Main() {
   const [searchValue, setSearchValue] = useState<string>('')
-
-  const dispatch = useDispatch()
 
   return (
     <>

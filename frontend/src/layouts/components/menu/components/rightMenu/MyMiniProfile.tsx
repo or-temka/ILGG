@@ -1,8 +1,12 @@
-import MiniProfile, { Button, UserData } from './MiniProfile'
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
+
+import { selectUser } from '../../../../../redux/slices/myProfileSlice'
+
+import MiniProfile, { Button } from './MiniProfile'
 import { ReactComponent as ArrowSVG } from '../../../../../assets/svgs/arrow.svg'
 
 import styles from './MyMiniProfile.module.scss'
-import { useState } from 'react'
 
 const profileButtons: Button[] = [
   { title: 'Мой профиль', handler: () => {} },
@@ -10,20 +14,15 @@ const profileButtons: Button[] = [
   { title: 'Выйти', handler: () => {} },
 ]
 
-const userData: UserData = {
-  name: 'Приора',
-  login: 'sversys',
-  isOnline: true,
-  imgName: 'profileImage.jpg',
-}
-
 function MyMiniProfile() {
   const [isShowProfile, setIsShowProfile] = useState(false)
+
+  const myUserData = useSelector(selectUser)
 
   return (
     <MiniProfile
       buttons={profileButtons}
-      userData={userData}
+      userData={myUserData}
       classNames={{ username: styles.profile__username }}
       iconComponent={
         <div
