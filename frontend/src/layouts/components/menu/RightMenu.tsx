@@ -45,9 +45,17 @@ function RightMenu({ className = '' }: RightMenuProps) {
         <div className={styles.rightMenu__friendsLabel}>
           <span className={styles.rightMenu__friendsLabelText}>Друзья</span>
         </div>
-        {usersData.map((userData, index) => (
-          <FriendMiniProfile key={index} userData={userData} />
-        ))}
+        {usersData.length > 0 ? (
+          usersData.map((userData, index) => (
+            <FriendMiniProfile key={index} userData={userData} />
+          ))
+        ) : (
+          <div className={styles.rightMenu__withoutFriends}>
+            <span className={styles.rightMenu__withoutFriendsLabel}>
+              У вас нет друзей
+            </span>
+          </div>
+        )}
         <div className={styles.rightMenu__addFriendBtnContainer}>
           <Button
             title="Добавить"

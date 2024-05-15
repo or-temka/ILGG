@@ -1,72 +1,64 @@
-import { useEffect, useMemo } from 'react'
+import { useMemo } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
+import {
+  IFloatingPanelsQueue,
+  PanelVariant,
+  prepareToRemove,
+  removePanel,
+  selectPanels,
+} from '../../../redux/slices/floatingPanelsQueueSlice'
 
 import FloatingPanelSkeleton from './skeletons/FloatingPanelSkeleton'
+import FloatingNotification from './FloatingNotification'
 
 import styles from './FloatingPanelsQueue.module.scss'
 
 interface FloatingPanelsQueueProps {
-  queue?: []
-  setQueue?: any
   itemLifeTime?: number
-  deleteItemId?: string | number
   className?: string
-  panelsClassName?: string
 }
 
 function FloatingPanelsQueue({
-  queue = [],
-  setQueue = () => {},
   itemLifeTime = 5000,
-  deleteItemId = '',
   className = '',
-  panelsClassName,
 }: FloatingPanelsQueueProps) {
-  // deleting item
-  // delete from original
-  const deleteItemFromQueueHandler = (itemId: number | string) => {
-    setQueue((prev: any) => [...prev].filter((item) => item.id !== itemId))
-  }
-  // smooth delete from original
-  const smoothDeleteItemFromQueueHandler = (itemId: number | string) => {
-    setQueue((prev: any) =>
-      [...prev].map((item) => {
-        if (item.id !== itemId) return item
-        item.delete = true
-        return item
-      })
-    )
-    setTimeout(() => {
-      setQueue((prev: any) => [...prev].filter((item) => item.id !== itemId))
-    }, 400)
-  }
-  // delete handler
-  useEffect(() => {
-    if (deleteItemId) {
-      deleteItemFromQueueHandler(deleteItemId)
-    }
-  }, [deleteItemId])
+  const panelsQueue: IFloatingPanelsQueue[] = useSelector(selectPanels)
+
+  const dispatch = useDispatch()
 
   // Auto destroy items
+  const smoothDeleteItemFromQueueHandler = (panelId: number | string) => {
+    dispatch(prepareToRemove({ id: panelId }))
+    setTimeout(() => {
+      dispatch(removePanel({ id: panelId }))
+    }, 400)
+  }
   useMemo(() => {
-    queue.map((item: any) => {
+    panelsQueue.map((item) => {
       setTimeout(() => {
         smoothDeleteItemFromQueueHandler(item.id)
       }, item.lifeTime || itemLifeTime)
     })
-  }, [queue])
+  }, [panelsQueue])
 
   return (
     <FloatingPanelSkeleton className={[styles.queue, className].join(' ')}>
-      {queue.map((item: any) => {
+      {panelsQueue.map((panel) => {
         return (
           <div
-            key={item.id}
+            key={panel.id}
             className={[
               styles.queue__item,
-              item.delete ? styles.queue__item_delete : '',
+              panel.delete ? styles.queue__item_delete : '',
             ].join(' ')}
           >
-            {item.item}
+            {panel.item.type === PanelVariant.textNotification && (
+              <FloatingNotification
+                text={panel.item.text}
+                onClose={() => dispatch(removePanel({ id: panel.id }))}
+              />
+            )}
           </div>
         )
       })}

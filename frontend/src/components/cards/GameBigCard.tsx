@@ -9,13 +9,24 @@ interface GameBigCardProps {
   aboutGame: string
   to: string
   alt?: string
+  newGame?: boolean
 }
 
-function GameBigCard({ name, imgSrc, aboutGame, to, alt }: GameBigCardProps) {
+function GameBigCard({
+  name,
+  imgSrc,
+  aboutGame,
+  to,
+  alt,
+  newGame,
+}: GameBigCardProps) {
   return (
     <Link to={to} className={styles.card}>
       <CardImageText imgSrc={imgSrc} alt={alt} text={aboutGame} />
-      <h3 className={styles.card__name}>{name}</h3>
+      <div className={styles.card__nameContainer}>
+        <h3 className={styles.card__name}>{name}</h3>
+        {newGame && <span className={styles.card__isNewGame}>New</span>}
+      </div>
     </Link>
   )
 }

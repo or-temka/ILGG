@@ -33,8 +33,9 @@ function AddFriendPopUp({ usersData, onClose }: AddFriendPopUpProps) {
           />
         </div>
         <div className={styles.popUp__searchResult}>
-          {usersData.map((userData) => (
+          {usersData.map((userData, index) => (
             <MiniProfile
+              key={index}
               buttons={[]}
               userData={userData}
               classNames={{ wrapper: styles.popUp__profile }}

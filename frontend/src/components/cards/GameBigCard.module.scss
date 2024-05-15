@@ -3,10 +3,30 @@
   flex-direction: column;
   gap: 10px;
 
+  &__nameContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+
   &__name {
     width: fit-content;
     &:hover {
       color: var(--link-blue-color);
     }
+  }
+
+  &__isNewGame {
+    font-weight: var(--bold-fw);
+    font-size: 12px;
+    line-height: 12px;
+    color: var(--text-reverse-color);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--success-3-color);
+    padding: 1px 8px;
+    border-radius: 50px;
   }
 }
