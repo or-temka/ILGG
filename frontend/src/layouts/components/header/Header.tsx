@@ -9,13 +9,14 @@ import styles from './Header.module.scss'
 
 interface HeaderProps {
   pageName?: string | null
+  className?: string
 }
 
-function Header({ pageName = '' }: HeaderProps) {
+function Header({ pageName = '', className }: HeaderProps) {
   const [searchValue, setSearchValue] = useState<string>('')
 
   return (
-    <header className={styles.header}>
+    <header className={[styles.header, className].join(' ')}>
       <div className={styles.header__aside}>
         <HeaderSearchInput
           value={searchValue}

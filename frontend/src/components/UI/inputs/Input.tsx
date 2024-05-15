@@ -16,8 +16,10 @@ interface InputProps {
   errorText?: string
   onChange?: ChangeEventHandler<HTMLInputElement>
   onClick?: MouseEventHandler<HTMLInputElement>
-  className?: string
-  wrapperClassName?: string
+  classNames?: {
+    input?: string
+    wrapper?: string
+  }
 }
 
 function Input({
@@ -28,13 +30,12 @@ function Input({
   errorText = '',
   onChange = () => {},
   onClick = () => {},
-  className = '',
-  wrapperClassName = '',
+  classNames = {},
 }: InputProps) {
   const htmlIdRef = useRef(uuidv4())
 
   return (
-    <div className={[styles.input, wrapperClassName].join(' ')}>
+    <div className={[styles.input, classNames.wrapper].join(' ')}>
       {label && (
         <label htmlFor={htmlIdRef.current} className={styles.input__label}>
           {label}
@@ -53,7 +54,7 @@ function Input({
           variant === 'light'
             ? styles.input__input_light
             : styles.input__input_simple,
-          className,
+          classNames.input,
         ].join(' ')}
       />
       {errorText && (

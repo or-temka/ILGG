@@ -27,7 +27,7 @@ function CardImageText({
     <div className={[styles.card, className].join(' ')} onClick={onClick}>
       {imgSrc && (
         <img
-          src={imgSrc}
+          src={require('../../assets/images/games/' + imgSrc)}
           alt={alt}
           className={[styles.card__img, imageClassName].join(' ')}
         ></img>

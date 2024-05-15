@@ -1,0 +1,12 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__name {
+    width: fit-content;
+    &:hover {
+      color: var(--link-blue-color);
+    }
+  }
+}

@@ -14,12 +14,23 @@ function MainLayout({ pageName }: MainLayoutProps) {
   return (
     <>
       <div className={styles.layout}>
-        <Header pageName={pageName} />
+        <Header pageName={pageName} className={styles.layout__header} />
         <div className={styles.layout__content}>
           <LeftMenu
             className={[styles.layout__menu, styles.layout__leftMenu].join(' ')}
           />
           <main className={styles.layout__main}>
+            <h1
+              style={{
+                position: 'absolute',
+                visibility: 'hidden',
+                width: 0,
+                height: 0,
+                overflow: 'hidden',
+              }}
+            >
+              Онлайн сервис игр и программ ILGG
+            </h1>
             <Outlet />
           </main>
           <RightMenu
