@@ -42,15 +42,10 @@ const gameBigCards: IGameBigCard[] = [
 
 interface MainProps {
   addNewFloatingPanel?: () => void
-  setPageName: (name: string) => void
 }
 
-function Main({ addNewFloatingPanel = () => {}, setPageName }: MainProps) {
+function Main({ addNewFloatingPanel = () => {} }: MainProps) {
   const [searchValue, setSearchValue] = useState<string>('')
-
-  useEffect(() => {
-    setPageName('Главная')
-  }, [])
 
   return (
     <>
@@ -70,8 +65,9 @@ function Main({ addNewFloatingPanel = () => {}, setPageName }: MainProps) {
           </div>
           <div className={styles.section__contentWrapper}>
             <div className={styles.section__contnet}>
-              {gameBigCards.map((gameBigCard) => (
+              {gameBigCards.map((gameBigCard, index) => (
                 <GameBigCard
+                  key={index}
                   name={gameBigCard.name}
                   imgSrc={gameBigCard.imgSrc}
                   aboutGame={gameBigCard.aboutGame}

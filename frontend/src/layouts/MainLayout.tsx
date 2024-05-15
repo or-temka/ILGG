@@ -6,15 +6,13 @@ import RightMenu from './components/menu/RightMenu'
 
 import styles from './Layout.module.scss'
 
-interface MainLayoutProps {
-  pageName?: string | null
-}
+function MainLayout() {
+  console.log(1)
 
-function MainLayout({ pageName }: MainLayoutProps) {
   return (
     <>
       <div className={styles.layout}>
-        <Header pageName={pageName} className={styles.layout__header} />
+        <Header className={styles.layout__header} />
         <div className={styles.layout__content}>
           <LeftMenu
             className={[styles.layout__menu, styles.layout__leftMenu].join(' ')}

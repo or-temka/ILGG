@@ -8,11 +8,10 @@ import AccountBalance from './AccountBalance'
 import styles from './Header.module.scss'
 
 interface HeaderProps {
-  pageName?: string | null
   className?: string
 }
 
-function Header({ pageName = '', className }: HeaderProps) {
+function Header({ className }: HeaderProps) {
   const [searchValue, setSearchValue] = useState<string>('')
 
   return (

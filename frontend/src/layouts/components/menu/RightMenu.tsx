@@ -13,24 +13,24 @@ interface RightMenuProps {
 }
 
 const usersData: UserData[] = [
-  // {
-  //   name: 'Алина убивца',
-  //   login: 'alina',
-  //   isOnline: true,
-  //   imgName: 'alina.jpg',
-  // },
-  // {
-  //   name: 'Freevel',
-  //   login: 'freevel',
-  //   isOnline: true,
-  //   imgName: 'serega.jpg',
-  // },
-  // {
-  //   name: 'мухтар в снегу 3000',
-  //   login: 'myhtar',
-  //   isOnline: false,
-  //   imgName: 'myhtar.jpg',
-  // },
+  {
+    name: 'Алина убивца',
+    login: 'alina',
+    isOnline: true,
+    imgName: 'alina.jpg',
+  },
+  {
+    name: 'Freevel',
+    login: 'freevel',
+    isOnline: true,
+    imgName: 'serega.jpg',
+  },
+  {
+    name: 'мухтар в снегу 3000',
+    login: 'myhtar',
+    isOnline: false,
+    imgName: 'myhtar.jpg',
+  },
 ]
 
 function RightMenu({ className = '' }: RightMenuProps) {
