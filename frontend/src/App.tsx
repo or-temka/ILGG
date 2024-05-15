@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import MainLayout from './layouts/MainLayout'
 import Main from './pages/Main'
+import PageNotFound from './pages/PageNotFound'
 
 import FloatingPanelsQueue from './components/UI/floatingPanels/FloatingPanelsQueue'
 import FloatingNotification from './components/UI/floatingPanels/FloatingNotification'
@@ -53,11 +54,12 @@ function App() {
                   />
                 }
               ></Route>
+              <Route
+                path="*"
+                index
+                element={<PageNotFound setPageName={setPageName} />}
+              ></Route>
             </Route>
-            {/* <Route
-            path="*"
-            element={<PageNotFound setPageName={setPageName} />}
-          ></Route> */}
           </Routes>
         </div>
       </BrowserRouter>
