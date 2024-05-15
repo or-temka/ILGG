@@ -4,9 +4,9 @@
 .popUpContainer {
   border-radius: 10px;
   overflow: hidden;
-  max-width: 1000px;
   background-color: var(--background-5-color);
   @include big-shadow;
+  height: 100%;
 
   &__header {
     padding: 10px 20px;

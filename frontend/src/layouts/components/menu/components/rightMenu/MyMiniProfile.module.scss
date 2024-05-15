@@ -1,0 +1,14 @@
+@import '../../../../../mixins.scss';
+
+.profile {
+  &__username {
+    @include textBold;
+  }
+
+  &__icon {
+    transition: transform 0.3s;
+    &_active {
+      transform: rotate(180deg);
+    }
+  }
+}

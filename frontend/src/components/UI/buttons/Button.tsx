@@ -2,15 +2,16 @@ import { MouseEventHandler } from 'react'
 
 import styles from './Button.module.scss'
 
-export enum Variant {
-  simple = 'simple',
-  light = 'light',
-  primary = 'primary',
+export enum ButtonVariant {
+  simple = styles.button_simple,
+  light = styles.button_light,
+  primary = styles.button_primary,
+  shy = styles.button_shy,
 }
 
 interface ButtonProps {
   title: string | number
-  variant?: Variant
+  variant?: ButtonVariant
   disabled?: boolean
   className?: string
   onClick?: MouseEventHandler<HTMLButtonElement>
@@ -18,7 +19,7 @@ interface ButtonProps {
 
 function Button({
   title = '',
-  variant = Variant.simple,
+  variant = ButtonVariant.simple,
   disabled = false,
   className = '',
   onClick = () => {},
@@ -28,11 +29,7 @@ function Button({
       disabled={disabled}
       className={[
         styles.button,
-        variant === 'light'
-          ? styles.button_light
-          : variant === 'primary'
-          ? styles.button_primary
-          : styles.button_simple,
+        variant,
         disabled && styles.button_disabled,
         className,
       ].join(' ')}

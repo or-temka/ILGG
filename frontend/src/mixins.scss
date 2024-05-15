@@ -87,6 +87,7 @@
   font-size: 16px;
   line-height: 22px;
   font-weight: var(--semibold-fw);
+  letter-spacing: 0.5px;
 }
 @mixin textUnderline() {
   font-size: 16px;
@@ -116,7 +117,8 @@
 @mixin smallText() {
   font-size: 12px;
   line-height: 15px;
-  font-weight: var(--regular-fw);
+  font-weight: var(--semibold-fw);
+  letter-spacing: 0.4px;
 }
 
 @mixin h1() {

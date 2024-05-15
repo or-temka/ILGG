@@ -1,0 +1,96 @@
+@import '../../../../../mixins.scss';
+
+//profile
+.profile {
+  display: flex;
+  flex-direction: column;
+
+  &__profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 20px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--background-4-color);
+    }
+  }
+
+  &__icon {
+  }
+}
+
+// aboutUser
+.aboutUser {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  user-select: none;
+
+  &__image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+
+    &_skeleton {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+  }
+
+  &__name {
+    &_skeleton {
+      width: 100px;
+      height: 18px;
+      border-radius: 10px;
+    }
+  }
+
+  &__onlineStatus {
+    @include smallText;
+    color: var(--grey-text-color);
+    font-weight: var(--regular-fw);
+
+    &_online {
+      color: var(--link-blue-color);
+      font-weight: var(--semibold-fw);
+    }
+
+    &_skeleton {
+      width: 40px;
+      height: 13px;
+      border-radius: 10px;
+    }
+  }
+}
+
+// menu
+.menu {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: 0.3s height;
+
+  &__button {
+    cursor: pointer;
+    padding: 10px 20px;
+    user-select: none;
+    @include text;
+
+    &:hover {
+      background-color: var(--background-4-color);
+    }
+  }
+}
