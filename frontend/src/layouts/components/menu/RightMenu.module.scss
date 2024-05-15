@@ -24,6 +24,18 @@
     }
   }
 
+  &__withoutFriends {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+  }
+
+  &__withoutFriendsLabel {
+    @include text;
+    color: var(--light-text-color);
+  }
+
   &__addFriendBtnContainer {
     width: 100%;
     height: 52px;
