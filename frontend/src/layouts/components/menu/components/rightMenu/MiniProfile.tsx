@@ -1,22 +1,18 @@
 import { ReactNode, useState } from 'react'
+
+import { IUserProfile } from '../../../../../interfaces/userProfile'
+
 import styles from './MiniProfile.module.scss'
+import { ProfileState } from '../../../../../redux/slices/myProfileSlice'
 
 export interface Button {
   title: string
   handler: (...args: any[]) => any
 }
 
-export interface UserData {
-  name: string
-  login: string
-  isOnline: boolean
-  imgName: string
-}
-
 interface MiniProfileProps {
   buttons: Button[] | []
-  userData: UserData
-  loading?: boolean
+  userData: IUserProfile | ProfileState
   iconComponent?: ReactNode
   onClickProfile?: (showProfile: boolean) => any
   classNames?: {
@@ -32,7 +28,6 @@ interface MiniProfileProps {
 function MiniProfile({
   userData,
   buttons,
-  loading = false,
   iconComponent,
   onClickProfile = () => {},
   classNames = {},
@@ -48,7 +43,7 @@ function MiniProfile({
     <div className={[styles.profile, classNames.wrapper].join(' ')}>
       <div className={styles.profile__profile} onClick={onClickProfileHandler}>
         <div className={styles.aboutUser}>
-          {loading ? (
+          {!userData ? (
             <div
               className={['pulse-light', styles.aboutUser__image_skeleton].join(
                 ' '
@@ -64,7 +59,7 @@ function MiniProfile({
           )}
 
           <div className={styles.aboutUser__info}>
-            {loading ? (
+            {!userData ? (
               <>
                 <span
                   className={[

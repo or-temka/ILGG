@@ -1,12 +1,15 @@
-import PopUpContainer from '../../../../../components/UI/popUps/skeletons/PopUpContainer'
-import Input from '../../../../../components/UI/inputs/Input'
-import MiniProfile, { UserData } from './MiniProfile'
-
-import styles from './AddFriendPopUp.module.scss'
 import { useState } from 'react'
 
+import PopUpContainer from '../../../../../components/UI/popUps/skeletons/PopUpContainer'
+import Input from '../../../../../components/UI/inputs/Input'
+import MiniProfile from './MiniProfile'
+
+import { IUserProfile } from '../../../../../interfaces/userProfile'
+
+import styles from './AddFriendPopUp.module.scss'
+
 interface AddFriendPopUpProps {
-  usersData: UserData[] | []
+  usersData: IUserProfile[] | []
   onClose?: (...args: any[]) => any
 }
 

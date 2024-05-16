@@ -1,15 +1,9 @@
-import React from 'react'
 import { useState } from 'react'
 
 import Input from '../components/UI/inputs/Input'
 import GameBigCard from '../components/cards/GameBigCard'
 
 import styles from './Main.module.scss'
-import { useDispatch } from 'react-redux'
-import {
-  PanelVariant,
-  addPanel,
-} from '../redux/slices/floatingPanelsQueueSlice'
 
 interface IGameBigCard {
   name: string
@@ -49,8 +43,6 @@ const gameBigCards: IGameBigCard[] = [
 function Main() {
   const [searchValue, setSearchValue] = useState<string>('')
 
-  const dispatch = useDispatch()
-
   return (
     <>
       <div className={['wrapper', styles.main].join(' ')}>
@@ -67,16 +59,7 @@ function Main() {
               }}
             />
           </div>
-          <div
-            className={styles.section__contentWrapper}
-            onClick={() =>
-              dispatch(
-                addPanel({
-                  item: { type: PanelVariant.textNotification, text: 'Привет' },
-                })
-              )
-            }
-          >
+          <div className={styles.section__contentWrapper}>
             <div className={styles.section__contnet}>
               {gameBigCards.map((gameBigCard, index) => (
                 <GameBigCard

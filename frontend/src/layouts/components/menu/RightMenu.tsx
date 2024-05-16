@@ -1,8 +1,12 @@
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
+
+import { selectFriends } from '../../../redux/slices/friendsSlice'
+import { IUserProfile } from '../../../interfaces/userProfile'
+
 import Button, { ButtonVariant } from '../../../components/UI/buttons/Button'
 import AddFriendPopUp from './components/rightMenu/AddFriendPopUp'
 import FriendMiniProfile from './components/rightMenu/FriendMiniProfile'
-import { UserData } from './components/rightMenu/MiniProfile'
 import MyMiniProfile from './components/rightMenu/MyMiniProfile'
 
 import menuStyles from './Menu.module.scss'
@@ -12,20 +16,23 @@ interface RightMenuProps {
   className?: string
 }
 
-const usersData: UserData[] = [
+const usersData: IUserProfile[] = [
   {
+    id: 1,
     name: 'Алина убивца',
     login: 'alina',
     isOnline: true,
     imgName: 'alina.jpg',
   },
   {
+    id: 2,
     name: 'Freevel',
     login: 'freevel',
     isOnline: true,
     imgName: 'serega.jpg',
   },
   {
+    id: 3,
     name: 'мухтар в снегу 3000',
     login: 'myhtar',
     isOnline: false,
@@ -36,17 +43,29 @@ const usersData: UserData[] = [
 function RightMenu({ className = '' }: RightMenuProps) {
   const [showPopUp, setShowPopUp] = useState({ addFriend: false })
 
+  const friends = useSelector(selectFriends)
+
   return (
     <>
       <aside
         className={[menuStyles.menu, styles.rightMenu, className].join(' ')}
       >
         <MyMiniProfile />
+
         <div className={styles.rightMenu__friendsLabel}>
           <span className={styles.rightMenu__friendsLabelText}>Друзья</span>
         </div>
-        {usersData.length > 0 ? (
-          usersData.map((userData, index) => (
+
+        {!friends ? ( //Friends
+          <>
+            <FriendMiniProfile userData={null} />
+            <FriendMiniProfile userData={null} />
+            <FriendMiniProfile userData={null} />
+            <FriendMiniProfile userData={null} />
+            <FriendMiniProfile userData={null} />
+          </>
+        ) : friends.length > 0 ? (
+          friends.map((userData, index) => (
             <FriendMiniProfile key={index} userData={userData} />
           ))
         ) : (
@@ -56,6 +75,7 @@ function RightMenu({ className = '' }: RightMenuProps) {
             </span>
           </div>
         )}
+
         <div className={styles.rightMenu__addFriendBtnContainer}>
           <Button
             title="Добавить"

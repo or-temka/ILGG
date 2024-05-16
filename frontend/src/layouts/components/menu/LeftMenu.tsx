@@ -10,33 +10,68 @@ import { ReactComponent as HelpSVG } from '../../../assets/svgs/help.svg'
 
 import menuStyles from './Menu.module.scss'
 import styles from './LeftMenu.module.scss'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+import pageLink from '../../../pagesLinks'
 
 interface LeftMenuProps {
   className?: string
 }
 
 function LeftMenu({ className = '' }: LeftMenuProps) {
+  const location = useLocation().pathname
+
   return (
     <aside className={[menuStyles.menu, styles.leftMenu, className].join(' ')}>
       <nav className={styles.nav}>
-        <ButtonPage name="Главная страница" svgComponent={<HomeSVG />} active />
-        <ButtonPage name="Магазин" svgComponent={<GamepadSVG />} />
+        <ButtonPage
+          name="Главная страница"
+          to={pageLink.main}
+          svgComponent={<HomeSVG />}
+          active={location === pageLink.main}
+        />
+        <ButtonPage
+          name="Магазин"
+          to={pageLink.shop}
+          svgComponent={<GamepadSVG />}
+          active={location === pageLink.shop}
+        />
         <ButtonPage
           name="Библиотека"
+          to={pageLink.library}
           svgComponent={<LibrarySVG />}
+          active={location === pageLink.library}
           notificationsCount={3}
         />
-        <ButtonPage name="Инвентарь" svgComponent={<DiamondSVG />} />
-        <ButtonPage name="Торговая площадка" svgComponent={<PackageSVG />} />
-        <ButtonPage name="Друзья" svgComponent={<PeopleSVG />} />
-        <ButtonPage name="Помощь" svgComponent={<HelpSVG />} />
+        <ButtonPage
+          name="Инвентарь"
+          to={pageLink.inventory}
+          svgComponent={<DiamondSVG />}
+          active={location === pageLink.inventory}
+        />
+        <ButtonPage
+          name="Торговая площадка"
+          to={pageLink.marketplace}
+          svgComponent={<PackageSVG />}
+          active={location === pageLink.marketplace}
+        />
+        <ButtonPage
+          name="Друзья"
+          to={pageLink.friends}
+          svgComponent={<PeopleSVG />}
+          active={location === pageLink.friends}
+        />
+        <ButtonPage
+          name="Помощь"
+          to={pageLink.help}
+          svgComponent={<HelpSVG />}
+          active={location === pageLink.help}
+        />
       </nav>
       <footer className={styles.footer}>
-        <Link to="/" className={styles.footer__link}>
+        <Link to={pageLink.legal} className={styles.footer__link}>
           Правовая информация
         </Link>
-        <Link to="/" className={styles.footer__link}>
+        <Link to={pageLink.privacy} className={styles.footer__link}>
           Политика конфиденциальности
         </Link>
         <span className={styles.footer__text}>©2024 Щегорцов А.М.</span>

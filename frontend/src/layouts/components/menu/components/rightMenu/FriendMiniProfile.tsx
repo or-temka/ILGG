@@ -1,4 +1,5 @@
-import MiniProfile, { Button, UserData } from './MiniProfile'
+import { IUserProfile } from '../../../../../interfaces/userProfile'
+import MiniProfile, { Button } from './MiniProfile'
 
 const buttons: Button[] = [
   { title: 'Открыть профиль', handler: () => {} },
@@ -7,7 +8,7 @@ const buttons: Button[] = [
 ]
 
 interface FriendMiniProfileProps {
-  userData: UserData
+  userData: IUserProfile | null
 }
 
 function FriendMiniProfile({ userData }: FriendMiniProfileProps) {

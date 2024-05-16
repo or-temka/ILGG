@@ -1,3 +1,7 @@
+import { useSelector } from 'react-redux'
+
+import { selectBalance } from '../../../redux/slices/myProfileSlice'
+
 import { ReactComponent as PlusSVG } from '../../../assets/svgs/plus.svg'
 import Tooltip, {
   VerticalDirection,
@@ -8,28 +12,19 @@ import SkeletonText, {
 
 import styles from './AccountBalance.module.scss'
 
-export enum Currency {
-  rus = 'руб',
-  us = 'usd',
-}
-
 interface AccountBalanceProps {
-  loading?: boolean
-  balanceValue?: number
-  currency?: Currency
   onClickAccount?: (...args: any[]) => any
   onClickToReplenish?: (...args: any[]) => any
   className?: string
 }
 
 function AccountBalance({
-  loading = false,
-  balanceValue,
-  currency = Currency.rus,
   onClickAccount = () => {},
   onClickToReplenish = () => {},
   className = '',
 }: AccountBalanceProps) {
+  const userBalance = useSelector(selectBalance)
+
   return (
     <div className={[styles.balance, className].join(' ')}>
       <Tooltip
@@ -55,12 +50,16 @@ function AccountBalance({
         >
           Баланс:
         </span>
-        {loading ? (
+        {!userBalance ? (
           <SkeletonText variant={Variant.light} />
         ) : (
           <>
-            <span className={styles.balance__accountText}>{balanceValue}</span>
-            <span className={styles.balance__accountText}>{currency}</span>
+            <span className={styles.balance__accountText}>
+              {userBalance.value}
+            </span>
+            <span className={styles.balance__accountText}>
+              {userBalance.currency}
+            </span>
           </>
         )}
       </Tooltip>

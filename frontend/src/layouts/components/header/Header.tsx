@@ -28,7 +28,7 @@ function Header({ className }: HeaderProps) {
         </Link>
       </div>
       <div className={styles.header__aside}>
-        <AccountBalance balanceValue={333} />
+        <AccountBalance />
       </div>
     </header>
   )
