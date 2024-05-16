@@ -8,7 +8,7 @@ const buttons: Button[] = [
 ]
 
 interface FriendMiniProfileProps {
-  userData: IUserProfile
+  userData: IUserProfile | null
 }
 
 function FriendMiniProfile({ userData }: FriendMiniProfileProps) {

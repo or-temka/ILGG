@@ -9,7 +9,7 @@ interface SetUserAction {
 }
 //#endregion
 
-type ProfileState = IMyProfile | null
+export type ProfileState = IMyProfile | null
 
 const initialState: ProfileState = null
 

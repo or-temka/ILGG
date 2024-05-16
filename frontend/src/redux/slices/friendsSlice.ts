@@ -9,18 +9,22 @@ interface SetFriendsAction {
 }
 //#endregion
 
-const initialState: IUserProfile[] = []
+export type UserState = IUserProfile[] | null
+
+const initialState: UserState = null
 
 const friendsSlice = createSlice({
   name: 'friends',
   initialState,
   reducers: {
-    setFriends: (state, action: SetFriendsAction) => [...action.payload],
+    setFriends: (state: UserState, action: SetFriendsAction): any => [
+      ...action.payload,
+    ],
   },
 })
 
 export const { setFriends } = friendsSlice.actions
 
-export const selectFriends = (state: any) => state.friends
+export const selectFriends = (state: any): UserState => state.friends
 
 export default friendsSlice.reducer

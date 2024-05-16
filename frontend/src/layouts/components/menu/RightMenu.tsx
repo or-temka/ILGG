@@ -43,7 +43,7 @@ const usersData: IUserProfile[] = [
 function RightMenu({ className = '' }: RightMenuProps) {
   const [showPopUp, setShowPopUp] = useState({ addFriend: false })
 
-  const friends: IUserProfile[] = useSelector(selectFriends)
+  const friends = useSelector(selectFriends)
 
   return (
     <>
@@ -51,10 +51,20 @@ function RightMenu({ className = '' }: RightMenuProps) {
         className={[menuStyles.menu, styles.rightMenu, className].join(' ')}
       >
         <MyMiniProfile />
+
         <div className={styles.rightMenu__friendsLabel}>
           <span className={styles.rightMenu__friendsLabelText}>Друзья</span>
         </div>
-        {friends.length > 0 ? (
+
+        {!friends ? ( //Friends
+          <>
+            <FriendMiniProfile userData={null} />
+            <FriendMiniProfile userData={null} />
+            <FriendMiniProfile userData={null} />
+            <FriendMiniProfile userData={null} />
+            <FriendMiniProfile userData={null} />
+          </>
+        ) : friends.length > 0 ? (
           friends.map((userData, index) => (
             <FriendMiniProfile key={index} userData={userData} />
           ))
@@ -65,6 +75,7 @@ function RightMenu({ className = '' }: RightMenuProps) {
             </span>
           </div>
         )}
+
         <div className={styles.rightMenu__addFriendBtnContainer}>
           <Button
             title="Добавить"

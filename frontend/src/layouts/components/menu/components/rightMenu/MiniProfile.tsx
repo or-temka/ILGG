@@ -1,9 +1,9 @@
 import { ReactNode, useState } from 'react'
 
 import { IUserProfile } from '../../../../../interfaces/userProfile'
-import { IMyProfile } from '../../../../../interfaces/myProfile'
 
 import styles from './MiniProfile.module.scss'
+import { ProfileState } from '../../../../../redux/slices/myProfileSlice'
 
 export interface Button {
   title: string
@@ -12,7 +12,7 @@ export interface Button {
 
 interface MiniProfileProps {
   buttons: Button[] | []
-  userData: IUserProfile | IMyProfile | null
+  userData: IUserProfile | ProfileState
   iconComponent?: ReactNode
   onClickProfile?: (showProfile: boolean) => any
   classNames?: {
