@@ -1,6 +1,9 @@
 import { useDispatch } from 'react-redux'
+
 import { setUser } from './redux/slices/myProfileSlice'
 import { setFriends } from './redux/slices/friendsSlice'
+
+import { BalanceCurrency } from './interfaces/myProfile'
 
 const useInitialization = () => {
   const dispatch = useDispatch()
@@ -14,6 +17,10 @@ const useInitialization = () => {
         login: 'sversys',
         isOnline: true,
         imgName: 'profileImage.jpg',
+        balance: {
+          currency: BalanceCurrency.rus,
+          value: 33,
+        },
       })
     )
 

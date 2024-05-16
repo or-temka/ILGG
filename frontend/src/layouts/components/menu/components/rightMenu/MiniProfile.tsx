@@ -12,8 +12,7 @@ export interface Button {
 
 interface MiniProfileProps {
   buttons: Button[] | []
-  userData: IUserProfile & IMyProfile
-  loading?: boolean
+  userData: IUserProfile | IMyProfile | null
   iconComponent?: ReactNode
   onClickProfile?: (showProfile: boolean) => any
   classNames?: {
@@ -29,7 +28,6 @@ interface MiniProfileProps {
 function MiniProfile({
   userData,
   buttons,
-  loading = false,
   iconComponent,
   onClickProfile = () => {},
   classNames = {},
@@ -45,7 +43,7 @@ function MiniProfile({
     <div className={[styles.profile, classNames.wrapper].join(' ')}>
       <div className={styles.profile__profile} onClick={onClickProfileHandler}>
         <div className={styles.aboutUser}>
-          {loading ? (
+          {!userData ? (
             <div
               className={['pulse-light', styles.aboutUser__image_skeleton].join(
                 ' '
@@ -61,7 +59,7 @@ function MiniProfile({
           )}
 
           <div className={styles.aboutUser__info}>
-            {loading ? (
+            {!userData ? (
               <>
                 <span
                   className={[

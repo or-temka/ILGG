@@ -1,21 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { IMyProfile } from '../../interfaces/myProfile'
+import { IMyProfile, IUserBalance } from '../../interfaces/myProfile'
 
 //#region reduces interfaces
 interface SetUserAction {
   type: string
-  payload: IMyProfile
+  payload: IMyProfile | null
 }
 //#endregion
 
-const initialState: IMyProfile | {} = {}
+type ProfileState = IMyProfile | null
+
+const initialState: ProfileState = null
 
 const myProfileSlice = createSlice({
   name: 'myProfile',
   initialState,
   reducers: {
-    setUser: (state, action: SetUserAction) => ({
+    setUser: (state: ProfileState, action: SetUserAction): any => ({
       ...action.payload,
     }),
   },
@@ -23,6 +25,8 @@ const myProfileSlice = createSlice({
 
 export const { setUser } = myProfileSlice.actions
 
-export const selectUser = (state: any) => state.myProfile
+export const selectUser = (state: any): IMyProfile | null => state.myProfile
+export const selectBalance = (state: any): IUserBalance | null =>
+  state.myProfile ? state.myProfile.balance : null
 
 export default myProfileSlice.reducer

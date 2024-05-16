@@ -45,8 +45,6 @@ function RightMenu({ className = '' }: RightMenuProps) {
 
   const friends: IUserProfile[] = useSelector(selectFriends)
 
-  console.log(friends)
-
   return (
     <>
       <aside
