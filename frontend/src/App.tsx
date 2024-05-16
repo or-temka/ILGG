@@ -8,6 +8,7 @@ import Main from './pages/Main'
 import PageNotFound from './pages/PageNotFound'
 
 import FloatingPanelsQueue from './components/UI/floatingPanels/FloatingPanelsQueue'
+import pageLink from './pagesLinks'
 
 function App() {
   // init all data
@@ -19,8 +20,8 @@ function App() {
       <BrowserRouter>
         <div className="App">
           <Routes>
-            <Route path="/" element={<MainLayout />}>
-              <Route index element={<Main />}></Route>
+            <Route path="" element={<MainLayout />}>
+              <Route path={pageLink.main} element={<Main />}></Route>
               <Route path="*" index element={<PageNotFound />}></Route>
             </Route>
           </Routes>
