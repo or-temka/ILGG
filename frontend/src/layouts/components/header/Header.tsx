@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import HeaderSearchInput from './HeaderSearchInput'
 import { ReactComponent as LogoSVG } from '../../../assets/svgs/logo.svg'
 import AccountBalance from './AccountBalance'
+import pageLink from '../../../pagesLinks'
 
 import styles from './Header.module.scss'
 
@@ -23,7 +24,7 @@ function Header({ className }: HeaderProps) {
         />
       </div>
       <div className={styles.header__logoContainer}>
-        <Link to="/" className={styles.header__logo}>
+        <Link to={pageLink.main} className={styles.header__logo}>
           <LogoSVG />
         </Link>
       </div>
