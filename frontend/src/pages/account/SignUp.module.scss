@@ -1,0 +1,90 @@
+@import '../../mixins.scss';
+
+.signUp {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__headerLabel {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &__labelText {
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  &__contentItem {
+    flex: 1;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__formHint {
+  }
+
+  &__formHintText {
+    @include text;
+    color: var(--text-white-grey-color);
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__checkbox {
+    color: var(--text-white-grey-color);
+  }
+
+  &__createButton {
+  }
+}
+
+.whyWe {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  @include background-main-transparent-lg;
+  padding: 20px 30px;
+  border-radius: 5px;
+
+  &__textContent {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__label {
+    display: flex;
+    justify-content: flex-start;
+    color: var(--text-white-grey-color);
+  }
+
+  &__whyList {
+  }
+
+  &__whyListItem {
+    color: var(--text-white-grey-color);
+    margin-bottom: 7px;
+  }
+
+  &__poster {
+    width: 100%;
+  }
+
+  &__posterImg {
+    width: 100%;
+  }
+}

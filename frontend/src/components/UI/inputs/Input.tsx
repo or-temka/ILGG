@@ -10,6 +10,7 @@ export enum InputVariant {
 
 interface InputProps {
   value: string
+  inputType?: string
   placeholder?: string
   label?: string
   variant?: InputVariant
@@ -24,6 +25,7 @@ interface InputProps {
 
 function Input({
   value = '',
+  inputType = 'text',
   placeholder = '',
   label = '',
   variant = InputVariant.simple, // types: simple, light
@@ -44,7 +46,7 @@ function Input({
       <input
         id={htmlIdRef.current}
         value={value}
-        type="text"
+        type={inputType}
         onChange={onChange}
         onClick={onClick}
         placeholder={placeholder}
