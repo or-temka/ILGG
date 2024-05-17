@@ -3,16 +3,16 @@ import { v4 as uuidv4 } from 'uuid'
 
 import styles from './Input.module.scss'
 
-export enum Variant {
-  simple = 'simple',
-  light = 'light',
+export enum InputVariant {
+  simple = styles.input__input_simple,
+  light = styles.input__input_light,
 }
 
 interface InputProps {
   value: string
   placeholder?: string
   label?: string
-  variant?: Variant
+  variant?: InputVariant
   errorText?: string
   onChange?: ChangeEventHandler<HTMLInputElement>
   onClick?: MouseEventHandler<HTMLInputElement>
@@ -26,7 +26,7 @@ function Input({
   value = '',
   placeholder = '',
   label = '',
-  variant = Variant.simple, // types: simple, light
+  variant = InputVariant.simple, // types: simple, light
   errorText = '',
   onChange = () => {},
   onClick = () => {},
@@ -51,9 +51,7 @@ function Input({
         className={[
           styles.input__input,
           errorText && styles.input__input_error,
-          variant === 'light'
-            ? styles.input__input_light
-            : styles.input__input_simple,
+          variant,
           classNames.input,
         ].join(' ')}
       />

@@ -8,9 +8,11 @@ const enum pageLink {
   friends = '/friends',
   help = '/help',
 
-  //
-  privacy = '/help/privacy_policy',
-  legal = '/help/legal_info',
+  // seconds
+  signUp = '/sign-up',
+
+  privacy = '/help/privacy-policy',
+  legal = '/help/legal-info',
 }
 
 export default pageLink

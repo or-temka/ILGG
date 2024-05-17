@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
 
-import { selectUser } from '../../../../../redux/slices/myProfileSlice'
+import { IMyProfile } from '../../../../../interfaces/myProfile'
 
 import MiniProfile, { Button } from './MiniProfile'
 import { ReactComponent as ArrowSVG } from '../../../../../assets/svgs/arrow.svg'
@@ -14,10 +13,12 @@ const profileButtons: Button[] = [
   { title: 'Выйти', handler: () => {} },
 ]
 
-function MyMiniProfile() {
-  const [isShowProfile, setIsShowProfile] = useState(false)
+interface MyMiniProfileProps {
+  myUserData: IMyProfile | null
+}
 
-  const myUserData = useSelector(selectUser)
+function MyMiniProfile({ myUserData }: MyMiniProfileProps) {
+  const [isShowProfile, setIsShowProfile] = useState(false)
 
   return (
     <MiniProfile

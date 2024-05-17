@@ -25,6 +25,10 @@ function AccountBalance({
 }: AccountBalanceProps) {
   const userBalance = useSelector(selectBalance)
 
+  if (userBalance === undefined) {
+    return <div className={[styles.balance, className].join(' ')}></div>
+  }
+
   return (
     <div className={[styles.balance, className].join(' ')}>
       <Tooltip
