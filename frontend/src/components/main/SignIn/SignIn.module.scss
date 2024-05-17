@@ -1,0 +1,52 @@
+.popUp {
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 90%;
+  max-width: 765px;
+
+  &__poster {
+    width: 100%;
+    max-width: 269px;
+    height: 417px;
+    background-image: url('../../../assets/svgs/logo.svg'),
+      url('../../../assets/images/posters/poster1.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__content {
+    background-color: var(--background-5-color);
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+    padding: 24px 40px;
+  }
+
+  &__label {
+    text-align: center;
+  }
+
+  &__labelText {
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+}

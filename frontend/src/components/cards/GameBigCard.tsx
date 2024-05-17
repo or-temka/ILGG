@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 
 import styles from './GameBigCard.module.scss'
 import CardImageText from './CardImageText'
+import Tooltip, { VerticalDirection } from '../UI/tooltips/Tooltip'
 
 interface GameBigCardProps {
   name: string
@@ -25,7 +26,15 @@ function GameBigCard({
       <CardImageText imgSrc={imgSrc} alt={alt} text={aboutGame} />
       <div className={styles.card__nameContainer}>
         <h3 className={styles.card__name}>{name}</h3>
-        {newGame && <span className={styles.card__isNewGame}>New</span>}
+        {newGame && (
+          <Tooltip
+            className={styles.card__isNewGame}
+            postitionVertical={VerticalDirection.bottom}
+            text="Игра вышла недавно"
+          >
+            New
+          </Tooltip>
+        )}
       </div>
     </Link>
   )

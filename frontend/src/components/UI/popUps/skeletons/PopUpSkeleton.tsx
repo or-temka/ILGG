@@ -14,6 +14,7 @@ interface PopUpSkeletonProps {
     className?: string
     backClassName?: string
     contentClassName?: string
+    mainClassName?: string
   }
 }
 
@@ -45,6 +46,7 @@ function PopUpSkeleton({
         ].join(' ')}
       >
         {children}
+
         {showCloseButton && (
           <CloseButton
             className={styles.popUpSkeleton__closeButton}

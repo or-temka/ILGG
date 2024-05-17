@@ -4,33 +4,41 @@ import { v4 as uuidv4 } from 'uuid'
 import btnStyles from './Input.module.scss'
 import styles from './InputWithBtnIcon.module.scss'
 
-export enum Variant {
+export enum InputWithBtnIconVariant {
   simple = 'simple',
   light = 'light',
 }
 
 interface InputWithBtnIconProps {
   value: string
+  input?: {
+    type?: React.HTMLInputTypeAttribute
+    name?: string
+    autocomplete?: string
+  }
   placeholder?: string
   label?: string
-  variant?: Variant
+  variant?: InputWithBtnIconVariant
   errorText?: string
   svgComponent?: ReactNode
   onChange?: ChangeEventHandler<HTMLInputElement>
   onClick?: MouseEventHandler<HTMLDivElement>
+  onClickBtnIcon?: (input: ParentNode | null) => void
   className?: string
   wrapperClassName?: string
 }
 
 function InputWithBtnIcon({
   value = '',
+  input = {},
   placeholder = '',
   label = '',
-  variant = Variant.simple,
+  variant = InputWithBtnIconVariant.simple,
   errorText = '',
   svgComponent,
   onChange = () => {},
   onClick = () => {},
+  onClickBtnIcon = () => {},
   className = '',
   wrapperClassName = '',
 }: InputWithBtnIconProps) {
@@ -50,7 +58,9 @@ function InputWithBtnIcon({
         <input
           id={htmlIdRef.current}
           value={value}
-          type="text"
+          type={input.type || 'text'}
+          name={input.name}
+          autoComplete={input.autocomplete}
           onChange={onChange}
           placeholder={placeholder}
           className={[
@@ -71,6 +81,7 @@ function InputWithBtnIcon({
                 ? styles.input__inputBtn_light
                 : styles.input__inputBtn_simple,
             ].join(' ')}
+            onClick={(event) => onClickBtnIcon(event.currentTarget.parentNode)}
           >
             {svgComponent}
           </div>

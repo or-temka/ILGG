@@ -11,6 +11,7 @@ export enum ButtonVariant {
 
 interface ButtonProps {
   title: string | number
+  buttonType?: 'button' | 'submit' | 'reset' | undefined
   variant?: ButtonVariant
   disabled?: boolean
   className?: string
@@ -19,6 +20,7 @@ interface ButtonProps {
 
 function Button({
   title = '',
+  buttonType = 'button',
   variant = ButtonVariant.simple,
   disabled = false,
   className = '',
@@ -26,6 +28,7 @@ function Button({
 }: ButtonProps) {
   return (
     <button
+      type={buttonType}
       disabled={disabled}
       className={[
         styles.button,

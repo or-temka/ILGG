@@ -48,3 +48,36 @@
     width: 80%;
   }
 }
+
+.notSignIn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  height: 240px;
+
+  &__label {
+    @include text;
+    width: 150px;
+    text-align: center;
+    color: var(--grey-text-color);
+  }
+
+  &__signInBtn {
+    @include text;
+    color: var(--active-2-color);
+    cursor: pointer;
+
+    &:hover {
+      color: var(--active-2-hover-color);
+    }
+  }
+
+  &__signUpBtn {
+    @include text;
+  }
+
+  &__svgContainer {
+  }
+}
