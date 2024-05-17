@@ -56,8 +56,6 @@ function RightMenu({ className = '' }: RightMenuProps) {
 
   const notLogIn = !mySelectedUser.loading && mySelectedUser.data === null
 
-  console.log(showPopUp)
-
   // Если не входил в аккаунт
   if (notLogIn) {
     return (
