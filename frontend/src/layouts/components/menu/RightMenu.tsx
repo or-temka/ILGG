@@ -52,7 +52,7 @@ function RightMenu({ className = '' }: RightMenuProps) {
   })
 
   const mySelectedUser = useSelector(selectUser)
-  const friends = useSelector(selectFriends)
+  const friends = useSelector(selectFriends).data
 
   const notLogIn = !mySelectedUser.loading && mySelectedUser.data === null
 

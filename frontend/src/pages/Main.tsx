@@ -1,41 +1,31 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { AppDispatch } from '../redux/store'
 
 import {
+  fetchApplicationsSimpleInfo,
   selectMainPageApplications,
-  setMainPageApplications,
 } from '../redux/slices/mainPageApplicationsSlice'
 
 import Input from '../components/UI/inputs/Input'
 import GameBigCard from '../components/cards/GameBigCard'
 import GameBigCardSkeleton from '../components/cards/GameBigCardSkeleton'
 
-import styles from './Main.module.scss'
-import { ISimpleApplication } from '../interfaces/application'
 import pageLink from '../pagesLinks'
 
-const appBigCards: ISimpleApplication[] = [
-  {
-    id: 1,
-    name: 'Find Number',
-    imgSrc: 'find-number/poster.jpg',
-    aboutApp:
-      'Игра, в которой вам предстоит находить числа на экране на время. Соревнуйтесь с друзьями за лучший результат и развивайте свою внимательность.',
-    isNewApp: true,
-  },
-]
+import styles from './Main.module.scss'
 
 function Main() {
   const [searchValue, setSearchValue] = useState<string>('')
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<AppDispatch>()
 
   // set games
   const mainApplications = useSelector(selectMainPageApplications)
 
-  if (mainApplications.loading) {
-    dispatch(setMainPageApplications(appBigCards))
-  }
+  useMemo(() => {
+    dispatch(fetchApplicationsSimpleInfo())
+  }, [])
 
   return (
     <>
@@ -61,13 +51,9 @@ function Main() {
                   <GameBigCardSkeleton />
                   <GameBigCardSkeleton />
                   <GameBigCardSkeleton />
-                  <GameBigCardSkeleton />
-                  <GameBigCardSkeleton />
-                  <GameBigCardSkeleton />
-                  <GameBigCardSkeleton />
                 </>
               ) : (
-                appBigCards.map((appBigCard, index) => (
+                mainApplications.data.map((appBigCard, index) => (
                   <GameBigCard
                     key={index}
                     name={appBigCard.name}
