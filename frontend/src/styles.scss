@@ -21,6 +21,20 @@
   animation: pulse 1.2s ease-in-out infinite;
 }
 
+.asideContent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  width: 100%;
+  max-width: 403px;
+
+  & > div {
+    background-color: var(--background-5-color);
+    border-radius: 5px;
+  }
+}
+
 @keyframes pulse {
   0% {
     background-position: 0% 0%;
