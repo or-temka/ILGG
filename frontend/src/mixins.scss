@@ -125,15 +125,24 @@
   font-size: 22px;
   line-height: 26px;
   font-weight: var(--semibold-fw);
+  letter-spacing: 0.5px;
 }
 @mixin h2() {
   font-size: 20px;
   line-height: 24px;
   font-weight: var(--semibold-fw);
+  letter-spacing: 0.5px;
 }
 @mixin h3() {
   font-size: 18px;
   line-height: 22px;
   font-weight: var(--semibold-fw);
+  letter-spacing: 0.5px;
+}
+@mixin h4() {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: var(--semibold-fw);
+  letter-spacing: 0.5px;
 }
 //#endregion
