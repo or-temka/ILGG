@@ -1,9 +1,17 @@
 import Button from '../../../../components/UI/buttons/Button'
+import { IFullUserProfile } from '../../../../interfaces/userProfile'
 
 import styles from './Header.module.scss'
 
-function Header() {
+interface HeaderProps {
+  userData: IFullUserProfile
+}
+
+function Header({ userData }: HeaderProps) {
   const profileImg = require('../../../../assets/images/profiles/large/profileImage.jpg')
+
+  const progressLineWidthInProcent =
+    (userData.level.points.now / userData.level.points.atLevel) * 100
 
   return (
     <header className={styles.header}>
@@ -16,14 +24,9 @@ function Header() {
           className={styles.header__userImg}
         />
         <div className={styles.header__textInfo}>
-          <h2 className={styles.header__username}>Приора</h2>
+          <h2 className={styles.header__username}>{userData.name}</h2>
           <div className={styles.header__aboutUserInfo}>
-            <p className={styles.header__aboutUserText}>
-              Так давай запоем хоть толпой да хоть вдвоем
-            </p>
-            <p className={styles.header__aboutUserText}>
-              Мой вконтакте: https://vk.com/sup
-            </p>
+            <p className={styles.header__aboutUserText}>{userData.aboutText}</p>
           </div>
         </div>
       </div>
@@ -31,11 +34,18 @@ function Header() {
       <div className={styles.header__adopt}>
         <div className={styles.header__lvlContainer}>
           <div className={styles.header__lvlInfo}>
-            <span className={styles.header__lvlValue}>74 ур.</span>
-            <span className={styles.header__lvlProgressText}>146/1000</span>
+            <span className={styles.header__lvlValue}>
+              {userData.level.value} ур.
+            </span>
+            <span className={styles.header__lvlProgressText}>
+              {userData.level.points.now}/{userData.level.points.atLevel}
+            </span>
           </div>
           <div className={styles.header__lvlProgressLine}>
-            <div className={styles.header__lvlProgressDoneLine}></div>
+            <div
+              className={styles.header__lvlProgressDoneLine}
+              style={{ width: progressLineWidthInProcent + '%' }}
+            ></div>
           </div>
         </div>
         <Button title="Редактировать профиль" />

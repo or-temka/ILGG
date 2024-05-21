@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ReactNode, useRef, useState } from 'react'
 
 import { IUserProfile } from '../../../interfaces/userProfile'
 
@@ -30,6 +30,17 @@ function Comment({
   background = true,
   classNames,
 }: CommentProps) {
+  const [commentText, setCommentText] = useState(
+    commentData.text.substring(0, 200)
+  )
+  const showsAllCommentText = useRef(
+    (() => (commentData.text.length > 50 ? false : true))()
+  )
+
+  const showAllCommentText = () => {
+    showsAllCommentText.current = true
+    setCommentText(commentData.text)
+  }
 
   return (
     <div
@@ -73,9 +84,16 @@ function Comment({
             ' '
           )}
         >
-          {commentData.text}
+          {commentText}
         </div>
-        <span className={styles.main__moreTextBtn}>Показать ещё...</span>
+        {!showsAllCommentText.current && (
+          <span
+            className={styles.main__moreTextBtn}
+            onClick={showAllCommentText}
+          >
+            Показать ещё...
+          </span>
+        )}
       </main>
     </div>
   )
