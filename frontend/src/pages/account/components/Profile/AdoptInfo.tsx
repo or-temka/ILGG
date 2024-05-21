@@ -7,13 +7,11 @@ import styles from './AdoptInfo.module.scss'
 function AdoptInfo() {
   return (
     <div className={styles.adoptInfo}>
-      <div>
-        <div>
-          <UserGames />
-          <Comments />
-        </div>
-        <AsideInfo />
+      <div className={styles.adoptInfo__mainContent}>
+        <UserGames />
+        <Comments />
       </div>
+      <AsideInfo />
     </div>
   )
 }

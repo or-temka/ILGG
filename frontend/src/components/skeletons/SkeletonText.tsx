@@ -1,3 +1,5 @@
+import getRandomInt from '../../utils/getRandomInt'
+
 import styles from './SkeletonText.module.scss'
 
 export enum Variant {
@@ -14,6 +16,8 @@ function SkeletonText({
   variant = Variant.simple, // types: simple, light
   className = '',
 }: SkeletonTextProps) {
+  const randomWidth = getRandomInt(40, 100)
+
   return (
     <div
       className={[
@@ -21,6 +25,7 @@ function SkeletonText({
         variant === 'simple' ? 'pulse' : 'pulse-light',
         className,
       ].join(' ')}
+      style={{ width: `${randomWidth}%` }}
     ></div>
   )
 }
