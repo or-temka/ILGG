@@ -1,0 +1,91 @@
+@import '../../../../mixins.scss';
+
+.userGames {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  background-color: var(--background-color);
+  padding: 15px 20px;
+  border-radius: 3px;
+
+  &__label {
+  }
+
+  &__moreBtnContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__moreBtn {
+    @include link;
+    color: var(--active-2-color);
+    cursor: pointer;
+    width: fit-content;
+    padding: 5px 20px;
+
+    &:hover {
+      color: var(--active-2-hover-color);
+    }
+  }
+}
+
+.gameCard {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__img {
+    width: 210px;
+    height: 130px;
+  }
+
+  &__name {
+  }
+
+  &__infoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  &__info {
+    @include paragraph;
+    color: var(--grey-text-color);
+  }
+}
+
+.skeleton {
+  &__card {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  &__img {
+    width: 210px;
+    height: 130px;
+    border-radius: 5px;
+  }
+
+  &__cardContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 18px;
+  }
+
+  &__name {
+    display: block;
+    border-radius: 5px;
+    width: 150px;
+    height: 20px;
+  }
+
+  &__infoContainer {
+    gap: 10px;
+  }
+}

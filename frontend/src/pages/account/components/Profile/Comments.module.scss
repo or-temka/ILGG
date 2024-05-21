@@ -1,0 +1,11 @@
+.comments {
+  padding: 15px 20px;
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-radius: 3px;
+
+  &__label {
+  }
+}

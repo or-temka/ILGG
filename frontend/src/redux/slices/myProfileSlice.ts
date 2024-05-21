@@ -1,7 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-import { IMyProfile, IUserBalance } from '../../interfaces/myProfile'
-import { act } from 'react'
+import {
+  BalanceCurrency,
+  IMyProfile,
+  IUserBalance,
+} from '../../interfaces/myProfile'
 
 //#region reduces interfaces
 interface SetUserAction {
@@ -10,10 +13,28 @@ interface SetUserAction {
 }
 //#endregion
 
+// запрос на пользователя
+export const fetchProfileInfo = createAsyncThunk(
+  'myProfile/fetchProfileInfo',
+  async () => {
+    return {
+      id: 1,
+      name: 'Приора',
+      login: 'sversys',
+      isOnline: true,
+      imgName: 'profileImage.jpg',
+      balance: {
+        currency: BalanceCurrency.rus,
+        value: 33,
+      },
+    }
+  }
+)
+
 export type ProfileState = {
   data: IMyProfile | null
   loading: boolean
-  error: string | null
+  error: string | null | undefined
 }
 
 const initialState: ProfileState = {
@@ -31,6 +52,21 @@ const myProfileSlice = createSlice({
       loading: false,
       error: null,
     }),
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchProfileInfo.pending, (state) => {
+        state.loading = true
+        state.error = null
+      })
+      .addCase(fetchProfileInfo.fulfilled, (state, action) => {
+        state.loading = false
+        state.data = action.payload
+      })
+      .addCase(fetchProfileInfo.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.error.message
+      })
   },
 })
 

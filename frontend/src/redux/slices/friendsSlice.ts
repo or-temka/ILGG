@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 import { IUserProfile } from '../../interfaces/userProfile'
 
@@ -9,9 +9,47 @@ interface SetFriendsAction {
 }
 //#endregion
 
-export type UserState = IUserProfile[] | null
+// Запрос на друзей
+export const fetchFriends = createAsyncThunk(
+  'friends/fetchFriends',
+  async () => {
+    return [
+      {
+        id: 1,
+        name: 'Алина убивца',
+        login: 'alina',
+        isOnline: true,
+        imgName: 'alina.jpg',
+      },
+      {
+        id: 2,
+        name: 'Freevel',
+        login: 'freevel',
+        isOnline: true,
+        imgName: 'serega.jpg',
+      },
+      {
+        id: 3,
+        name: 'мухтар в снегу 3000',
+        login: 'myhtar',
+        isOnline: false,
+        imgName: 'myhtar.jpg',
+      },
+    ]
+  }
+)
 
-const initialState: UserState = null
+export type UserState = {
+  data: IUserProfile[] | []
+  loading: boolean
+  error: string | null | undefined
+}
+
+const initialState: UserState = {
+  data: [],
+  loading: true,
+  error: null,
+}
 
 const friendsSlice = createSlice({
   name: 'friends',
@@ -20,6 +58,21 @@ const friendsSlice = createSlice({
     setFriends: (state: UserState, action: SetFriendsAction): any => [
       ...action.payload,
     ],
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchFriends.pending, (state) => {
+        state.loading = true
+        state.error = null
+      })
+      .addCase(fetchFriends.fulfilled, (state, action) => {
+        state.loading = false
+        state.data = action.payload
+      })
+      .addCase(fetchFriends.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.error.message
+      })
   },
 })
 

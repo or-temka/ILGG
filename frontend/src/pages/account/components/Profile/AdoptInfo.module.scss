@@ -1,0 +1,15 @@
+.adoptInfo {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+
+  padding: 20px;
+  background-color: var(--background-6-color);
+
+  &__mainContent {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 70%;
+  }
+}
