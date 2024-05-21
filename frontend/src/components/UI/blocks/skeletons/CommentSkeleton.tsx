@@ -1,4 +1,6 @@
-import SkeletonText from '../../../skeletons/SkeletonText'
+import SkeletonText, {
+  SkeletonTextVariant,
+} from '../../../skeletons/SkeletonText'
 
 import styles from '../Comment.module.scss'
 
@@ -29,7 +31,7 @@ function Comment({ background = true, classNames }: CommentProps) {
           <div
             className={[
               styles.header__img,
-              'pulse',
+              'pulse-light',
               classNames?.authorImg,
             ].join(' ')}
           />
@@ -43,7 +45,7 @@ function Comment({ background = true, classNames }: CommentProps) {
               className={[
                 styles.header__authorName,
                 styles.skeleton__authorName,
-                'pulse',
+                'pulse-light',
                 classNames?.authorName,
               ].join(' ')}
             ></div>
@@ -51,7 +53,7 @@ function Comment({ background = true, classNames }: CommentProps) {
               className={[
                 styles.header__dateCreate,
                 styles.skeleton__dateCreate,
-                'pulse',
+                'pulse-light',
                 classNames?.dateCreate,
               ].join(' ')}
             ></div>
@@ -67,9 +69,9 @@ function Comment({ background = true, classNames }: CommentProps) {
             classNames?.textContent,
           ].join(' ')}
         >
-          <SkeletonText />
-          <SkeletonText />
-          <SkeletonText />
+          <SkeletonText variant={SkeletonTextVariant.light} />
+          <SkeletonText variant={SkeletonTextVariant.light} />
+          <SkeletonText variant={SkeletonTextVariant.light} />
         </div>
       </main>
     </div>

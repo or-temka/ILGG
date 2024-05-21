@@ -11,7 +11,7 @@ function FriendsPanel() {
         {count.map((_, index) => (
           <div
             key={index}
-            className={['pulse', styles.skeleton__friend].join(' ')}
+            className={['pulse-light', styles.skeleton__friend].join(' ')}
           ></div>
         ))}
       </div>

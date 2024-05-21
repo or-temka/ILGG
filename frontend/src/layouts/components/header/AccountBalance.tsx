@@ -7,7 +7,7 @@ import Tooltip, {
   VerticalDirection,
 } from '../../../components/UI/tooltips/Tooltip'
 import SkeletonText, {
-  Variant,
+  SkeletonTextVariant,
 } from '../../../components/skeletons/SkeletonText'
 
 import styles from './AccountBalance.module.scss'
@@ -55,7 +55,7 @@ function AccountBalance({
           Баланс:
         </span>
         {!userBalance ? (
-          <SkeletonText variant={Variant.light} />
+          <SkeletonText variant={SkeletonTextVariant.light} />
         ) : (
           <>
             <span className={styles.balance__accountText}>
