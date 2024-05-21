@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom'
 
 import Header from './components/Profile/Header'
+import AdoptInfo from './components/Profile/AdoptInfo'
 
 import styles from './Profile.module.scss'
 
@@ -12,10 +13,7 @@ function Profile() {
     <div className={[styles.profile].join(' ')}>
       <Header />
 
-      <img
-        src={require('../../assets/images/Frame 66.jpg')}
-        className={styles.profile__infoImg}
-      />
+      <AdoptInfo />
     </div>
   )
 }

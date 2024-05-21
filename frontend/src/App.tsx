@@ -24,9 +24,13 @@ function App() {
           <Routes>
             <Route path="" element={<MainLayout />}>
               <Route path={pageLink.main} element={<Main />}></Route>
+
               {/* profile pages */}
               <Route path={pageLink.signUp} element={<SignUp />}></Route>
-              <Route path={pageLink.profile} element={<Profile />}></Route>
+              <Route
+                path={pageLink.profile + ':id'}
+                element={<Profile />}
+              ></Route>
 
               <Route path="*" index element={<PageNotFound />}></Route>
             </Route>

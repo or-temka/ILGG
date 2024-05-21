@@ -7,6 +7,7 @@ import MiniProfile, { Button } from './MiniProfile'
 import { ReactComponent as ArrowSVG } from '../../../../../assets/svgs/arrow.svg'
 
 import styles from './MyMiniProfile.module.scss'
+import pageLink from '../../../../../pagesLinks'
 
 interface MyMiniProfileProps {
   myUserData: IMyProfile | null
@@ -18,7 +19,7 @@ function MyMiniProfile({ myUserData }: MyMiniProfileProps) {
   const profileButtons: Button[] = [
     {
       title: 'Мой профиль',
-      handler: () => navigate(`/profile/${myUserData?.id}`),
+      handler: () => navigate(pageLink.profile + myUserData?.id),
     },
     { title: 'Настройки профиля', handler: () => {} },
     { title: 'Выйти', handler: () => {} },
