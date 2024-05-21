@@ -8,6 +8,7 @@ import styles from './Comments.module.scss'
 interface IUserWithComment {
   userData: IUserProfile
   commentData: {
+    id: number | string
     text: string
     date: string
   }
@@ -23,6 +24,7 @@ const usersWithComments: IUserWithComment[] = [
       imgName: 'alina.jpg',
     },
     commentData: {
+      id: 1,
       text: 'Привет это первый коммент',
       date: '15.02.2002',
     },
@@ -36,6 +38,7 @@ const usersWithComments: IUserWithComment[] = [
       imgName: 'serega.jpg',
     },
     commentData: {
+      id: 2,
       text: 'Пока а это второй коммент',
       date: '22.02.2003',
     },
@@ -51,6 +54,7 @@ function Comments() {
       <CommentSkeleton />
       {usersWithComments.map((userWithComment) => (
         <Comment
+          key={userWithComment.commentData.id}
           commentData={userWithComment.commentData}
           userAuthor={userWithComment.userData}
         />
