@@ -50,6 +50,9 @@ const useInitialization = () => {
         },
       ])
     )
+    
+    // seconds
+    
   }
 
   return initialize

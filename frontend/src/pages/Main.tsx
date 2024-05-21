@@ -1,47 +1,41 @@
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
+import {
+  selectMainPageApplications,
+  setMainPageApplications,
+} from '../redux/slices/mainPageApplicationsSlice'
 
 import Input from '../components/UI/inputs/Input'
 import GameBigCard from '../components/cards/GameBigCard'
+import GameBigCardSkeleton from '../components/cards/GameBigCardSkeleton'
 
 import styles from './Main.module.scss'
+import { ISimpleApplication } from '../interfaces/application'
+import pageLink from '../pagesLinks'
 
-interface IGameBigCard {
-  name: string
-  imgSrc: string
-  aboutGame: string
-  to: string
-  newGame: boolean
-}
-
-const gameBigCards: IGameBigCard[] = [
+const appBigCards: ISimpleApplication[] = [
   {
-    name: 'FarCry Primal',
-    imgSrc: 'farcry/large.jpg',
-    aboutGame:
-      'Компьютерная игра в жанре action-adventure со структурой открытого мира, разработанная студией Ubisoft Montreal при поддержке Ubisoft Toronto, Ubisoft Kiev...',
-    to: '/',
-    newGame: false,
-  },
-  {
-    name: 'FarCry Primal',
-    imgSrc: 'farcry/large.jpg',
-    aboutGame:
-      'Компьютерная игра в жанре action-adventure со структурой открытого мира, разработанная студией Ubisoft Montreal при поддержке Ubisoft Toronto, Ubisoft Kiev...',
-    to: '/',
-    newGame: true,
-  },
-  {
-    name: 'FarCry Primal',
-    imgSrc: 'farcry/large.jpg',
-    aboutGame:
-      'Компьютерная игра в жанре action-adventure со структурой открытого мира, разработанная студией Ubisoft Montreal при поддержке Ubisoft Toronto, Ubisoft Kiev...',
-    to: '/',
-    newGame: false,
+    id: 1,
+    name: 'Find Number',
+    imgSrc: 'find-number/poster.jpg',
+    aboutApp:
+      'Игра, в которой вам предстоит находить числа на экране на время. Соревнуйтесь с друзьями за лучший результат и развивайте свою внимательность.',
+    isNewApp: true,
   },
 ]
 
 function Main() {
   const [searchValue, setSearchValue] = useState<string>('')
+
+  const dispatch = useDispatch()
+
+  // set games
+  const mainApplications = useSelector(selectMainPageApplications)
+
+  if (mainApplications.loading) {
+    dispatch(setMainPageApplications(appBigCards))
+  }
 
   return (
     <>
@@ -61,16 +55,29 @@ function Main() {
           </div>
           <div className={styles.section__contentWrapper}>
             <div className={styles.section__contnet}>
-              {gameBigCards.map((gameBigCard, index) => (
-                <GameBigCard
-                  key={index}
-                  name={gameBigCard.name}
-                  imgSrc={gameBigCard.imgSrc}
-                  aboutGame={gameBigCard.aboutGame}
-                  to={gameBigCard.to}
-                  newGame={gameBigCard.newGame}
-                />
-              ))}
+              {mainApplications.loading ? (
+                <>
+                  <GameBigCardSkeleton />
+                  <GameBigCardSkeleton />
+                  <GameBigCardSkeleton />
+                  <GameBigCardSkeleton />
+                  <GameBigCardSkeleton />
+                  <GameBigCardSkeleton />
+                  <GameBigCardSkeleton />
+                  <GameBigCardSkeleton />
+                </>
+              ) : (
+                appBigCards.map((appBigCard, index) => (
+                  <GameBigCard
+                    key={index}
+                    name={appBigCard.name}
+                    imgSrc={appBigCard.imgSrc}
+                    aboutGame={appBigCard.aboutApp}
+                    to={pageLink.applicationPage + appBigCard.id}
+                    newGame={appBigCard.isNewApp}
+                  />
+                ))
+              )}
             </div>
           </div>
         </section>

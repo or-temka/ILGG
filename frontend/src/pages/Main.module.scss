@@ -1,5 +1,4 @@
 .main {
-  
 }
 
 .section {
@@ -33,7 +32,7 @@
   &__contentWrapper {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   &__contnet {

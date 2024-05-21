@@ -10,7 +10,10 @@ const enum pageLink {
 
   // account
   signUp = '/sign-up',
-  profile = '/profile/:id',
+  profile = '/profile/', // /proile/:id
+
+  // applications
+  applicationPage = '/app/', // /app/:id
 
   // seconds
   privacy = '/help/privacy-policy',
