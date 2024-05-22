@@ -1,0 +1,20 @@
+.shop {
+  &__productsSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__mainContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
