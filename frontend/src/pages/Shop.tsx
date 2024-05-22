@@ -30,6 +30,7 @@ function Shop() {
         <div className={styles.shop__mainContainer}>
           <Header />
           <main className={styles.shop__main}>
+            <Sorter />
           </main>
         </div>
       </section>
