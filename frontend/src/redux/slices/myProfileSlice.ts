@@ -6,7 +6,7 @@ import {
   IUserBalance,
 } from '../../interfaces/myProfile'
 
-//#region reduces interfaces
+//#region reducers interfaces
 interface SetUserAction {
   type: string
   payload: IMyProfile | null
