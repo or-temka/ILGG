@@ -4,6 +4,7 @@ import floatingPanelsQueueReducer from './slices/floatingPanelsQueueSlice'
 import myProfileSlice from './slices/myProfileSlice'
 import friendsSlice from './slices/friendsSlice'
 import mainPageApplicationsSlice from './slices/mainPageApplicationsSlice'
+import shopAppsSlice from './slices/shopAppsSlice'
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     friends: friendsSlice,
 
     mainPageApplications: mainPageApplicationsSlice,
+    shopApps: shopAppsSlice,
   },
 })
 
