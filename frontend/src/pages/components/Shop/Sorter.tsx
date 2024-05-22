@@ -7,14 +7,14 @@ import { ReactComponent as ArrowSVG } from '../../../assets/svgs/arrow.svg'
 
 import styles from './Sorter.module.scss'
 
-type SortedInitialStateType = {
+type Sorted = {
   price: null | boolean
   rating: null | boolean
   releaseDate: null | boolean
   popularity: null | boolean
 }
 
-const sortedInitialState: SortedInitialStateType = {
+const sortedInitial: Sorted = {
   price: null,
   rating: null,
   releaseDate: null,
@@ -22,13 +22,13 @@ const sortedInitialState: SortedInitialStateType = {
 }
 
 function Sorter() {
-  const [sorted, setSorted] = useState(sortedInitialState)
+  const [sorted, setSorted] = useState(sortedInitial)
 
   const hadleToggleSort = (
     sortField: 'price' | 'rating' | 'releaseDate' | 'popularity'
   ) => {
     setSorted((prev) => ({
-      ...sortedInitialState,
+      ...sortedInitial,
       [sortField]: prev[sortField] ? false : true,
     }))
   }

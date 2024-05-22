@@ -1,10 +1,16 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 import { IShopApplication } from '../../interfaces/application'
-import { error } from 'console'
+import { MongoId } from '../../interfaces/main'
 
 //#region reducers interfaces
-
+interface FilterShopAppsByAction {
+  type: string
+  payload: {
+    filtersSet: MongoId[] | null
+    sortFieldName: FilterFields
+  }
+}
 //#endregion
 
 // запрос на программы для магазина
@@ -19,14 +25,54 @@ export const fetchShopApps = createAsyncThunk(
         developer: 'ILGG',
         imgSrc: 'find-number/poster.jpg',
         isNewApp: true,
-        type: 1,
+        types: [2],
         categories: [1, 2],
-        genres: [1, 2],
+        playerTypes: [1],
+        themes: [1],
+      },
+      {
+        _id: 2,
+        name: 'Игра номер 2',
+        aboutApp: 'Капельку о второй игре',
+        developer: 'ILGG',
+        imgSrc: 'find-number/poster.jpg',
+        isNewApp: false,
+        types: [1],
+        categories: [2, 3],
+        playerTypes: [1],
+        themes: [1],
+      },
+      {
+        _id: 3,
+        name: 'three game',
+        aboutApp: 'Немного об этом приложении',
+        developer: 'ILGG',
+        imgSrc: 'find-number/poster.jpg',
+        isNewApp: true,
+        types: [1],
+        categories: [1, 4],
+        playerTypes: [1],
+        themes: [1],
+      },
+      {
+        _id: 4,
+        name: 'третья gamesk',
+        aboutApp: 'Немного об этом приложении',
+        developer: 'ILGG',
+        imgSrc: 'find-number/poster.jpg',
+        isNewApp: false,
+        types: [2],
+        categories: [5],
+        playerTypes: [1],
+        themes: [1],
       },
     ]
     return returnedData
   }
 )
+
+export type FilterFields = 'categories' | 'playerTypes' | 'themes' | 'types'
+export type FilterValue = Set<MongoId> | null
 
 type ShopAppsStateData = {
   init: IShopApplication[] | []
@@ -51,7 +97,27 @@ const initialState: ShopAppsState = {
 const shopAppsSlice = createSlice({
   name: 'shopApps',
   initialState,
-  reducers: {},
+  reducers: {
+    filterShopAppsBy: (
+      state: ShopAppsState,
+      action: FilterShopAppsByAction
+    ): any => {
+      const fieldNameForFilter = action.payload.sortFieldName
+      const filtersArray = action.payload.filtersSet
+
+      const initialApps = [...state.data.init]
+
+      if (filtersArray === null || filtersArray.length === 0) {
+        state.data.filtered = initialApps
+      } else {
+        const filteredApps = initialApps.filter((app) =>
+          app[fieldNameForFilter].some((value) => filtersArray?.includes(value))
+        )
+
+        state.data.filtered = filteredApps
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchShopApps.pending, (state) => {
@@ -69,6 +135,8 @@ const shopAppsSlice = createSlice({
       })
   },
 })
+
+export const { filterShopAppsBy } = shopAppsSlice.actions
 
 export const selectShopAppsState = (state: any): ShopAppsState => state.shopApps
 export const selectShopApps = (state: any): IShopApplication[] | [] =>

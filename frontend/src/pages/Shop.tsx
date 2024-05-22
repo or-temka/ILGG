@@ -34,6 +34,7 @@ function Shop() {
             <Main />
           </main>
         </div>
+        <Filter />
       </section>
     </div>
   )
