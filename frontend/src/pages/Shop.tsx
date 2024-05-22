@@ -31,6 +31,7 @@ function Shop() {
           <Header />
           <main className={styles.shop__main}>
             <Sorter />
+            <Main />
           </main>
         </div>
       </section>
