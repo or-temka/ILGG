@@ -7,6 +7,10 @@ import {
   selectShopAppsIsLoaded,
 } from '../redux/slices/shopAppsSlice'
 
+import Sorter from './components/Shop/Sorter'
+import Main from './components/Shop/Main'
+import Filter from './components/Shop/Filter'
+import Header from './components/Shop/Header'
 
 import styles from './Shop.module.scss'
 
@@ -24,6 +28,7 @@ function Shop() {
     <div className={['wrapper', styles.shop].join(' ')}>
       <section className={styles.shop__productsSection}>
         <div className={styles.shop__mainContainer}>
+          <Header />
           <main className={styles.shop__main}>
           </main>
         </div>
