@@ -13,29 +13,30 @@ interface SetFriendsAction {
 export const fetchFriends = createAsyncThunk(
   'friends/fetchFriends',
   async () => {
-    return [
+    const returnedData: IUserProfile[] = [
       {
-        id: 1,
+        _id: 1,
         name: 'Алина убивца',
         login: 'alina',
         isOnline: true,
         imgName: 'alina.jpg',
       },
       {
-        id: 2,
+        _id: 2,
         name: 'Freevel',
         login: 'freevel',
         isOnline: true,
         imgName: 'serega.jpg',
       },
       {
-        id: 3,
+        _id: 3,
         name: 'мухтар в снегу 3000',
         login: 'myhtar',
         isOnline: false,
         imgName: 'myhtar.jpg',
       },
     ]
+    return returnedData
   }
 )
 

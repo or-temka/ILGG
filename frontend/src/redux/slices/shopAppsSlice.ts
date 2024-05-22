@@ -13,22 +13,15 @@ export const fetchShopApps = createAsyncThunk(
   async () => {
     const returnedData: IShopApplication[] = [
       {
-        id: 1,
+        _id: 1,
         name: 'Find number',
         aboutApp: 'Немного об этом приложении',
-
         developer: 'ILGG',
         imgSrc: 'find-number/poster.jpg',
         isNewApp: true,
-        type: 'game',
-        categories: [
-          { id: 1, name: 'Категория 1' },
-          { id: 2, name: 'Категория 2' },
-        ],
-        genres: [
-          { id: 1, name: 'Жанр 1' },
-          { id: 2, name: 'Жанр 2' },
-        ],
+        type: 1,
+        categories: [1, 2],
+        genres: [1, 2],
       },
     ]
     return returnedData

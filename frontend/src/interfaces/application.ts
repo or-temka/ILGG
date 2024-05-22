@@ -1,33 +1,36 @@
+import { MongoId } from './main'
+
 export interface ISimpleApplication {
-  id: string | number
+  _id: MongoId
   name: string
   imgSrc: string
   aboutApp: string
   isNewApp: boolean
 }
 
-export interface IApplication extends ISimpleApplication {
-  id: string | number
-}
+export interface IApplication extends ISimpleApplication {}
 
 export interface IShopApplication extends ISimpleApplication {
   developer: string
-  type: AppType
-  genres: AppGenre[]
-  categories: AppCategory[]
+  type: MongoId
+  genres: MongoId[]
+  categories: MongoId[]
 }
 
 // categories
 export type AppCategory = {
-  id: string | number
+  _id: MongoId
   name: string
 }
 
 // genre
 export type AppGenre = {
-  id: string | number
+  _id: MongoId
   name: string
 }
 
 // app types
-export type AppType = 'game' | 'programm'
+export type AppType = {
+  _id: MongoId
+  name: string
+}

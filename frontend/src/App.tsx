@@ -9,6 +9,7 @@ import pageLink from './pagesLinks'
 import useInitialization from './initialize'
 
 const Main = lazy(() => import('./pages/Main'))
+const Shop = lazy(() => import('./pages/Shop'))
 const SignUp = lazy(() => import('./pages/account/SignUp'))
 const Profile = lazy(() => import('./pages/account/Profile'))
 const PageNotFound = lazy(() => import('./pages/PageNotFound'))
@@ -25,6 +26,8 @@ function App() {
           <Routes>
             <Route path="" element={<MainLayout />}>
               <Route path={pageLink.main} element={<Main />}></Route>
+
+              <Route path={pageLink.shop} element={<Shop />}></Route>
 
               {/* profile pages */}
               <Route path={pageLink.signUp} element={<SignUp />}></Route>

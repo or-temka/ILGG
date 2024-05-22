@@ -1,3 +1,5 @@
+import { MongoId } from "./main"
+
 export enum BalanceCurrency {
   rus = 'руб',
   us = 'usd',
@@ -9,7 +11,7 @@ export interface IUserBalance {
 }
 
 export interface IMyProfile {
-  id: string | number
+  _id: MongoId
   name: string
   login: string
   imgName: string | null

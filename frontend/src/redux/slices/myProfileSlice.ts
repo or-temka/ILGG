@@ -17,8 +17,8 @@ interface SetUserAction {
 export const fetchProfileInfo = createAsyncThunk(
   'myProfile/fetchProfileInfo',
   async () => {
-    return {
-      id: 1,
+    const returnedData: IMyProfile = {
+      _id: 1,
       name: 'Приора',
       login: 'sversys',
       isOnline: true,
@@ -28,6 +28,7 @@ export const fetchProfileInfo = createAsyncThunk(
         value: 33,
       },
     }
+    return returnedData
   }
 )
 
