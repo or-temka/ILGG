@@ -7,18 +7,21 @@ import Checkbox from '../../../components/UI/inputs/Checkbox'
 
 import styles from './FilterBy.module.scss'
 
-
-interface FilterByAppTypeProps {
-  appTypes: AppType[]
+interface FilterBy {
+  headerText: string
+  filterField: FilterFields
+  appFiltersElements: AppType[]
   filters: FilterValue
   setFilterHandler: (field: FilterFields, newValue: FilterValue) => void
 }
 
-function FilterByAppType({
-  appTypes,
+function FilterBy({
+  headerText,
+  filterField,
+  appFiltersElements,
   filters,
   setFilterHandler,
-}: FilterByAppTypeProps) {
+}: FilterBy) {
   const onClickCheckboxHandler = (id: MongoId) => {
     const types = new Set<MongoId>(filters)
 
@@ -28,19 +31,19 @@ function FilterByAppType({
       types.add(id)
     }
 
-    setFilterHandler('types', types)
+    setFilterHandler(filterField, types)
   }
 
   return (
     <div className={styles.filter}>
-      <div className={styles.filter__label}>Тип:</div>
+      <div className={styles.filter__label}>{headerText}:</div>
       <nav className={styles.filter__filters}>
-        {appTypes.map((type) => (
+        {appFiltersElements.map((elem) => (
           <Checkbox
-            key={type._id}
-            label={type.name}
-            checked={filters?.has(type._id)}
-            onChange={() => onClickCheckboxHandler(type._id)}
+            key={elem._id}
+            label={elem.name}
+            checked={filters?.has(elem._id)}
+            onChange={() => onClickCheckboxHandler(elem._id)}
           />
         ))}
       </nav>
@@ -48,4 +51,4 @@ function FilterByAppType({
   )
 }
 
-export default FilterByAppType
+export default FilterBy

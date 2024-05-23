@@ -1,20 +1,27 @@
 .shop {
   &__productsSection {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
+    flex-direction: row;
+    gap: 20px;
   }
 
   &__mainContainer {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    flex: 1;
+    width: 100%;
   }
 
   &__main {
     display: flex;
     flex-direction: column;
     gap: 20px;
+  }
+
+  &__filter {
+    min-width: 240px;
+    width: 100%;
+    max-width: 250px;
   }
 }

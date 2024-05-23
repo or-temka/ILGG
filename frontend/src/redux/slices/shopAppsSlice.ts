@@ -117,6 +117,9 @@ const shopAppsSlice = createSlice({
         state.data.filtered = filteredApps
       }
     },
+    resetFiltersShopApps: (state: ShopAppsState, action: any): void => {
+      state.data.filtered = state.data.init
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -136,7 +139,7 @@ const shopAppsSlice = createSlice({
   },
 })
 
-export const { filterShopAppsBy } = shopAppsSlice.actions
+export const { filterShopAppsBy, resetFiltersShopApps } = shopAppsSlice.actions
 
 export const selectShopAppsState = (state: any): ShopAppsState => state.shopApps
 export const selectShopApps = (state: any): IShopApplication[] | [] =>

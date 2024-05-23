@@ -1,3 +1,16 @@
 .filter {
-  
+  background-color: var(--background-2-color);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+
+  &__resetFiltersBtnContainer {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  &__resetFiltersBtn {
+  }
 }

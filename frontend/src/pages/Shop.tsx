@@ -34,7 +34,7 @@ function Shop() {
             <Main />
           </main>
         </div>
-        <Filter />
+        <Filter classNames={{ main: styles.shop__filter }} />
       </section>
     </div>
   )

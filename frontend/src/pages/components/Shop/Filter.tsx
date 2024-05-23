@@ -1,15 +1,20 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 import {
   FilterFields,
   FilterValue,
   filterShopAppsBy,
+  resetFiltersShopApps,
 } from '../../../redux/slices/shopAppsSlice'
 
-import FilterByAppType from './FilterByAppType'
+import FilterBy from './FilterBy'
+import Button, { ButtonVariant } from '../../../components/UI/buttons/Button'
 
 import appTypes from '../../../data/tempData/appTypes'
+import appCategories from '../../../data/tempData/appCategories'
+import appPlayerTypes from '../../../data/tempData/appPlayerTypes'
+import appThemes from '../../../data/tempData/appThemes'
 
 import styles from './Filter.module.scss'
 
@@ -24,7 +29,13 @@ const filtersInitial: Filters = {
   types: null,
 }
 
-function Filter() {
+interface FilterProps {
+  classNames?: {
+    main?: string
+  }
+}
+
+function Filter({ classNames }: FilterProps) {
   const dispatch = useDispatch()
 
   const [filters, setFilters] = useState(filtersInitial)
@@ -40,11 +51,48 @@ function Filter() {
     )
   }
 
+  const onClickResetFiltersHandler = () => {
+    setFilters(filtersInitial)
+    dispatch(resetFiltersShopApps(undefined))
+  }
+
   return (
-    <aside className={styles.filter}>
-      <FilterByAppType
-        appTypes={appTypes}
+    <aside className={[styles.filter, classNames?.main].join(' ')}>
+      <div className={styles.filter__resetFiltersBtnContainer}>
+        <Button
+          className={styles.filter__resetFiltersBtn}
+          variant={ButtonVariant.light}
+          title="Сбросить фильтры"
+          onClick={onClickResetFiltersHandler}
+        />
+      </div>
+
+      <FilterBy
+        headerText="Тип"
+        filterField={'types'}
+        appFiltersElements={appTypes}
         filters={filters.types}
+        setFilterHandler={setNewFilterHandler}
+      />
+      <FilterBy
+        headerText="Категории"
+        filterField={'categories'}
+        appFiltersElements={appCategories}
+        filters={filters.categories}
+        setFilterHandler={setNewFilterHandler}
+      />
+      <FilterBy
+        headerText="Число игроков"
+        filterField={'playerTypes'}
+        appFiltersElements={appPlayerTypes}
+        filters={filters.playerTypes}
+        setFilterHandler={setNewFilterHandler}
+      />
+      <FilterBy
+        headerText="Темы"
+        filterField={'themes'}
+        appFiltersElements={appThemes}
+        filters={filters.themes}
         setFilterHandler={setNewFilterHandler}
       />
     </aside>
