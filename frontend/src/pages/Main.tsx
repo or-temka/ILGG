@@ -59,7 +59,7 @@ function Main() {
                     name={appBigCard.name}
                     imgSrc={appBigCard.imgSrc}
                     aboutGame={appBigCard.aboutApp}
-                    to={pageLink.applicationPage + appBigCard.id}
+                    to={pageLink.applicationPage + appBigCard._id}
                     newGame={appBigCard.isNewApp}
                   />
                 ))

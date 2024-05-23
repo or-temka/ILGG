@@ -1,17 +1,23 @@
-import { MouseEventHandler } from 'react'
+import { MouseEventHandler, ReactNode } from 'react'
 
 import styles from './Button.module.scss'
 
-export enum Variant {
-  simple = 'simple',
-  light = 'light',
-  primary = 'primary',
+export enum ButtonWithIconVariant {
+  simple = styles.button_simple,
+  light = styles.button_light,
+  primary = styles.button_primary,
+}
+
+export enum ButtonWithIconIconPosition {
+  left = 'left',
+  right = 'right',
 }
 
 interface ButtonWithIconProps {
   title: string
-  iconSVG?: any
-  variant?: Variant
+  iconSVG?: ReactNode
+  variant?: ButtonWithIconVariant
+  iconPosition?: ButtonWithIconIconPosition
   disabled?: boolean
   className?: string
   onClick?: MouseEventHandler<HTMLButtonElement>
@@ -20,7 +26,8 @@ interface ButtonWithIconProps {
 function ButtonWithIcon({
   title = '',
   iconSVG,
-  variant = Variant.simple, // types: simple, light, primary
+  variant = ButtonWithIconVariant.simple,
+  iconPosition = ButtonWithIconIconPosition.left,
   disabled = false,
   className = '',
   onClick = () => {},
@@ -31,18 +38,21 @@ function ButtonWithIcon({
       className={[
         styles.button,
         styles.buttonWithIcon,
-        variant === 'light'
-          ? styles.button_light
-          : variant === 'primary'
-          ? styles.button_primary
-          : styles.button_simple,
+        variant,
         disabled ? styles.button_disabled : '',
         className,
       ].join(' ')}
       onClick={onClick}
     >
-      {iconSVG}
-      {title}
+      {iconPosition === 'left' ? (
+        <>
+          {iconSVG} {title}
+        </>
+      ) : (
+        <>
+          {title} {iconSVG}
+        </>
+      )}
     </button>
   )
 }

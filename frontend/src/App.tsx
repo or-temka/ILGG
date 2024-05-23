@@ -1,16 +1,18 @@
-import { useMemo } from 'react'
+import { lazy, useMemo } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import MainLayout from './layouts/MainLayout'
-import Main from './pages/Main'
-import SignUp from './pages/account/SignUp'
-import Profile from './pages/account/Profile'
-import PageNotFound from './pages/PageNotFound'
 
 import FloatingPanelsQueue from './components/UI/floatingPanels/FloatingPanelsQueue'
 import pageLink from './pagesLinks'
 
 import useInitialization from './initialize'
+
+const Main = lazy(() => import('./pages/Main'))
+const Shop = lazy(() => import('./pages/Shop'))
+const SignUp = lazy(() => import('./pages/account/SignUp'))
+const Profile = lazy(() => import('./pages/account/Profile'))
+const PageNotFound = lazy(() => import('./pages/PageNotFound'))
 
 function App() {
   // init all data
@@ -24,6 +26,8 @@ function App() {
           <Routes>
             <Route path="" element={<MainLayout />}>
               <Route path={pageLink.main} element={<Main />}></Route>
+
+              <Route path={pageLink.shop} element={<Shop />}></Route>
 
               {/* profile pages */}
               <Route path={pageLink.signUp} element={<SignUp />}></Route>

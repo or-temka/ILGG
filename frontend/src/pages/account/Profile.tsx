@@ -10,7 +10,7 @@ import styles from './Profile.module.scss'
 import { useEffect, useState } from 'react'
 
 const tempUserData: IFullUserProfile = {
-  id: 1,
+  _id: 1,
   imgName: 'profileImage.jpg',
   name: 'Приора',
   login: 'sversys',

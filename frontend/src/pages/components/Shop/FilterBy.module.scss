@@ -1,0 +1,17 @@
+.filter {
+
+  &__label {
+    background-color: var(--background-4-color);
+    padding: 8px 20px;
+    color: var(--text-white-grey-color);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  &__filters {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

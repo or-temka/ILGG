@@ -9,14 +9,14 @@ import styles from './AsideInfo.module.scss'
 
 const friends: IUserProfile[] = [
   {
-    id: 1,
+    _id: 1,
     name: 'Алинка',
     login: 'alina',
     imgName: 'alina.jpg',
     isOnline: true,
   },
   {
-    id: 2,
+    _id: 2,
     name: 'муха',
     login: 'muhtar',
     imgName: 'myhtar.jpg',

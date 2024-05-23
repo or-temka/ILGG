@@ -13,9 +13,9 @@ interface SetUserAction {
 export const fetchApplicationsSimpleInfo = createAsyncThunk(
   'mainPageApplications/fetchApplicationsSimpleInfo',
   async () => {
-    return [
+    const returnedData: ISimpleApplication[] = [
       {
-        id: 1,
+        _id: 1,
         name: 'Find Number',
         imgSrc: 'find-number/poster.jpg',
         aboutApp:
@@ -23,16 +23,17 @@ export const fetchApplicationsSimpleInfo = createAsyncThunk(
         isNewApp: true,
       },
     ]
+    return returnedData
   }
 )
 
-export type mainPageApplicationsState = {
+export type MainPageApplicationsState = {
   data: ISimpleApplication[] | []
   loading: boolean
   error: string | null | undefined
 }
 
-const initialState: mainPageApplicationsState = {
+const initialState: MainPageApplicationsState = {
   data: [],
   loading: true,
   error: null,
@@ -43,7 +44,7 @@ const mainPageApplicationsSlice = createSlice({
   initialState,
   reducers: {
     setMainPageApplications: (
-      state: mainPageApplicationsState,
+      state: MainPageApplicationsState,
       action: SetUserAction
     ): any => ({
       data: action.payload,
@@ -72,6 +73,6 @@ export const { setMainPageApplications } = mainPageApplicationsSlice.actions
 
 export const selectMainPageApplications = (
   state: any
-): mainPageApplicationsState => state.mainPageApplications
+): MainPageApplicationsState => state.mainPageApplications
 
 export default mainPageApplicationsSlice.reducer

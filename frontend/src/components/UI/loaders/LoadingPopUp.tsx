@@ -1,30 +1,26 @@
 import PopUpContainer from '../popUps/skeletons/PopUpContainer'
 
-import { ReactComponent as LoadingSVG } from '../../../assets/svgs/loading.svg'
-
 import styles from './LoadingPopUp.module.scss'
+import LoadingSpiner from './LoadingSpiner'
 
 interface LoadingPopUpProps {
-  containerClassName?: string
-  className?: string
+  classNames?: {
+    containerClassName?: string
+    loadingSpinner?: string
+  }
 }
 
-function LoadingPopUp({
-  containerClassName = '',
-  className = '',
-}: LoadingPopUpProps) {
+function LoadingPopUp({ classNames }: LoadingPopUpProps) {
   return (
     <PopUpContainer
       showCloseButton={false}
       classNames={{
         className: styles.loading,
-        wrapperClassName: containerClassName,
+        wrapperClassName: classNames?.containerClassName,
       }}
       showBack={false}
     >
-      <div className={[styles.loading__loading, className].join(' ')}>
-        <LoadingSVG />
-      </div>
+      <LoadingSpiner className={classNames?.loadingSpinner} />
     </PopUpContainer>
   )
 }

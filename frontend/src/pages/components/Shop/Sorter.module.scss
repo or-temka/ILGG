@@ -1,0 +1,40 @@
+.sorter {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+
+  &__labelContainer {
+  }
+
+  &__label {
+    color: var(--grey-text-color);
+  }
+
+  &__sorts {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+  }
+
+  &__sortBtn {
+    &_active {
+      background-color: var(--background-3-color);
+
+      &:hover {
+        background-color: var(--background-3-hover-color);
+      }
+    }
+  }
+
+  &__sortBtnIcon {
+    &_up {
+      transform: rotate(180deg);
+    }
+    &_down {
+      transform: rotate(0deg);
+    }
+  }
+}

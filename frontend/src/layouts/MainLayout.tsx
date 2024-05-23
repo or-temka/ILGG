@@ -1,4 +1,4 @@
-import React from 'react'
+import { Suspense } from 'react'
 import { Outlet } from 'react-router-dom'
 
 import Header from './components/header/Header'
@@ -6,6 +6,7 @@ import LeftMenu from './components/menu/LeftMenu'
 import RightMenu from './components/menu/RightMenu'
 
 import styles from './Layout.module.scss'
+import LoadingSpiner from '../components/UI/loaders/LoadingSpiner'
 
 function MainLayout() {
   return (
@@ -28,7 +29,15 @@ function MainLayout() {
             >
               Онлайн сервис игр и программ ILGG
             </h1>
-            <Outlet />
+            <Suspense
+              fallback={
+                <div className={styles.layout__loadingSpinnerContainer}>
+                  <LoadingSpiner />
+                </div>
+              }
+            >
+              <Outlet />
+            </Suspense>
           </main>
           <RightMenu
             className={[styles.layout__menu, styles.layout__rightMenu].join(
