@@ -10,9 +10,11 @@ import useInitialization from './initialize'
 
 const Main = lazy(() => import('./pages/Main'))
 const Shop = lazy(() => import('./pages/Shop'))
+const PageNotFound = lazy(() => import('./pages/PageNotFound'))
+
 const SignUp = lazy(() => import('./pages/account/SignUp'))
 const Profile = lazy(() => import('./pages/account/Profile'))
-const PageNotFound = lazy(() => import('./pages/PageNotFound'))
+const EditProfile = lazy(() => import('./pages/account/EditProfile'))
 
 function App() {
   // init all data
@@ -34,6 +36,10 @@ function App() {
               <Route
                 path={pageLink.profile + ':id'}
                 element={<Profile />}
+              ></Route>
+              <Route
+                path={pageLink.editProfile}
+                element={<EditProfile />}
               ></Route>
 
               <Route path="*" index element={<PageNotFound />}></Route>

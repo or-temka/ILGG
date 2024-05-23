@@ -12,6 +12,7 @@ interface InputProps {
   value: string
   inputType?: string
   placeholder?: string
+  inputAutocomplete?: string
   label?: string
   variant?: InputVariant
   errorText?: string
@@ -28,6 +29,7 @@ function Input({
   inputType = 'text',
   placeholder = '',
   label = '',
+  inputAutocomplete,
   variant = InputVariant.simple, // types: simple, light
   errorText = '',
   onChange = () => {},
@@ -47,6 +49,7 @@ function Input({
         id={htmlIdRef.current}
         value={value}
         type={inputType}
+        autoComplete={inputAutocomplete}
         onChange={onChange}
         onClick={onClick}
         placeholder={placeholder}
