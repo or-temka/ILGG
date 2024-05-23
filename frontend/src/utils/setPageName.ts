@@ -1,7 +1,8 @@
 import { SITE_NAME } from '../variables'
 
-const setPageName = (name: string) => {
+export const setPageName = (name: string) => {
   document.title = `${SITE_NAME} | ${name}`
 }
-
-export default setPageName
+export const clearPageName = () => {
+  document.title = SITE_NAME
+}

@@ -4,9 +4,9 @@ import { Outlet } from 'react-router-dom'
 import Header from './components/header/Header'
 import LeftMenu from './components/menu/LeftMenu'
 import RightMenu from './components/menu/RightMenu'
+import LoadingSpiner from '../components/UI/loaders/LoadingSpiner'
 
 import styles from './Layout.module.scss'
-import LoadingSpiner from '../components/UI/loaders/LoadingSpiner'
 
 function MainLayout() {
   return (

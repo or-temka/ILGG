@@ -12,6 +12,8 @@ import Main from './components/Shop/Main'
 import Filter from './components/Shop/Filter'
 import Header from './components/Shop/Header'
 
+import { setPageName } from '../utils/setPageName'
+
 import styles from './Shop.module.scss'
 
 function Shop() {
@@ -21,6 +23,7 @@ function Shop() {
   const [resetSort, setResetSort] = useState(0)
 
   useEffect(() => {
+    setPageName('Магазин')
     if (shopAppsIsLoading) {
       dispatch(fetchShopApps())
     }

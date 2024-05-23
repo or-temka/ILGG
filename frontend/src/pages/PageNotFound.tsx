@@ -1,12 +1,15 @@
 import { useEffect } from 'react'
+
 import { ReactComponent as EmojiSadSVG } from '../assets/svgs/emoji/sad.svg'
 
-import setPageName from '../utils/setPageName'
+import { setPageName } from '../utils/setPageName'
 
 import styles from './PageNotFound.module.scss'
 
 function PageNotFound() {
-  setPageName('Страница не найдена')
+  useEffect(() => {
+    setPageName('Страница не найдена')
+  }, [])
 
   return (
     <div className={['wrapper', styles.page].join(' ')}>

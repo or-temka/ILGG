@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { IFullUserProfile } from '../../interfaces/userProfile'
@@ -6,8 +7,9 @@ import Header from './components/Profile/Header'
 import AdoptInfo from './components/Profile/AdoptInfo'
 import HeaderSkeleton from './components/Profile/skeletons/HeaderSkeleton'
 
+import { setPageName } from '../../utils/setPageName'
+
 import styles from './Profile.module.scss'
-import { useEffect, useState } from 'react'
 
 const tempUserData: IFullUserProfile = {
   _id: 1,
@@ -42,6 +44,11 @@ function Profile() {
       setUserData(fetchUserData())
     }, 1000)
   }, [])
+
+  useEffect(() => {
+    if (!userData) return
+    setPageName(userData.name)
+  }, [userData])
 
   return (
     <div className={[styles.profile].join(' ')}>
