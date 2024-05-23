@@ -1,4 +1,4 @@
-import { MongoId } from './main'
+import { IStatisticViews, MongoId } from './main'
 
 export interface ISimpleApplication {
   _id: MongoId
@@ -16,6 +16,15 @@ export interface IShopApplication extends ISimpleApplication {
   categories: MongoId[]
   themes: MongoId[]
   playerTypes: MongoId[]
+  price?: number
+  rating?: AppRating
+  releaseDate: string
+  statistics: Pick<IAppStatistic, 'views'>
+}
+
+// App statistic
+export interface IAppStatistic {
+  views: IStatisticViews
 }
 
 // categories
@@ -41,3 +50,6 @@ export type AppPlayerType = {
   _id: MongoId
   name: string
 }
+
+// other
+export type AppRating = 1 | 2 | 3 | 4 | 5

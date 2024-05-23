@@ -6,11 +6,16 @@
   &__nameContainer {
     display: flex;
     flex-direction: row;
+    max-width: 240px;
     gap: 10px;
   }
 
   &__name {
     width: fit-content;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
     &:hover {
       color: var(--link-blue-color);
     }

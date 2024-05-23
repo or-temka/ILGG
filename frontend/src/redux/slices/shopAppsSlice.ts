@@ -3,12 +3,22 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { IShopApplication } from '../../interfaces/application'
 import { MongoId } from '../../interfaces/main'
 
+import sortObjectsArrayBy from '../../utils/sortObjectsArrayBy'
+import transformStringToDate from '../../utils/transformStringToDate'
+
 //#region reducers interfaces
 interface FilterShopAppsByAction {
   type: string
   payload: {
     filtersSet: MongoId[] | null
-    sortFieldName: FilterFields
+    filterFieldName: FilterFields
+  }
+}
+interface SortShopAppsByAction {
+  type: string
+  payload: {
+    sortValue: SortValue
+    sortFieldName: SorterFields
   }
 }
 //#endregion
@@ -29,6 +39,9 @@ export const fetchShopApps = createAsyncThunk(
         categories: [1, 2],
         playerTypes: [1],
         themes: [1],
+        rating: 5,
+        releaseDate: '10-12-2002',
+        statistics: { views: { month: 100, week: 20, day: 4 } },
       },
       {
         _id: 2,
@@ -41,6 +54,10 @@ export const fetchShopApps = createAsyncThunk(
         categories: [2, 3],
         playerTypes: [1],
         themes: [1],
+        price: 0,
+        rating: 3,
+        releaseDate: '2-11-2002',
+        statistics: { views: { month: 1, week: 20, day: 4 } },
       },
       {
         _id: 3,
@@ -53,6 +70,9 @@ export const fetchShopApps = createAsyncThunk(
         categories: [1, 4],
         playerTypes: [1],
         themes: [1],
+        price: 100,
+        releaseDate: '5-01-2003',
+        statistics: { views: { month: 1000, week: 20, day: 4 } },
       },
       {
         _id: 4,
@@ -65,6 +85,10 @@ export const fetchShopApps = createAsyncThunk(
         categories: [5],
         playerTypes: [1],
         themes: [1],
+        price: 200,
+        rating: 1,
+        releaseDate: '3-08-1999',
+        statistics: { views: { month: 300, week: 20, day: 4 } },
       },
     ]
     return returnedData
@@ -72,7 +96,16 @@ export const fetchShopApps = createAsyncThunk(
 )
 
 export type FilterFields = 'categories' | 'playerTypes' | 'themes' | 'types'
+export type SorterFields = 'price' | 'rating' | 'releaseDate' | 'popularity'
+export type SortValue = boolean | null
 export type FilterValue = Set<MongoId> | null
+
+const fieldForSortInArray: { [key in SorterFields]: string } = {
+  price: 'price',
+  rating: 'rating',
+  releaseDate: 'releaseDate',
+  popularity: 'statistics.views.month',
+}
 
 type ShopAppsStateData = {
   init: IShopApplication[] | []
@@ -102,7 +135,7 @@ const shopAppsSlice = createSlice({
       state: ShopAppsState,
       action: FilterShopAppsByAction
     ): any => {
-      const fieldNameForFilter = action.payload.sortFieldName
+      const fieldNameForFilter = action.payload.filterFieldName
       const filtersArray = action.payload.filtersSet
 
       const initialApps = [...state.data.init]
@@ -117,7 +150,29 @@ const shopAppsSlice = createSlice({
         state.data.filtered = filteredApps
       }
     },
-    resetFiltersShopApps: (state: ShopAppsState, action: any): void => {
+
+    sortShopAppsBy: (
+      state: ShopAppsState,
+      action: SortShopAppsByAction
+    ): any => {
+      const fieldNameForSort = action.payload.sortFieldName
+      const sortValue = action.payload.sortValue
+
+      const isDate = ['releaseDate'].includes(fieldNameForSort)
+
+      const initialApps = [...state.data.filtered]
+
+      const sortedApps = sortObjectsArrayBy(
+        initialApps,
+        fieldForSortInArray[fieldNameForSort],
+        sortValue,
+        isDate ? transformStringToDate : undefined
+      )
+
+      state.data.filtered = sortedApps
+    },
+
+    resetFiltersShopApps: (state: ShopAppsState): void => {
       state.data.filtered = state.data.init
     },
   },
@@ -139,7 +194,8 @@ const shopAppsSlice = createSlice({
   },
 })
 
-export const { filterShopAppsBy, resetFiltersShopApps } = shopAppsSlice.actions
+export const { filterShopAppsBy, sortShopAppsBy, resetFiltersShopApps } =
+  shopAppsSlice.actions
 
 export const selectShopAppsState = (state: any): ShopAppsState => state.shopApps
 export const selectShopApps = (state: any): IShopApplication[] | [] =>

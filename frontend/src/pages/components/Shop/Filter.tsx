@@ -30,29 +30,32 @@ const filtersInitial: Filters = {
 }
 
 interface FilterProps {
+  resetSortHandler: Function
   classNames?: {
     main?: string
   }
 }
 
-function Filter({ classNames }: FilterProps) {
+function Filter({ classNames, resetSortHandler }: FilterProps) {
   const dispatch = useDispatch()
 
   const [filters, setFilters] = useState(filtersInitial)
 
   const setNewFilterHandler = (field: FilterFields, newValue: FilterValue) => {
     setFilters((prev: Filters) => ({ ...prev, [field]: newValue }))
+    resetSortHandler()
 
     dispatch(
       filterShopAppsBy({
         filtersSet: newValue ? Array.from(newValue) : null,
-        sortFieldName: field,
+        filterFieldName: field,
       })
     )
   }
 
   const onClickResetFiltersHandler = () => {
     setFilters(filtersInitial)
+    resetSortHandler()
     dispatch(resetFiltersShopApps(undefined))
   }
 

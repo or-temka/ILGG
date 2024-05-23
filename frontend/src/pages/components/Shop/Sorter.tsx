@@ -1,4 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+
+import {
+  SortValue,
+  SorterFields,
+  sortShopAppsBy,
+} from '../../../redux/slices/shopAppsSlice'
 
 import ButtonWithIcon, {
   ButtonWithIconIconPosition,
@@ -7,12 +14,7 @@ import { ReactComponent as ArrowSVG } from '../../../assets/svgs/arrow.svg'
 
 import styles from './Sorter.module.scss'
 
-type Sorted = {
-  price: null | boolean
-  rating: null | boolean
-  releaseDate: null | boolean
-  popularity: null | boolean
-}
+type Sorted = { [key in SorterFields]: SortValue }
 
 const sortedInitial: Sorted = {
   price: null,
@@ -21,16 +23,50 @@ const sortedInitial: Sorted = {
   popularity: null,
 }
 
-function Sorter() {
+interface SorterProps {
+  resetSort?: number
+}
+
+function Sorter({ resetSort }: SorterProps) {
+  const dispatch = useDispatch()
+
   const [sorted, setSorted] = useState(sortedInitial)
 
+  useEffect(() => {
+    resetSortHandler()
+  }, [resetSort])
+
   const hadleToggleSort = (
-    sortField: 'price' | 'rating' | 'releaseDate' | 'popularity'
+    sortField: SorterFields,
+    reverse: boolean = false
   ) => {
-    setSorted((prev) => ({
-      ...sortedInitial,
-      [sortField]: prev[sortField] ? false : true,
-    }))
+    setSorted((prev) => {
+      return {
+        ...sortedInitial,
+        [sortField]:
+          prev[sortField] === null
+            ? reverse
+              ? false
+              : true
+            : !prev[sortField],
+      }
+    })
+
+    dispatch(
+      sortShopAppsBy({
+        sortFieldName: sortField,
+        sortValue:
+          sorted[sortField] === null
+            ? reverse
+              ? false
+              : true
+            : !sorted[sortField],
+      })
+    )
+  }
+
+  const resetSortHandler = () => {
+    setSorted(sortedInitial)
   }
 
   return (
@@ -62,7 +98,7 @@ function Sorter() {
         <ButtonWithIcon
           title="По популярности"
           iconPosition={ButtonWithIconIconPosition.right}
-          onClick={() => hadleToggleSort('popularity')}
+          onClick={() => hadleToggleSort('popularity', true)}
           className={
             sorted.popularity !== null ? styles.sorter__sortBtn_active : ''
           }
@@ -84,7 +120,7 @@ function Sorter() {
         <ButtonWithIcon
           title="По рейтингу"
           iconPosition={ButtonWithIconIconPosition.right}
-          onClick={() => hadleToggleSort('rating')}
+          onClick={() => hadleToggleSort('rating', true)}
           className={
             sorted.rating !== null ? styles.sorter__sortBtn_active : ''
           }
@@ -106,7 +142,7 @@ function Sorter() {
         <ButtonWithIcon
           title="По дате выхода"
           iconPosition={ButtonWithIconIconPosition.right}
-          onClick={() => hadleToggleSort('releaseDate')}
+          onClick={() => hadleToggleSort('releaseDate', true)}
           className={
             sorted.releaseDate !== null ? styles.sorter__sortBtn_active : ''
           }

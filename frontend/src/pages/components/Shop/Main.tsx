@@ -28,7 +28,7 @@ function Main() {
         shopApps.map((app) => (
           <GameBigCard
             key={app._id}
-            name={app.name}
+            name={app.name + ' / ' + app.price}
             imgSrc={app.imgSrc}
             aboutGame={app.aboutApp}
             to={pageLink.applicationPage + app._id}
