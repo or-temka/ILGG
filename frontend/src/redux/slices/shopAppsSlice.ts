@@ -134,7 +134,7 @@ const shopAppsSlice = createSlice({
     filterShopAppsBy: (
       state: ShopAppsState,
       action: FilterShopAppsByAction
-    ): any => {
+    ): void => {
       const fieldNameForFilter = action.payload.filterFieldName
       const filtersArray = action.payload.filtersSet
 
@@ -154,7 +154,7 @@ const shopAppsSlice = createSlice({
     sortShopAppsBy: (
       state: ShopAppsState,
       action: SortShopAppsByAction
-    ): any => {
+    ): void => {
       const fieldNameForSort = action.payload.sortFieldName
       const sortValue = action.payload.sortValue
 
