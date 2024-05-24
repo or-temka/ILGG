@@ -16,6 +16,8 @@ const SignUp = lazy(() => import('./pages/account/SignUp'))
 const Profile = lazy(() => import('./pages/account/Profile'))
 const EditProfile = lazy(() => import('./pages/account/EditProfile'))
 
+const Game = lazy(() => import('./pages/games/Game'))
+
 function App() {
   // init all data
   const initialize = useInitialization()
@@ -41,6 +43,9 @@ function App() {
                 path={pageLink.editProfile}
                 element={<EditProfile />}
               ></Route>
+
+              {/* application pages */}
+              <Route path={pageLink.game + ':id'} element={<Game />}></Route>
 
               <Route path="*" index element={<PageNotFound />}></Route>
             </Route>

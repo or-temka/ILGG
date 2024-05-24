@@ -15,6 +15,7 @@ const enum pageLink {
 
   // applications
   applicationPage = '/app/', // /app/:id
+  game = '/game/', // /game/:id
 
   // seconds
   privacy = '/help/privacy-policy',
