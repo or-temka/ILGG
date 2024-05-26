@@ -1,0 +1,39 @@
+.desc {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__term {
+    &::after {
+      content: ':';
+    }
+
+    &_light {
+      color: var(--light-text-color);
+    }
+
+    &_simple {
+      color: var(--grey-text-color);
+    }
+  }
+
+  &__definition {
+    margin: 0;
+
+    &_link {
+      color: var(--active-2-color);
+      cursor: pointer;
+
+      &:hover {
+        color: var(--active-2-hover-color);
+      }
+    }
+  }
+}
