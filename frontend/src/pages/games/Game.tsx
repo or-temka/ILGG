@@ -14,7 +14,7 @@ function Game() {
 
   return (
     <div className={styles.page}>
-      <div>
+      <div className={styles.page__content}>
         <Header />
         <Info />
       </div>
