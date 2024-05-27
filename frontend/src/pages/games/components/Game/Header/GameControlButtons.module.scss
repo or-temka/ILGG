@@ -1,3 +1,41 @@
+@import '../../../../../mixins.scss';
+
 .control {
-  
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  flex-wrap: wrap;
+
+  &__btn {
+    @include h3;
+    padding: 12px 30px;
+    color: var(--text-color);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.125);
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex: 1;
+    min-width: 310px;
+
+    & > svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    &_play {
+      @include background-green-lg(120deg);
+
+      &:hover {
+        @include background-green-lg-hover(120deg);
+      }
+    }
+
+    &_add {
+      @include background-blue-lg(120deg);
+
+      &:hover {
+        @include background-blue-lg-hover(120deg);
+      }
+    }
+  }
 }
