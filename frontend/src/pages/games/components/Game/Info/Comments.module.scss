@@ -1,3 +1,19 @@
 .comments {
-  
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__header {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &__label {
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
 }
