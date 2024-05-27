@@ -1,3 +1,5 @@
+@import '../../../mixins.scss';
+
 .desc {
   margin: 0;
   display: flex;
@@ -8,6 +10,10 @@
     display: flex;
     flex-direction: row;
     gap: 8px;
+
+    &_definitionList {
+      flex-direction: column;
+    }
   }
 
   &__term {
@@ -35,5 +41,14 @@
         color: var(--active-2-hover-color);
       }
     }
+  }
+
+  &__definitionList {
+    margin: 0;
+    padding-left: 25px;
+  }
+
+  &__definitionListItem {
+    @include paragraph;
   }
 }
