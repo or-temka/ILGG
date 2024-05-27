@@ -11,17 +11,17 @@ import styles from './Info.module.scss'
 function Info() {
   return (
     <div className={styles.info}>
-      <div>
-        <AboutGameText />
-        <MinSystemRequirements />
-        <Comments />
-      </div>
-      <div>
+      <main className={styles.main}>
+        <AboutGameText classNames={{ wrapper: styles.main__item }} />
+        <MinSystemRequirements classNames={{ wrapper: styles.main__item }} />
+        <Comments classNames={{ wrapper: styles.main__item }} />
+      </main>
+      <aside className={styles.aside}>
         <ScreenSharingInfo />
         <Categories />
         <Tags />
         <LanguageSupport />
-      </div>
+      </aside>
     </div>
   )
 }

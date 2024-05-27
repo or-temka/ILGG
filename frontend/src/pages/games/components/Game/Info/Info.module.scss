@@ -1,3 +1,22 @@
 .info {
-  
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px;
+  background-color: var(--background-6-color);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__item {
+    padding: 15px 20px;
+    background-color: var(--background-color);
+    border-radius: 3px;
+  }
+}
+
+.aside {
 }
