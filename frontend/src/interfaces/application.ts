@@ -69,3 +69,13 @@ export type AppPlayerType = {
 
 // other
 export type AppRating = 1 | 2 | 3 | 4 | 5
+
+export type AppLanguage = {
+  _id: MongoId
+  name: string
+  support: {
+    interface: boolean
+    voiceover: boolean
+    subtitles: boolean
+  }
+}
