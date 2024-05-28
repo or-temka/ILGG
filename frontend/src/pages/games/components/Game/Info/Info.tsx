@@ -17,10 +17,16 @@ function Info() {
         <Comments classNames={{ wrapper: styles.main__item }} />
       </main>
       <aside className={styles.aside}>
-        <ScreenSharingInfo />
-        <Categories />
-        <Tags />
-        <LanguageSupport />
+        <ScreenSharingInfo classNames={{ wrapper: styles.aside__item }} />
+        <Categories
+          classNames={{
+            wrapper: [styles.aside__item, styles.aside__item_bottomWide].join(
+              ' '
+            ),
+          }}
+        />
+        <Tags classNames={{ wrapper: styles.aside__item }} />
+        <LanguageSupport classNames={{ wrapper: styles.aside__item }} />
       </aside>
     </div>
   )
