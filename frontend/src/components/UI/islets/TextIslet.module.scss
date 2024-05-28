@@ -1,0 +1,16 @@
+@import '../../../mixins.scss';
+
+.text {
+  @include link;
+  padding: 3px 8px;
+  background-color: var(--background-color);
+  width: fit-content;
+
+  &_clickable {
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--background-3-color);
+    }
+  }
+}
