@@ -1,3 +1,73 @@
+@import '../../../../../mixins.scss';
+
 .info {
-  
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__header {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &__label {
+    @include textBold;
+  }
+
+  &__content {
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  &__head {
+  }
+
+  &__body {
+    border-bottom: 1px solid var(--background-3-color);
+  }
+
+  &__tr {
+    height: 42px;
+
+    &_head {
+    }
+
+    &_body {
+      border-top: 1px solid var(--background-3-color);
+    }
+  }
+
+  &__th {
+    @include paragraph;
+    text-align: center;
+
+    &:not(:first-child) {
+      padding-left: 8px;
+    }
+  }
+
+  &__td {
+    @include paragraph;
+    text-align: center;
+
+    &_name {
+      text-align: left;
+
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  &__noneLine {
+    display: inline-block;
+    width: 12px;
+    height: 2px;
+    border-radius: 5px;
+    background-color: var(--light-text-color);
+    margin-bottom: 2px;
+  }
 }
