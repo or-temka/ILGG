@@ -1,0 +1,26 @@
+@import '../../../../../mixins.scss';
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__header {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &__label {
+    @include textBold;
+
+    &::after {
+      content: ':';
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

@@ -1,0 +1,14 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  &__item {
+    padding: 20px;
+    background-color: var(--background-5-color);
+    border-radius: 5px;
+  }
+
+  &__paragraph {
+  }
+}

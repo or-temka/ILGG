@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch } from '../redux/store'
 
@@ -6,12 +6,13 @@ import {
   fetchApplicationsSimpleInfo,
   selectMainPageApplications,
 } from '../redux/slices/mainPageApplicationsSlice'
+import pageLink from '../pagesLinks'
 
 import Input from '../components/UI/inputs/Input'
 import GameBigCard from '../components/cards/GameBigCard'
 import GameBigCardSkeleton from '../components/cards/GameBigCardSkeleton'
 
-import pageLink from '../pagesLinks'
+import { clearPageName } from '../utils/setPageName'
 
 import styles from './Main.module.scss'
 
@@ -25,6 +26,10 @@ function Main() {
 
   useMemo(() => {
     dispatch(fetchApplicationsSimpleInfo())
+  }, [])
+
+  useEffect(() => {
+    clearPageName()
   }, [])
 
   return (
@@ -59,7 +64,7 @@ function Main() {
                     name={appBigCard.name}
                     imgSrc={appBigCard.imgSrc}
                     aboutGame={appBigCard.aboutApp}
-                    to={pageLink.applicationPage + appBigCard._id}
+                    to={pageLink.game + appBigCard._id}
                     newGame={appBigCard.isNewApp}
                   />
                 ))

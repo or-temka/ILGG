@@ -1,0 +1,28 @@
+.positivity {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+
+  &__bigLike {
+    width: 26px;
+    height: 25px;
+
+    &_positive {
+      & > path {
+        fill: var(--success-color);
+      }
+    }
+
+    &_notPositive {
+      transform: rotate(180deg);
+
+      & > path {
+        fill: var(--error-color);
+      }
+    }
+  }
+
+  &__text {
+  }
+}

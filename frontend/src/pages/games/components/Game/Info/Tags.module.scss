@@ -1,0 +1,23 @@
+@import '../../../../../mixins.scss';
+
+.tags {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__header {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &__label {
+    @include textBold;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+}

@@ -1,10 +1,12 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import Input from '../../components/UI/inputs/Input'
 import Checkbox from '../../components/UI/inputs/Checkbox'
 import Button, { ButtonVariant } from '../../components/UI/buttons/Button'
 import InputWithBtnIcon from '../../components/UI/inputs/InputWithBtnIcon'
 import { ReactComponent as EyeSVG } from '../../assets/svgs/eye.svg'
+
+import { setPageName } from '../../utils/setPageName'
 
 import styles from './SignUp.module.scss'
 
@@ -31,6 +33,10 @@ function SignUp() {
     event.preventDefault()
     // reg TODO
   }
+
+  useEffect(() => {
+    setPageName('Регистрация')
+  }, [])
 
   return (
     <div className={['wrapper', styles.signUp].join(' ')}>

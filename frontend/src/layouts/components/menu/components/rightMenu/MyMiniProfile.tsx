@@ -21,7 +21,10 @@ function MyMiniProfile({ myUserData }: MyMiniProfileProps) {
       title: 'Мой профиль',
       handler: () => navigate(pageLink.profile + myUserData?._id),
     },
-    { title: 'Настройки профиля', handler: () => {} },
+    {
+      title: 'Настройки профиля',
+      handler: () => navigate(pageLink.editProfile),
+    },
     { title: 'Выйти', handler: () => {} },
   ]
 

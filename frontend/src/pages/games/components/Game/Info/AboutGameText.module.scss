@@ -1,0 +1,44 @@
+@import '../../../../../mixins.scss';
+
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  &__header {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &__label {
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__textBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__textBlockLabel {
+    color: var(--active-2-color);
+  }
+
+  &__paragraph {
+  }
+
+  &__list {
+    margin: 0;
+    padding-left: 25px;
+  }
+
+  &__listItem {
+    margin-top: 3px;
+    @include paragraph;
+  }
+}
