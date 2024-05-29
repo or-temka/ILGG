@@ -17,10 +17,35 @@ export const getMyAppsLibrary = async () => {
   const returnedData: IAppFromLibrary[] = [
     {
       _id: 1,
-      name: 'Find number',
+      name: 'Find number1',
       aboutApp: 'Я о своем приложении говорю вам',
       isNewApp: false,
       imgSrc: 'find-number/poster.jpg',
+      types: [1],
+    },
+    {
+      _id: 2,
+      name: 'Find number2',
+      aboutApp: 'Я о своем приложении говорю вам',
+      isNewApp: false,
+      imgSrc: 'find-number/poster.jpg',
+      types: [2],
+    },
+    {
+      _id: 3,
+      name: 'Find number3',
+      aboutApp: 'Я о своем приложении говорю вам',
+      isNewApp: false,
+      imgSrc: 'find-number/poster.jpg',
+      types: [2],
+    },
+    {
+      _id: 4,
+      name: 'Find number4',
+      aboutApp: 'Я о своем приложении говорю вам',
+      isNewApp: false,
+      imgSrc: 'find-number/poster.jpg',
+      types: [1],
     },
   ]
   return returnedData
@@ -34,7 +59,7 @@ interface AppsLibraryProps {
 
 function AppsLibrary({ classNames }: AppsLibraryProps) {
   const dispatch = useDispatch()
-  const [viewAppsType, setViewAppsType] = useState<ViewAppsType>('bigPictures')
+  const [viewAppsType, setViewAppsType] = useState<ViewAppsType>('list')
 
   useEffect(() => {
     setPageName('Библиотека')
