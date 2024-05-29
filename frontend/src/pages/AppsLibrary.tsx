@@ -2,6 +2,8 @@ import Header from './components/AppsLibrary/Header'
 import Main from './components/AppsLibrary/Main'
 
 import styles from './AppsLibrary.module.scss'
+import { useEffect } from 'react'
+import { setPageName } from '../utils/setPageName'
 
 interface AppsLibraryProps {
   classNames?: {
@@ -10,6 +12,10 @@ interface AppsLibraryProps {
 }
 
 function AppsLibrary({ classNames }: AppsLibraryProps) {
+  useEffect(() => {
+    setPageName('Библиотека')
+  }, [])
+
   return (
     <>
       <div className={['wrapper', styles.page, classNames?.wrapper].join(' ')}>

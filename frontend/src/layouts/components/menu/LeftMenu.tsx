@@ -50,9 +50,9 @@ function LeftMenu({ className = '' }: LeftMenuProps) {
           <>
             <ButtonPage
               name="Библиотека"
-              to={pageLink.library}
+              to={pageLink.appsLibrary}
               svgComponent={<LibrarySVG />}
-              active={location === pageLink.library}
+              active={location === pageLink.appsLibrary}
               notificationsCount={3}
             />
             <ButtonPage

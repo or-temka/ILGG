@@ -2,7 +2,7 @@ const enum pageLink {
   // main pages (from menu)
   main = '/',
   shop = '/shop',
-  library = '/library',
+  appsLibrary = '/library',
   inventory = '/inventory',
   marketplace = '/marketplace',
   friends = '/friends',
