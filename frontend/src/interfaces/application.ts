@@ -30,6 +30,9 @@ export interface IApplication extends IShopApplication {
   comments: IAppComment[]
 }
 
+export interface IAppFromLibrary extends ISimpleApplication {}
+
+// other
 interface IAppComment {
   _id: MongoId
   author: MongoId
