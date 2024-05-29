@@ -10,5 +10,9 @@
     &_active {
       transform: rotate(180deg);
     }
+
+    & > svg > path {
+      fill: var(--active-color);
+    }
   }
 }

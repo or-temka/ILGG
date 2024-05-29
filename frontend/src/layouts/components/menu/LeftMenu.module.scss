@@ -17,6 +17,9 @@
   gap: 10px;
   padding: 20px;
 
+  &__changeTheme {
+  }
+
   &__link {
     @include link;
     color: var(--light-text-color);
@@ -29,5 +32,32 @@
   &__text {
     @include smallText;
     color: var(--light-text-color);
+  }
+}
+
+.changeThemeBtn {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transform: rotate(45deg);
+
+  &:hover {
+    outline: 2px solid var(--active-2-color);
+  }
+
+  &__firstColor {
+    width: 50%;
+    height: 100%;
+    background-color: var(--background-color);
+  }
+
+  &__secondColor {
+    width: 50%;
+    height: 100%;
+    background-color: var(--background-color--reverse-theme);
   }
 }

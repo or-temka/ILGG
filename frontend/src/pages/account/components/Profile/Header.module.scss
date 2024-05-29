@@ -5,7 +5,7 @@
   justify-content: space-between;
   position: relative;
   padding: 20px 40px;
-  background: rgba(29, 32, 51, 0.92);
+  background: var(--background-photo-transparent);
 
   &__mainInfo {
     display: flex;

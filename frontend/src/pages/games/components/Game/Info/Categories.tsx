@@ -27,21 +27,33 @@ function Categories({ classNames }: CategoriesProps) {
           text="Для одного игрока"
           svgComponent={<HumanSVG />}
           onClick={() => {}}
+          classNames={{
+            iconContainer: style.categories__textIsletIconContainer,
+          }}
         />
         <IconTextIslet
           text="Вечеринка"
           svgComponent={<GlassesSVG />}
           onClick={() => {}}
+          classNames={{
+            iconContainer: style.categories__textIsletIconContainer,
+          }}
         />
         <IconTextIslet
           text="Для телефона"
           svgComponent={<PhoneSVG />}
           onClick={() => {}}
+          classNames={{
+            iconContainer: style.categories__textIsletIconContainer,
+          }}
         />
         <IconTextIslet
           text="Для компьютера"
           svgComponent={<PcSVG />}
           onClick={() => {}}
+          classNames={{
+            iconContainer: style.categories__textIsletIconContainer,
+          }}
         />
       </div>
     </div>

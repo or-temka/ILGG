@@ -23,4 +23,12 @@
     flex-direction: column;
     gap: 10px;
   }
+
+  &__textIsletIconContainer {
+    & > svg {
+      & > path {
+        fill: var(--background-color);
+      }
+    }
+  }
 }

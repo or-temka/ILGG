@@ -3,6 +3,12 @@
   height: 23px;
 
   animation: rotation 3s linear infinite;
+
+  & > svg {
+    & > path {
+      fill: var(--active-color);
+    }
+  }
 }
 
 @keyframes rotation {
