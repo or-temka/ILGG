@@ -1,3 +1,42 @@
 .friends {
-  
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  &__header {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &__label {
+    color: var(--grey-text-color);
+
+    &::after {
+      content: ':';
+    }
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__friendsList {
+    display: flex;
+    flex-direction: row;
+    column-gap: 15px;
+    row-gap: 10px;
+  }
+
+  &__friendTooltip {
+    border-radius: 50%;
+  }
+
+  &__friendImage {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
 }

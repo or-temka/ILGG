@@ -15,8 +15,8 @@ function AppWindow({ classNames }: AppWindowProps) {
     <section className={[styles.window, classNames?.wrapper].join(' ')}>
       <AppHeader />
       <main className={styles.window__main}>
-        <AppFriends />
-        <AppNews />
+        <AppFriends classNames={{ wrapper: styles.window__mainElem }} />
+        <AppNews classNames={{ wrapper: styles.window__mainElem }} />
       </main>
     </section>
   )
