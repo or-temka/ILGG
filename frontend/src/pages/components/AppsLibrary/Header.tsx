@@ -1,25 +1,30 @@
 import { useState } from 'react'
 
+import { ViewAppsType } from '../../AppsLibrary'
+
 import Input from '../../../components/UI/inputs/Input'
 import { ReactComponent as ListPapersSVG } from '../../../assets/svgs/listsPapers.svg'
 import { ReactComponent as TilesSVG } from '../../../assets/svgs/tiles.svg'
-
-import styles from './Header.module.scss'
 import Tooltip, {
   VerticalDirection,
 } from '../../../components/UI/tooltips/Tooltip'
 
+import styles from './Header.module.scss'
+
 interface HeaderProps {
+  viewAppsType: ViewAppsType
+  onChangeViewAppTypes: (viewType: ViewAppsType) => void
   classNames?: {
     wrapper?: string
   }
 }
 
-function Header({ classNames }: HeaderProps) {
+function Header({
+  viewAppsType,
+  onChangeViewAppTypes,
+  classNames,
+}: HeaderProps) {
   const [searchInputVal, setSearchInputVal] = useState<string>('')
-  const [viewAppsType, setViewAppsType] = useState<'list' | 'bigPictures'>(
-    'bigPictures'
-  )
 
   return (
     <header className={[styles.header, classNames?.wrapper].join(' ')}>
@@ -39,7 +44,7 @@ function Header({ classNames }: HeaderProps) {
                 styles.header__manageBtn_list,
                 viewAppsType === 'list' ? styles.header__manageBtn_active : '',
               ].join(' ')}
-              onClick={() => setViewAppsType('list')}
+              onClick={() => onChangeViewAppTypes('list')}
             >
               <ListPapersSVG />
             </button>
@@ -56,7 +61,7 @@ function Header({ classNames }: HeaderProps) {
                   ? styles.header__manageBtn_active
                   : '',
               ].join(' ')}
-              onClick={() => setViewAppsType('bigPictures')}
+              onClick={() => onChangeViewAppTypes('bigPictures')}
             >
               <TilesSVG />
             </button>

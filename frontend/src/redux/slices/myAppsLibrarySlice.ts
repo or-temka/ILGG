@@ -7,12 +7,12 @@ interface ReducerAction {
   type: string
 }
 interface SetLibraryAppsAction extends ReducerAction {
-  payload: IAppFromLibrary | null
+  payload: IAppFromLibrary[] | null
 }
 //#endregion
 
 export type AppsLibraryState = {
-  data: IAppFromLibrary | null
+  data: IAppFromLibrary[] | null
   loading: boolean
   error: string | null | undefined
 }
@@ -27,7 +27,10 @@ const myAppsLibrarySlice = createSlice({
   name: 'myAppsLibrary',
   initialState,
   reducers: {
-    setLibraryApps: (_, action: SetLibraryAppsAction): any => ({
+    setLibraryApps: (
+      state: AppsLibraryState,
+      action: SetLibraryAppsAction
+    ): any => ({
       data: action.payload,
       loading: false,
       error: null,
