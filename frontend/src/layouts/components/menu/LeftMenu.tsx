@@ -15,6 +15,11 @@ import pageLink from '../../../pagesLinks'
 
 import menuStyles from './Menu.module.scss'
 import styles from './LeftMenu.module.scss'
+import Tooltip, {
+  HorizontalDirection,
+  VerticalDirection,
+} from '../../../components/UI/tooltips/Tooltip'
+import changeSiteTheme from '../../../utils/changeSiteTheme'
 
 interface LeftMenuProps {
   className?: string
@@ -80,6 +85,19 @@ function LeftMenu({ className = '' }: LeftMenuProps) {
         />
       </nav>
       <footer className={styles.footer}>
+        <div className={styles.footer__changeTheme}>
+          <Tooltip
+            postitionVertical={VerticalDirection.top}
+            postitionHorizontal={HorizontalDirection.right}
+            text="Сменить тему оформления сайта"
+          >
+            <div className={styles.changeThemeBtn} onClick={changeSiteTheme}>
+              <div className={styles.changeThemeBtn__firstColor} />
+              <div className={styles.changeThemeBtn__secondColor} />
+            </div>
+          </Tooltip>
+        </div>
+
         <Link to={pageLink.legal} className={styles.footer__link}>
           Правовая информация
         </Link>

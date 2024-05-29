@@ -53,5 +53,11 @@
     align-items: center;
     width: 25px;
     height: 25px;
+
+    & > svg {
+      & > path {
+        fill: var(--active-color);
+      }
+    }
   }
 }

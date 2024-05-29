@@ -43,4 +43,13 @@
   &:hover {
     background-color: var(--background-4-color);
   }
+
+  & > svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  & > svg > path {
+    fill: var(--active-color);
+  }
 }

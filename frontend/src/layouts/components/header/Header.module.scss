@@ -27,6 +27,12 @@
     &:hover {
       transform: scale(1.07);
     }
+
+    & > svg {
+      & > path {
+        fill: var(--active-color);
+      }
+    }
   }
 
   &__aside {

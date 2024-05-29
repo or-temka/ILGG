@@ -1,6 +1,11 @@
 :root {
   // colors
+  --main-color: #1d2033;
+  --main-2-color: #171b2a;
+  --main-reverse-color: #fff;
+
   --background-color: #1d2033;
+  --background-color--reverse-theme: #ffffff;
   --background-2-color: #171b2a;
   --background-3-color: #343647;
   --background-3-hover-color: #3d4054;
@@ -17,14 +22,19 @@
   --active-color: #ffffff;
   --active-hover-color: #f4f4f4;
   --active-2-color: #3d79fc;
+  --active-2-v2-color: #1c47a7;
   --active-2-hover-color: #5e90ff;
+  --active-2-hover-2-color: #3970e9;
+  --active-2-v2-hover-color: #183d8f;
 
   --border-color: #5b5b69;
   --dark-border-color: #3f3f49;
 
   --error-color: #a43434;
   --success-color: #8ed629;
+  --success-hover-color: #84c726;
   --success-2-color: #6ba721;
+  --success-2-hover-color: #5f941d;
   --success-3-color: #2dff81;
   --warning-color: #ffde32;
 
@@ -53,4 +63,19 @@
 
   // font-family
   --main-font-family: 'Roboto', Arial, sans-serif;
+
+  // other gradient colors
+  --lg-main-dark-color: #0a0d17;
+
+  --lg-main-1-transparent-1-color: rgba(23, 27, 42, 1);
+  --lg-main-1-transparent-2-color: rgba(13, 17, 28, 0.25);
+  --lg-main-1-transparent-3-color: rgba(10, 13, 23, 0);
+
+  --lg-main-2-transparent-1-color: rgba(26, 28, 45, 1);
+  --lg-main-2-transparent-2-color: rgba(29, 32, 51, 0);
+
+  --lg-main-3-transparent-1-color: 29, 32, 51;
+
+  // other
+  --background-photo-transparent: rgba(29, 32, 51, 0.92);
 }

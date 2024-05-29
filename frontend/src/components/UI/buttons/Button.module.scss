@@ -30,7 +30,7 @@
 
   &_primary {
     background-color: var(--active-2-color);
-    color: var(--text-color);
+    color: #fff;
     padding: 8px 30px;
 
     &:hover {
@@ -67,4 +67,10 @@
   flex-direction: row;
   gap: 10px;
   align-items: center;
+
+  & > svg {
+    & > path {
+      fill: var(--active-color);
+    }
+  }
 }
