@@ -1,0 +1,17 @@
+.main {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+
+  &__appsList {
+    flex: 1;
+    max-width: 400px;
+    min-width: 250px;
+  }
+
+  &__appWindow {
+    flex: 1;
+    max-width: 1000px;
+    min-width: 650px;
+  }
+}

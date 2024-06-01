@@ -1,0 +1,40 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 400px;
+  min-width: 250px;
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: var(--background-2-color);
+    padding: 10px 0;
+    border-radius: 5px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0 20px;
+  }
+
+  &__label {
+  }
+
+  &__main {
+  }
+
+  &__nav {
+  }
+
+  &__appList {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__appListItem {
+  }
+}

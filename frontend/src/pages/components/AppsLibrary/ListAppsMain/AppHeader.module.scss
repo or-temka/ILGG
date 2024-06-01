@@ -1,0 +1,80 @@
+@import '../../../../mixins.scss';
+
+.header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__poster {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+  }
+
+  &__posterImg {
+    position: absolute;
+    width: 100%;
+    top: 0;
+  }
+
+  &__appNameContainer {
+    @include background-main-transparent-2-lg(90deg);
+    padding: 10px 90px 10px 20px;
+    width: fit-content;
+    position: absolute;
+    bottom: 0;
+  }
+
+  &__appName {
+    @include h1;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 20px;
+    row-gap: 10px;
+    background-color: var(--background-5-color);
+    padding: 11px 20px;
+  }
+
+  &__mainInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 20px;
+    row-gap: 10px;
+  }
+
+  &__playBtn {
+    @include background-green-lg(120deg);
+    color: var(--main-reverse-color);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.125);
+
+    & > svg {
+      width: 20px;
+      height: 20px;
+
+      & > path {
+        fill: var(--main-reverse-color);
+      }
+    }
+
+    &:hover {
+      @include background-green-lg-hover(120deg);
+    }
+  }
+
+  &__infoAboutApp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__infoText {
+    @include paragraph;
+    color: var(--grey-text-color);
+  }
+}

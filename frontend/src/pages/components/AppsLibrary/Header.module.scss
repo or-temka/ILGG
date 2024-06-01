@@ -1,0 +1,102 @@
+@import '../../../mixins.scss';
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 40px;
+  align-items: center;
+
+  &__manage {
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+    align-items: center;
+  }
+
+  &__labelContainer {
+    display: flex;
+    flex-direction: row;
+    column-gap: 5px;
+    align-items: center;
+  }
+
+  &__label {
+  }
+
+  &__appsCount {
+    @include h2;
+    color: var(--grey-text-color);
+
+    &::before {
+      content: '(';
+    }
+
+    &::after {
+      content: ')';
+    }
+  }
+
+  &__manageBtns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 10px;
+  }
+
+  &__manageBtn {
+    padding: 11px 15px;
+    box-sizing: border-box;
+    line-height: 0;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+
+    &:hover {
+      background-color: var(--background-3-color);
+    }
+
+    & > svg {
+      width: 19px;
+      height: 19px;
+
+      & > path {
+        fill: var(--active-color);
+      }
+    }
+
+    &_list {
+    }
+
+    &_bigPicture {
+    }
+
+    &_active {
+      background-color: var(--active-color);
+
+      &:hover {
+        background-color: var(--active-hover-color);
+      }
+      & > svg {
+        & > path {
+          fill: var(--active-2-color);
+        }
+      }
+    }
+  }
+
+  &__searchBlock {
+  }
+
+  &__searchInputWrapper {
+  }
+
+  &__searchInput {
+    background-image: url('../../../assets/svgs/magnifier.svg');
+    background-repeat: no-repeat;
+    background-position: center right 10px;
+    padding-right: 45px;
+  }
+}

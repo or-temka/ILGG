@@ -5,6 +5,7 @@ import myProfileSlice from './slices/myProfileSlice'
 import friendsSlice from './slices/friendsSlice'
 import mainPageApplicationsSlice from './slices/mainPageApplicationsSlice'
 import shopAppsSlice from './slices/shopAppsSlice'
+import myAppsLibrarySlice from './slices/myAppsLibrarySlice'
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
 
     mainPageApplications: mainPageApplicationsSlice,
     shopApps: shopAppsSlice,
+    myAppsLibrary: myAppsLibrarySlice,
   },
 })
 

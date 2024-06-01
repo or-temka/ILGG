@@ -1,0 +1,19 @@
+.window {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: var(--background-6-color);
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  &__mainElem {
+    padding: 0 20px;
+  }
+}

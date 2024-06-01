@@ -1,0 +1,30 @@
+@import '../../../../mixins.scss';
+
+.news {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__header {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &__label {
+    @include h4;
+    color: var(--grey-text-color);
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 20px;
+  }
+
+  &__news {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+}
