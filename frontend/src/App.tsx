@@ -12,6 +12,7 @@ const Main = lazy(() => import('./pages/Main'))
 const Shop = lazy(() => import('./pages/Shop'))
 const AppsLibrary = lazy(() => import('./pages/AppsLibrary'))
 const Inventory = lazy(() => import('./pages/UserInventory'))
+const Marketplace = lazy(() => import('./pages/Marketplace'))
 const PageNotFound = lazy(() => import('./pages/PageNotFound'))
 
 const SignUp = lazy(() => import('./pages/account/SignUp'))
@@ -38,6 +39,10 @@ function App() {
                 element={<AppsLibrary />}
               ></Route>
               <Route path={pageLink.inventory} element={<Inventory />}></Route>
+              <Route
+                path={pageLink.marketplace}
+                element={<Marketplace />}
+              ></Route>
 
               {/* profile pages */}
               <Route path={pageLink.signUp} element={<SignUp />}></Route>
