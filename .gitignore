@@ -1,6 +1,10 @@
 
 /assets
 PASSWORDS.js
+PASSWORDS.ts
+
+# backend
+backend/dist
 
 node_modules
 frontend/.pnp
