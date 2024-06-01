@@ -16,9 +16,13 @@
   }
 
   &__itemsField {
+    flex: 2;
   }
 
   &__itemInfo {
+    flex: 1;
+    max-width: 310px;
+    min-width: 270px;
   }
 
   &__apps {
