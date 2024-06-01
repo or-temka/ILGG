@@ -15,8 +15,8 @@ function Inventory() {
   return (
     <>
       <div className={['wrapper', styles.page].join(' ')}>
-        <Header />
-        <Main />
+        <Header classNames={{ wrapper: styles.page__header }} />
+        <Main classNames={{ wrapper: styles.page__main }} />
       </div>
     </>
   )
