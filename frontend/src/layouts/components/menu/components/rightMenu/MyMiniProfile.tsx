@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { IMyProfile } from '../../../../../interfaces/myProfile'
+import { IMyProfile } from '@shared/interfaces/myProfile'
 
 import MiniProfile, { Button } from './MiniProfile'
 import { ReactComponent as ArrowSVG } from '../../../../../assets/svgs/arrow.svg'

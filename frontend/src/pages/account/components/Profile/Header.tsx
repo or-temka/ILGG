@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 
 import Button from '../../../../components/UI/buttons/Button'
-import { IFullUserProfile } from '../../../../interfaces/userProfile'
+import { IFullUserProfile } from '@shared/interfaces/userProfile'
 
 import styles from './Header.module.scss'
 import pageLink from '../../../../pagesLinks'

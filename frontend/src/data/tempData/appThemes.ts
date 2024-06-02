@@ -1,4 +1,4 @@
-import { AppTheme } from '../../interfaces/application'
+import { AppTheme } from '@shared/interfaces/application'
 
 const appThemes: AppTheme[] = [
   { _id: 1, name: 'Аниме' },

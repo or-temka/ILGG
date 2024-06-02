@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { IAppFromLibrary } from '../interfaces/application'
+import { IAppFromLibrary } from '@shared/interfaces/application'
 
 import Header from './components/AppsLibrary/Header'
 import Main from './components/AppsLibrary/Main'
