@@ -3,9 +3,11 @@ import express from 'express'
 import cors from 'cors'
 
 import { DB_LOGIN, DB_PASSWORD } from './PASSWORDS'
-import { DB_CLUSTER_NAME, DB_NAME } from './variables'
+import { BASE_API_URL, DB_CLUSTER_NAME, DB_NAME } from './variables'
 
 import { serverFatalError, serverLog } from './utils/serverLog'
+
+import userRoutes from './routes/userRoutes'
 
 mongoose
   .connect(
@@ -19,6 +21,8 @@ const PORT = process.env.PORT || 4000
 
 app.use(express.json())
 app.use(cors())
+
+app.use(BASE_API_URL, userRoutes)
 
 app.listen(PORT, () => {
   serverLog(`Server started at port: ${PORT}`)
