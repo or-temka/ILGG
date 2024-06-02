@@ -23,10 +23,12 @@ router.get(
 router.get(`${routeEnvironment.base}`, checkAuth, UserController.getMyData)
 
 router.post(
-  `${routeEnvironment.base}/reg`,
+  `${routeEnvironment.base}/sign-up`,
   regUserValidation,
-  UserController.reg
+  UserController.signUp
 )
+
+router.post(`${routeEnvironment.base}/sign-in`, UserController.signIn)
 
 router.delete(
   `${routeEnvironment.base}`,
