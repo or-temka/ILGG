@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-import { ISimpleApplication } from '../../interfaces/application'
+import { ISimpleApplication } from '@shared/interfaces/application'
 
 //#region reduces interfaces
 interface SetUserAction {

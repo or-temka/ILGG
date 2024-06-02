@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import styles from './FriendsPanel.module.scss'
 import pageLink from '../../../../pagesLinks'
-import { IUserProfile } from '../../../../interfaces/userProfile'
+import { IUserProfile } from '@shared/interfaces/userProfile'
 import Tooltip, {
   VerticalDirection,
 } from '../../../../components/UI/tooltips/Tooltip'

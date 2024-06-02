@@ -1,10 +1,9 @@
 import { ReactNode, useState } from 'react'
 
-import { IUserProfile } from '../../../../../interfaces/userProfile'
+import { IUserProfile } from '@shared/interfaces/userProfile'
 
 import styles from './MiniProfile.module.scss'
-import { ProfileState } from '../../../../../redux/slices/myProfileSlice'
-import { IMyProfile } from '../../../../../interfaces/myProfile'
+import { IMyProfile } from '@shared/interfaces/myProfile'
 
 export interface Button {
   title: string

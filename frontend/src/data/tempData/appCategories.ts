@@ -1,4 +1,4 @@
-import { AppCategory } from '../../interfaces/application'
+import { AppCategory } from '@shared/interfaces/application'
 
 const appCategories: AppCategory[] = [
   { _id: 1, name: 'Экшен' },

@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-import { IUserProfile } from '../../interfaces/userProfile'
+import { IUserProfile } from '@shared/interfaces/userProfile'
 
 //#region reduces interfaces
 interface SetFriendsAction {

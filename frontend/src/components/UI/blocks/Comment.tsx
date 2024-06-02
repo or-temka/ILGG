@@ -1,6 +1,6 @@
 import { ReactNode, useRef, useState } from 'react'
 
-import { IUserProfile } from '../../../interfaces/userProfile'
+import { IUserProfile } from '@shared/interfaces/userProfile'
 
 import styles from './Comment.module.scss'
 

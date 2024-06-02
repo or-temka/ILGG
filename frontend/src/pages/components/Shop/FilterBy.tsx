@@ -1,5 +1,5 @@
-import { AppType } from '../../../interfaces/application'
-import { MongoId } from '../../../interfaces/main'
+import { AppType } from '@shared/interfaces/application'
+import { MongoId } from '@shared/interfaces/main'
 
 import { FilterFields, FilterValue } from '../../../redux/slices/shopAppsSlice'
 

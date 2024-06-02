@@ -1,4 +1,4 @@
-import { IUserProfile } from '../../../../../interfaces/userProfile'
+import { IUserProfile } from '@shared/interfaces/userProfile'
 import MiniProfile, { Button } from './MiniProfile'
 
 const buttons: Button[] = [

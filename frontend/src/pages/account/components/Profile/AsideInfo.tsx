@@ -1,4 +1,4 @@
-import { IUserProfile } from '../../../../interfaces/userProfile'
+import { IUserProfile } from '@shared/interfaces/userProfile'
 
 import FriendsPanel from './FriendsPanel'
 import ProfileBlockedPanel from './ProfileBlockedPanel'

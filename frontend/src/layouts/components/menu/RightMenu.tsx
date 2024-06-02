@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import { selectFriends } from '../../../redux/slices/friendsSlice'
-import { IUserProfile } from '../../../interfaces/userProfile'
+import { IUserProfile } from '@shared/interfaces/userProfile'
 import { selectUser } from '../../../redux/slices/myProfileSlice'
 
 import Button, { ButtonVariant } from '../../../components/UI/buttons/Button'
