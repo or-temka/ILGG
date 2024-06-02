@@ -1,12 +1,10 @@
 import { validationResult } from 'express-validator'
-import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
 
 import { serverError } from '../../utils/serverLog'
+import hashPassword from '../../utils/auth/hashPassword'
+import createJwtTokent from '../../utils/auth/createJwtToken'
 
 import UserModel from '../../models/User'
-
-import { TOKEN_KEY } from '../../PASSWORDS'
 
 const reg = async (req: any, res: any) => {
   try {
@@ -17,8 +15,7 @@ const reg = async (req: any, res: any) => {
 
     // hashing password
     const password = req.body.password
-    const salt = await bcrypt.genSalt(10)
-    const hashedPassword = await bcrypt.hash(password, salt)
+    const hashedPassword = await hashPassword(password)
 
     const doc = new UserModel({
       name: req.body.name,
@@ -30,12 +27,7 @@ const reg = async (req: any, res: any) => {
 
     const user = await doc.save()
 
-    const token = jwt.sign(
-      {
-        _id: user._id,
-      },
-      TOKEN_KEY
-    )
+    const token = createJwtTokent(user._id)
 
     res.json({ token: token })
   } catch (error: any) {

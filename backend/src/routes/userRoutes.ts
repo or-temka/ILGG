@@ -1,6 +1,9 @@
 import { Router } from 'express'
 
-import { regUserValidation } from '../validations/userValidation'
+import {
+  editMyUserDataValidation,
+  regUserValidation,
+} from '../validations/userValidation'
 import * as UserController from '../controllers/UserController'
 import checkAuth from '../utils/auth/checkAuth'
 
@@ -29,6 +32,13 @@ router.delete(
   `${routeEnvironment.base}`,
   checkAuth,
   UserController.delMyProfile
+)
+
+router.patch(
+  `${routeEnvironment.base}`,
+  checkAuth,
+  editMyUserDataValidation,
+  UserController.editMyUserData
 )
 //#endregion
 
