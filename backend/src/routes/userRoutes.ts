@@ -16,13 +16,20 @@ router.get(
   checkAuth,
   UserController.getFullUserData
 )
+
 router.get(`${routeEnvironment.base}`, checkAuth, UserController.getMyData)
+
 router.post(
   `${routeEnvironment.base}/reg`,
   regUserValidation,
   UserController.reg
 )
 
+router.delete(
+  `${routeEnvironment.base}`,
+  checkAuth,
+  UserController.delMyProfile
+)
 //#endregion
 
 export default router
