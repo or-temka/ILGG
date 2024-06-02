@@ -1,4 +1,5 @@
+import getFullUserData from './UserControllers/getFullUserData'
 import getMyData from './UserControllers/getMyData'
 import reg from './UserControllers/reg'
 
-export { getMyData, reg }
+export { getFullUserData, getMyData, reg }

@@ -11,12 +11,18 @@ const routeEnvironment = {
 const router = Router()
 
 //#region routes
+router.get(
+  `${routeEnvironment.base}/full-user`,
+  checkAuth,
+  UserController.getFullUserData
+)
+router.get(`${routeEnvironment.base}`, checkAuth, UserController.getMyData)
 router.post(
   `${routeEnvironment.base}/reg`,
   regUserValidation,
   UserController.reg
 )
-router.get(`${routeEnvironment.base}`, checkAuth, UserController.getMyData)
+
 //#endregion
 
 export default router
