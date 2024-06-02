@@ -8,6 +8,7 @@ import { BASE_API_URL, DB_CLUSTER_NAME, DB_NAME } from './variables'
 import { serverFatalError, serverLog } from './utils/serverLog'
 
 import userRoutes from './routes/userRoutes'
+import appRoutes from './routes/appRoutes'
 
 mongoose
   .connect(
@@ -23,6 +24,7 @@ app.use(express.json())
 app.use(cors())
 
 app.use(BASE_API_URL, userRoutes)
+app.use(BASE_API_URL, appRoutes)
 
 app.listen(PORT, () => {
   serverLog(`Server started at port: ${PORT}`)
