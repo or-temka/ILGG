@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { AxiosResponse } from 'axios'
 
 import Input from '../../components/UI/inputs/Input'
 import Checkbox from '../../components/UI/inputs/Checkbox'
@@ -7,31 +9,90 @@ import InputWithBtnIcon from '../../components/UI/inputs/InputWithBtnIcon'
 import { ReactComponent as EyeSVG } from '../../assets/svgs/eye.svg'
 
 import { setPageName } from '../../utils/setPageName'
+import { fetchSignUp } from 'src/api/api'
+import { setUserToken } from 'src/utils/auth/userTokenManager'
+import {
+  PanelVariant,
+  addPanel,
+} from '../../redux/slices/floatingPanelsQueueSlice'
 
 import styles from './SignUp.module.scss'
 
 function SignUp() {
+  const dispatch = useDispatch()
+
   const [formData, setFormData] = useState({
-    login: '',
-    nickname: '',
-    email: '',
-    password: '',
-    passwordConfirm: '',
+    login: { value: '', error: '' },
+    name: { value: '', error: '' },
+    email: { value: '', error: '' },
+    password: { value: '', error: '' },
+    confirmPassword: { value: '', error: '' },
     personalDataConsent: false,
   })
+
+  const changePasswordVisible = (elem: ParentNode | null) => {
+    const input = elem?.querySelector('input')
+    if (!input) return
+    input.type = input?.type === 'password' ? 'text' : 'password'
+  }
 
   const setFormDataField = (
     field: string,
     changeEvent: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setFormData((prev) => ({ ...prev, [field]: changeEvent.target.value }))
+    setFormData((prev) => ({
+      ...prev,
+      [field]: { value: changeEvent.target.value, error: '' },
+    }))
   }
 
   const onClickCreateAccountButton = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     event.preventDefault()
-    // reg TODO
+
+    const userData = {
+      name: formData.name.value,
+      login: formData.login.value,
+      password: formData.password.value,
+      confirmPassword: formData.confirmPassword.value,
+      email: formData.email.value,
+    }
+    fetchSignUp(userData).then((res: AxiosResponse | undefined) => {
+      // обработка ошибки
+      if (res?.status !== 201) {
+        const error = res?.data
+
+        if (Array.isArray(error)) {
+          const newInputs = new Set()
+          error.map((wrongInput) => {
+            const wrongInputPath:
+              | 'name'
+              | 'login'
+              | 'email'
+              | 'password'
+              | 'confirmPassword' = wrongInput.path
+            const newInputWithError = formData[wrongInputPath]
+            newInputWithError.error = wrongInput.msg
+            newInputs.add(newInputWithError)
+          })
+          setFormData((prev) => ({ ...prev, newInputs }))
+        } else {
+          dispatch(
+            addPanel({
+              item: {
+                type: PanelVariant.textNotification,
+                text: error?.errorMsg || 'Произошла ошибка!',
+              },
+            })
+          )
+        }
+      }
+
+      //без ошибок
+      const token = res?.data.token
+      setUserToken(token)
+    })
   }
 
   useEffect(() => {
@@ -57,38 +118,45 @@ function SignUp() {
           </div>
           <form className={styles.form}>
             <Input
-              label="Логин:"
+              label="Логин: *"
               placeholder="Введите ваш логин"
-              value={formData.login}
+              value={formData.login.value}
               onChange={(e) => setFormDataField('login', e)}
+              errorText={formData.login.error}
             />
             <Input
-              label="Никнейм:"
+              label="Никнейм: *"
               placeholder="Введите ваш никнейм"
-              value={formData.nickname}
-              onChange={(e) => setFormDataField('nickname', e)}
+              value={formData.name.value}
+              onChange={(e) => setFormDataField('name', e)}
+              errorText={formData.name.error}
             />
             <Input
               label="E-mail:"
               placeholder="Введите ваш E-mail"
-              value={formData.email}
+              value={formData.email.value}
               onChange={(e) => setFormDataField('email', e)}
+              errorText={formData.email.error}
             />
             <InputWithBtnIcon
-              label="Пароль:"
+              label="Пароль: *"
               placeholder="Введите пароль"
               input={{ type: 'password' }}
-              value={formData.password}
+              value={formData.password.value}
+              onClickBtnIcon={changePasswordVisible}
               onChange={(e) => setFormDataField('password', e)}
               svgComponent={<EyeSVG />}
+              errorText={formData.password.error}
             />
             <InputWithBtnIcon
-              label="Подтверждение пароля:"
+              label="Подтверждение пароля: *"
               placeholder="Введите пароль ещё раз"
               input={{ type: 'password' }}
-              value={formData.passwordConfirm}
-              onChange={(e) => setFormDataField('passwordConfirm', e)}
+              value={formData.confirmPassword.value}
+              onClickBtnIcon={changePasswordVisible}
+              onChange={(e) => setFormDataField('confirmPassword', e)}
               svgComponent={<EyeSVG />}
+              errorText={formData.confirmPassword.error}
             />
 
             <Checkbox
@@ -105,6 +173,7 @@ function SignUp() {
             <Button
               buttonType="submit"
               title="Создать аккаунт"
+              disabled={!formData.personalDataConsent}
               variant={ButtonVariant.primary}
               onClick={onClickCreateAccountButton}
               className={styles.form__createButton}

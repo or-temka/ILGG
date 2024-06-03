@@ -27,6 +27,15 @@ export const regUserValidation = [
       max: 50,
     })
     .withMessage('пароль пользователя должен содержать от 6 до 50 символов'),
+
+  body('confirmPassword')
+    .isString()
+    .withMessage('подтверждение пароля должно быть строкой')
+    .isLength({
+      min: 6,
+      max: 50,
+    })
+    .withMessage('подтверждение пароля должно содержать от 6 до 50 символов'),
 ]
 
 export const editMyUserDataValidation = [

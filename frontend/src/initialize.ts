@@ -12,7 +12,7 @@ const useInitialization = () => {
     // setting site theme
     setSiteThemeFromLocalStorage()
 
-    dispatch(fetchProfileInfo())
+    // dispatch(fetchProfileInfo())
 
     //set friends
     dispatch(fetchFriends())

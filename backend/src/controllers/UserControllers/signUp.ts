@@ -15,6 +15,11 @@ const reg = async (req: any, res: any) => {
 
     // hashing password
     const password = req.body.password
+    const confirmPassword = req.body.confirmPassword
+
+    if (password !== confirmPassword)
+      return res.status(403).json({ errorMsg: 'Пароли не совпадают.' })
+
     const hashedPassword = await hashPassword(password)
 
     const doc = new UserModel({
@@ -29,7 +34,7 @@ const reg = async (req: any, res: any) => {
 
     const token = createJwtTokent(user._id)
 
-    res.json({ token: token })
+    res.status(201).json({ token: token })
   } catch (error: any) {
     serverError(error)
     if (error?.keyPattern?.login === 1) {
