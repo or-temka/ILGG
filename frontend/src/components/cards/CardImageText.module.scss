@@ -3,11 +3,14 @@
 .card {
   border-radius: 8px;
   overflow: hidden;
-  width: 240px;
-  height: 342px;
+  width: 100%;
+  height: 100%;
   position: relative;
 
   &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   &__textContent {
