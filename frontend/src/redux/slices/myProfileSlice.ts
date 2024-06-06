@@ -40,7 +40,7 @@ export type ProfileState = {
 
 const initialState: ProfileState = {
   data: null,
-  loading: true,
+  loading: false,
   error: null,
 }
 

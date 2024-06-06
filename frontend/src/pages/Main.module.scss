@@ -36,10 +36,10 @@
   }
 
   &__contnet {
-    display: flex;
-    flex-direction: row;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 5fr));
+    align-content: flex-start;
     gap: 30px;
-    flex-wrap: wrap;
-    justify-content: center;
   }
 }

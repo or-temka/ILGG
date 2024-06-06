@@ -4,14 +4,42 @@
   display: flex;
   flex-direction: column;
   min-width: 300px;
+  @include big-shadow();
 
   // header
   &__header {
-    background-color: var(--background-3-color);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
+    &_msg {
+      background-color: var(--background-3-color);
+    }
+
+    &_error {
+      background-color: var(--error-color);
+
+      & > span {
+        color: var(--main-reverse-color);
+      }
+    }
+
+    &_success {
+      background-color: var(--success-color);
+
+      & > span {
+        color: var(--main-color);
+      }
+    }
+
+    &_warning {
+      background-color: var(--warning-color);
+
+      & > span {
+        color: var(--main-color);
+      }
+    }
   }
 
   &__headerText {

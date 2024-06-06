@@ -13,38 +13,34 @@ function MainLayout() {
     <>
       <div className={styles.layout}>
         <Header className={styles.layout__header} />
-        <div className={styles.layout__content}>
-          <LeftMenu
-            className={[styles.layout__menu, styles.layout__leftMenu].join(' ')}
-          />
-          <main className={styles.layout__main}>
-            <h1
-              style={{
-                position: 'absolute',
-                visibility: 'hidden',
-                width: 0,
-                height: 0,
-                overflow: 'hidden',
-              }}
-            >
-              Онлайн сервис игр и программ ILGG
-            </h1>
-            <Suspense
-              fallback={
-                <div className={styles.layout__loadingSpinnerContainer}>
-                  <LoadingSpiner />
-                </div>
-              }
-            >
-              <Outlet />
-            </Suspense>
-          </main>
-          <RightMenu
-            className={[styles.layout__menu, styles.layout__rightMenu].join(
-              ' '
-            )}
-          />
-        </div>
+        <LeftMenu
+          className={[styles.layout__menu, styles.layout__leftMenu].join(' ')}
+        />
+        <main className={styles.layout__main}>
+          <h1
+            style={{
+              position: 'absolute',
+              visibility: 'hidden',
+              width: 0,
+              height: 0,
+              overflow: 'hidden',
+            }}
+          >
+            Онлайн сервис игр и программ ILGG
+          </h1>
+          <Suspense
+            fallback={
+              <div className={styles.layout__loadingSpinnerContainer}>
+                <LoadingSpiner />
+              </div>
+            }
+          >
+            <Outlet />
+          </Suspense>
+        </main>
+        <RightMenu
+          className={[styles.layout__menu, styles.layout__rightMenu].join(' ')}
+        />
       </div>
     </>
   )
