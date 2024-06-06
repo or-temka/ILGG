@@ -56,6 +56,7 @@ function FloatingPanelsQueue({
             {panel.item.type === PanelVariant.textNotification && (
               <FloatingNotification
                 text={panel.item.text}
+                variant={panel.item.variant}
                 onClose={() => dispatch(removePanel({ id: panel.id }))}
               />
             )}

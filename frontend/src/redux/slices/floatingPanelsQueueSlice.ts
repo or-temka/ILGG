@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from 'uuid'
-
 import { createSlice } from '@reduxjs/toolkit'
+
+import { FloatingNotificationVariant } from 'src/components/UI/floatingPanels/FloatingNotification'
 
 //#region reducers interfaces
 interface AddPanelAction {
@@ -23,6 +24,7 @@ export interface IFloatingPanelsQueue {
   id: string | number
   item: {
     type: PanelVariant
+    variant?: FloatingNotificationVariant
     text?: string
   }
   lifeTime?: number

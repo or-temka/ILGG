@@ -17,6 +17,7 @@ import {
 } from '../../redux/slices/floatingPanelsQueueSlice'
 
 import styles from './SignUp.module.scss'
+import { FloatingNotificationVariant } from 'src/components/UI/floatingPanels/FloatingNotification'
 
 function SignUp() {
   const dispatch = useDispatch()
@@ -82,6 +83,7 @@ function SignUp() {
             addPanel({
               item: {
                 type: PanelVariant.textNotification,
+                variant: FloatingNotificationVariant.error,
                 text: error?.errorMsg || 'Произошла ошибка!',
               },
             })
