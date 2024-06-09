@@ -34,6 +34,13 @@ const signIn = async (req: any, res: any) => {
 
     await TokenService.saveToken(userDto.id, tokens.refreshToken)
 
+    // Сохранение Cookies
+    res.cookie('refreshToken', tokens.refreshToken, {
+      maxAge: 30 * 24 * 60 * 60 * 1_000,
+      httpOnly: true,
+      // secure: true, // Для HTTPS
+    })
+
     res.json({ ...tokens, user: userDto })
   } catch (error: any) {
     serverError(error)

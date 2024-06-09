@@ -32,7 +32,7 @@ router.post(
 router.post(`${routeEnvironment.base}/sign-in`, UserController.signIn)
 
 // TODO
-router.post(`${routeEnvironment.base}/log-out`)
+router.post(`${routeEnvironment.base}/log-out`, UserController.logOut)
 
 // Для активации почты TODO
 router.get(

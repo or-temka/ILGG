@@ -5,6 +5,7 @@ import signIn from './UserControllers/signIn'
 import delMyProfile from './UserControllers/delMyProfile'
 import editMyUserData from './UserControllers/editMyUserData'
 import profileActivate from './UserControllers/profileActivate'
+import logOut from './UserControllers/logOut'
 
 export {
   getFullUserData,
@@ -14,4 +15,5 @@ export {
   delMyProfile,
   editMyUserData,
   profileActivate,
+  logOut,
 }
