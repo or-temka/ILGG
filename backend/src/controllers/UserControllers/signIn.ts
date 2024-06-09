@@ -4,7 +4,9 @@ import { validationResult } from 'express-validator'
 import { serverError } from '../../utils/serverLog'
 
 import UserModel from '../../models/User'
-import createJwtTokent from '../../utils/auth/createJwtToken'
+
+import UserDto from '../../dtos/UserDto'
+import TokenService from '../../services/TokenService'
 
 const signIn = async (req: any, res: any) => {
   try {
@@ -19,10 +21,7 @@ const signIn = async (req: any, res: any) => {
       })
     }
 
-    const isValidPass = await bcrypt.compare(
-      req.body.password,
-      user.password
-    )
+    const isValidPass = await bcrypt.compare(req.body.password, user.password)
 
     if (!isValidPass) {
       return res.status(404).json({
@@ -30,9 +29,12 @@ const signIn = async (req: any, res: any) => {
       })
     }
 
-    const token = createJwtTokent(user._id)
+    const userDto = new UserDto(user)
+    const tokens = TokenService.generateTokens({ ...userDto })
 
-    res.json({ token: token })
+    await TokenService.saveToken(userDto.id, tokens.refreshToken)
+
+    res.json({ ...tokens, user: userDto })
   } catch (error: any) {
     serverError(error)
     res.status(500).json({
