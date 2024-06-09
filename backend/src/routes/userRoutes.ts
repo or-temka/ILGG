@@ -35,7 +35,10 @@ router.post(`${routeEnvironment.base}/sign-in`, UserController.signIn)
 router.post(`${routeEnvironment.base}/log-out`)
 
 // Для активации почты TODO
-router.get(`${routeEnvironment.base}/activate/:link`)
+router.get(
+  `${routeEnvironment.base}/activate/:link`,
+  UserController.profileActivate
+)
 
 // Рефреш токена если он умер TODO
 router.get(`${routeEnvironment.base}/refresh`)
