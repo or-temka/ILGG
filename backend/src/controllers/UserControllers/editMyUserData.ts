@@ -10,7 +10,7 @@ const editMyUserData = async (req: any, res: any) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()) return res.status(400).json(errors.array())
 
-    const userId = req.userId
+    const userId = req.user.id
 
     const existingUser = await UserModel.findById(userId)
 

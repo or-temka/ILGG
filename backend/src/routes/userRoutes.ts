@@ -5,7 +5,7 @@ import {
   regUserValidation,
 } from '../validations/userValidation'
 import * as UserController from '../controllers/UserController'
-import checkAuth from '../utils/auth/checkAuth'
+import authMiddleware from '../middlewares/authMiddleware'
 
 const routeEnvironment = {
   base: '/user',
@@ -17,11 +17,11 @@ const router = Router()
 // Получение полной информации о пользователе
 router.get(
   `${routeEnvironment.base}/full-user`,
-  checkAuth,
+  authMiddleware,
   UserController.getFullUserData
 )
 
-router.get(`${routeEnvironment.base}`, checkAuth, UserController.getMyData)
+router.get(`${routeEnvironment.base}`, authMiddleware, UserController.getMyData)
 
 router.post(
   `${routeEnvironment.base}/sign-up`,
@@ -44,14 +44,14 @@ router.get(`${routeEnvironment.base}/refresh`, UserController.refresh)
 
 router.delete(
   `${routeEnvironment.base}`,
-  checkAuth,
+  authMiddleware,
   UserController.delMyProfile
 )
 
 // Изменение пользователя себя
 router.patch(
   `${routeEnvironment.base}`,
-  checkAuth,
+  authMiddleware,
   editMyUserDataValidation,
   UserController.editMyUserData
 )
