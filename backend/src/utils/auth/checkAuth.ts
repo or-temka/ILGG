@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 
-import { TOKEN_KEY } from '../../PASSWORDS.js'
+import { JWT_ACCESS_KEY } from '../../PASSWORDS.js'
 
 import { serverError, serverMsg } from '../serverLog.js'
 
@@ -16,7 +16,7 @@ export default (req: any, res: any, next: Function) => {
   }
 
   try {
-    const decodedToken = jwt.verify(token, TOKEN_KEY)
+    const decodedToken = jwt.verify(token, JWT_ACCESS_KEY)
     if (typeof decodedToken === 'object') {
       req.userId = decodedToken._id
       req.userRole = decodedToken.role

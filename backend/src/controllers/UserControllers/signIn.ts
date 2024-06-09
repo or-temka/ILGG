@@ -21,7 +21,7 @@ const signIn = async (req: any, res: any) => {
 
     const isValidPass = await bcrypt.compare(
       req.body.password,
-      user.passwordHash
+      user.password
     )
 
     if (!isValidPass) {

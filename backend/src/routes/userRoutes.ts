@@ -14,6 +14,7 @@ const routeEnvironment = {
 const router = Router()
 
 //#region routes
+// Получение полной информации о пользователе
 router.get(
   `${routeEnvironment.base}/full-user`,
   checkAuth,
@@ -30,12 +31,22 @@ router.post(
 
 router.post(`${routeEnvironment.base}/sign-in`, UserController.signIn)
 
+// TODO
+router.post(`${routeEnvironment.base}/log-out`)
+
+// Для активации почты TODO
+router.get(`${routeEnvironment.base}/activate/:link`)
+
+// Рефреш токена если он умер TODO
+router.get(`${routeEnvironment.base}/refresh`)
+
 router.delete(
   `${routeEnvironment.base}`,
   checkAuth,
   UserController.delMyProfile
 )
 
+// Изменение пользователя себя
 router.patch(
   `${routeEnvironment.base}`,
   checkAuth,
@@ -45,3 +56,4 @@ router.patch(
 //#endregion
 
 export default router
+export { routeEnvironment as userRouteEnvironment }

@@ -1,4 +1,4 @@
-import { serverMsg, serverError } from '../../utils/serverLog'
+import { serverError } from '../../utils/serverLog'
 
 import UserModel from '../../models/User'
 
@@ -12,7 +12,7 @@ const getMyData = async (req: any, res: any) => {
       })
     }
 
-    const { passwordHash, ...userData } = user.toObject()
+    const { password, ...userData } = user.toObject()
 
     res.json(userData)
   } catch (error: any) {
