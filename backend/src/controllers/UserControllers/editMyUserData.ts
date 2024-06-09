@@ -10,7 +10,7 @@ const editMyUserData = async (req: any, res: any) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()) return res.status(400).json(errors.array())
 
-    const userId = req.userId
+    const userId = req.user.id
 
     const existingUser = await UserModel.findById(userId)
 
@@ -27,7 +27,7 @@ const editMyUserData = async (req: any, res: any) => {
           errorMsg: 'Не указан старый пароль.',
         })
       }
-      const existingUserHashedPassword = existingUser.passwordHash
+      const existingUserHashedPassword = existingUser.password
       const isValidPass = await bcrypt.compare(
         enteredOldPassword,
         existingUserHashedPassword
@@ -47,7 +47,7 @@ const editMyUserData = async (req: any, res: any) => {
         $set: {
           name: req.body.name || existingUser?.name,
           login: req.body.login || existingUser?.login,
-          passwordHash: hashedNewPassword || existingUser?.passwordHash,
+          passwordHash: hashedNewPassword || existingUser?.password,
         },
       },
       { new: true }

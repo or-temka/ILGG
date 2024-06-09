@@ -5,12 +5,26 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  isActivated: {
+    type: Boolean,
+    default: false,
+  },
+  activationLink: {
+    type: String,
+  },
+
   login: {
     type: String,
     required: true,
     unique: true,
   },
-  passwordHash: {
+  password: {
     type: String,
     required: true,
     unique: true,

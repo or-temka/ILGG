@@ -1,33 +1,29 @@
-import bcrypt from 'bcrypt'
-
-import { validationResult } from 'express-validator'
 import { serverError } from '../../utils/serverLog'
 
 import UserModel from '../../models/User'
 
-import UserDto from '../../dtos/UserDto'
 import TokenService from '../../services/TokenService'
+import UserDto from '../../dtos/UserDto'
 
-const signIn = async (req: any, res: any) => {
+const refresh = async (req: any, res: any) => {
   try {
-    const errors = validationResult(req)
-    if (!errors.isEmpty()) return res.status(400).json(errors.array())
+    const { refreshToken } = req.cookies
 
-    const user = await UserModel.findOne({ login: req.body.login })
-
-    if (!user) {
-      return res.status(404).json({
-        errorMsg: 'Неверный логин или пароль.',
+    if (!refreshToken) {
+      return res.status(401).json({
+        errorMsg: 'Не получен токен доступа.',
       })
     }
 
-    const isValidPass = await bcrypt.compare(req.body.password, user.password)
-
-    if (!isValidPass) {
-      return res.status(404).json({
-        errorMsg: 'Неверный логин или пароль.',
+    const userData = TokenService.validateRefreshToken(refreshToken)
+    const tokenFromDB = await TokenService.findToken(refreshToken)
+    if (!userData || !tokenFromDB || typeof userData === 'string') {
+      return res.status(401).json({
+        errorMsg: 'Пользователь не авторизован.',
       })
     }
+
+    const user = await UserModel.findById(userData.id)
 
     const userDto = new UserDto(user)
     const tokens = TokenService.generateTokens({ ...userDto })
@@ -50,4 +46,4 @@ const signIn = async (req: any, res: any) => {
   }
 }
 
-export default signIn
+export default refresh

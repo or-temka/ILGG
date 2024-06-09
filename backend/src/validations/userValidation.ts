@@ -10,6 +10,8 @@ export const regUserValidation = [
     })
     .withMessage('имя пользователя должно содержать от 1 до 50 символов'),
 
+  body('email').isEmail().withMessage('Не соответствует формату Email'),
+
   body('login')
     .isString()
     .withMessage('логин пользователя должен быть строкой')
