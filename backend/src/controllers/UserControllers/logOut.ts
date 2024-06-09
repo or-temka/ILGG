@@ -6,8 +6,6 @@ const logOut = async (req: any, res: any) => {
   try {
     const { refreshToken } = req.cookies
 
-    console.log(refreshToken)
-
     if (!refreshToken) {
       return res.status(404).json({
         errorMsg: 'В запросе не найден Cookie токена доступа',

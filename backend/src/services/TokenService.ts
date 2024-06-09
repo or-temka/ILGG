@@ -13,6 +13,24 @@ class TokenService {
     return { accessToken, refreshToken }
   }
 
+  validateAccessToken(token: string) {
+    try {
+      const userData = jwt.verify(token, JWT_ACCESS_KEY)
+      return userData
+    } catch (error) {
+      return null
+    }
+  }
+
+  validateRefreshToken(token: string) {
+    try {
+      const userData = jwt.verify(token, JWT_REFRESH_KEY)
+      return userData
+    } catch (error) {
+      return null
+    }
+  }
+
   async saveToken(userId: any, refreshToken: string) {
     // При таком подходе нельзя сидеть с двух устройств
     const tokenData = await TokenModel.findOne({ user: userId })
@@ -27,6 +45,11 @@ class TokenService {
 
   async removeToken(refreshToken: string) {
     await TokenModel.deleteOne({ refreshToken })
+  }
+
+  async findToken(refreshToken: string) {
+    const tokenData = await TokenModel.findOne({ refreshToken })
+    return tokenData
   }
 }
 

@@ -31,17 +31,16 @@ router.post(
 
 router.post(`${routeEnvironment.base}/sign-in`, UserController.signIn)
 
-// TODO
 router.post(`${routeEnvironment.base}/log-out`, UserController.logOut)
 
-// Для активации почты TODO
+// Для активации почты
 router.get(
   `${routeEnvironment.base}/activate/:link`,
   UserController.profileActivate
 )
 
-// Рефреш токена если он умер TODO
-router.get(`${routeEnvironment.base}/refresh`)
+// Рефреш токена если он умер
+router.get(`${routeEnvironment.base}/refresh`, UserController.refresh)
 
 router.delete(
   `${routeEnvironment.base}`,
