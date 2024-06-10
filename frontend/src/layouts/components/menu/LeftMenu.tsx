@@ -20,7 +20,9 @@ import Tooltip, {
   VerticalDirection,
 } from '../../../components/UI/tooltips/Tooltip'
 import changeSiteTheme from '../../../utils/changeSiteTheme'
-import LoadingSpiner from 'components/UI/loaders/LoadingSpiner'
+import SkeletonText, {
+  SkeletonTextVariant,
+} from 'components/skeletons/SkeletonText'
 
 interface LeftMenuProps {
   className?: string
@@ -38,7 +40,16 @@ function LeftMenu({ className = '' }: LeftMenuProps) {
         className={[menuStyles.menu, styles.leftMenu, className].join(' ')}
       >
         <nav className={styles.nav}>
-          <LoadingSpiner />
+          {[0, 0, 0, 0, 0].map((loadingElem) => (
+            <div className={styles.nav__loadingMenuBtn}>
+              <div
+                className={['pulse-light', styles.nav__loadingMenuBtnIcon].join(
+                  ' '
+                )}
+              />
+              <SkeletonText variant={SkeletonTextVariant.light} />
+            </div>
+          ))}
         </nav>
         <footer className={styles.footer}>
           <div className={styles.footer__changeTheme}>
