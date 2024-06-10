@@ -1,4 +1,5 @@
-import { IUserProfile } from '@shared/interfaces/userProfile'
+import { IUserProfile } from 'models/user/IUserProfile'
+
 import MiniProfile, { Button } from './MiniProfile'
 
 const buttons: Button[] = [

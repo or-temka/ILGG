@@ -1,5 +1,7 @@
 export const SITE_NAME: string = 'ILGG'
 
+export const API_URL = 'http://localhost:4000/api'
+
 export type cssVariable = {
   cssName: `--${string}`
   value: string

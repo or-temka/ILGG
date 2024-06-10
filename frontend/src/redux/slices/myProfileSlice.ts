@@ -1,15 +1,14 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-import {
-  BalanceCurrency,
-  IMyProfile,
-  IUserBalance,
-} from '../../interfaces/myProfile'
+import { IMyUser } from 'models/myUser/IMyUser'
+import { IMyUserBalance } from 'models/myUser/IMyUserBalance'
+
+import AuthService from 'services/authService'
 
 //#region reducers interfaces
 interface SetUserAction {
   type: string
-  payload: IMyProfile | null
+  payload: IMyUser | null
 }
 //#endregion
 
@@ -71,11 +70,11 @@ const myProfileSlice = createSlice({
   },
 })
 
-export const { setUser } = myProfileSlice.actions
+// export const { setUser } = myProfileSlice.actions
 
 export const selectUser = (state: any): ProfileState => state.myProfile
 export const selectUserData = (state: any): ProfileState => state.myProfile.data
-export const selectBalance = (state: any): IUserBalance | null | undefined =>
+export const selectBalance = (state: any): IMyUserBalance | null | undefined =>
   state.myProfile.data
     ? state.myProfile.data.balance
     : state.myProfile.loading

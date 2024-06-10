@@ -1,4 +1,4 @@
-import { MongoId } from './main'
+import { MongoId } from 'models/mongoDB'
 
 export interface IDeveloper {
   _id: MongoId

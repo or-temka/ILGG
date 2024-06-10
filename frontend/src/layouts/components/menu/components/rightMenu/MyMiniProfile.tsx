@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { IMyProfile } from '@shared/interfaces/myProfile'
-
+import { IMyUser } from 'models/myUser/IMyUser'
 import MiniProfile, { Button } from './MiniProfile'
 import { ReactComponent as ArrowSVG } from '../../../../../assets/svgs/arrow.svg'
 
@@ -10,7 +9,7 @@ import styles from './MyMiniProfile.module.scss'
 import pageLink from '../../../../../pagesLinks'
 
 interface MyMiniProfileProps {
-  myUserData: IMyProfile | null
+  myUserData: IMyUser | null
 }
 
 function MyMiniProfile({ myUserData }: MyMiniProfileProps) {
@@ -19,7 +18,7 @@ function MyMiniProfile({ myUserData }: MyMiniProfileProps) {
   const profileButtons: Button[] = [
     {
       title: 'Мой профиль',
-      handler: () => navigate(pageLink.profile + myUserData?._id),
+      handler: () => navigate(pageLink.profile + myUserData?.id),
     },
     {
       title: 'Настройки профиля',

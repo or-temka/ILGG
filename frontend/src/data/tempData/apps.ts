@@ -1,4 +1,4 @@
-import { IApplication } from '@shared/interfaces/application'
+import { IApplication } from 'models/application/IApplication'
 
 const apps: IApplication[] = [
   {

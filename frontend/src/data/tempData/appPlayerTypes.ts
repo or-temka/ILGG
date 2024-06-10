@@ -1,4 +1,4 @@
-import { AppPlayerType } from '@shared/interfaces/application'
+import { AppPlayerType } from 'models/application/types/AppPlayerType'
 
 const appPlayerTypes: AppPlayerType[] = [
   { _id: 1, name: 'Локальная игра для вечеринок' },

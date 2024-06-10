@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom'
-import styles from './FriendsPanel.module.scss'
+
+import { IUserProfile } from 'models/user/IUserProfile'
+
 import pageLink from '../../../../pagesLinks'
-import { IUserProfile } from '@shared/interfaces/userProfile'
 import Tooltip, {
   VerticalDirection,
 } from '../../../../components/UI/tooltips/Tooltip'
+
+import styles from './FriendsPanel.module.scss'
 
 interface FriendsPanelProps {
   friends: IUserProfile[]

@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios'
-import axios from '../../axios'
+import axios from '../../http/axios'
 
 interface IUserData {
   name: string

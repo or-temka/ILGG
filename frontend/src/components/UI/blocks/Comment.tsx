@@ -1,8 +1,9 @@
 import { ReactNode, useRef, useState } from 'react'
 
-import { IUserProfile } from '@shared/interfaces/userProfile'
+import { IUserProfile } from 'models/user/IUserProfile'
 
 import styles from './Comment.module.scss'
+
 
 interface CommentProps {
   commentData: {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { IFullUserProfile } from '@shared/interfaces/userProfile'
+import { IFullUserProfile } from 'models/user/IFullUserProfile'
 
 import Header from './components/Profile/Header'
 import AdoptInfo from './components/Profile/AdoptInfo'

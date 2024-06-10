@@ -4,7 +4,7 @@ import PopUpContainer from '../../../../../components/UI/popUps/skeletons/PopUpC
 import Input from '../../../../../components/UI/inputs/Input'
 import MiniProfile from './MiniProfile'
 
-import { IUserProfile } from '@shared/interfaces/userProfile'
+import { IUserProfile } from 'models/user/IUserProfile'
 
 import styles from './AddFriendPopUp.module.scss'
 

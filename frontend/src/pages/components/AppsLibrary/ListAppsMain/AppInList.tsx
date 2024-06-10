@@ -1,4 +1,4 @@
-import { MongoId } from '@shared/interfaces/main'
+import { MongoId } from 'models/mongoDB'
 
 import styles from './AppInList.module.scss'
 

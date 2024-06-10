@@ -1,10 +1,11 @@
 import { useNavigate } from 'react-router-dom'
 
+import { IFullUserProfile } from 'models/user/IFullUserProfile'
+
 import Button from '../../../../components/UI/buttons/Button'
-import { IFullUserProfile } from '@shared/interfaces/userProfile'
+import pageLink from '../../../../pagesLinks'
 
 import styles from './Header.module.scss'
-import pageLink from '../../../../pagesLinks'
 
 interface HeaderProps {
   userData: IFullUserProfile

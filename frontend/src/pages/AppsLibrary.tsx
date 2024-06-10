@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { IAppFromLibrary } from '@shared/interfaces/application'
+import { setLibraryApps } from '../redux/slices/myAppsLibrarySlice'
+
+import { IAppFromLibrary } from 'models/application/IAppFromLibrary'
 
 import Header from './components/AppsLibrary/Header'
 import Main from './components/AppsLibrary/Main'
@@ -9,7 +11,6 @@ import Main from './components/AppsLibrary/Main'
 import { setPageName } from '../utils/setPageName'
 
 import styles from './AppsLibrary.module.scss'
-import { setLibraryApps } from '../redux/slices/myAppsLibrarySlice'
 
 export type ViewAppsType = 'list' | 'bigPictures'
 

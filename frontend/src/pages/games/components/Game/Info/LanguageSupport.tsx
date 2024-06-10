@@ -1,4 +1,4 @@
-import { AppLanguage } from '@shared/interfaces/application'
+import { AppLanguage } from 'models/application/types/AppLanguage'
 
 import { ReactComponent as TickSVG } from '../../../../../assets/svgs/tick.svg'
 

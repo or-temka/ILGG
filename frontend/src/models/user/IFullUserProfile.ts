@@ -1,12 +1,4 @@
-import { MongoId } from './main'
-
-export interface IUserProfile {
-  _id: MongoId
-  name: string
-  login: string
-  imgName: string | null
-  isOnline: boolean
-}
+import { IUserProfile } from './IUserProfile'
 
 export interface IFullUserProfile extends IUserProfile {
   aboutText: string

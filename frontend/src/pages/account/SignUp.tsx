@@ -9,15 +9,15 @@ import InputWithBtnIcon from '../../components/UI/inputs/InputWithBtnIcon'
 import { ReactComponent as EyeSVG } from '../../assets/svgs/eye.svg'
 
 import { setPageName } from '../../utils/setPageName'
-import { fetchSignUp } from 'src/api/api'
-import { setUserToken } from 'src/utils/auth/userTokenManager'
+import { fetchSignUp } from '../../api/api'
+import { setUserToken } from '../../utils/auth/userTokenManager'
 import {
   PanelVariant,
   addPanel,
 } from '../../redux/slices/floatingPanelsQueueSlice'
 
 import styles from './SignUp.module.scss'
-import { FloatingNotificationVariant } from 'src/components/UI/floatingPanels/FloatingNotification'
+import { FloatingNotificationVariant } from '../../components/UI/floatingPanels/FloatingNotification'
 
 function SignUp() {
   const dispatch = useDispatch()

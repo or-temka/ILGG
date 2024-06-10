@@ -1,4 +1,4 @@
-import { IDeveloper } from '@shared/interfaces/developer'
+import { IDeveloper } from 'models/developer/IDeveloper'
 
 const developers: IDeveloper[] = [
   { _id: 1, name: 'ILGG' },

@@ -1,9 +1,9 @@
 import { ReactNode, useState } from 'react'
 
-import { IUserProfile } from '@shared/interfaces/userProfile'
+import { IUserProfile } from 'models/user/IUserProfile'
+import { IMyUser } from 'models/myUser/IMyUser'
 
 import styles from './MiniProfile.module.scss'
-import { IMyProfile } from '@shared/interfaces/myProfile'
 
 export interface Button {
   title: string
@@ -11,7 +11,7 @@ export interface Button {
 }
 
 interface MiniProfileProps {
-  userData: IUserProfile | IMyProfile | null
+  userData: IUserProfile | IMyUser | null
   buttons: Button[] | []
   iconComponent?: ReactNode
   onClickProfile?: (showProfile: boolean) => any
@@ -51,8 +51,7 @@ function MiniProfile({
             ></div>
           ) : (
             <img
-              src={require('../../../../../assets/images/profiles/' +
-                userData.imgName)}
+              src={require('../../../../../assets/images/profiles/alina.jpg')}
               alt={userData.login}
               className={[styles.aboutUser__image, classNames.img].join(' ')}
             ></img>
@@ -81,9 +80,9 @@ function MiniProfile({
                     ' '
                   )}
                 >
-                  {userData.name}
+                  {userData.login}
                 </span>
-                <span
+                {/* <span
                   className={[
                     styles.aboutUser__onlineStatus,
                     classNames.onlineStatus,
@@ -93,6 +92,15 @@ function MiniProfile({
                   ].join(' ')}
                 >
                   {userData.isOnline ? 'В сети' : 'Не в сети'}
+                </span> */}
+                <span
+                  className={[
+                    styles.aboutUser__onlineStatus,
+                    classNames.onlineStatus,
+                    styles.aboutUser__onlineStatus_online,
+                  ].join(' ')}
+                >
+                  В сети
                 </span>
               </>
             )}
