@@ -4,7 +4,12 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
 import { DB_LOGIN, DB_PASSWORD } from './PASSWORDS'
-import { BASE_API_URL, DB_CLUSTER_NAME, DB_NAME } from './variables'
+import {
+  BASE_API_URL,
+  DB_CLUSTER_NAME,
+  DB_NAME,
+  SITE_FULL_URL,
+} from './variables'
 
 import { serverFatalError, serverLog } from './utils/serverLog'
 
@@ -23,7 +28,12 @@ const PORT = process.env.PORT || 4000
 
 app.use(express.json())
 app.use(cookieParser())
-app.use(cors())
+app.use(
+  cors({
+    credentials: true,
+    origin: SITE_FULL_URL,
+  })
+)
 
 app.use(BASE_API_URL, userRoutes)
 app.use(BASE_API_URL, appRoutes)

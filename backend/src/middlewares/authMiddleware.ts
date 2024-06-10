@@ -9,7 +9,7 @@ export default (req: any, res: any, next: Function) => {
 
     if (!token) {
       serverMsg('Попытка получить доступ: не указан токен в запросе')
-      return res.status(403).json({
+      return res.status(401).json({
         errorMsg: 'Нет доступа к запрашиваемому ресурсу',
       })
     }
@@ -18,7 +18,7 @@ export default (req: any, res: any, next: Function) => {
       const userData = TokenService.validateAccessToken(token)
       if (!userData || typeof userData !== 'object') {
         serverMsg('Попытка получить доступ: токен не валиден')
-        return res.status(403).json({
+        return res.status(401).json({
           errorMsg: 'Нет доступа к запрашиваемому ресурсу',
         })
       }
@@ -27,7 +27,7 @@ export default (req: any, res: any, next: Function) => {
       next()
     } catch (error: any) {
       serverError(error)
-      res.status(403).json({
+      res.status(401).json({
         errorMsg: 'Нет доступа к запрашиваемому ресурсу',
       })
     }
