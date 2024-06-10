@@ -20,6 +20,7 @@ import Tooltip, {
   VerticalDirection,
 } from '../../../components/UI/tooltips/Tooltip'
 import changeSiteTheme from '../../../utils/changeSiteTheme'
+import LoadingSpiner from 'components/UI/loaders/LoadingSpiner'
 
 interface LeftMenuProps {
   className?: string
@@ -30,6 +31,40 @@ function LeftMenu({ className = '' }: LeftMenuProps) {
 
   const mySelectedUser = useSelector(selectUser)
   const notLogIn = !mySelectedUser.loading && mySelectedUser.data === null
+
+  if (mySelectedUser.loading) {
+    return (
+      <aside
+        className={[menuStyles.menu, styles.leftMenu, className].join(' ')}
+      >
+        <nav className={styles.nav}>
+          <LoadingSpiner />
+        </nav>
+        <footer className={styles.footer}>
+          <div className={styles.footer__changeTheme}>
+            <Tooltip
+              postitionVertical={VerticalDirection.top}
+              postitionHorizontal={HorizontalDirection.right}
+              text="Сменить тему оформления сайта"
+            >
+              <div className={styles.changeThemeBtn} onClick={changeSiteTheme}>
+                <div className={styles.changeThemeBtn__firstColor} />
+                <div className={styles.changeThemeBtn__secondColor} />
+              </div>
+            </Tooltip>
+          </div>
+
+          <Link to={pageLink.legal} className={styles.footer__link}>
+            Правовая информация
+          </Link>
+          <Link to={pageLink.privacy} className={styles.footer__link}>
+            Политика конфиденциальности
+          </Link>
+          <span className={styles.footer__text}>©2024 Щегорцов А.М.</span>
+        </footer>
+      </aside>
+    )
+  }
 
   return (
     <aside className={[menuStyles.menu, styles.leftMenu, className].join(' ')}>

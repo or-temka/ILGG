@@ -16,6 +16,7 @@ import { ReactComponent as SignInDoorSVG } from '../../../assets/svgs/door.svg'
 
 import menuStyles from './Menu.module.scss'
 import styles from './RightMenu.module.scss'
+import LoadingSpiner from 'components/UI/loaders/LoadingSpiner'
 
 interface RightMenuProps {
   className?: string
@@ -52,9 +53,22 @@ function RightMenu({ className = '' }: RightMenuProps) {
   })
 
   const mySelectedUser = useSelector(selectUser)
+  console.log(mySelectedUser)
+
   const friends = useSelector(selectFriends).data
 
   const notLogIn = !mySelectedUser.loading && mySelectedUser.data === null
+
+  // Загрузка
+  if (mySelectedUser.loading) {
+    return (
+      <aside
+        className={[menuStyles.menu, styles.rightMenu, className].join(' ')}
+      >
+        <LoadingSpiner />
+      </aside>
+    )
+  }
 
   // Если не входил в аккаунт
   if (notLogIn) {

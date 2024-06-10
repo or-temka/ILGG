@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { AxiosResponse } from 'axios'
 
 import Input from '../../components/UI/inputs/Input'
 import Checkbox from '../../components/UI/inputs/Checkbox'
@@ -9,8 +8,6 @@ import InputWithBtnIcon from '../../components/UI/inputs/InputWithBtnIcon'
 import { ReactComponent as EyeSVG } from '../../assets/svgs/eye.svg'
 
 import { setPageName } from '../../utils/setPageName'
-import { fetchSignUp } from '../../api/api'
-import { setUserToken } from '../../utils/auth/userTokenManager'
 import {
   PanelVariant,
   addPanel,
@@ -18,23 +15,33 @@ import {
 
 import styles from './SignUp.module.scss'
 import { FloatingNotificationVariant } from '../../components/UI/floatingPanels/FloatingNotification'
+import { registration } from '../../redux/slices/myProfileSlice'
+import MyUserService from 'services/myUserService'
 
 function SignUp() {
   const dispatch = useDispatch()
 
   const [formData, setFormData] = useState({
-    login: { value: '', error: '' },
-    name: { value: '', error: '' },
-    email: { value: '', error: '' },
-    password: { value: '', error: '' },
-    confirmPassword: { value: '', error: '' },
+    login: { value: 'ortemka', error: '' },
+    name: { value: 'Артём', error: '' },
+    email: { value: 'tema.chegortzov@mail.ru', error: '' },
+    password: { value: '123456', error: '' },
+    confirmPassword: { value: '123456', error: '' },
     personalDataConsent: false,
+    disabledSendButton: false,
   })
 
   const changePasswordVisible = (elem: ParentNode | null) => {
     const input = elem?.querySelector('input')
     if (!input) return
     input.type = input?.type === 'password' ? 'text' : 'password'
+  }
+
+  const changeSendButtonDisable = (disable = false) => {
+    setFormData((prev) => ({
+      ...prev,
+      disabledSendButton: disable,
+    }))
   }
 
   const setFormDataField = (
@@ -52,6 +59,8 @@ function SignUp() {
   ) => {
     event.preventDefault()
 
+    changeSendButtonDisable(true)
+
     const userData = {
       name: formData.name.value,
       login: formData.login.value,
@@ -59,14 +68,15 @@ function SignUp() {
       confirmPassword: formData.confirmPassword.value,
       email: formData.email.value,
     }
-    fetchSignUp(userData).then((res: AxiosResponse | undefined) => {
-      // обработка ошибки
-      if (res?.status !== 201) {
-        const error = res?.data
 
-        if (Array.isArray(error)) {
+    dispatch<any>(registration(userData)).then((res: any) => {
+      const requestStatus: 'rejected' | 'fullfiled' = res.meta.requestStatus
+      const errorPayload = res.payload
+
+      if (requestStatus === 'rejected') {
+        if (Array.isArray(errorPayload)) {
           const newInputs = new Set()
-          error.map((wrongInput) => {
+          errorPayload.map((wrongInput) => {
             const wrongInputPath:
               | 'name'
               | 'login'
@@ -84,16 +94,14 @@ function SignUp() {
               item: {
                 type: PanelVariant.textNotification,
                 variant: FloatingNotificationVariant.error,
-                text: error?.errorMsg || 'Произошла ошибка!',
+                text: errorPayload?.errorMsg || 'Произошла ошибка!',
               },
             })
           )
         }
       }
 
-      //без ошибок
-      const token = res?.data.token
-      setUserToken(token)
+      changeSendButtonDisable()
     })
   }
 
@@ -175,7 +183,9 @@ function SignUp() {
             <Button
               buttonType="submit"
               title="Создать аккаунт"
-              disabled={!formData.personalDataConsent}
+              disabled={
+                !formData.personalDataConsent || formData.disabledSendButton
+              }
               variant={ButtonVariant.primary}
               onClick={onClickCreateAccountButton}
               className={styles.form__createButton}

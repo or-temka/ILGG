@@ -3,11 +3,15 @@ import { AppDispatch } from './redux/store'
 
 import { fetchFriends } from './redux/slices/friendsSlice'
 import { setSiteThemeFromLocalStorage } from './utils/changeSiteTheme'
+import { checkAuth } from './redux/slices/myProfileSlice'
 
 const useInitialization = () => {
   const dispatch = useDispatch<AppDispatch>()
 
   const initialize = () => {
+    if (localStorage.getItem('token')) {
+      dispatch<any>(checkAuth())
+    }
     // setting site theme
     setSiteThemeFromLocalStorage()
 
