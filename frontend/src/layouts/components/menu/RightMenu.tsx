@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 import { selectFriends } from '../../../redux/slices/friendsSlice'
 import { IUserProfile } from 'models/user/IUserProfile'
-import { selectUser } from '../../../redux/slices/myProfileSlice'
+import { selectMyUser } from '../../../redux/slices/myProfileSlice'
 
 import Button, { ButtonVariant } from '../../../components/UI/buttons/Button'
 import AddFriendPopUp from './components/rightMenu/AddFriendPopUp'
@@ -52,7 +52,7 @@ function RightMenu({ className = '' }: RightMenuProps) {
     signIn: false,
   })
 
-  const mySelectedUser = useSelector(selectUser)
+  const mySelectedUser = useSelector(selectMyUser)
   console.log(mySelectedUser)
 
   const friends = useSelector(selectFriends).data

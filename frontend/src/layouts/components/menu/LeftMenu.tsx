@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-import { selectUser } from '../../../redux/slices/myProfileSlice'
+import { selectMyUser } from '../../../redux/slices/myProfileSlice'
 
 import ButtonPage from './components/leftMenu/ButtonPage'
 import { ReactComponent as HomeSVG } from '../../../assets/svgs/home.svg'
@@ -31,7 +31,7 @@ interface LeftMenuProps {
 function LeftMenu({ className = '' }: LeftMenuProps) {
   const location = useLocation().pathname
 
-  const mySelectedUser = useSelector(selectUser)
+  const mySelectedUser = useSelector(selectMyUser)
   const notLogIn = !mySelectedUser.loading && mySelectedUser.data === null
 
   if (mySelectedUser.loading) {

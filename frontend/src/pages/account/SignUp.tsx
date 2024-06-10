@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 import Input from '../../components/UI/inputs/Input'
 import Checkbox from '../../components/UI/inputs/Checkbox'
@@ -15,11 +16,16 @@ import {
 
 import styles from './SignUp.module.scss'
 import { FloatingNotificationVariant } from '../../components/UI/floatingPanels/FloatingNotification'
-import { registration } from '../../redux/slices/myProfileSlice'
-import MyUserService from 'services/myUserService'
+import { registration, selectMyUser } from '../../redux/slices/myProfileSlice'
+import AboutService from './components/SignUp/AboutService'
 
 function SignUp() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    setPageName('Регистрация')
+  }, [])
 
   const [formData, setFormData] = useState({
     login: { value: 'ortemka', error: '' },
@@ -30,6 +36,11 @@ function SignUp() {
     personalDataConsent: false,
     disabledSendButton: false,
   })
+
+  // Если уже зарегестрирован
+  if (useSelector(selectMyUser).data) {
+    navigate('/')
+  }
 
   const changePasswordVisible = (elem: ParentNode | null) => {
     const input = elem?.querySelector('input')
@@ -104,10 +115,6 @@ function SignUp() {
       changeSendButtonDisable()
     })
   }
-
-  useEffect(() => {
-    setPageName('Регистрация')
-  }, [])
 
   return (
     <div className={['wrapper', styles.signUp].join(' ')}>
@@ -193,31 +200,7 @@ function SignUp() {
           </form>
         </div>
 
-        <div className={[styles.signUp__contentItem, styles.whyWe].join(' ')}>
-          <div className={styles.whyWe__textContent}>
-            <h3 className={styles.whyWe__label}>Почему мы?</h3>
-            <ul className={styles.whyWe__whyList}>
-              <li className={styles.whyWe__whyListItem}>
-                Доступ к вашим играм и приложениям из любой точки мира с любого
-                устройства
-              </li>
-              <li className={styles.whyWe__whyListItem}>
-                Множество бесплатных программ
-              </li>
-              <li className={styles.whyWe__whyListItem}>
-                Не требуем скачивания клиента на ваше устройство - всё сразу
-                доступно из вашего браузера
-              </li>
-            </ul>
-          </div>
-          <div className={styles.whyWe__poster}>
-            <img
-              className={styles.whyWe__posterImg}
-              src={require('../../assets/images/posters/monitorWithPhone1.png')}
-              alt="ILGG для компьютера и телефона"
-            />
-          </div>
-        </div>
+        <AboutService classNames={{ wrapper: styles.signUp__contentItem }} />
       </div>
     </div>
   )

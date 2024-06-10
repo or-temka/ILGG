@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 
-import { selectBalance } from '../../../redux/slices/myProfileSlice'
+import { selectMyBalance } from '../../../redux/slices/myProfileSlice'
 
 import { ReactComponent as PlusSVG } from '../../../assets/svgs/plus.svg'
 import Tooltip, {
@@ -23,7 +23,7 @@ function AccountBalance({
   onClickToReplenish = () => {},
   className = '',
 }: AccountBalanceProps) {
-  const userBalance = useSelector(selectBalance)
+  const userBalance = useSelector(selectMyBalance)
 
   if (userBalance === undefined) {
     return <div className={[styles.balance, className].join(' ')}></div>

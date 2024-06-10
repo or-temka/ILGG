@@ -1,0 +1,38 @@
+@import 'mixins.scss';
+
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  @include background-main-transparent-lg;
+  padding: 20px 30px;
+  border-radius: 5px;
+
+  &__textContent {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__label {
+    display: flex;
+    justify-content: flex-start;
+    color: var(--text-white-grey-color);
+  }
+
+  &__whyList {
+  }
+
+  &__whyListItem {
+    color: var(--text-white-grey-color);
+    margin-bottom: 7px;
+  }
+
+  &__poster {
+    width: 100%;
+  }
+
+  &__posterImg {
+    width: 100%;
+  }
+}

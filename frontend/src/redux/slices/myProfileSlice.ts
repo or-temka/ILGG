@@ -177,9 +177,12 @@ const myProfileSlice = createSlice({
 
 // export const { setUser } = myProfileSlice.actions
 
-export const selectUser = (state: any): ProfileState => state.myProfile
-export const selectUserData = (state: any): ProfileState => state.myProfile.data
-export const selectBalance = (state: any): IMyUserBalance | null | undefined =>
+export const selectMyUser = (state: any): ProfileState => state.myProfile
+export const selectMyUserData = (state: any): ProfileState =>
+  state.myProfile.data
+export const selectMyBalance = (
+  state: any
+): IMyUserBalance | null | undefined =>
   state.myProfile.data
     ? state.myProfile.data.balance
     : state.myProfile.loading
