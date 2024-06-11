@@ -16,7 +16,7 @@ import { ReactComponent as SignInDoorSVG } from '../../../assets/svgs/door.svg'
 
 import menuStyles from './Menu.module.scss'
 import styles from './RightMenu.module.scss'
-import LoadingSpiner from 'components/UI/loaders/LoadingSpiner'
+import LoadingRightMenu from './components/rightMenu/LoadingRightMenu'
 
 interface RightMenuProps {
   className?: string
@@ -64,7 +64,7 @@ function RightMenu({ className = '' }: RightMenuProps) {
       <aside
         className={[menuStyles.menu, styles.rightMenu, className].join(' ')}
       >
-        <LoadingSpiner />
+        <LoadingRightMenu />
       </aside>
     )
   }
