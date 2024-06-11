@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import Input from '../../components/UI/inputs/Input'
@@ -16,7 +16,7 @@ import {
 
 import styles from './SignUp.module.scss'
 import { FloatingNotificationVariant } from '../../components/UI/floatingPanels/FloatingNotification'
-import { registration, selectMyUser } from '../../redux/slices/myProfileSlice'
+import { registration } from '../../redux/slices/myProfileSlice'
 import AboutService from './components/SignUp/AboutService'
 import VerifyEmail from './components/SignUp/verifyEmail/VerifyEmail'
 
@@ -83,7 +83,7 @@ function SignUp() {
     }
 
     dispatch<any>(registration(userData)).then((res: any) => {
-      const requestStatus: 'rejected' | 'fullfiled' = res.meta.requestStatus
+      const requestStatus: 'rejected' | 'fulfilled' = res.meta.requestStatus
       const errorPayload = res.payload
 
       if (requestStatus === 'rejected') {
@@ -112,7 +112,7 @@ function SignUp() {
             })
           )
         }
-      } else if (requestStatus === 'fullfiled') {
+      } else if (requestStatus === 'fulfilled') {
         setShowEmailConfirmModal(true)
       }
 
