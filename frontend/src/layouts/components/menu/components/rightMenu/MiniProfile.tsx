@@ -3,6 +3,8 @@ import { ReactNode, useState } from 'react'
 import { IUserProfile } from 'models/user/IUserProfile'
 import { IMyUser } from 'models/myUser/IMyUser'
 
+import Tooltip, { VerticalDirection } from 'components/UI/tooltips/Tooltip'
+
 import styles from './MiniProfile.module.scss'
 
 export interface Button {
@@ -75,14 +77,21 @@ function MiniProfile({
               </>
             ) : (
               <>
-                <span
-                  className={[styles.aboutUser__name, classNames.username].join(
-                    ' '
-                  )}
+                <Tooltip
+                  postitionVertical={VerticalDirection.top}
+                  text={userData.login}
                 >
-                  {userData.login}
-                </span>
-                {/* <span
+                  <span
+                    className={[
+                      styles.aboutUser__name,
+                      classNames.username,
+                    ].join(' ')}
+                  >
+                    {userData.name}
+                  </span>
+                </Tooltip>
+
+                <span
                   className={[
                     styles.aboutUser__onlineStatus,
                     classNames.onlineStatus,
@@ -92,15 +101,6 @@ function MiniProfile({
                   ].join(' ')}
                 >
                   {userData.isOnline ? 'В сети' : 'Не в сети'}
-                </span> */}
-                <span
-                  className={[
-                    styles.aboutUser__onlineStatus,
-                    classNames.onlineStatus,
-                    styles.aboutUser__onlineStatus_online,
-                  ].join(' ')}
-                >
-                  В сети
                 </span>
               </>
             )}
