@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { IAppFromLibrary } from '@shared/interfaces/application'
+import { IAppFromLibrary } from 'models/application/IAppFromLibrary'
 
 //#region reducers interfaces
 interface ReducerAction {

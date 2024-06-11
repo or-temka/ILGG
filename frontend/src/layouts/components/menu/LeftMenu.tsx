@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-import { selectUser } from '../../../redux/slices/myProfileSlice'
+import { selectMyUser } from '../../../redux/slices/myProfileSlice'
 
 import ButtonPage from './components/leftMenu/ButtonPage'
 import { ReactComponent as HomeSVG } from '../../../assets/svgs/home.svg'
@@ -20,6 +20,9 @@ import Tooltip, {
   VerticalDirection,
 } from '../../../components/UI/tooltips/Tooltip'
 import changeSiteTheme from '../../../utils/changeSiteTheme'
+import SkeletonText, {
+  SkeletonTextVariant,
+} from 'components/skeletons/SkeletonText'
 
 interface LeftMenuProps {
   className?: string
@@ -28,8 +31,51 @@ interface LeftMenuProps {
 function LeftMenu({ className = '' }: LeftMenuProps) {
   const location = useLocation().pathname
 
-  const mySelectedUser = useSelector(selectUser)
+  const mySelectedUser = useSelector(selectMyUser)
   const notLogIn = !mySelectedUser.loading && mySelectedUser.data === null
+
+  if (mySelectedUser.loading) {
+    return (
+      <aside
+        className={[menuStyles.menu, styles.leftMenu, className].join(' ')}
+      >
+        <nav className={styles.nav}>
+          {[0, 0, 0, 0, 0].map((_, index) => (
+            <div key={index} className={styles.nav__loadingMenuBtn}>
+              <div
+                className={['pulse-light', styles.nav__loadingMenuBtnIcon].join(
+                  ' '
+                )}
+              />
+              <SkeletonText variant={SkeletonTextVariant.light} />
+            </div>
+          ))}
+        </nav>
+        <footer className={styles.footer}>
+          <div className={styles.footer__changeTheme}>
+            <Tooltip
+              postitionVertical={VerticalDirection.top}
+              postitionHorizontal={HorizontalDirection.right}
+              text="Сменить тему оформления сайта"
+            >
+              <div className={styles.changeThemeBtn} onClick={changeSiteTheme}>
+                <div className={styles.changeThemeBtn__firstColor} />
+                <div className={styles.changeThemeBtn__secondColor} />
+              </div>
+            </Tooltip>
+          </div>
+
+          <Link to={pageLink.legal} className={styles.footer__link}>
+            Правовая информация
+          </Link>
+          <Link to={pageLink.privacy} className={styles.footer__link}>
+            Политика конфиденциальности
+          </Link>
+          <span className={styles.footer__text}>©2024 Щегорцов А.М.</span>
+        </footer>
+      </aside>
+    )
+  }
 
   return (
     <aside className={[menuStyles.menu, styles.leftMenu, className].join(' ')}>

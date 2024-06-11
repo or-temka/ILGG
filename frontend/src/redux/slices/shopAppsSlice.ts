@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-import { IShopApplication } from '@shared/interfaces/application'
-import { MongoId } from '@shared/interfaces/main'
+import { MongoId } from 'models/mongoDB'
+import { IShopApplication } from 'models/application/IShopApplication'
 
 import sortObjectsArrayBy from '../../utils/sortObjectsArrayBy'
 import transformStringToDate from '../../utils/transformStringToDate'

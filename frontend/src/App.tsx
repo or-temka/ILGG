@@ -7,6 +7,7 @@ import FloatingPanelsQueue from './components/UI/floatingPanels/FloatingPanelsQu
 import pageLink from './pagesLinks'
 
 import useInitialization from './initialize'
+import PrivateRoute from 'components/routes/PrivateRoute'
 
 const Main = lazy(() => import('./pages/Main'))
 const Shop = lazy(() => import('./pages/Shop'))
@@ -32,31 +33,40 @@ function App() {
         <div className="App">
           <Routes>
             <Route path="" element={<MainLayout />}>
+              {/* Unautharized pages */}
               <Route path={pageLink.main} element={<Main />}></Route>
               <Route path={pageLink.shop} element={<Shop />}></Route>
-              <Route
-                path={pageLink.appsLibrary}
-                element={<AppsLibrary />}
-              ></Route>
-              <Route path={pageLink.inventory} element={<Inventory />}></Route>
               <Route
                 path={pageLink.marketplace}
                 element={<Marketplace />}
               ></Route>
 
-              {/* profile pages */}
+              {/* application pages */}
+              <Route path={pageLink.game + ':id'} element={<Game />}></Route>
+
               <Route path={pageLink.signUp} element={<SignUp />}></Route>
               <Route
                 path={pageLink.profile + ':id'}
                 element={<Profile />}
               ></Route>
-              <Route
-                path={pageLink.editProfile}
-                element={<EditProfile />}
-              ></Route>
 
-              {/* application pages */}
-              <Route path={pageLink.game + ':id'} element={<Game />}></Route>
+              {/* Authorized pages */}
+              <Route element={<PrivateRoute />}>
+                <Route
+                  path={pageLink.appsLibrary}
+                  element={<AppsLibrary />}
+                ></Route>
+                <Route
+                  path={pageLink.inventory}
+                  element={<Inventory />}
+                ></Route>
+
+                {/* profile pages */}
+                <Route
+                  path={pageLink.editProfile}
+                  element={<EditProfile />}
+                ></Route>
+              </Route>
 
               <Route path="*" index element={<PageNotFound />}></Route>
             </Route>

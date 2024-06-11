@@ -1,31 +1,38 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
-import { IMyProfile } from '@shared/interfaces/myProfile'
-
+import { IMyUser } from 'models/myUser/IMyUser'
 import MiniProfile, { Button } from './MiniProfile'
 import { ReactComponent as ArrowSVG } from '../../../../../assets/svgs/arrow.svg'
 
 import styles from './MyMiniProfile.module.scss'
 import pageLink from '../../../../../pagesLinks'
+import { logout } from '../../../../../redux/slices/myProfileSlice'
 
 interface MyMiniProfileProps {
-  myUserData: IMyProfile | null
+  myUserData: IMyUser | null
 }
 
 function MyMiniProfile({ myUserData }: MyMiniProfileProps) {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const profileButtons: Button[] = [
     {
       title: 'Мой профиль',
-      handler: () => navigate(pageLink.profile + myUserData?._id),
+      handler: () => navigate(pageLink.profile + myUserData?.id),
     },
     {
       title: 'Настройки профиля',
       handler: () => navigate(pageLink.editProfile),
     },
-    { title: 'Выйти', handler: () => {} },
+    {
+      title: 'Выйти',
+      handler: () => {
+        dispatch<any>(logout())
+      },
+    },
   ]
 
   const [isShowProfile, setIsShowProfile] = useState(false)

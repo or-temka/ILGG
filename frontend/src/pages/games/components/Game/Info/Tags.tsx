@@ -1,5 +1,6 @@
+import { AppTheme } from 'models/application/types/AppTheme'
+
 import TextIslet from '../../../../../components/UI/islets/TextIslet'
-import { AppTheme } from '@shared/interfaces/application'
 
 import style from './Tags.module.scss'
 

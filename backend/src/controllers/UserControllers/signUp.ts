@@ -55,12 +55,19 @@ const reg = async (req: any, res: any) => {
       balance: 0,
       activationLink,
     })
-    const user = await doc.save()
 
-    await MailService.sendActivationMail(
-      userEmail,
-      `${SITE_API_URL}${BASE_API_URL}${userRouteEnvironment.base}/activate/${activationLink}`
-    )
+    try {
+      await MailService.sendActivationMail(
+        userEmail,
+        `${SITE_API_URL}${BASE_API_URL}${userRouteEnvironment.base}/activate/${activationLink}`
+      )
+    } catch (error) {
+      return res.status(404).json({
+        errorMsg: 'Пользователя с таким Email адресом не существует',
+      })
+    }
+
+    const user = await doc.save()
 
     const userDto = new UserDto(user)
     const tokens = TokenService.generateTokens({ ...userDto })

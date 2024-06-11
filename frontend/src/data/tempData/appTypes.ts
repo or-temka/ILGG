@@ -1,4 +1,4 @@
-import { AppType } from '@shared/interfaces/application'
+import { AppType } from 'models/application/types/AppType'
 
 const appTypes: AppType[] = [
   { _id: 1, name: 'Игра' },
