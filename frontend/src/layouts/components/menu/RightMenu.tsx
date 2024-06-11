@@ -53,7 +53,6 @@ function RightMenu({ className = '' }: RightMenuProps) {
   })
 
   const mySelectedUser = useSelector(selectMyUser)
-  console.log(mySelectedUser)
 
   const friends = useSelector(selectFriends).data
 

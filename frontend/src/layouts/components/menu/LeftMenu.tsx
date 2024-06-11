@@ -40,8 +40,8 @@ function LeftMenu({ className = '' }: LeftMenuProps) {
         className={[menuStyles.menu, styles.leftMenu, className].join(' ')}
       >
         <nav className={styles.nav}>
-          {[0, 0, 0, 0, 0].map((loadingElem) => (
-            <div className={styles.nav__loadingMenuBtn}>
+          {[0, 0, 0, 0, 0].map((_, index) => (
+            <div key={index} className={styles.nav__loadingMenuBtn}>
               <div
                 className={['pulse-light', styles.nav__loadingMenuBtnIcon].join(
                   ' '

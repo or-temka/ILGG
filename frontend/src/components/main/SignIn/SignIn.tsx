@@ -60,6 +60,7 @@ function SignIn({ onClose = () => {} }) {
         )
       } else {
         onClose()
+        navigate('/')
       }
 
       setIsDisabledLoginBtn(false)
