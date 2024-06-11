@@ -29,6 +29,8 @@ function AccountBalance({
     return <div className={[styles.balance, className].join(' ')}></div>
   }
 
+  console.log(userBalance)
+
   return (
     <div className={[styles.balance, className].join(' ')}>
       <Tooltip
@@ -54,7 +56,7 @@ function AccountBalance({
         >
           Баланс:
         </span>
-        {!userBalance ? (
+        {userBalance === null ? (
           <SkeletonText variant={SkeletonTextVariant.light} />
         ) : (
           <>
