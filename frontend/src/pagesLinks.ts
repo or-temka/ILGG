@@ -9,6 +9,7 @@ const enum pageLink {
   help = '/help',
 
   // account
+  signUpEmail = '/sign-up-email',
   signUp = '/sign-up',
   profile = '/profile/', // /proile/:id
   editProfile = '/edit-profile/',

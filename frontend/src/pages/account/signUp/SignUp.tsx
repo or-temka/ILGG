@@ -2,23 +2,24 @@ import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import Input from '../../components/UI/inputs/Input'
-import Checkbox from '../../components/UI/inputs/Checkbox'
-import Button, { ButtonVariant } from '../../components/UI/buttons/Button'
-import InputWithBtnIcon from '../../components/UI/inputs/InputWithBtnIcon'
-import { ReactComponent as EyeSVG } from '../../assets/svgs/eye.svg'
+import Input from '../../../components/UI/inputs/Input'
+import Checkbox from '../../../components/UI/inputs/Checkbox'
+import Button, { ButtonVariant } from '../../../components/UI/buttons/Button'
+import InputWithBtnIcon from '../../../components/UI/inputs/InputWithBtnIcon'
+import { ReactComponent as EyeSVG } from 'assets/svgs/eye.svg'
 
-import { setPageName } from '../../utils/setPageName'
+import { setPageName } from 'utils/setPageName'
 import {
   PanelVariant,
   addPanel,
-} from '../../redux/slices/floatingPanelsQueueSlice'
+} from '../../../redux/slices/floatingPanelsQueueSlice'
+
+import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification'
+import { registration } from '../../../redux/slices/myProfileSlice'
+import AboutService from './components/AboutService'
+import VerifyEmail from './components/verifyEmail/VerifyEmail'
 
 import styles from './SignUp.module.scss'
-import { FloatingNotificationVariant } from '../../components/UI/floatingPanels/FloatingNotification'
-import { registration } from '../../redux/slices/myProfileSlice'
-import AboutService from './components/SignUp/AboutService'
-import VerifyEmail from './components/SignUp/verifyEmail/VerifyEmail'
 
 function SignUp() {
   const dispatch = useDispatch()

@@ -1,5 +1,17 @@
 import { body } from 'express-validator'
 
+export const regEmailUserValidation = [
+  body('email')
+    .isEmail()
+    .normalizeEmail()
+    .withMessage('Не соответствует формату Email'),
+
+  body('confirmEmail')
+    .isEmail()
+    .normalizeEmail()
+    .withMessage('Не соответствует формату Email'),
+]
+
 export const regUserValidation = [
   body('name')
     .isString()
@@ -14,10 +26,7 @@ export const regUserValidation = [
       'Имя пользователя должно содержать только буквы латинского, русского алфавита и цифры'
     ),
 
-  body('email')
-    .isEmail()
-    .withMessage('Не соответствует формату Email')
-    .normalizeEmail(),
+  body('activationEmailLink'),
 
   body('login')
     .isString()

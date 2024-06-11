@@ -2,9 +2,11 @@ import { Router } from 'express'
 
 import {
   editMyUserDataValidation,
+  regEmailUserValidation,
   regUserValidation,
 } from '../validations/userValidation'
 import * as UserController from '../controllers/UserController'
+
 import authMiddleware from '../middlewares/authMiddleware'
 
 const routeEnvironment = {
@@ -27,6 +29,12 @@ router.post(
   `${routeEnvironment.base}/sign-up`,
   regUserValidation,
   UserController.signUp
+)
+
+router.post(
+  `${routeEnvironment.base}/sign-up-email`,
+  regEmailUserValidation,
+  UserController.signUpEmail
 )
 
 router.post(`${routeEnvironment.base}/sign-in`, UserController.signIn)

@@ -88,7 +88,7 @@ function RightMenu({ className = '' }: RightMenuProps) {
               </span>{' '}
               или{' '}
               <TextLink
-                to={pageLink.signUp}
+                to={pageLink.signUpEmail}
                 className={styles.notSignIn__signUpBtn}
               >
                 создайте аккаунт
