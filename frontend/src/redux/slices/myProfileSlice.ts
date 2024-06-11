@@ -1,4 +1,4 @@
-import axios, { AxiosError } from 'axios'
+import axios from 'axios'
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 import { IMyUser } from 'models/myUser/IMyUser'

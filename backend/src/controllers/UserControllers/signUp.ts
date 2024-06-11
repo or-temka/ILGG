@@ -8,7 +8,7 @@ import hashPassword from '../../utils/auth/hashPassword'
 import UserModel from '../../models/User'
 
 import TokenService from '../../services/TokenService'
-import UserDto from '../../dtos/UserDto'
+import UserDto from '../../dtos/MyUserDto'
 import MailService from '../../services/MailService'
 import { BASE_API_URL, SITE_API_URL } from '../../variables'
 import { userRouteEnvironment } from '../../routes/userRoutes'

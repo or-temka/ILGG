@@ -3,7 +3,7 @@ import { serverError } from '../../utils/serverLog'
 import UserModel from '../../models/User'
 
 import TokenService from '../../services/TokenService'
-import UserDto from '../../dtos/UserDto'
+import UserDto from '../../dtos/MyUserDto'
 
 const refresh = async (req: any, res: any) => {
   try {
