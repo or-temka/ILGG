@@ -6,20 +6,31 @@ export const regUserValidation = [
     .withMessage('имя пользователя должно быть строкой')
     .isLength({
       min: 1,
-      max: 50,
+      max: 30,
     })
-    .withMessage('имя пользователя должно содержать от 1 до 50 символов'),
+    .withMessage('имя пользователя должно содержать от 1 до 30 символов')
+    .matches(/^[a-zA-Zа-яА-ЯёЁ0-9]+$/)
+    .withMessage(
+      'Имя пользователя должно содержать только буквы латинского, русского алфавита и цифры'
+    ),
 
-  body('email').isEmail().withMessage('Не соответствует формату Email'),
+  body('email')
+    .isEmail()
+    .withMessage('Не соответствует формату Email')
+    .normalizeEmail(),
 
   body('login')
     .isString()
     .withMessage('логин пользователя должен быть строкой')
     .isLength({
       min: 1,
-      max: 50,
+      max: 30,
     })
-    .withMessage('логин пользователя должен содержать от 1 до 50 символов'),
+    .withMessage('логин пользователя должен содержать от 1 до 30 символов')
+    .matches(/^[a-zA-Z0-9]+$/)
+    .withMessage(
+      'Логин должен содержать только буквы латинского алфавита и цифры'
+    ),
 
   body('password')
     .isString()
