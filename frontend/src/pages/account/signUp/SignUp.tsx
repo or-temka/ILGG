@@ -17,7 +17,6 @@ import {
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification'
 import { registration } from '../../../redux/slices/myProfileSlice'
 import AboutService from './components/AboutService'
-import VerifyEmail from './components/verifyEmail/VerifyEmail'
 
 import styles from './SignUp.module.scss'
 
@@ -209,11 +208,6 @@ function SignUp() {
           <AboutService classNames={{ wrapper: styles.signUp__contentItem }} />
         </div>
       </div>
-
-      {/* Modals (Pop-ups) */}
-      {showEmailConfirmModal && (
-        <VerifyEmail onClose={onCloseEmailConfirmHandler} />
-      )}
     </>
   )
 }

@@ -9,19 +9,56 @@ import Input from 'components/UI/inputs/Input'
 import { useState } from 'react'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button'
 import RepeatButton from './RepeatButton'
+import { useDispatch } from 'react-redux'
+import AuthService from 'services/authService'
+import {
+  PanelVariant,
+  addPanel,
+} from '../../../../../redux/slices/floatingPanelsQueueSlice'
+import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification'
 
 const preloadSrcList: string[] = [ImgEnvelope]
 
 interface VerifyEmailProps {
   onClose: Function
+  email: string
+  confirmEmail: string
 }
 
-function VerifyEmail({ onClose }: VerifyEmailProps) {
+function VerifyEmail({ onClose, email, confirmEmail }: VerifyEmailProps) {
+  const dispatch = useDispatch()
   const { imagesPreloaded } = useImagePreloader(preloadSrcList)
   const [codeValue, setCodeValue] = useState('')
 
   if (!imagesPreloaded) {
     return <LoadingPopUp />
+  }
+
+  const onClickRepeatSendEmailHandler = async () => {
+    await AuthService.repeatSendEmail(email, confirmEmail)
+      .then(() => {
+        dispatch(
+          addPanel({
+            item: {
+              type: PanelVariant.textNotification,
+              variant: FloatingNotificationVariant.success,
+              text: 'Сообщение успешно отправлено!',
+            },
+          })
+        )
+      })
+      .catch((error) => {
+        const data = error?.response?.data
+        dispatch(
+          addPanel({
+            item: {
+              type: PanelVariant.textNotification,
+              variant: FloatingNotificationVariant.error,
+              text: data?.errorMsg || 'Произошла ошибка!',
+            },
+          })
+        )
+      })
   }
 
   return (
@@ -45,7 +82,7 @@ function VerifyEmail({ onClose }: VerifyEmailProps) {
               classNames={{ wrapper: styles.modal__inputWrapper }}
             />
             {!codeValue.length ? (
-              <RepeatButton onClick={() => console.log(1)} />
+              <RepeatButton onClick={onClickRepeatSendEmailHandler} />
             ) : (
               <Button
                 title="Подтвердить"
@@ -63,7 +100,7 @@ function VerifyEmail({ onClose }: VerifyEmailProps) {
           />
         </div>
         <span className={styles.modal__hint_warning}>
-          завершите регистрацию в течении 20 минут.
+          Завершите регистрацию в течении 20 минут.
         </span>
       </div>
     </PopUpContainer>

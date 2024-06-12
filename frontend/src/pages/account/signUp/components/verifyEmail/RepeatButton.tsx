@@ -3,7 +3,7 @@ import Button, { ButtonVariant } from 'components/UI/buttons/Button'
 import styles from './RepeatButton.module.scss'
 import { useEffect, useState } from 'react'
 
-const timerTime = 5 // seconds
+const timerTime = 60 // seconds
 
 interface RepeatButtonProps {
   onClick: Function

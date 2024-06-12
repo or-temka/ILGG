@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 
 import Input from '../../../components/UI/inputs/Input'
 import Checkbox from '../../../components/UI/inputs/Checkbox'
@@ -165,7 +164,11 @@ function SignUpEmail() {
 
       {/* Modals (Pop-ups) */}
       {showEmailConfirmModal && (
-        <VerifyEmail onClose={onCloseEmailConfirmHandler} />
+        <VerifyEmail
+          onClose={onCloseEmailConfirmHandler}
+          email={formData.email.value}
+          confirmEmail={formData.confirmEmail.value}
+        />
       )}
     </>
   )
