@@ -17,6 +17,10 @@
     color: var(--grey-text-color);
     width: 400px;
     text-align: center;
+
+    &_warning {
+      color: var(--active-2-color);
+    }
   }
 
   &__envelopeImg {

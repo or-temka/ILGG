@@ -27,8 +27,11 @@ function VerifyEmail({ onClose }: VerifyEmailProps) {
       <div className={styles.modal__content}>
         <span className={styles.modal__label}>Подтвердите ваш Email</span>
         <span className={styles.modal__hint}>
-          Вам на почту было отправлено письмо с подтверждением. Почта
-          потребуется в случае восстановления логина или пароля.
+          Вам на почту было отправлено письмо с подтверждением. Перейдите по
+          ссылке в письме и {' '}
+          <span className={styles.modal__hint_warning}>
+            завершите регистрацию в течении 10 минут.
+          </span>
         </span>
         <img
           src={require('assets/images/posters/email-envelope.png')}

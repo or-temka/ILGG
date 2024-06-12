@@ -7,6 +7,7 @@ import {
   EMAIL_SMTP_USER,
   SITE_URL,
 } from '../variables'
+import mailConfirmation from './mails/mailConfirmation'
 
 class MailService {
   transporter
@@ -29,12 +30,7 @@ class MailService {
       to,
       subject: `Завершение регистрации на ${SITE_URL}`,
       text: '',
-      html: `
-        <div>
-          <h1>Для завершения регистрации перейдите по ссылке:</h1>
-          <a href="${link}">Подтвердить</a>
-        </div>
-      `,
+      html: mailConfirmation(link),
     })
   }
 }
