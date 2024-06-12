@@ -44,16 +44,23 @@ export default class AuthService {
     })
   }
 
+  static async isActivationEmailLink(
+    email: string,
+    activationLink: string
+  ): Promise<AxiosResponse<any>> {
+    return $api.get<any>('user/sign-up', {
+      params: { email, activationLink },
+    })
+  }
+
   static async registration(
     login: string,
-    email: string,
     name: string,
     password: string,
     confirmPassword: string
   ): Promise<AxiosResponse<AuthResponse>> {
     return $api.post<AuthResponse>('user/sign-up', {
       login,
-      email,
       name,
       password,
       confirmPassword,

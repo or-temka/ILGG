@@ -39,7 +39,6 @@ export const registration = createAsyncThunk(
   async (
     userData: {
       login: string
-      email: string
       name: string
       password: string
       confirmPassword: string
@@ -49,7 +48,6 @@ export const registration = createAsyncThunk(
     try {
       const response = await AuthService.registration(
         userData.login,
-        userData.email,
         userData.name,
         userData.password,
         userData.confirmPassword

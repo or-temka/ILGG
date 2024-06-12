@@ -11,6 +11,15 @@ export const checkOutEmailCodeValidation = [
     .withMessage('Код должен состоять из 6 цифр'),
 ]
 
+export const checkIsActiveEmailLinkValidation = [
+  query('email')
+    .isEmail()
+    .normalizeEmail()
+    .withMessage('Не соответствует формату Email'),
+
+  query('activationLink').isString().withMessage('Код должен быть строкой'),
+]
+
 export const regEmailUserValidation = [
   body('email')
     .isEmail()
