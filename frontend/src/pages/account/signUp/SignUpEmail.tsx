@@ -27,8 +27,8 @@ function SignUpEmail() {
   }, [])
 
   const [formData, setFormData] = useState({
-    email: { value: '', error: '' },
-    confirmEmail: { value: '', error: '' },
+    email: { value: 'tema.chegortzov@mail.ru', error: '' },
+    confirmEmail: { value: 'tema.chegortzov@mail.ru', error: '' },
     personalDataConsent: false,
     disabledSendButton: false,
   })

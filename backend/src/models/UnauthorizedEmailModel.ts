@@ -19,8 +19,8 @@ const UnauthorizedEmailSchema = new mongoose.Schema({
 
   expireAt: {
     type: Date,
-    default: () => Date.now() + 10 * 60 * 1000,
-    index: { expires: '10m' },
+    default: () => Date.now() + 20 * 60 * 1000,
+    index: { expires: '20m' },
   },
 })
 
