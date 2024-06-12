@@ -2,6 +2,7 @@ import getFullUserData from './UserControllers/getFullUserData'
 import getMyData from './UserControllers/getMyData'
 import signUp from './UserControllers/signUp'
 import signUpEmail from './UserControllers/signUpEmail'
+import repeatSignUpEmail from './UserControllers/repeatSendSignUpEmail'
 import signIn from './UserControllers/signIn'
 import delMyProfile from './UserControllers/delMyProfile'
 import editMyUserData from './UserControllers/editMyUserData'
@@ -14,6 +15,7 @@ export {
   getMyData,
   signUp,
   signUpEmail,
+  repeatSignUpEmail,
   signIn,
   delMyProfile,
   editMyUserData,

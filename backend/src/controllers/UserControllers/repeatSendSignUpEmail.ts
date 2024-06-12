@@ -1,5 +1,4 @@
 import { validationResult } from 'express-validator'
-import { v4 as uuidv4 } from 'uuid'
 
 import { serverError } from '../../utils/serverLog'
 
@@ -8,9 +7,8 @@ import UnauthorizedEmailModel from '../../models/UnauthorizedEmailModel'
 
 import MailService from '../../services/MailService'
 import getDateDifference from '../../utils/math/date/getDateDifference'
-import generateNumericCode from '../../utils/math/generate/generateNumericCode'
 
-const regEmail = async (req: any, res: any) => {
+const repeatSignUpEmail = async (req: any, res: any) => {
   try {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
@@ -39,57 +37,47 @@ const regEmail = async (req: any, res: any) => {
       email: userEmail,
     })
 
-    const expireAtDate = unauthorizedDuplicateEmail?.expireAt || new Date()
-    const dateDifferenceInMinutes = getDateDifference(
+    const attemptDate = unauthorizedDuplicateEmail?.attemptDate || new Date()
+    const dateDifferenceInSeconds = getDateDifference(
       new Date(),
-      expireAtDate,
-      'm'
+      attemptDate,
+      's'
     )
 
-    if (unauthorizedDuplicateEmail) {
+    if (unauthorizedDuplicateEmail && dateDifferenceInSeconds < 60) {
       return res.status(409).json({
-        errorMsg: `На вашу почту уже было направлено письмо с подтверждением. Повторное письмо можно будет направить через ${dateDifferenceInMinutes} минут.`,
+        errorMsg: `На вашу почту уже было направлено письмо с подтверждением. Повторное письмо можно будет направить через ${
+          60 - dateDifferenceInSeconds
+        } с.`,
       })
     }
 
-    const activationLink = uuidv4()
-    const activationCode = generateNumericCode(6)
+    const activationCode = unauthorizedDuplicateEmail?.activationCode
 
-    const doc = new UnauthorizedEmailModel({
-      email: userEmail,
-      activationCode,
-      activationLink,
-    })
+    if (!activationCode) {
+      return res.status(404).json({
+        errorMsg: 'Не удалось отправить письмо с подтверждением на почту',
+      })
+    }
 
     try {
       await MailService.sendActivationMailCode(userEmail, activationCode)
+      unauthorizedDuplicateEmail.attemptDate = new Date()
+      unauthorizedDuplicateEmail.save()
     } catch (error) {
       return res.status(404).json({
         errorMsg: 'Не удалось отправить письмо с подтверждением на почту',
       })
     }
 
-    // Для активации по ссылке
-    // try {
-    //   await MailService.sendActivationMailLink(
-    //     userEmail,
-    //     `${SITE_API_URL}${BASE_API_URL}${userRouteEnvironment.base}/activate/${activationLink}`
-    //   )
-    // } catch (error) {
-    //   return res.status(404).json({
-    //     errorMsg: 'Не удалось отправить письмо с подтверждением на почту',
-    //   })
-    // }
-
-    await doc.save()
-
     res.status(200).json()
   } catch (error: any) {
     serverError(error)
     res.status(500).json({
-      errorMsg: 'Произошла ошибка во время отправки сообщения на почту.',
+      errorMsg:
+        'Произошла ошибка во время повторной отправки подтверждения на почту.',
     })
   }
 }
 
-export default regEmail
+export default repeatSignUpEmail

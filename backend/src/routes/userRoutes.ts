@@ -37,6 +37,12 @@ router.post(
   UserController.signUpEmail
 )
 
+router.post(
+  `${routeEnvironment.base}/repeat-send-sign-up-email`,
+  regEmailUserValidation,
+  UserController.repeatSignUpEmail
+)
+
 router.post(`${routeEnvironment.base}/sign-in`, UserController.signIn)
 
 router.post(`${routeEnvironment.base}/log-out`, UserController.logOut)
