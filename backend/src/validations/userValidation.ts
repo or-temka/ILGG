@@ -1,12 +1,12 @@
-import { body } from 'express-validator'
+import { body, query } from 'express-validator'
 
 export const checkOutEmailCodeValidation = [
-  body('email')
+  query('email')
     .isEmail()
     .normalizeEmail()
     .withMessage('Не соответствует формату Email'),
 
-  body('activationCode')
+  query('activationCode')
     .isLength({ min: 6, max: 6 })
     .withMessage('Код должен состоять из 6 цифр'),
 ]

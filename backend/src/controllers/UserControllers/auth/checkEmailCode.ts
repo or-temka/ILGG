@@ -11,8 +11,8 @@ const checkEmailCode = async (req: any, res: any) => {
       return res.status(400).json(errors.array())
     }
 
-    const userEmail = req.body.email
-    const activationCode = req.body.activationCode
+    const userEmail = req.query.email
+    const activationCode = req.query.activationCode
 
     const unauthorizedEmail = await UnauthorizedEmailModel.findOne({
       email: userEmail,
