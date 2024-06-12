@@ -1,17 +1,17 @@
 import { validationResult } from 'express-validator'
 import { v4 as uuidv4 } from 'uuid'
 
-import { serverError } from '../../utils/serverLog'
+import { serverError } from '../../../utils/serverLog'
 
-import hashPassword from '../../utils/auth/hashPassword'
+import hashPassword from '../../../utils/auth/hashPassword'
 
-import UserModel from '../../models/User'
+import UserModel from '../../../models/User'
 
-import TokenService from '../../services/TokenService'
-import UserDto from '../../dtos/MyUserDto'
-import MailService from '../../services/MailService'
-import { BASE_API_URL, SITE_API_URL } from '../../variables'
-import { userRouteEnvironment } from '../../routes/userRoutes'
+import TokenService from '../../../services/TokenService'
+import UserDto from '../../../dtos/MyUserDto'
+import MailService from '../../../services/MailService'
+import { BASE_API_URL, SITE_API_URL } from '../../../variables'
+import { userRouteEnvironment } from '../../../routes/userRoutes'
 
 const reg = async (req: any, res: any) => {
   try {

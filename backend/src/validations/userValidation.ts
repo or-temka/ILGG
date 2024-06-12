@@ -1,4 +1,27 @@
-import { body } from 'express-validator'
+import { body, query } from 'express-validator'
+
+export const checkOutEmailCodeValidation = [
+  query('email')
+    .isEmail()
+    .normalizeEmail()
+    .withMessage('Не соответствует формату Email'),
+
+  query('activationCode')
+    .isLength({ min: 6, max: 6 })
+    .withMessage('Код должен состоять из 6 цифр'),
+]
+
+export const regEmailUserValidation = [
+  body('email')
+    .isEmail()
+    .normalizeEmail()
+    .withMessage('Не соответствует формату Email'),
+
+  body('confirmEmail')
+    .isEmail()
+    .normalizeEmail()
+    .withMessage('Не соответствует формату Email'),
+]
 
 export const regUserValidation = [
   body('name')
@@ -6,20 +29,28 @@ export const regUserValidation = [
     .withMessage('имя пользователя должно быть строкой')
     .isLength({
       min: 1,
-      max: 50,
+      max: 30,
     })
-    .withMessage('имя пользователя должно содержать от 1 до 50 символов'),
+    .withMessage('имя пользователя должно содержать от 1 до 30 символов')
+    .matches(/^[a-zA-Zа-яА-ЯёЁ0-9]+$/)
+    .withMessage(
+      'Имя пользователя должно содержать только буквы латинского, русского алфавита и цифры'
+    ),
 
-  body('email').isEmail().withMessage('Не соответствует формату Email'),
+  body('activationEmailLink'),
 
   body('login')
     .isString()
     .withMessage('логин пользователя должен быть строкой')
     .isLength({
       min: 1,
-      max: 50,
+      max: 30,
     })
-    .withMessage('логин пользователя должен содержать от 1 до 50 символов'),
+    .withMessage('логин пользователя должен содержать от 1 до 30 символов')
+    .matches(/^[a-zA-Z0-9]+$/)
+    .withMessage(
+      'Логин должен содержать только буквы латинского алфавита и цифры'
+    ),
 
   body('password')
     .isString()

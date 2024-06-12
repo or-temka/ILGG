@@ -5,3 +5,7 @@ export interface AuthResponse {
   refreshToken: string
   user: IMyUser
 }
+
+export interface SendActivationEmailCodeResponse {
+  activationLink: string
+}
