@@ -7,9 +7,8 @@ import UserModel from '../../models/User'
 import UnauthorizedEmailModel from '../../models/UnauthorizedEmailModel'
 
 import MailService from '../../services/MailService'
-import { BASE_API_URL, SITE_API_URL } from '../../variables'
-import { userRouteEnvironment } from '../../routes/userRoutes'
 import getDateDifference from '../../utils/math/date/getDateDifference'
+import generateNumericCode from '../../utils/math/generate/generateNumericCode'
 
 const regEmail = async (req: any, res: any) => {
   try {
@@ -54,22 +53,33 @@ const regEmail = async (req: any, res: any) => {
     }
 
     const activationLink = uuidv4()
+    const activationCode = generateNumericCode(6)
 
     const doc = new UnauthorizedEmailModel({
       email: userEmail,
+      activationCode,
       activationLink,
     })
 
     try {
-      await MailService.sendActivationMail(
-        userEmail,
-        `${SITE_API_URL}${BASE_API_URL}${userRouteEnvironment.base}/activate/${activationLink}`
-      )
+      await MailService.sendActivationMailCode(userEmail, activationCode)
     } catch (error) {
       return res.status(404).json({
         errorMsg: 'Не удалось отправить письмо с подтверждением на почту',
       })
     }
+
+    // Для активации по ссылке
+    // try {
+    //   await MailService.sendActivationMailLink(
+    //     userEmail,
+    //     `${SITE_API_URL}${BASE_API_URL}${userRouteEnvironment.base}/activate/${activationLink}`
+    //   )
+    // } catch (error) {
+    //   return res.status(404).json({
+    //     errorMsg: 'Не удалось отправить письмо с подтверждением на почту',
+    //   })
+    // }
 
     await doc.save()
 

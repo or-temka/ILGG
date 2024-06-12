@@ -9,6 +9,9 @@ const UnauthorizedEmailSchema = new mongoose.Schema({
   activationLink: {
     type: String,
   },
+  activationCode: {
+    type: String,
+  },
   attempt: {
     type: Number,
     default: 0,

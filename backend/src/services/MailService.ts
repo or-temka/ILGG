@@ -7,7 +7,8 @@ import {
   EMAIL_SMTP_USER,
   SITE_URL,
 } from '../variables'
-import mailConfirmation from './mails/mailConfirmation'
+import mailConfirmationViaCode from './mails/mailConfirmationViaCode'
+import mailConfirmationViaLink from './mails/mailConfirmationViaLink'
 
 class MailService {
   transporter
@@ -24,13 +25,23 @@ class MailService {
     })
   }
 
-  async sendActivationMail(to: string, link: string) {
+  async sendActivationMailLink(to: string, link: string) {
     await this.transporter.sendMail({
       from: EMAIL_SMTP_USER,
       to,
       subject: `Завершение регистрации на ${SITE_URL}`,
       text: '',
-      html: mailConfirmation(link),
+      html: mailConfirmationViaLink(link),
+    })
+  }
+
+  async sendActivationMailCode(to: string, activationCode: string) {
+    await this.transporter.sendMail({
+      from: EMAIL_SMTP_USER,
+      to,
+      subject: `Завершение регистрации на ${SITE_URL}`,
+      text: '',
+      html: mailConfirmationViaCode(activationCode),
     })
   }
 }

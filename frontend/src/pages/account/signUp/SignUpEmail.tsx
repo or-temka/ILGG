@@ -72,7 +72,7 @@ function SignUpEmail() {
         setShowEmailConfirmModal(true)
       })
       .catch((err) => {
-        const data = err.response.data
+        const data = err?.response?.data
 
         if (Array.isArray(data)) {
           const newInputs = new Set()
