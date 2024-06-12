@@ -1,12 +1,12 @@
 import bcrypt from 'bcrypt'
 
 import { validationResult } from 'express-validator'
-import { serverError } from '../../utils/serverLog'
+import { serverError } from '../../../utils/serverLog'
 
-import UserModel from '../../models/User'
+import UserModel from '../../../models/User'
 
-import UserDto from '../../dtos/MyUserDto'
-import TokenService from '../../services/TokenService'
+import UserDto from '../../../dtos/MyUserDto'
+import TokenService from '../../../services/TokenService'
 
 const signIn = async (req: any, res: any) => {
   try {

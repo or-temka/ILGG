@@ -1,5 +1,16 @@
 import { body } from 'express-validator'
 
+export const checkOutEmailCodeValidation = [
+  body('email')
+    .isEmail()
+    .normalizeEmail()
+    .withMessage('Не соответствует формату Email'),
+
+  body('activationCode')
+    .isLength({ min: 6, max: 6 })
+    .withMessage('Код должен состоять из 6 цифр'),
+]
+
 export const regEmailUserValidation = [
   body('email')
     .isEmail()

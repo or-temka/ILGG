@@ -1,9 +1,9 @@
-import UnauthorizedEmailModel from '../../models/UnauthorizedEmailModel'
-import UserModel from '../../models/User'
+import UnauthorizedEmailModel from '../../../models/UnauthorizedEmailModel'
+import UserModel from '../../../models/User'
 
-import { serverError } from '../../utils/serverLog'
+import { serverError } from '../../../utils/serverLog'
 
-import { SITE_FULL_URL } from '../../variables'
+import { SITE_FULL_URL } from '../../../variables'
 
 const profileActivate = async (req: any, res: any) => {
   try {

@@ -1,12 +1,12 @@
 import { validationResult } from 'express-validator'
 
-import { serverError } from '../../utils/serverLog'
+import { serverError } from '../../../utils/serverLog'
 
-import UserModel from '../../models/User'
-import UnauthorizedEmailModel from '../../models/UnauthorizedEmailModel'
+import UserModel from '../../../models/User'
+import UnauthorizedEmailModel from '../../../models/UnauthorizedEmailModel'
 
-import MailService from '../../services/MailService'
-import getDateDifference from '../../utils/math/date/getDateDifference'
+import MailService from '../../../services/MailService'
+import getDateDifference from '../../../utils/math/date/getDateDifference'
 
 const repeatSignUpEmail = async (req: any, res: any) => {
   try {
@@ -63,6 +63,7 @@ const repeatSignUpEmail = async (req: any, res: any) => {
     try {
       await MailService.sendActivationMailCode(userEmail, activationCode)
       unauthorizedDuplicateEmail.attemptDate = new Date()
+      unauthorizedDuplicateEmail.attemptEnterCode = 4
       unauthorizedDuplicateEmail.save()
     } catch (error) {
       return res.status(404).json({

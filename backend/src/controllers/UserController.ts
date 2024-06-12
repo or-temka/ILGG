@@ -1,25 +1,12 @@
-import getFullUserData from './UserControllers/getFullUserData'
-import getMyData from './UserControllers/getMyData'
-import signUp from './UserControllers/signUp'
-import signUpEmail from './UserControllers/signUpEmail'
-import repeatSignUpEmail from './UserControllers/repeatSendSignUpEmail'
-import signIn from './UserControllers/signIn'
-import delMyProfile from './UserControllers/delMyProfile'
-import editMyUserData from './UserControllers/editMyUserData'
-import profileActivate from './UserControllers/profileActivate'
-import logOut from './UserControllers/logOut'
-import refresh from './UserControllers/refresh'
-
-export {
-  getFullUserData,
-  getMyData,
-  signUp,
-  signUpEmail,
-  repeatSignUpEmail,
-  signIn,
-  delMyProfile,
-  editMyUserData,
-  profileActivate,
-  logOut,
-  refresh,
-}
+export { default as getFullUserData } from './UserControllers/getFullUserData'
+export { default as getMyData } from './UserControllers/getMyData'
+export { default as signUp } from './UserControllers/auth/signUp'
+export { default as signUpEmail } from './UserControllers/auth/signUpEmail'
+export { default as repeatSignUpEmail } from './UserControllers/auth/repeatSendSignUpEmail'
+export { default as checkEmailCode } from './UserControllers/auth/checkEmailCode'
+export { default as signIn } from './UserControllers/auth/signIn'
+export { default as delMyProfile } from './UserControllers/delMyProfile'
+export { default as editMyUserData } from './UserControllers/editMyUserData'
+export { default as profileActivate } from './UserControllers/auth/profileActivate'
+export { default as logOut } from './UserControllers/auth/logOut'
+export { default as refresh } from './UserControllers/auth/refresh'

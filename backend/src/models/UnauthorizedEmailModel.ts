@@ -16,6 +16,11 @@ const UnauthorizedEmailSchema = new mongoose.Schema({
     type: Date,
     default: () => Date.now(),
   },
+  attemptEnterCode: {
+    type: Number,
+    default: 4,
+    required: true,
+  },
 
   expireAt: {
     type: Date,

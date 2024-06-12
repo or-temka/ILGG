@@ -32,6 +32,16 @@ export default class AuthService {
     })
   }
 
+  static async sendEmaiolActivationCode(
+    email: string,
+    activationCode: string
+  ): Promise<AxiosResponse<AuthResponse>> {
+    return $api.post<AuthResponse>('user/repeat-send-sign-up-email', {
+      email,
+      activationCode,
+    })
+  }
+
   static async registration(
     login: string,
     email: string,

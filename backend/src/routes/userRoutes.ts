@@ -1,6 +1,7 @@
 import { Router } from 'express'
 
 import {
+  checkOutEmailCodeValidation,
   editMyUserDataValidation,
   regEmailUserValidation,
   regUserValidation,
@@ -41,6 +42,12 @@ router.post(
   `${routeEnvironment.base}/repeat-send-sign-up-email`,
   regEmailUserValidation,
   UserController.repeatSignUpEmail
+)
+
+router.get(
+  `${routeEnvironment.base}/sign-up-email`,
+  checkOutEmailCodeValidation,
+  UserController.checkEmailCode
 )
 
 router.post(`${routeEnvironment.base}/sign-in`, UserController.signIn)

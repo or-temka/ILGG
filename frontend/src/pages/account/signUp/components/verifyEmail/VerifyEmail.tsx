@@ -61,6 +61,8 @@ function VerifyEmail({ onClose, email, confirmEmail }: VerifyEmailProps) {
       })
   }
 
+  const onClickSendCodeHandler = async () => {}
+
   return (
     <PopUpContainer
       classNames={{ wrapperClassName: styles.modal }}
@@ -89,6 +91,7 @@ function VerifyEmail({ onClose, email, confirmEmail }: VerifyEmailProps) {
                 variant={ButtonVariant.primary}
                 className={styles.modal__confirmEmailCodeBtn}
                 disabled={codeValue.length !== 6}
+                onClick={onClickSendCodeHandler}
               />
             )}
           </div>
