@@ -11,13 +11,17 @@ export const checkOutEmailCodeValidation = [
     .withMessage('Код должен состоять из 6 цифр'),
 ]
 
-export const regEmailUserValidation = [
-  body('email')
+export const checkIsActiveEmailLinkValidation = [
+  query('email')
     .isEmail()
     .normalizeEmail()
     .withMessage('Не соответствует формату Email'),
 
-  body('confirmEmail')
+  query('activationLink').isString().withMessage('Код должен быть строкой'),
+]
+
+export const regEmailUserValidation = [
+  body('email')
     .isEmail()
     .normalizeEmail()
     .withMessage('Не соответствует формату Email'),
@@ -36,7 +40,11 @@ export const regUserValidation = [
     .withMessage(
       'Имя пользователя должно содержать только буквы латинского, русского алфавита и цифры'
     ),
-
+    
+  body('email')
+    .isEmail()
+    .normalizeEmail()
+    .withMessage('Не соответствует формату Email'),
   body('activationEmailLink'),
 
   body('login')

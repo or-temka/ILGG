@@ -18,6 +18,14 @@
   box-sizing: border-box;
 }
 
+.centerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
 body {
   background-color: var(--background-color);
 }

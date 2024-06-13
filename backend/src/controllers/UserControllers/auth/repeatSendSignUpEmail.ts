@@ -16,13 +16,6 @@ const repeatSignUpEmail = async (req: any, res: any) => {
     }
 
     const userEmail = req.body.email
-    const confirmUserEmail = req.body.confirmEmail
-
-    if (userEmail !== confirmUserEmail) {
-      return res
-        .status(403)
-        .json({ errorMsg: 'Email не совпадает с подтвержденным Email' })
-    }
     // Проверка на существование такого пользователя с таким Email
     const candidateEmail = await UserModel.findOne({
       email: userEmail,

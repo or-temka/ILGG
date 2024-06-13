@@ -17,8 +17,11 @@ import {
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification'
 import { registration } from '../../../redux/slices/myProfileSlice'
 import AboutService from './components/AboutService'
+import useLocationQuery from 'hooks/useLocationQuery'
 
 import styles from './SignUp.module.scss'
+import LoadingSpiner from 'components/UI/loaders/LoadingSpiner'
+import AuthService from 'services/authService'
 
 function SignUp() {
   const dispatch = useDispatch()
@@ -31,13 +34,34 @@ function SignUp() {
   const [formData, setFormData] = useState({
     login: { value: '', error: '' },
     name: { value: '', error: '' },
-    email: { value: '', error: '' },
     password: { value: '', error: '' },
     confirmPassword: { value: '', error: '' },
     personalDataConsent: false,
     disabledSendButton: false,
   })
-  const [showEmailConfirmModal, setShowEmailConfirmModal] = useState(false)
+
+  const queryParams = useLocationQuery()
+  const queryEmail = queryParams.get('email')
+  const queryActivationLink = queryParams.get('activationLink')
+  const isQuery = queryActivationLink && queryEmail
+  useEffect(() => {
+    if (!isQuery) {
+      navigate('/')
+    } else {
+      AuthService.isActivationEmailLink(queryEmail, queryActivationLink).catch(
+        (error) => {
+          console.log(error)
+        }
+      )
+    }
+  })
+  if (!isQuery) {
+    return (
+      <div className="centerContainer">
+        <LoadingSpiner />
+      </div>
+    )
+  }
 
   const changePasswordVisible = (elem: ParentNode | null) => {
     const input = elem?.querySelector('input')
@@ -62,11 +86,6 @@ function SignUp() {
     }))
   }
 
-  const onCloseEmailConfirmHandler = () => {
-    setShowEmailConfirmModal(false)
-    navigate('/')
-  }
-
   const onClickCreateAccountButton = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
@@ -79,7 +98,8 @@ function SignUp() {
       login: formData.login.value,
       password: formData.password.value,
       confirmPassword: formData.confirmPassword.value,
-      email: formData.email.value,
+      email: queryEmail,
+      activationLink: queryActivationLink,
     }
 
     dispatch<any>(registration(userData)).then((res: any) => {
@@ -90,10 +110,21 @@ function SignUp() {
         if (Array.isArray(errorPayload)) {
           const newInputs = new Set()
           errorPayload.map((wrongInput) => {
+            if (wrongInput.path === 'email') {
+              return dispatch(
+                addPanel({
+                  item: {
+                    type: PanelVariant.textNotification,
+                    variant: FloatingNotificationVariant.error,
+                    text: wrongInput.msg || 'Произошла ошибка!',
+                  },
+                })
+              )
+            }
+
             const wrongInputPath:
               | 'name'
               | 'login'
-              | 'email'
               | 'password'
               | 'confirmPassword' = wrongInput.path
             const newInputWithError = formData[wrongInputPath]
@@ -113,7 +144,7 @@ function SignUp() {
           )
         }
       } else if (requestStatus === 'fulfilled') {
-        setShowEmailConfirmModal(true)
+        navigate('/')
       }
 
       changeSendButtonDisable()
@@ -152,13 +183,6 @@ function SignUp() {
                 value={formData.name.value}
                 onChange={(e) => setFormDataField('name', e)}
                 errorText={formData.name.error}
-              />
-              <Input
-                label="E-mail:"
-                placeholder="Введите ваш E-mail"
-                value={formData.email.value}
-                onChange={(e) => setFormDataField('email', e)}
-                errorText={formData.email.error}
               />
               <InputWithBtnIcon
                 label="Пароль: *"

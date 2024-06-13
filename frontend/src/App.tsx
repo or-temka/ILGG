@@ -15,7 +15,7 @@ const AppsLibrary = lazy(() => import('./pages/AppsLibrary'))
 const Inventory = lazy(() => import('./pages/UserInventory'))
 const Marketplace = lazy(() => import('./pages/Marketplace'))
 const PageNotFound = lazy(() => import('./pages/PageNotFound'))
-
+const SignUp = lazy(() => import('./pages/account/signUp/SignUp'))
 const SignUpEmail = lazy(() => import('./pages/account/signUp/SignUpEmail'))
 const Profile = lazy(() => import('./pages/account/Profile'))
 const EditProfile = lazy(() => import('./pages/account/EditProfile'))
@@ -44,7 +44,11 @@ function App() {
               {/* application pages */}
               <Route path={pageLink.game + ':id'} element={<Game />}></Route>
 
-              <Route path={pageLink.signUpEmail} element={<SignUpEmail />}></Route>
+              <Route
+                path={pageLink.signUpEmail}
+                element={<SignUpEmail />}
+              ></Route>
+              <Route path={pageLink.signUp} element={<SignUp />}></Route>
               <Route
                 path={pageLink.profile + ':id'}
                 element={<Profile />}

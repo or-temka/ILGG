@@ -17,21 +17,17 @@ export default class AuthService {
 
   static async registrationEmail(
     email: string,
-    confirmEmail: string
   ): Promise<AxiosResponse<any>> {
     return $api.post<any>('user/sign-up-email', {
       email,
-      confirmEmail,
     })
   }
 
   static async repeatSendEmail(
     email: string,
-    confirmEmail: string
   ): Promise<AxiosResponse<any>> {
     return $api.post<any>('user/repeat-send-sign-up-email', {
       email,
-      confirmEmail,
     })
   }
 
@@ -44,19 +40,30 @@ export default class AuthService {
     })
   }
 
+  static async isActivationEmailLink(
+    email: string,
+    activationLink: string
+  ): Promise<AxiosResponse<any>> {
+    return $api.get<any>('user/sign-up', {
+      params: { email, activationLink },
+    })
+  }
+
   static async registration(
     login: string,
-    email: string,
     name: string,
     password: string,
-    confirmPassword: string
+    confirmPassword: string,
+    email: string,
+    activationLink: string
   ): Promise<AxiosResponse<AuthResponse>> {
     return $api.post<AuthResponse>('user/sign-up', {
       login,
-      email,
       name,
       password,
       confirmPassword,
+      email,
+      activationLink,
     })
   }
 

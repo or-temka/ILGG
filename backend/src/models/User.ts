@@ -11,13 +11,6 @@ const UserSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  isActivated: {
-    type: Boolean,
-    default: false,
-  },
-  activationLink: {
-    type: String,
-  },
 
   login: {
     type: String,

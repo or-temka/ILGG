@@ -39,20 +39,22 @@ export const registration = createAsyncThunk(
   async (
     userData: {
       login: string
-      email: string
       name: string
       password: string
       confirmPassword: string
+      email: string
+      activationLink: string
     },
     { rejectWithValue }
   ) => {
     try {
       const response = await AuthService.registration(
         userData.login,
-        userData.email,
         userData.name,
         userData.password,
-        userData.confirmPassword
+        userData.confirmPassword,
+        userData.email,
+        userData.activationLink
       )
 
       localStorage.setItem('token', response.data.accessToken)

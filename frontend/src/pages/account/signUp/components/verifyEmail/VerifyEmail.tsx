@@ -25,10 +25,9 @@ const preloadSrcList: string[] = [ImgEnvelope]
 interface VerifyEmailProps {
   onClose: Function
   email: string
-  confirmEmail: string
 }
 
-function VerifyEmail({ onClose, email, confirmEmail }: VerifyEmailProps) {
+function VerifyEmail({ onClose, email }: VerifyEmailProps) {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { imagesPreloaded } = useImagePreloader(preloadSrcList)
@@ -40,7 +39,7 @@ function VerifyEmail({ onClose, email, confirmEmail }: VerifyEmailProps) {
   }
 
   const onClickRepeatSendEmailHandler = async () => {
-    await AuthService.repeatSendEmail(email, confirmEmail)
+    await AuthService.repeatSendEmail(email)
       .then(() => {
         dispatch(
           addPanel({
@@ -71,7 +70,9 @@ function VerifyEmail({ onClose, email, confirmEmail }: VerifyEmailProps) {
     await AuthService.sendEmailActivationCode(email, codeValue)
       .then((res) => {
         const activationLink = res.data.activationLink
-        navigate(`${pageLink.signUp}/${activationLink}`)
+        navigate(
+          `${pageLink.signUp}?activationLink=${activationLink}&email=${email}`
+        )
       })
       .catch((error) => {
         const data = error?.response?.data
