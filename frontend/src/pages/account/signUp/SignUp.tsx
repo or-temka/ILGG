@@ -39,7 +39,6 @@ function SignUp() {
     personalDataConsent: false,
     disabledSendButton: false,
   })
-  const [showEmailConfirmModal, setShowEmailConfirmModal] = useState(false)
 
   const queryParams = useLocationQuery()
   const queryEmail = queryParams.get('email')
@@ -99,6 +98,8 @@ function SignUp() {
       login: formData.login.value,
       password: formData.password.value,
       confirmPassword: formData.confirmPassword.value,
+      email: queryEmail,
+      activationLink: queryActivationLink,
     }
 
     dispatch<any>(registration(userData)).then((res: any) => {
@@ -109,6 +110,18 @@ function SignUp() {
         if (Array.isArray(errorPayload)) {
           const newInputs = new Set()
           errorPayload.map((wrongInput) => {
+            if (wrongInput.path === 'email') {
+              return dispatch(
+                addPanel({
+                  item: {
+                    type: PanelVariant.textNotification,
+                    variant: FloatingNotificationVariant.error,
+                    text: wrongInput.msg || 'Произошла ошибка!',
+                  },
+                })
+              )
+            }
+
             const wrongInputPath:
               | 'name'
               | 'login'
@@ -131,7 +144,7 @@ function SignUp() {
           )
         }
       } else if (requestStatus === 'fulfilled') {
-        setShowEmailConfirmModal(true)
+        navigate('/')
       }
 
       changeSendButtonDisable()

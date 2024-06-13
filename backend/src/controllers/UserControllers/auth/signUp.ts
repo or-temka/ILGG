@@ -1,17 +1,13 @@
 import { validationResult } from 'express-validator'
-import { v4 as uuidv4 } from 'uuid'
 
 import { serverError } from '../../../utils/serverLog'
-
 import hashPassword from '../../../utils/auth/hashPassword'
 
 import UserModel from '../../../models/User'
+import UnauthorizedEmailModel from '../../../models/UnauthorizedEmailModel'
 
 import TokenService from '../../../services/TokenService'
 import UserDto from '../../../dtos/MyUserDto'
-import MailService from '../../../services/MailService'
-import { BASE_API_URL, SITE_API_URL } from '../../../variables'
-import { userRouteEnvironment } from '../../../routes/userRoutes'
 
 const reg = async (req: any, res: any) => {
   try {
@@ -20,7 +16,6 @@ const reg = async (req: any, res: any) => {
       return res.status(400).json(errors.array())
     }
 
-    const userEmail = req.body.email
     const userLogin = req.body.login
     // Проверка на существование такого пользователя с таким Email или login
     const candidateLogin = await UserModel.findOne({ login: userLogin })
@@ -29,11 +24,17 @@ const reg = async (req: any, res: any) => {
         .status(409)
         .json({ errorMsg: 'Пользователь с таким логином уже существует' })
     }
-    const candidateEmail = await UserModel.findOne({ email: userEmail })
-    if (candidateEmail) {
-      return res
-        .status(409)
-        .json({ errorMsg: 'Пользователь с такой почтой уже существует' })
+
+    // Проверка на подтвержденную почту
+    const activationLink = req.body.activationLink
+    const userEmail = req.body.email
+    const unauthorizedEmail = await UnauthorizedEmailModel.findOne({
+      email: userEmail,
+    })
+    if (unauthorizedEmail?.activationLink !== activationLink) {
+      return res.status(404).json({
+        errorMsg: 'Не найден запущенный процесс регистрации.',
+      })
     }
 
     // hashing password
@@ -41,10 +42,7 @@ const reg = async (req: any, res: any) => {
     const confirmPassword = req.body.confirmPassword
     if (password !== confirmPassword)
       return res.status(403).json({ errorMsg: 'Пароли не совпадают.' })
-
     const hashedPassword = await hashPassword(password)
-
-    const activationLink = uuidv4()
 
     const doc = new UserModel({
       name: req.body.name,
@@ -53,19 +51,7 @@ const reg = async (req: any, res: any) => {
       password: hashedPassword,
       isOnline: true,
       balance: 0,
-      activationLink,
     })
-
-    try {
-      await MailService.sendActivationMail(
-        userEmail,
-        `${SITE_API_URL}${BASE_API_URL}${userRouteEnvironment.base}/activate/${activationLink}`
-      )
-    } catch (error) {
-      return res.status(404).json({
-        errorMsg: 'Пользователя с таким Email адресом не существует',
-      })
-    }
 
     const user = await doc.save()
 

@@ -27,7 +27,6 @@ function SignUpEmail() {
 
   const [formData, setFormData] = useState({
     email: { value: 'tema.chegortzov@mail.ru', error: '' },
-    confirmEmail: { value: 'tema.chegortzov@mail.ru', error: '' },
     personalDataConsent: false,
     disabledSendButton: false,
   })
@@ -63,26 +62,30 @@ function SignUpEmail() {
 
     const emailData = {
       email: formData.email.value,
-      confirmEmail: formData.confirmEmail.value,
     }
 
-    await AuthService.registrationEmail(emailData.email, emailData.confirmEmail)
+    await AuthService.registrationEmail(emailData.email)
       .then((res) => {
         setShowEmailConfirmModal(true)
       })
       .catch((err) => {
         const data = err?.response?.data
+        const status = err?.response?.status
 
         if (Array.isArray(data)) {
           const newInputs = new Set()
           data.map((wrongInput) => {
-            const wrongInputPath: 'email' | 'confirmEmail' = wrongInput.path
+            const wrongInputPath: 'email' = wrongInput.path
             const newInputWithError = formData[wrongInputPath]
             newInputWithError.error = wrongInput.msg
             newInputs.add(newInputWithError)
           })
           setFormData((prev) => ({ ...prev, newInputs }))
         } else {
+          if (status === 409) {
+            return setShowEmailConfirmModal(true)
+          }
+
           dispatch(
             addPanel({
               item: {
@@ -126,14 +129,6 @@ function SignUpEmail() {
                 errorText={formData.email.error}
               />
 
-              <Input
-                label="Подтвердите E-mail:"
-                placeholder="Введите ваш E-mail ещё раз"
-                value={formData.confirmEmail.value}
-                onChange={(e) => setFormDataField('confirmEmail', e)}
-                errorText={formData.confirmEmail.error}
-              />
-
               <Checkbox
                 label="Даю согласие на обработку персональных данных"
                 checked={formData.personalDataConsent}
@@ -167,7 +162,6 @@ function SignUpEmail() {
         <VerifyEmail
           onClose={onCloseEmailConfirmHandler}
           email={formData.email.value}
-          confirmEmail={formData.confirmEmail.value}
         />
       )}
     </>

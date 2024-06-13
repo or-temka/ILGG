@@ -42,6 +42,8 @@ export const registration = createAsyncThunk(
       name: string
       password: string
       confirmPassword: string
+      email: string
+      activationLink: string
     },
     { rejectWithValue }
   ) => {
@@ -50,7 +52,9 @@ export const registration = createAsyncThunk(
         userData.login,
         userData.name,
         userData.password,
-        userData.confirmPassword
+        userData.confirmPassword,
+        userData.email,
+        userData.activationLink
       )
 
       localStorage.setItem('token', response.data.accessToken)
