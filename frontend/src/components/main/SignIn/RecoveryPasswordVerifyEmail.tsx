@@ -19,6 +19,9 @@ import { FloatingNotificationVariant } from 'components/UI/floatingPanels/Floati
 import styles from './RecoveryPasswordVerifyEmail.module.scss'
 import pageLink from 'pagesLinks'
 import RepeatButton from 'pages/account/signUp/components/verifyEmail/RepeatButton'
+import RecoveryPasswordService from 'services/recoveryPasswordservice'
+import { AxiosError } from 'axios'
+import { RecoveryEmailError } from 'models/response/RecoveryPasswordResponse'
 
 const preloadSrcList: string[] = [ImgEnvelope]
 
@@ -27,7 +30,10 @@ interface VerifyEmailProps {
   emailOrLogin: string
 }
 
-function RecoveryPasswordVerifyEmail({ onClose, emailOrLogin }: VerifyEmailProps) {
+function RecoveryPasswordVerifyEmail({
+  onClose,
+  emailOrLogin,
+}: VerifyEmailProps) {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { imagesPreloaded } = useImagePreloader(preloadSrcList)
@@ -35,7 +41,8 @@ function RecoveryPasswordVerifyEmail({ onClose, emailOrLogin }: VerifyEmailProps
   const [disabledSendBtn, setDisabledSendBtn] = useState(false)
 
   const onClickRepeatSendEmailHandler = useCallback(async () => {
-    await AuthService.repeatSendEmail(emailOrLogin)
+    setDisabledSendBtn(true)
+    await RecoveryPasswordService.repeatRecoveryByEmail(emailOrLogin)
       .then(() => {
         dispatch(
           addPanel({
@@ -47,17 +54,21 @@ function RecoveryPasswordVerifyEmail({ onClose, emailOrLogin }: VerifyEmailProps
           })
         )
       })
-      .catch((error) => {
-        const data = error?.response?.data
+      .catch((error: AxiosError<RecoveryEmailError>) => {
+        const errorMsg = error?.response?.data.errorMsg
+
         dispatch(
           addPanel({
             item: {
               type: PanelVariant.textNotification,
               variant: FloatingNotificationVariant.error,
-              text: data?.errorMsg || 'Произошла ошибка!',
+              text: errorMsg || 'Произошла ошибка!',
             },
           })
         )
+      })
+      .finally(() => {
+        setDisabledSendBtn(false)
       })
   }, [emailOrLogin, dispatch])
 
@@ -128,9 +139,6 @@ function RecoveryPasswordVerifyEmail({ onClose, emailOrLogin }: VerifyEmailProps
             className={styles.modal__envelopeImg}
           />
         </div>
-        <span className={styles.modal__hint_warning}>
-          Завершите регистрацию в течении 20 минут.
-        </span>
       </div>
     </PopUpContainer>
   )
