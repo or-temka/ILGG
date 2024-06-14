@@ -60,6 +60,10 @@ router.post(
   `${routeEnvironment.recoveryAccount}/recovery-by-email`,
   UserController.recoveryByEmail
 )
+router.post(
+  `${routeEnvironment.recoveryAccount}/repeat-recovery-by-email`,
+  UserController.repeatRecoveryByEmail
+)
 //#endregion
 //#endregion
 //#region my user

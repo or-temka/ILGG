@@ -7,6 +7,7 @@ export { default as signIn } from './UserControllers/auth/signIn'
 export { default as isActiveEmailLink } from './UserControllers/auth/isActiveEmailLink'
 // recovery
 export { default as recoveryByEmail } from './UserControllers/auth/recovery/recoveryByEmail'
+export { default as repeatRecoveryByEmail } from './UserControllers/auth/recovery/repeatRecoveryByEmail'
 
 // my user
 export { default as getFullUserData } from './UserControllers/getFullUserData'

@@ -1,5 +1,4 @@
 import { validationResult } from 'express-validator'
-import { v4 as uuidv4 } from 'uuid'
 
 import { serverError } from '../../../../utils/serverLog'
 
@@ -8,10 +7,9 @@ import UnauthorizedEmailModel from '../../../../models/UnauthorizedEmailModel'
 
 import MailService from '../../../../services/MailService'
 import getDateDifference from '../../../../utils/math/date/getDateDifference'
-import generateNumericCode from '../../../../utils/math/generate/generateNumericCode'
 import RecoveryEmailModel from '../../../../models/RecoveryEmailModel'
 
-const recoveryByEmail = async (req: any, res: any) => {
+const repeatRecoveryByEmail = async (req: any, res: any) => {
   try {
     const userLoginOrEmail = req.body.userLoginOrEmail
 
@@ -27,45 +25,48 @@ const recoveryByEmail = async (req: any, res: any) => {
       email: candidate.email,
     })
 
-    const expireAtDate = recoveryEmail?.expireAt || new Date()
-    const dateDifferenceInMinutes = getDateDifference(
+    const attemptDate = recoveryEmail?.attemptDate || new Date()
+    const dateDifferenceInSeconds = getDateDifference(
       new Date(),
-      expireAtDate,
-      'm'
+      attemptDate,
+      's'
     )
 
-    if (recoveryEmail) {
+    if (recoveryEmail && dateDifferenceInSeconds < 60) {
       return res.status(409).json({
-        errorMsg: `На вашу почту уже было направлено письмо с подтверждением. Повторное письмо можно будет направить через ${dateDifferenceInMinutes} минут.`,
+        errorMsg: `На вашу почту уже было направлено письмо с подтверждением. Повторное письмо можно будет направить через ${
+          60 - dateDifferenceInSeconds
+        } с.`,
       })
     }
 
-    const activationLink = uuidv4()
-    const activationCode = generateNumericCode(6)
+    const activationCode = recoveryEmail?.activationCode
 
-    const doc = new RecoveryEmailModel({
-      email: candidate.email,
-      activationCode,
-      activationLink,
-    })
+    if (!activationCode) {
+      return res.status(404).json({
+        errorMsg: 'Не удалось отправить письмо с подтверждением на почту',
+      })
+    }
 
     try {
       await MailService.sendActivationMailCode(candidate.email, activationCode)
+      recoveryEmail.attemptDate = new Date()
+      recoveryEmail.attemptEnterCode = 4
+      recoveryEmail.save()
     } catch (error) {
       return res.status(404).json({
         errorMsg: 'Не удалось отправить письмо с подтверждением на почту',
       })
     }
 
-    await doc.save()
-
     res.status(200).json()
   } catch (error: any) {
     serverError(error)
     res.status(500).json({
-      errorMsg: 'Произошла ошибка во время отправки сообщения на почту.',
+      errorMsg:
+        'Произошла ошибка во время повторной отправки подтверждения на почту.',
     })
   }
 }
 
-export default recoveryByEmail
+export default repeatRecoveryByEmail
