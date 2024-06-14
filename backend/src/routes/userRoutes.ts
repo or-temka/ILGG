@@ -13,6 +13,7 @@ import authMiddleware from '../middlewares/authMiddleware'
 
 const routeEnvironment = {
   base: '/user',
+  recoveryAccount: '/user/recovery',
 }
 
 const router = Router()
@@ -54,6 +55,12 @@ router.get(
 router.post(`${routeEnvironment.base}/sign-in`, UserController.signIn)
 router.post(`${routeEnvironment.base}/log-out`, UserController.logOut)
 
+//#region recovery password
+router.post(
+  `${routeEnvironment.recoveryAccount}/recovery-by-email`,
+  UserController.recoveryByEmail
+)
+//#endregion
 //#endregion
 //#region my user
 // Рефреш токена если он умер
