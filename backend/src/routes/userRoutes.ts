@@ -2,6 +2,7 @@ import { Router } from 'express'
 
 import {
   checkIsActiveEmailLinkValidation,
+  checkOutEmailCodeForRecoveryValidation,
   checkOutEmailCodeValidation,
   editMyUserDataValidation,
   regEmailUserValidation,
@@ -63,6 +64,11 @@ router.post(
 router.post(
   `${routeEnvironment.recoveryAccount}/repeat-recovery-by-email`,
   UserController.repeatRecoveryByEmail
+)
+router.get(
+  `${routeEnvironment.recoveryAccount}/recovery-by-email`,
+  checkOutEmailCodeForRecoveryValidation,
+  UserController.checkRecoveryEmailCode
 )
 //#endregion
 //#endregion
