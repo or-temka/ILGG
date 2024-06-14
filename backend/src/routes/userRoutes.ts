@@ -5,6 +5,7 @@ import {
   checkOutEmailCodeForRecoveryValidation,
   checkOutEmailCodeValidation,
   editMyUserDataValidation,
+  recoveryUserValidation,
   regEmailUserValidation,
   regUserValidation,
 } from '../validations/userValidation'
@@ -69,6 +70,11 @@ router.get(
   `${routeEnvironment.recoveryAccount}/recovery-by-email`,
   checkOutEmailCodeForRecoveryValidation,
   UserController.checkRecoveryEmailCode
+)
+router.post(
+  `${routeEnvironment.recoveryAccount}`,
+  recoveryUserValidation,
+  UserController.recovery
 )
 //#endregion
 //#endregion

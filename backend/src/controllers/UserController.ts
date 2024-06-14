@@ -9,6 +9,7 @@ export { default as isActiveEmailLink } from './UserControllers/auth/isActiveEma
 export { default as recoveryByEmail } from './UserControllers/auth/recovery/recoveryByEmail'
 export { default as repeatRecoveryByEmail } from './UserControllers/auth/recovery/repeatRecoveryByEmail'
 export { default as checkRecoveryEmailCode } from './UserControllers/auth/recovery/checkRecoveryEmailCode'
+export { default as recovery } from './UserControllers/auth/recovery/recovery'
 
 // my user
 export { default as getFullUserData } from './UserControllers/getFullUserData'
