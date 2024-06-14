@@ -9,7 +9,6 @@ import LoadingPopUp from 'components/UI/loaders/LoadingPopUp'
 import ImgEnvelope from '../../../assets/images/posters/email-envelope.png'
 import Input from 'components/UI/inputs/Input'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button'
-import AuthService from 'services/authService'
 import {
   PanelVariant,
   addPanel,
@@ -17,11 +16,13 @@ import {
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification'
 
 import styles from './RecoveryPasswordVerifyEmail.module.scss'
-import pageLink from 'pagesLinks'
 import RepeatButton from 'pages/account/signUp/components/verifyEmail/RepeatButton'
 import RecoveryPasswordService from 'services/recoveryPasswordservice'
 import { AxiosError } from 'axios'
-import { RecoveryEmailError } from 'models/response/RecoveryPasswordResponse'
+import {
+  RecoveryEmailError,
+  sendRecoveryActivationCodeResponse,
+} from 'models/response/RecoveryPasswordResponse'
 import EnterNewPassword from './EnterNewPassword'
 
 const preloadSrcList: string[] = [ImgEnvelope]
@@ -29,17 +30,22 @@ const preloadSrcList: string[] = [ImgEnvelope]
 interface VerifyEmailProps {
   onClose: Function
   emailOrLogin: string
+  onCloseSignIn: Function
 }
 
 function RecoveryPasswordVerifyEmail({
   onClose,
   emailOrLogin,
+  onCloseSignIn,
 }: VerifyEmailProps) {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { imagesPreloaded } = useImagePreloader(preloadSrcList)
   const [codeValue, setCodeValue] = useState('')
   const [disabledSendBtn, setDisabledSendBtn] = useState(false)
+
+  const [userChangePassData, setUserChangePassData] =
+    useState<null | sendRecoveryActivationCodeResponse>(null)
 
   const onClickRepeatSendEmailHandler = useCallback(async () => {
     setDisabledSendBtn(true)
@@ -80,12 +86,12 @@ function RecoveryPasswordVerifyEmail({
       codeValue
     )
       .then((res) => {
-        const activationLink = res.data.activationLink
-        console.log(activationLink)
+        const data = res.data
 
-        // navigate(
-        //   `${pageLink.signUp}?activationLink=${activationLink}&email=${emailOrLogin}`
-        // )
+        setUserChangePassData({
+          email: data.email,
+          activationLink: data.activationLink,
+        })
       })
       .catch((error: AxiosError<RecoveryEmailError>) => {
         const errorMsg = error?.response?.data.errorMsg
@@ -149,7 +155,14 @@ function RecoveryPasswordVerifyEmail({
         </div>
       </PopUpContainer>
 
-      <EnterNewPassword />
+      {userChangePassData && (
+        <EnterNewPassword
+          email={userChangePassData.email}
+          activationLink={userChangePassData.activationLink}
+          onClose={() => setUserChangePassData(null)}
+          onCloseSingIn={onCloseSignIn}
+        />
+      )}
     </>
   )
 }

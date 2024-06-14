@@ -4,4 +4,5 @@ export interface RecoveryEmailError {
 
 export interface sendRecoveryActivationCodeResponse {
   activationLink: string
+  email: string
 }

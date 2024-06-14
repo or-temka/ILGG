@@ -2,6 +2,7 @@ import { AxiosResponse } from 'axios'
 
 import $api from 'http/axios'
 
+import { AuthResponse } from 'models/response/AuthResponse'
 import { sendRecoveryActivationCodeResponse } from 'models/response/RecoveryPasswordResponse'
 
 export default class RecoveryPasswordService {
@@ -31,5 +32,19 @@ export default class RecoveryPasswordService {
         params: { userEmailOrLogin, activationCode },
       }
     )
+  }
+
+  static async recovery(
+    email: string,
+    activationLink: string,
+    password: string,
+    confirmPassword: string
+  ): Promise<AxiosResponse<AuthResponse>> {
+    return $api.post<AuthResponse>('user/recovery', {
+      email,
+      activationLink,
+      password,
+      confirmPassword,
+    })
   }
 }

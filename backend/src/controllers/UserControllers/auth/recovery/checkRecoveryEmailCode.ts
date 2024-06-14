@@ -58,7 +58,9 @@ const checkRecoveryEmailCode = async (req: any, res: any) => {
       }
     }
 
-    res.status(200).json({ activationLink: recoveryEmail.activationLink })
+    res
+      .status(200)
+      .json({ activationLink: recoveryEmail.activationLink, email: user.email })
   } catch (error: any) {
     serverError(error)
     res.status(500).json({

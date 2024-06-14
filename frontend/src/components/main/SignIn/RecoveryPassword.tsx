@@ -17,10 +17,11 @@ import {
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification'
 
 interface RecoveryPasswordProps {
-  onClose?: Function
+  onClose: Function
+  onCloseSignIn: Function
 }
 
-function RecoveryPassword({ onClose = () => {} }: RecoveryPasswordProps) {
+function RecoveryPassword({ onClose, onCloseSignIn }: RecoveryPasswordProps) {
   const dispatch = useDispatch()
 
   const [userDataValue, setUserDataValue] = useState('')
@@ -93,6 +94,7 @@ function RecoveryPassword({ onClose = () => {} }: RecoveryPasswordProps) {
         <RecoveryPasswordVerifyEmail
           onClose={() => setShowVerifyEmail(false)}
           emailOrLogin={userDataValue}
+          onCloseSignIn={onCloseSignIn}
         />
       )}
     </>

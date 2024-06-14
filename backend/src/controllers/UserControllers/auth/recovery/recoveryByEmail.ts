@@ -48,7 +48,7 @@ const recoveryByEmail = async (req: any, res: any) => {
     })
 
     try {
-      await MailService.sendActivationMailCode(candidate.email, activationCode)
+      await MailService.sendRecoveryMailCode(candidate.email, activationCode)
     } catch (error) {
       return res.status(404).json({
         errorMsg: 'Не удалось отправить письмо с подтверждением на почту',

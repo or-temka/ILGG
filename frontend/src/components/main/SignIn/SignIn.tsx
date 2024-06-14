@@ -151,7 +151,10 @@ function SignIn({ onClose = () => {} }) {
       {/* other pop-up`s */}
       {showRecoveryPassword && (
         <Suspense fallback={<LoadingPopUp />}>
-          <RecoveryPassword onClose={() => setShowRecoveryPassword(false)} />
+          <RecoveryPassword
+            onClose={() => setShowRecoveryPassword(false)}
+            onCloseSignIn={onClose}
+          />
         </Suspense>
       )}
     </>
