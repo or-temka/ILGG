@@ -9,6 +9,7 @@ import {
 } from '../variables'
 import mailConfirmationViaCode from './mails/mailConfirmationViaCode'
 import mailConfirmationViaLink from './mails/mailConfirmationViaLink'
+import mailRecoveryViaCode from './mails/mailRecoveryViaCode'
 
 class MailService {
   transporter
@@ -42,6 +43,16 @@ class MailService {
       subject: `Завершение регистрации на ${SITE_URL}`,
       text: '',
       html: mailConfirmationViaCode(activationCode),
+    })
+  }
+
+  async sendRecoveryMailCode(to: string, activationCode: string) {
+    await this.transporter.sendMail({
+      from: EMAIL_SMTP_USER,
+      to,
+      subject: `Восстановление пароля на сайте ${SITE_URL}`,
+      text: '',
+      html: mailRecoveryViaCode(activationCode),
     })
   }
 }

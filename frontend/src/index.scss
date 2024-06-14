@@ -18,6 +18,14 @@
   box-sizing: border-box;
 }
 
+.preload {
+  visibility: hidden;
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
 .centerContainer {
   display: flex;
   justify-content: center;
@@ -36,6 +44,7 @@ span {
 
 p {
   margin: 0;
+  text-indent: 20px;
   @include paragraph;
 }
 

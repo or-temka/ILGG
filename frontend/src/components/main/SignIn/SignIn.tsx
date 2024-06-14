@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { Suspense, lazy, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
@@ -7,11 +7,7 @@ import PopUpSkeleton from '../../UI/popUps/skeletons/PopUpSkeleton'
 import InputWithBtnIcon, {
   InputWithBtnIconVariant,
 } from '../../UI/inputs/InputWithBtnIcon'
-import { ReactComponent as ShowPasswordSVG } from '../../../assets/svgs/eye.svg'
-
-import styles from './SignIn.module.scss'
 import Button, { ButtonVariant } from '../../UI/buttons/Button'
-import TextLink from '../../UI/links/TextLink'
 import pageLink from 'pagesLinks'
 import { login } from '../../../redux/slices/myProfileSlice'
 import {
@@ -19,6 +15,17 @@ import {
   addPanel,
 } from '../../../redux/slices/floatingPanelsQueueSlice'
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification'
+import LoadingPopUp from 'components/UI/loaders/LoadingPopUp'
+
+import { ReactComponent as ShowPasswordSVG } from '../../../assets/svgs/eye.svg'
+import { ReactComponent as LogoSVG } from '../../../assets/svgs/logo.svg'
+import PosterImage from '../../../assets/images/posters/poster1.jpg'
+import styles from './SignIn.module.scss'
+import useImagePreloader from 'hooks/useImagePreloader'
+
+const preloadSrcList: string[] = [PosterImage]
+
+const RecoveryPassword = lazy(() => import('./RecoveryPassword'))
 
 function SignIn({ onClose = () => {} }) {
   const navigate = useNavigate()
@@ -28,6 +35,13 @@ function SignIn({ onClose = () => {} }) {
   const [userPassword, setUserPassword] = useState('')
   const [passwordInputType, setPasswordInputType] = useState('password')
   const [isDisabledLoginBtn, setIsDisabledLoginBtn] = useState(false)
+  const [showRecoveryPassword, setShowRecoveryPassword] = useState(false)
+
+  const { imagesPreloaded } = useImagePreloader(preloadSrcList)
+
+  if (!imagesPreloaded) {
+    return <LoadingPopUp />
+  }
 
   const onClickBtnIcon = (input: ParentNode | null) => {
     if (!input) return
@@ -68,59 +82,82 @@ function SignIn({ onClose = () => {} }) {
   }
 
   return (
-    <PopUpSkeleton
-      classNames={{ contentClassName: styles.popUp }}
-      onClose={onClose}
-    >
-      <div className={styles.popUp__poster}></div>
-      <div className={styles.popUp__content}>
-        <div className={styles.popUp__label}>
-          <h2 className={styles.popUp__labelText}>Вход в аккаунт</h2>
+    <>
+      <PopUpSkeleton
+        classNames={{ contentClassName: styles.popUp }}
+        onClose={onClose}
+      >
+        <div className={styles.poster}>
+          <img
+            src={require('../../../assets/images/posters/poster1.jpg')}
+            className={styles.poster__backgroundImg}
+          />
+          <LogoSVG className={styles.poster__logo} />
         </div>
-        <div className={styles.popUp__form}>
-          <div className={styles.popUp__inputs}>
-            <Input
-              label="Логин:"
-              placeholder="Введите ваш логин"
-              value={userLogin}
-              variant={InputVariant.light}
-              onChange={(e) => setUserLogin(e.target.value)}
-            />
-            <InputWithBtnIcon
-              label="Пароль:"
-              placeholder="Введите ваш пароль"
-              input={{
-                type: passwordInputType,
-                name: 'password',
-                autocomplete: 'current-password',
-              }}
-              variant={InputWithBtnIconVariant.light}
-              value={userPassword}
-              onChange={(e) => setUserPassword(e.target.value)}
-              svgComponent={<ShowPasswordSVG />}
-              onClickBtnIcon={onClickBtnIcon}
-            />
+        <div className={styles.popUp__content}>
+          <div className={styles.popUp__label}>
+            <h2 className={styles.popUp__labelText}>Вход в аккаунт</h2>
           </div>
-          <div className={styles.popUp__buttons}>
-            <Button
-              title="Войти"
-              variant={ButtonVariant.primary}
-              disabled={isDisabledLoginBtn}
-              onClick={onClickLoginHandler}
-            />
-            <TextLink to="/">Забыли логин или пароль?</TextLink>
-            <Button
-              title="У меня нет аккаунта"
-              variant={ButtonVariant.light}
-              onClick={() => {
-                navigate(pageLink.signUp)
-                onClose()
-              }}
-            />
+          <div className={styles.popUp__form}>
+            <div className={styles.popUp__inputs}>
+              <Input
+                label="Логин:"
+                placeholder="Введите ваш логин"
+                value={userLogin}
+                variant={InputVariant.light}
+                onChange={(e) => setUserLogin(e.target.value)}
+              />
+              <InputWithBtnIcon
+                label="Пароль:"
+                placeholder="Введите ваш пароль"
+                input={{
+                  type: passwordInputType,
+                  name: 'password',
+                  autocomplete: 'current-password',
+                }}
+                variant={InputWithBtnIconVariant.light}
+                value={userPassword}
+                onChange={(e) => setUserPassword(e.target.value)}
+                svgComponent={<ShowPasswordSVG />}
+                onClickBtnIcon={onClickBtnIcon}
+              />
+            </div>
+            <div className={styles.popUp__buttons}>
+              <Button
+                title="Войти"
+                variant={ButtonVariant.primary}
+                disabled={isDisabledLoginBtn}
+                onClick={onClickLoginHandler}
+              />
+              <span
+                className={styles.popUp__recoveryPasswordLink}
+                onClick={() => setShowRecoveryPassword(true)}
+              >
+                Забыли логин или пароль?
+              </span>
+              <Button
+                title="У меня нет аккаунта"
+                variant={ButtonVariant.light}
+                onClick={() => {
+                  navigate(pageLink.signUpEmail)
+                  onClose()
+                }}
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </PopUpSkeleton>
+      </PopUpSkeleton>
+
+      {/* other pop-up`s */}
+      {showRecoveryPassword && (
+        <Suspense fallback={<LoadingPopUp />}>
+          <RecoveryPassword
+            onClose={() => setShowRecoveryPassword(false)}
+            onCloseSignIn={onClose}
+          />
+        </Suspense>
+      )}
+    </>
   )
 }
 

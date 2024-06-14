@@ -8,12 +8,12 @@ import { API_URL } from 'variables'
 
 import AuthService from 'services/authService'
 
-//#region reducers interfaces
-// interface SetUserAction {
-//   type: string
-//   payload: IMyUser | null
-// }
-//#endregion
+// #region reducers interfaces
+interface SetMyUserAction {
+  type: string
+  payload: IMyUser | null
+}
+// #endregion
 
 export const login = createAsyncThunk(
   'myProfile/login',
@@ -111,11 +111,11 @@ const myProfileSlice = createSlice({
   name: 'myProfile',
   initialState,
   reducers: {
-    // setUser: (state: ProfileState, action: SetUserAction): any => ({
-    //   data: action.payload,
-    //   loading: false,
-    //   error: null,
-    // }),
+    setMyUser: (state: ProfileState, action: SetMyUserAction): any => ({
+      data: action.payload,
+      loading: false,
+      error: null,
+    }),
   },
   extraReducers: (builder) => {
     builder
@@ -177,7 +177,7 @@ const myProfileSlice = createSlice({
   },
 })
 
-// export const { setUser } = myProfileSlice.actions
+export const { setMyUser } = myProfileSlice.actions
 
 export const selectMyUser = (state: any): ProfileState => state.myProfile
 export const selectMyUserData = (state: any): ProfileState =>

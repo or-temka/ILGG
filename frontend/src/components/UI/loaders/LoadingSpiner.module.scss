@@ -2,7 +2,11 @@
   width: 23px;
   height: 23px;
 
-  animation: rotation 3s linear infinite;
+  &__loading {
+    width: 23px;
+    height: 23px;
+    animation: rotation 4s linear infinite;
+  }
 
   & > svg {
     & > path {

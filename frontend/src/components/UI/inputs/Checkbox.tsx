@@ -26,6 +26,7 @@ function Checkbox({
 
   return (
     <div className={[styles.checkbox, className].join(' ')}>
+      <div className={['preload', styles.preload].join(' ')} />
       <input
         id={htmlIdRef.current}
         type="checkbox"
