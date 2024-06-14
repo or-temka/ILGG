@@ -1,7 +1,7 @@
-export interface RecoveryEmailResponse {
+export interface RecoveryEmailError {
   errorMsg: string
 }
 
-export interface RecoveryEmailError {
-  errorMsg: string
+export interface sendRecoveryActivationCodeResponse {
+  activationLink: string
 }

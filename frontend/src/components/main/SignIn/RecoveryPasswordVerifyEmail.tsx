@@ -22,6 +22,7 @@ import RepeatButton from 'pages/account/signUp/components/verifyEmail/RepeatButt
 import RecoveryPasswordService from 'services/recoveryPasswordservice'
 import { AxiosError } from 'axios'
 import { RecoveryEmailError } from 'models/response/RecoveryPasswordResponse'
+import EnterNewPassword from './EnterNewPassword'
 
 const preloadSrcList: string[] = [ImgEnvelope]
 
@@ -74,21 +75,26 @@ function RecoveryPasswordVerifyEmail({
 
   const onClickSendCodeHandler = useCallback(async () => {
     setDisabledSendBtn(true)
-    await AuthService.sendEmailActivationCode(emailOrLogin, codeValue)
+    await RecoveryPasswordService.sendRecoveryActivationCode(
+      emailOrLogin,
+      codeValue
+    )
       .then((res) => {
         const activationLink = res.data.activationLink
-        navigate(
-          `${pageLink.signUp}?activationLink=${activationLink}&email=${emailOrLogin}`
-        )
+        console.log(activationLink)
+
+        // navigate(
+        //   `${pageLink.signUp}?activationLink=${activationLink}&email=${emailOrLogin}`
+        // )
       })
-      .catch((error) => {
-        const data = error?.response?.data
+      .catch((error: AxiosError<RecoveryEmailError>) => {
+        const errorMsg = error?.response?.data.errorMsg
         dispatch(
           addPanel({
             item: {
               type: PanelVariant.textNotification,
               variant: FloatingNotificationVariant.error,
-              text: data?.errorMsg || 'Произошла ошибка!',
+              text: errorMsg || 'Произошла ошибка!',
             },
           })
         )
@@ -101,46 +107,50 @@ function RecoveryPasswordVerifyEmail({
   }
 
   return (
-    <PopUpContainer
-      classNames={{ wrapperClassName: styles.modal }}
-      onClose={() => onClose()}
-    >
-      <div className={styles.modal__content}>
-        <span className={styles.modal__label}>Подтвердите ваш Email</span>
-        <span className={styles.modal__hint}>
-          Вам на почту было отправлено письмо с подтверждением. Введите код с
-          подтверждением в поле.
-        </span>
+    <>
+      <PopUpContainer
+        classNames={{ wrapperClassName: styles.modal }}
+        onClose={() => onClose()}
+      >
+        <div className={styles.modal__content}>
+          <span className={styles.modal__label}>Подтвердите ваш Email</span>
+          <span className={styles.modal__hint}>
+            Вам на почту было отправлено письмо с подтверждением. Введите код с
+            подтверждением в поле.
+          </span>
 
-        <div className={styles.modal__confirmField}>
-          <div className={styles.modal__confirmCodeField}>
-            <Input
-              value={codeValue}
-              onChange={(e) => setCodeValue(e.target.value)}
-              placeholder="Код подтверждения"
-              classNames={{ wrapper: styles.modal__inputWrapper }}
-            />
-            {!codeValue.length ? (
-              <RepeatButton onClick={onClickRepeatSendEmailHandler} />
-            ) : (
-              <Button
-                title="Подтвердить"
-                variant={ButtonVariant.primary}
-                className={styles.modal__confirmEmailCodeBtn}
-                disabled={codeValue.length !== 6 || disabledSendBtn}
-                onClick={onClickSendCodeHandler}
+          <div className={styles.modal__confirmField}>
+            <div className={styles.modal__confirmCodeField}>
+              <Input
+                value={codeValue}
+                onChange={(e) => setCodeValue(e.target.value)}
+                placeholder="Код подтверждения"
+                classNames={{ wrapper: styles.modal__inputWrapper }}
               />
-            )}
-          </div>
+              {!codeValue.length ? (
+                <RepeatButton onClick={onClickRepeatSendEmailHandler} />
+              ) : (
+                <Button
+                  title="Подтвердить"
+                  variant={ButtonVariant.primary}
+                  className={styles.modal__confirmEmailCodeBtn}
+                  disabled={codeValue.length !== 6 || disabledSendBtn}
+                  onClick={onClickSendCodeHandler}
+                />
+              )}
+            </div>
 
-          <img
-            src={require('assets/images/posters/email-envelope.png')}
-            alt="email envelope"
-            className={styles.modal__envelopeImg}
-          />
+            <img
+              src={require('assets/images/posters/email-envelope.png')}
+              alt="email envelope"
+              className={styles.modal__envelopeImg}
+            />
+          </div>
         </div>
-      </div>
-    </PopUpContainer>
+      </PopUpContainer>
+
+      <EnterNewPassword />
+    </>
   )
 }
 
