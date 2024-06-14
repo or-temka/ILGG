@@ -15,17 +15,13 @@ export default class AuthService {
     return $api.post<AuthResponse>('user/sign-in', { login, password })
   }
 
-  static async registrationEmail(
-    email: string,
-  ): Promise<AxiosResponse<any>> {
+  static async registrationEmail(email: string): Promise<AxiosResponse<any>> {
     return $api.post<any>('user/sign-up-email', {
       email,
     })
   }
 
-  static async repeatSendEmail(
-    email: string,
-  ): Promise<AxiosResponse<any>> {
+  static async repeatSendEmail(email: string): Promise<AxiosResponse<any>> {
     return $api.post<any>('user/repeat-send-sign-up-email', {
       email,
     })

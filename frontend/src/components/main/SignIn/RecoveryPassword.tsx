@@ -1,20 +1,58 @@
-import PopUpContainer from 'components/UI/popUps/skeletons/PopUpContainer'
-import styles from './RecoveryPassword.module.scss'
 import { useState } from 'react'
+import { AxiosError } from 'axios'
+import { useDispatch } from 'react-redux'
+
+import PopUpContainer from 'components/UI/popUps/skeletons/PopUpContainer'
 import Input from 'components/UI/inputs/Input'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button'
 import RecoveryPasswordVerifyEmail from './RecoveryPasswordVerifyEmail'
+
+import styles from './RecoveryPassword.module.scss'
+import RecoveryPasswordService from 'services/recoveryPasswordservice'
+import { RecoveryEmailError } from 'models/response/RecoveryPasswordResponse'
+import {
+  PanelVariant,
+  addPanel,
+} from '../../../redux/slices/floatingPanelsQueueSlice'
+import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification'
 
 interface RecoveryPasswordProps {
   onClose?: Function
 }
 
 function RecoveryPassword({ onClose = () => {} }: RecoveryPasswordProps) {
+  const dispatch = useDispatch()
+
   const [userDataValue, setUserDataValue] = useState('')
   const [isDisabledSendBtn, setIsDisabledSendBtn] = useState(false)
-  const [showVerifyEmail, setShowVerifyEmail] = useState(true)
+  const [showVerifyEmail, setShowVerifyEmail] = useState(false)
 
-  const onSendDataHandler = () => {}
+  const onSendDataHandler = async () => {
+    setIsDisabledSendBtn(true)
+
+    await RecoveryPasswordService.recoveryByEmail(userDataValue)
+      .then((res) => {
+        setShowVerifyEmail(true)
+      })
+      .catch((err: AxiosError<RecoveryEmailError>) => {
+        const errMsg = err.response?.data.errorMsg
+
+        if (err.response?.status === 409) {
+          return setShowVerifyEmail(true)
+        }
+
+        dispatch(
+          addPanel({
+            item: {
+              type: PanelVariant.textNotification,
+              variant: FloatingNotificationVariant.error,
+              text: errMsg || 'Произошла ошибка!',
+            },
+          })
+        )
+      })
+      .finally(() => setIsDisabledSendBtn(false))
+  }
 
   return (
     <>
