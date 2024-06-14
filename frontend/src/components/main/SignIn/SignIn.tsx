@@ -7,8 +7,6 @@ import PopUpSkeleton from '../../UI/popUps/skeletons/PopUpSkeleton'
 import InputWithBtnIcon, {
   InputWithBtnIconVariant,
 } from '../../UI/inputs/InputWithBtnIcon'
-import { ReactComponent as ShowPasswordSVG } from '../../../assets/svgs/eye.svg'
-
 import Button, { ButtonVariant } from '../../UI/buttons/Button'
 import pageLink from 'pagesLinks'
 import { login } from '../../../redux/slices/myProfileSlice'
@@ -17,11 +15,15 @@ import {
   addPanel,
 } from '../../../redux/slices/floatingPanelsQueueSlice'
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification'
-
-import styles from './SignIn.module.scss'
-
-import { ReactComponent as LogoSVG } from '../../../assets/svgs/logo.svg'
 import LoadingPopUp from 'components/UI/loaders/LoadingPopUp'
+
+import { ReactComponent as ShowPasswordSVG } from '../../../assets/svgs/eye.svg'
+import { ReactComponent as LogoSVG } from '../../../assets/svgs/logo.svg'
+import PosterImage from '../../../assets/images/posters/poster1.jpg'
+import styles from './SignIn.module.scss'
+import useImagePreloader from 'hooks/useImagePreloader'
+
+const preloadSrcList: string[] = [PosterImage]
 
 const RecoveryPassword = lazy(() => import('./RecoveryPassword'))
 
@@ -34,6 +36,12 @@ function SignIn({ onClose = () => {} }) {
   const [passwordInputType, setPasswordInputType] = useState('password')
   const [isDisabledLoginBtn, setIsDisabledLoginBtn] = useState(false)
   const [showRecoveryPassword, setShowRecoveryPassword] = useState(false)
+
+  const { imagesPreloaded } = useImagePreloader(preloadSrcList)
+
+  if (!imagesPreloaded) {
+    return <LoadingPopUp />
+  }
 
   const onClickBtnIcon = (input: ParentNode | null) => {
     if (!input) return
