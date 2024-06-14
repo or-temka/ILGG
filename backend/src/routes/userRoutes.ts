@@ -18,55 +18,44 @@ const routeEnvironment = {
 const router = Router()
 
 //#region routes
+//#region Auth
 // Получение полной информации о пользователе
 router.get(
   `${routeEnvironment.base}/full-user`,
   authMiddleware,
   UserController.getFullUserData
 )
-
 router.get(`${routeEnvironment.base}`, authMiddleware, UserController.getMyData)
-
 router.post(
   `${routeEnvironment.base}/sign-up`,
   regUserValidation,
   UserController.signUp
 )
-
 router.get(
   `${routeEnvironment.base}/sign-up`,
   checkIsActiveEmailLinkValidation,
   UserController.isActiveEmailLink
 )
-
 router.post(
   `${routeEnvironment.base}/sign-up-email`,
   regEmailUserValidation,
   UserController.signUpEmail
 )
-
 router.post(
   `${routeEnvironment.base}/repeat-send-sign-up-email`,
   regEmailUserValidation,
   UserController.repeatSignUpEmail
 )
-
 router.get(
   `${routeEnvironment.base}/sign-up-email`,
   checkOutEmailCodeValidation,
   UserController.checkEmailCode
 )
-
 router.post(`${routeEnvironment.base}/sign-in`, UserController.signIn)
-
 router.post(`${routeEnvironment.base}/log-out`, UserController.logOut)
 
-// Для активации почты
-router.get(
-  `${routeEnvironment.base}/activate/:link`,
-  UserController.profileActivate
-)
-
+//#endregion
+//#region my user
 // Рефреш токена если он умер
 router.get(`${routeEnvironment.base}/refresh`, UserController.refresh)
 
@@ -83,6 +72,7 @@ router.patch(
   editMyUserDataValidation,
   UserController.editMyUserData
 )
+//#endregion
 //#endregion
 
 export default router
