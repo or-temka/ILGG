@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { Suspense, lazy, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import { selectFriends } from '../../../redux/slices/friendsSlice'
@@ -9,7 +9,6 @@ import Button, { ButtonVariant } from '../../../components/UI/buttons/Button'
 import AddFriendPopUp from './components/rightMenu/AddFriendPopUp'
 import FriendMiniProfile from './components/rightMenu/FriendMiniProfile'
 import MyMiniProfile from './components/rightMenu/MyMiniProfile'
-import SignIn from '../../../components/main/SignIn/SignIn'
 import TextLink from '../../../components/UI/links/TextLink'
 import pageLink from '../../../pagesLinks'
 import { ReactComponent as SignInDoorSVG } from '../../../assets/svgs/door.svg'
@@ -17,6 +16,9 @@ import { ReactComponent as SignInDoorSVG } from '../../../assets/svgs/door.svg'
 import menuStyles from './Menu.module.scss'
 import styles from './RightMenu.module.scss'
 import LoadingRightMenu from './components/rightMenu/LoadingRightMenu'
+import LoadingPopUp from 'components/UI/loaders/LoadingPopUp'
+
+const SignIn = lazy(() => import('../../../components/main/SignIn/SignIn'))
 
 interface RightMenuProps {
   className?: string
@@ -101,9 +103,13 @@ function RightMenu({ className = '' }: RightMenuProps) {
         </aside>
 
         {showPopUp.signIn && (
-          <SignIn
-            onClose={() => setShowPopUp((prev) => ({ ...prev, signIn: false }))}
-          />
+          <Suspense fallback={<LoadingPopUp />}>
+            <SignIn
+              onClose={() =>
+                setShowPopUp((prev) => ({ ...prev, signIn: false }))
+              }
+            />
+          </Suspense>
         )}
       </>
     )

@@ -1,3 +1,5 @@
+@import 'mixins.scss';
+
 .popUp {
   display: flex;
   flex-direction: row;
@@ -5,16 +7,7 @@
   overflow: hidden;
   width: 90%;
   max-width: 765px;
-
-  &__poster {
-    width: 100%;
-    max-width: 269px;
-    height: 417px;
-    background-image: url('../../../assets/svgs/logo.svg'),
-      url('../../../assets/images/posters/poster1.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-  }
+  @include big-shadow();
 
   &__content {
     background-color: var(--background-5-color);
@@ -48,5 +41,69 @@
     display: flex;
     flex-direction: column;
     gap: 25px;
+  }
+
+  &__recoveryPasswordLink {
+    color: var(--active-2-color);
+    cursor: pointer;
+
+    &:hover {
+      color: var(--active-2-hover-color);
+    }
+  }
+}
+
+.poster {
+  width: 100%;
+  max-width: 269px;
+  height: 417px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__backgroundImg {
+    user-select: none;
+    animation: swimmingPosterBackground 5s infinite ease-in-out;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    object-fit: cover;
+  }
+
+  &__logo {
+    position: absolute;
+    width: 150px;
+    height: auto;
+    animation: swimmingPosterLogo 5s infinite ease-in-out;
+  }
+}
+
+@keyframes swimmingPosterBackground {
+  0% {
+    transform: scale(1.2);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes swimmingPosterLogo {
+  0% {
+    transform: scale(1.1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1.1);
   }
 }

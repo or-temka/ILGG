@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 
 import useImagePreloader from 'hooks/useImagePreloader'
 
 import PopUpContainer from 'components/UI/popUps/skeletons/PopUpContainer'
 import LoadingPopUp from 'components/UI/loaders/LoadingPopUp'
-import ImgEnvelope from 'assets/images/posters/email-envelope.png'
+import ImgEnvelope from '../../../../../assets/images/posters/email-envelope.png'
 import Input from 'components/UI/inputs/Input'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button'
 import RepeatButton from './RepeatButton'
@@ -34,11 +34,7 @@ function VerifyEmail({ onClose, email }: VerifyEmailProps) {
   const [codeValue, setCodeValue] = useState('')
   const [disabledSendBtn, setDisabledSendBtn] = useState(false)
 
-  if (!imagesPreloaded) {
-    return <LoadingPopUp />
-  }
-
-  const onClickRepeatSendEmailHandler = async () => {
+  const onClickRepeatSendEmailHandler = useCallback(async () => {
     await AuthService.repeatSendEmail(email)
       .then(() => {
         dispatch(
@@ -63,9 +59,9 @@ function VerifyEmail({ onClose, email }: VerifyEmailProps) {
           })
         )
       })
-  }
+  }, [email, dispatch])
 
-  const onClickSendCodeHandler = async () => {
+  const onClickSendCodeHandler = useCallback(async () => {
     setDisabledSendBtn(true)
     await AuthService.sendEmailActivationCode(email, codeValue)
       .then((res) => {
@@ -87,6 +83,10 @@ function VerifyEmail({ onClose, email }: VerifyEmailProps) {
         )
       })
       .finally(() => setDisabledSendBtn(false))
+  }, [email, codeValue, dispatch, navigate])
+
+  if (!imagesPreloaded) {
+    return <LoadingPopUp />
   }
 
   return (

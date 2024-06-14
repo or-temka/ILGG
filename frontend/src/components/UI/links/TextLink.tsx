@@ -14,6 +14,7 @@ interface TextLinkProps {
   children?: ReactNode
   variant?: Variant
   text?: string
+  onClick?: Function
   className?: string
 }
 
@@ -22,6 +23,7 @@ function TextLink({
   children,
   variant = Variant.simple, // types: simple, text, bold
   text = '',
+  onClick = () => {},
   className = '',
 }: TextLinkProps) {
   return (
@@ -36,6 +38,7 @@ function TextLink({
         className,
       ].join(' ')}
       to={to}
+      onClick={() => onClick()}
     >
       {text || children}
     </Link>
