@@ -1,9 +1,8 @@
 import { useState } from 'react'
 
-import Input from '../../../components/UI/inputs/Input'
+import Input from 'components/UI/inputs/Input'
 
 import styles from './Header.module.scss'
-
 interface HeaderProps {
   classNames?: {
     wrapper?: string

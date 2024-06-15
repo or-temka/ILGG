@@ -1,4 +1,5 @@
-import Button, { ButtonVariant } from '../../../components/UI/buttons/Button'
+import Button, { ButtonVariant } from 'components/UI/buttons/Button'
+
 import styles from './ItemsField.module.scss'
 
 interface ItemsFieldProps {
@@ -13,70 +14,70 @@ function ItemsField({ classNames }: ItemsFieldProps) {
       <div className={styles.items__itemsBtns}>
         <button className={styles.item}>
           <img
-            src={require('../../../assets/images/applications/find-number/items/1.png')}
+            src={require('assets/images/applications/find-number/items/1.png')}
             alt="Название предмета"
             className={styles.item__img}
           />
         </button>
         <button className={styles.item}>
           <img
-            src={require('../../../assets/images/applications/find-number/items/1.png')}
+            src={require('assets/images/applications/find-number/items/1.png')}
             alt="Название предмета"
             className={styles.item__img}
           />
         </button>
         <button className={styles.item}>
           <img
-            src={require('../../../assets/images/applications/find-number/items/1.png')}
+            src={require('assets/images/applications/find-number/items/1.png')}
             alt="Название предмета"
             className={styles.item__img}
           />
         </button>
         <button className={styles.item}>
           <img
-            src={require('../../../assets/images/applications/find-number/items/1.png')}
+            src={require('assets/images/applications/find-number/items/1.png')}
             alt="Название предмета"
             className={styles.item__img}
           />
         </button>
         <button className={styles.item}>
           <img
-            src={require('../../../assets/images/applications/find-number/items/1.png')}
+            src={require('assets/images/applications/find-number/items/1.png')}
             alt="Название предмета"
             className={styles.item__img}
           />
         </button>
         <button className={styles.item}>
           <img
-            src={require('../../../assets/images/applications/find-number/items/1.png')}
+            src={require('assets/images/applications/find-number/items/1.png')}
             alt="Название предмета"
             className={styles.item__img}
           />
         </button>
         <button className={styles.item}>
           <img
-            src={require('../../../assets/images/applications/find-number/items/1.png')}
+            src={require('assets/images/applications/find-number/items/1.png')}
             alt="Название предмета"
             className={styles.item__img}
           />
         </button>
         <button className={styles.item}>
           <img
-            src={require('../../../assets/images/applications/find-number/items/1.png')}
+            src={require('assets/images/applications/find-number/items/1.png')}
             alt="Название предмета"
             className={styles.item__img}
           />
         </button>
         <button className={styles.item}>
           <img
-            src={require('../../../assets/images/applications/find-number/items/1.png')}
+            src={require('assets/images/applications/find-number/items/1.png')}
             alt="Название предмета"
             className={styles.item__img}
           />
         </button>
         <button className={styles.item}>
           <img
-            src={require('../../../assets/images/applications/find-number/items/1.png')}
+            src={require('assets/images/applications/find-number/items/1.png')}
             alt="Название предмета"
             className={styles.item__img}
           />
