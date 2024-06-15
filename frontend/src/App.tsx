@@ -1,7 +1,7 @@
 import { lazy, useMemo } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import MainLayout from './layouts/MainLayout'
+import MainLayout from './layouts/mainLayout/MainLayout'
 
 import FloatingPanelsQueue from './components/UI/floatingPanels/FloatingPanelsQueue'
 import pageLink from './pagesLinks'
@@ -9,16 +9,26 @@ import pageLink from './pagesLinks'
 import useInitialization from './initialize'
 import PrivateRoute from 'components/routes/PrivateRoute'
 
-const Main = lazy(() => import('./pages/Main'))
-const Shop = lazy(() => import('./pages/Shop'))
-const AppsLibrary = lazy(() => import('./pages/AppsLibrary'))
-const Inventory = lazy(() => import('./pages/UserInventory'))
-const Marketplace = lazy(() => import('./pages/Marketplace'))
-const PageNotFound = lazy(() => import('./pages/PageNotFound'))
+const Main = lazy(() => import('./pages/mainPages/main/Main'))
+const Shop = lazy(() => import('./pages/mainPages/shop/Shop'))
+const AppsLibrary = lazy(
+  () => import('./pages/mainPages/appsLibrary/AppsLibrary')
+)
+const Inventory = lazy(
+  () => import('./pages/mainPages/userInventory/UserInventory')
+)
+const Marketplace = lazy(
+  () => import('./pages/mainPages/marketplace/Marketplace')
+)
+const PageNotFound = lazy(
+  () => import('./pages/mainPages/pageNotFound/PageNotFound')
+)
 const SignUp = lazy(() => import('./pages/account/signUp/SignUp'))
 const SignUpEmail = lazy(() => import('./pages/account/signUp/SignUpEmail'))
-const Profile = lazy(() => import('./pages/account/Profile'))
-const EditProfile = lazy(() => import('./pages/account/EditProfile'))
+const Profile = lazy(() => import('./pages/account/Profile/Profile'))
+const EditProfile = lazy(
+  () => import('./pages/account/editProfile/EditProfile')
+)
 
 const Game = lazy(() => import('./pages/games/Game'))
 

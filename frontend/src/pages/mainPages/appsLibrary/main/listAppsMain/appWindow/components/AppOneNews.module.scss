@@ -1,0 +1,67 @@
+@import 'mixins.scss';
+
+.oneNews {
+  display: flex;
+  flex-direction: row;
+  border-radius: 3px;
+  overflow: hidden;
+
+  &__imgContainer {
+    width: 30%;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__textContent {
+    flex: 1;
+    background-color: var(--background-color);
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 10px;
+    row-gap: 3px;
+  }
+
+  &__type {
+    @include paragraph;
+    color: var(--light-text-color);
+  }
+
+  &__headerDecorationText {
+    width: 4px;
+    height: 4px;
+    background-color: var(--light-text-color);
+    border-radius: 50%;
+  }
+
+  &__date {
+    @include paragraph;
+    color: var(--light-text-color);
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+  }
+
+  &__name {
+    @include text;
+  }
+
+  &__text {
+    @include paragraph;
+    color: var(--text-white-grey-color);
+  }
+}

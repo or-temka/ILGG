@@ -1,0 +1,27 @@
+@import 'mixins.scss';
+
+.page {
+  height: 100%;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 10px;
+  }
+
+  &__icon {
+    width: 170px;
+    height: 170px;
+  }
+
+  &__mainText {
+    @include h1;
+  }
+
+  &__text {
+    color: var(--grey-text-color);
+  }
+}

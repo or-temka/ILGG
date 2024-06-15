@@ -1,7 +1,0 @@
-@import '../../../mixins.scss';
-
-.menu {
-  @include background-main-lg;
-  display: flex;
-  flex-direction: column;
-}

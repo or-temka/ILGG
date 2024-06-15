@@ -1,0 +1,136 @@
+@import 'mixins.scss';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 20px 40px;
+  background: var(--background-photo-transparent);
+
+  &__mainInfo {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__userImg {
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    object-fit: cover;
+    overflow: hidden;
+  }
+
+  &__textInfo {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__username {
+    @include h1;
+  }
+
+  &__aboutUserInfo {
+  }
+
+  &__aboutUserText {
+    @include paragraph;
+    color: var(--grey-text-color);
+  }
+
+  // adopt info
+  &__adopt {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__lvlContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__lvlInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__lvlValue {
+    font-size: 32px;
+    font-weight: var(--regular-fw);
+  }
+
+  &__lvlProgressText {
+    @include paragraph;
+    color: var(--grey-text-color);
+  }
+
+  &__lvlProgressLine {
+    width: 100%;
+    height: 7px;
+    border: 2px solid var(--grey-text-color);
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  &__lvlProgressDoneLine {
+    height: 100%;
+    @include soft-lg;
+  }
+
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 240px;
+    z-index: -1;
+    object-fit: cover;
+    object-position: top;
+  }
+}
+
+.skeleton {
+  &__textInfo {
+    gap: 30px;
+  }
+
+  &__username {
+    width: 150px;
+    height: 22px;
+    border-radius: 5px;
+  }
+
+  &__aboutUserInfo {
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__lvlContainer {
+    gap: 10px;
+  }
+
+  &__lvlValue {
+    width: 100px;
+    height: 31px;
+    border-radius: 5px;
+  }
+
+  &__lvlProgressText {
+    width: 80px;
+    height: 15px;
+    border-radius: 5px;
+  }
+
+  &__lvlProgressLine {
+    width: 100%;
+    height: 12px;
+    border-radius: 5px;
+  }
+}

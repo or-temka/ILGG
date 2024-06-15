@@ -1,0 +1,61 @@
+@import 'mixins.scss';
+
+.button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 56px;
+  gap: 20px;
+
+  &:hover {
+    background-color: var(--background-4-color);
+  }
+
+  &_active {
+    background-color: var(--background-3-color);
+    cursor: default;
+    &:hover {
+      background-color: var(--background-3-color);
+    }
+  }
+
+  &__decorLine {
+    visibility: hidden;
+    width: 5px;
+    height: 100%;
+    background-color: var(--active-color);
+
+    &_show {
+      visibility: visible;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & > svg {
+      max-width: 30px;
+      max-height: 30px;
+
+      & > path {
+        fill: var(--active-color);
+      }
+    }
+  }
+
+  &__name {
+    cursor: inherit;
+  }
+
+  &__notificationsCount {
+    color: var(--text-reverse-color);
+    background-color: var(--border-color);
+    padding: 1px 5px;
+    border-radius: 50px;
+    font-size: 13px;
+    line-height: 15px;
+    font-weight: var(--semibold-fw);
+  }
+}

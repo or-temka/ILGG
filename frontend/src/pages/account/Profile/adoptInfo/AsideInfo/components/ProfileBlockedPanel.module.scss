@@ -1,0 +1,35 @@
+@import 'mixins.scss';
+
+.panel {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  padding: 15px 20px;
+
+  & > svg {
+    min-width: 45px;
+  }
+
+  &__textInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__labelConatiner {
+    display: flex;
+    flex-direction: row;
+    gap: 11px;
+    align-items: center;
+  }
+
+  &__labelText {
+    @include textBold;
+  }
+
+  &__text {
+    @include paragraph;
+    color: var(--light-text-color);
+  }
+}

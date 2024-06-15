@@ -1,0 +1,69 @@
+@import 'mixins.scss';
+
+.popUp {
+  padding: 20px 40px 30px;
+
+  &__popUpWrapper {
+    width: 90%;
+    max-width: 720px;
+    height: 70%;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  &__label {
+    @include h3;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__search {
+  }
+
+  &__searchResult {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__profile {
+    background-color: var(--background-2-color);
+  }
+
+  &__addFriendButtonWrapper {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+
+    &:hover {
+      .popUp__addFriendButton {
+        background-color: var(--success-color);
+      }
+    }
+  }
+
+  &__addFriendButton {
+    width: 24px;
+    height: 24px;
+    background-color: var(--background-3-color);
+    background-image: url('../../../../../assets/svgs/plus.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 12px;
+    border-radius: 50%;
+  }
+}
