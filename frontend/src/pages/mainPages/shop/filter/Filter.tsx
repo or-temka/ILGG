@@ -6,15 +6,13 @@ import {
   FilterValue,
   filterShopAppsBy,
   resetFiltersShopApps,
-} from '../../../redux/slices/shopAppsSlice'
-
-import FilterBy from './FilterBy'
-import Button, { ButtonVariant } from '../../../components/UI/buttons/Button'
-
-import appTypes from '../../../data/tempData/appTypes'
-import appCategories from '../../../data/tempData/appCategories'
-import appPlayerTypes from '../../../data/tempData/appPlayerTypes'
-import appThemes from '../../../data/tempData/appThemes'
+} from '../../../../redux/slices/shopAppsSlice'
+import FilterBy from './components/FilterBy'
+import Button, { ButtonVariant } from 'components/UI/buttons/Button'
+import appTypes from 'data/tempData/appTypes'
+import appCategories from 'data/tempData/appCategories'
+import appPlayerTypes from 'data/tempData/appPlayerTypes'
+import appThemes from 'data/tempData/appThemes'
 
 import styles from './Filter.module.scss'
 

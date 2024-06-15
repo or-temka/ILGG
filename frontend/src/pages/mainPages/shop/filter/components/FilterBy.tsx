@@ -1,13 +1,15 @@
 import { AppType } from 'models/application/types/AppType'
 import { MongoId } from 'models/mongoDB'
 
-import { FilterFields, FilterValue } from '../../../redux/slices/shopAppsSlice'
-
-import Checkbox from '../../../components/UI/inputs/Checkbox'
+import {
+  FilterFields,
+  FilterValue,
+} from '../../../../../redux/slices/shopAppsSlice'
+import Checkbox from 'components/UI/inputs/Checkbox'
 
 import styles from './FilterBy.module.scss'
 
-interface FilterBy {
+interface FilterByProps {
   headerText: string
   filterField: FilterFields
   appFiltersElements: AppType[]
@@ -21,7 +23,7 @@ function FilterBy({
   appFiltersElements,
   filters,
   setFilterHandler,
-}: FilterBy) {
+}: FilterByProps) {
   const onClickCheckboxHandler = (id: MongoId) => {
     const types = new Set<MongoId>(filters)
 

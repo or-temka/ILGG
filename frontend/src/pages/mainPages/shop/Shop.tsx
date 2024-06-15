@@ -1,18 +1,16 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { AppDispatch } from '../redux/store'
 
+import { AppDispatch } from '../../../redux/store'
 import {
   fetchShopApps,
   selectShopAppsIsLoaded,
-} from '../redux/slices/shopAppsSlice'
-
-import Sorter from './components/Shop/Sorter'
-import Main from './components/Shop/Main'
-import Filter from './components/Shop/Filter'
-import Header from './components/Shop/Header'
-
-import { setPageName } from '../utils/setPageName'
+} from '../../../redux/slices/shopAppsSlice'
+import Sorter from './sorter/Sorter'
+import Main from './main/Main'
+import Filter from './filter/Filter'
+import Header from './header/Header'
+import { setPageName } from 'utils/setPageName'
 
 import styles from './Shop.module.scss'
 

@@ -3,11 +3,10 @@ import { useSelector } from 'react-redux'
 import {
   selectShopApps,
   selectShopAppsIsLoaded,
-} from '../../../redux/slices/shopAppsSlice'
-
-import GameBigCardSkeleton from '../../../components/cards/GameBigCardSkeleton'
-import GameBigCard from '../../../components/cards/GameBigCard'
-import pageLink from '../../../pagesLinks'
+} from '../../../../redux/slices/shopAppsSlice'
+import GameBigCardSkeleton from 'components/cards/GameBigCardSkeleton'
+import GameBigCard from 'components/cards/GameBigCard'
+import pageLink from 'pagesLinks'
 
 import styles from './Main.module.scss'
 

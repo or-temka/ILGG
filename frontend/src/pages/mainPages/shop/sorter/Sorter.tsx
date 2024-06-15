@@ -5,13 +5,12 @@ import {
   SortValue,
   SorterFields,
   sortShopAppsBy,
-} from '../../../redux/slices/shopAppsSlice'
-
+} from '../../../../redux/slices/shopAppsSlice'
 import ButtonWithIcon, {
   ButtonWithIconIconPosition,
-} from '../../../components/UI/buttons/ButtonWithIcon'
-import { ReactComponent as ArrowSVG } from '../../../assets/svgs/arrow.svg'
+} from 'components/UI/buttons/ButtonWithIcon'
 
+import { ReactComponent as ArrowSVG } from 'assets/svgs/arrow.svg'
 import styles from './Sorter.module.scss'
 
 type Sorted = { [key in SorterFields]: SortValue }
