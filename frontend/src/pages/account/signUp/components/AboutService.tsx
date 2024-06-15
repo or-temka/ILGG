@@ -28,7 +28,7 @@ function AboutService({ classNames }: AboutServiceProps) {
       <div className={styles.about__poster}>
         <img
           className={styles.about__posterImg}
-          src={require('../../../../assets/images/posters/monitorWithPhone1.png')}
+          src={require('assets/images/posters/monitorWithPhone1.png')}
           alt="ILGG для компьютера и телефона"
         />
       </div>

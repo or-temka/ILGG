@@ -1,4 +1,4 @@
-import styles from '../../adoptInfo/AsideInfo/components/FriendsPanel.module.scss'
+import styles from '../AsideInfo/components/FriendsPanel.module.scss'
 
 function FriendsPanel() {
   const count = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]

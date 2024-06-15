@@ -3,9 +3,9 @@ import { useParams } from 'react-router-dom'
 
 import { IFullUserProfile } from 'models/user/IFullUserProfile'
 
-import Header from './header/Header'
-import AdoptInfo from './adoptInfo/AdoptInfo'
-import HeaderSkeleton from './header/components/HeaderSkeleton'
+import Header from './Header/Header'
+import AdoptInfo from './AdoptInfo/AdoptInfo'
+import HeaderSkeleton from './Header/components/HeaderSkeleton'
 
 import { setPageName } from 'utils/setPageName'
 

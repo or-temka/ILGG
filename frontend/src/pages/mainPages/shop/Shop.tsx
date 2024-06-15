@@ -6,10 +6,10 @@ import {
   fetchShopApps,
   selectShopAppsIsLoaded,
 } from '../../../redux/slices/shopAppsSlice'
-import Sorter from './sorter/Sorter'
-import Main from './main/Main'
-import Filter from './filter/Filter'
-import Header from './header/Header'
+import Sorter from './Sorter/Sorter'
+import Main from './Main/Main'
+import Filter from './Filter/Filter'
+import Header from './Header/Header'
 import { setPageName } from 'utils/setPageName'
 
 import styles from './Shop.module.scss'

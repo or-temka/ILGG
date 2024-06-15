@@ -1,0 +1,48 @@
+@import 'mixins.scss';
+
+.requirements {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__header {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &__label {
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  &__decorLine {
+    height: 1px;
+    width: 100%;
+    background-color: var(--background-3-color);
+  }
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__name {
+    color: var(--active-2-color);
+  }
+
+  &__content {
+  }
+
+  &__termName {
+    @include paragraph;
+  }
+
+  &__definitionText {
+    @include paragraph;
+  }
+}

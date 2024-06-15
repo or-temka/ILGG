@@ -1,5 +1,5 @@
-import Aside from './aside/Aside'
-import Content from './content/Content'
+import Aside from './Aside/Aside'
+import Content from './Content/Content'
 
 import styles from './EditProfile.module.scss'
 
