@@ -1,30 +1,22 @@
-import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useCallback, useEffect, useState } from 'react'
+
+import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
 
 import Input from '../../../components/UI/inputs/Input'
 import Checkbox from '../../../components/UI/inputs/Checkbox'
 import Button, { ButtonVariant } from '../../../components/UI/buttons/Button'
-
 import { setPageName } from 'utils/setPageName'
-import {
-  PanelVariant,
-  addPanel,
-} from '../../../redux/slices/floatingPanelsQueueSlice'
-
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification'
 import AboutService from './components/AboutService'
 import VerifyEmail from './components/verifyEmail/VerifyEmail'
-
-import styles from './SignUp.module.scss'
 import AuthService from 'services/authService'
 
+import styles from './SignUp.module.scss'
+
 function SignUpEmail() {
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    setPageName('Регистрация')
-  }, [])
-
+  const addNotificationErrorPanel = useNotificationPanel({
+    variant: FloatingNotificationVariant.error,
+  })
   const [formData, setFormData] = useState({
     email: { value: '', error: '' },
     personalDataConsent: false,
@@ -32,75 +24,58 @@ function SignUpEmail() {
   })
   const [showEmailConfirmModal, setShowEmailConfirmModal] = useState(false)
 
-  const changeSendButtonDisable = (disable = false) => {
+  useEffect(() => {
+    setPageName('Регистрация')
+  }, [])
+
+  const changeSendButtonDisable = useCallback((disable = false) => {
     setFormData((prev) => ({
       ...prev,
       disabledSendButton: disable,
     }))
-  }
+  }, [])
 
-  const setFormDataField = (
-    field: string,
-    changeEvent: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setFormData((prev) => ({
-      ...prev,
-      [field]: { value: changeEvent.target.value, error: '' },
-    }))
-  }
+  const setFormDataField = useCallback(
+    (field: string, changeEvent: React.ChangeEvent<HTMLInputElement>) => {
+      setFormData((prev) => ({
+        ...prev,
+        [field]: { value: changeEvent.target.value, error: '' },
+      }))
+    },
+    []
+  )
 
-  const onCloseEmailConfirmHandler = () => {
-    setShowEmailConfirmModal(false)
-  }
+  const onClickCreateAccountButton = useCallback(
+    async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      event.preventDefault()
+      changeSendButtonDisable(true)
+      const userEmail = formData.email.value
+      await AuthService.registrationEmail(userEmail)
+        .then(() => setShowEmailConfirmModal(true))
+        .catch((err) => {
+          const data = err?.response?.data
+          const status = err?.response?.status
 
-  const onClickCreateAccountButton = async (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    event.preventDefault()
-
-    changeSendButtonDisable(true)
-
-    const emailData = {
-      email: formData.email.value,
-    }
-
-    await AuthService.registrationEmail(emailData.email)
-      .then((res) => {
-        setShowEmailConfirmModal(true)
-      })
-      .catch((err) => {
-        const data = err?.response?.data
-        const status = err?.response?.status
-
-        if (Array.isArray(data)) {
-          const newInputs = new Set()
-          data.map((wrongInput) => {
-            const wrongInputPath: 'email' = wrongInput.path
-            const newInputWithError = formData[wrongInputPath]
-            newInputWithError.error = wrongInput.msg
-            newInputs.add(newInputWithError)
-          })
-          setFormData((prev) => ({ ...prev, newInputs }))
-        } else {
-          if (status === 409) {
-            return setShowEmailConfirmModal(true)
-          }
-
-          dispatch(
-            addPanel({
-              item: {
-                type: PanelVariant.textNotification,
-                variant: FloatingNotificationVariant.error,
-                text: data?.errorMsg || 'Произошла ошибка!',
-              },
+          if (Array.isArray(data)) {
+            const newInputs = new Set()
+            data.map((wrongInput) => {
+              const wrongInputPath: 'email' = wrongInput.path
+              const newInputWithError = formData[wrongInputPath]
+              newInputWithError.error = wrongInput.msg
+              newInputs.add(newInputWithError)
             })
-          )
-        }
-      })
-      .finally(() => {
-        changeSendButtonDisable()
-      })
-  }
+            setFormData((prev) => ({ ...prev, newInputs }))
+          } else {
+            if (status === 409) return setShowEmailConfirmModal(true)
+            addNotificationErrorPanel(data?.errorMsg || 'Произошла ошибка!')
+          }
+        })
+        .finally(() => {
+          changeSendButtonDisable()
+        })
+    },
+    [formData, addNotificationErrorPanel]
+  )
 
   return (
     <>
@@ -160,7 +135,7 @@ function SignUpEmail() {
       {/* Modals (Pop-ups) */}
       {showEmailConfirmModal && (
         <VerifyEmail
-          onClose={onCloseEmailConfirmHandler}
+          onClose={() => setShowEmailConfirmModal(false)}
           email={formData.email.value}
         />
       )}

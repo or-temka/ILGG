@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
 import { useCallback, useState } from 'react'
 
 import useImagePreloader from 'hooks/useImagePreloader'
+import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
 
 import PopUpContainer from 'components/UI/popUps/skeletons/PopUpContainer'
 import LoadingPopUp from 'components/UI/loaders/LoadingPopUp'
@@ -11,14 +11,10 @@ import Input from 'components/UI/inputs/Input'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button'
 import RepeatButton from './RepeatButton'
 import AuthService from 'services/authService'
-import {
-  PanelVariant,
-  addPanel,
-} from '../../../../../redux/slices/floatingPanelsQueueSlice'
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification'
+import pageLink from 'pagesLinks'
 
 import styles from './VerifyEmail.module.scss'
-import pageLink from 'pagesLinks'
 
 const preloadSrcList: string[] = [ImgEnvelope]
 
@@ -29,7 +25,12 @@ interface VerifyEmailProps {
 
 function VerifyEmail({ onClose, email }: VerifyEmailProps) {
   const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const addNotificationErrorPanel = useNotificationPanel({
+    variant: FloatingNotificationVariant.error,
+  })
+  const addNotificationSuccessPanel = useNotificationPanel({
+    variant: FloatingNotificationVariant.success,
+  })
   const { imagesPreloaded } = useImagePreloader(preloadSrcList)
   const [codeValue, setCodeValue] = useState('')
   const [disabledSendBtn, setDisabledSendBtn] = useState(false)
@@ -37,29 +38,13 @@ function VerifyEmail({ onClose, email }: VerifyEmailProps) {
   const onClickRepeatSendEmailHandler = useCallback(async () => {
     await AuthService.repeatSendEmail(email)
       .then(() => {
-        dispatch(
-          addPanel({
-            item: {
-              type: PanelVariant.textNotification,
-              variant: FloatingNotificationVariant.success,
-              text: 'Сообщение успешно отправлено!',
-            },
-          })
-        )
+        addNotificationSuccessPanel('Сообщение успешно отправлено!')
       })
       .catch((error) => {
         const data = error?.response?.data
-        dispatch(
-          addPanel({
-            item: {
-              type: PanelVariant.textNotification,
-              variant: FloatingNotificationVariant.error,
-              text: data?.errorMsg || 'Произошла ошибка!',
-            },
-          })
-        )
+        addNotificationErrorPanel(data?.errorMsg || 'Произошла ошибка!')
       })
-  }, [email, dispatch])
+  }, [email, addNotificationSuccessPanel, addNotificationErrorPanel])
 
   const onClickSendCodeHandler = useCallback(async () => {
     setDisabledSendBtn(true)
@@ -72,18 +57,10 @@ function VerifyEmail({ onClose, email }: VerifyEmailProps) {
       })
       .catch((error) => {
         const data = error?.response?.data
-        dispatch(
-          addPanel({
-            item: {
-              type: PanelVariant.textNotification,
-              variant: FloatingNotificationVariant.error,
-              text: data?.errorMsg || 'Произошла ошибка!',
-            },
-          })
-        )
+        addNotificationErrorPanel(data?.errorMsg || 'Произошла ошибка!')
       })
       .finally(() => setDisabledSendBtn(false))
-  }, [email, codeValue, dispatch, navigate])
+  }, [email, codeValue, addNotificationErrorPanel, navigate])
 
   if (!imagesPreloaded) {
     return <LoadingPopUp />
