@@ -9,25 +9,27 @@ import pageLink from './pagesLinks'
 import useInitialization from './initialize'
 import PrivateRoute from 'components/routes/PrivateRoute'
 
-const Main = lazy(() => import('./pages/mainPages/main/Main'))
-const Shop = lazy(() => import('./pages/mainPages/shop/Shop'))
+const Main = lazy(() => import('./pages/mainPages/Main/Main'))
+const Shop = lazy(() => import('./pages/mainPages/Shop/Shop'))
 const AppsLibrary = lazy(
-  () => import('./pages/mainPages/appsLibrary/AppsLibrary')
+  () => import('./pages/mainPages/AppsLibrary/AppsLibrary')
 )
 const Inventory = lazy(
-  () => import('./pages/mainPages/userInventory/UserInventory')
+  () => import('./pages/mainPages/UserInventory/UserInventory')
 )
 const Marketplace = lazy(
-  () => import('./pages/mainPages/marketplace/Marketplace')
+  () => import('./pages/mainPages/Marketplace/Marketplace')
 )
 const PageNotFound = lazy(
-  () => import('./pages/mainPages/pageNotFound/PageNotFound')
+  () => import('./pages/mainPages/PageNotFound/PageNotFound')
 )
-const SignUp = lazy(() => import('./pages/account/signUp/SignUp'))
-const SignUpEmail = lazy(() => import('./pages/account/signUp/SignUpEmail'))
+const SignUp = lazy(() => import('./pages/account/signUp/SignUp/SignUp'))
+const SignUpEmail = lazy(
+  () => import('./pages/account/signUp/SignUpEmail/SignUpEmail')
+)
 const Profile = lazy(() => import('./pages/account/Profile/Profile'))
 const EditProfile = lazy(
-  () => import('./pages/account/editProfile/EditProfile')
+  () => import('./pages/account/EditProfile/EditProfile')
 )
 
 const Game = lazy(() => import('./pages/games/Game/Game'))

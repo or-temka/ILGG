@@ -1,17 +1,16 @@
 import { useCallback, useEffect, useState } from 'react'
 
 import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
-
-import Input from '../../../components/UI/inputs/Input'
-import Checkbox from '../../../components/UI/inputs/Checkbox'
-import Button, { ButtonVariant } from '../../../components/UI/buttons/Button'
+import Input from 'components/UI/inputs/Input'
+import Checkbox from 'components/UI/inputs/Checkbox'
+import Button, { ButtonVariant } from 'components/UI/buttons/Button'
 import { setPageName } from 'utils/setPageName'
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification'
-import AboutService from './components/AboutService'
-import VerifyEmail from './components/verifyEmail/VerifyEmail'
+import AboutService from '../components/AboutService'
+import VerifyEmail from './VerifyEmail/VerifyEmail'
 import AuthService from 'services/authService'
 
-import styles from './SignUp.module.scss'
+import styles from '../SignUp.module.scss'
 
 function SignUpEmail() {
   const addNotificationErrorPanel = useNotificationPanel({

@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux'
 
 import { selectApps } from '../../../../../redux/slices/myAppsLibrarySlice'
 
-import AppsList from './appsList/AppsList'
-import AppWindow from './appWindow/AppWindow'
+import AppsList from './AppsList/AppsList'
+import AppWindow from './AppWindow/AppWindow'
 
 import styles from './ListAppsMain.module.scss'
 

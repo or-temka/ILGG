@@ -5,19 +5,19 @@ import { useNavigate } from 'react-router-dom'
 import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
 import useLocationQuery from 'hooks/useLocationQuery'
 
-import Input from '../../../components/UI/inputs/Input'
-import Checkbox from '../../../components/UI/inputs/Checkbox'
-import Button, { ButtonVariant } from '../../../components/UI/buttons/Button'
-import InputWithBtnIcon from '../../../components/UI/inputs/InputWithBtnIcon'
+import Input from 'components/UI/inputs/Input'
+import Checkbox from 'components/UI/inputs/Checkbox'
+import Button, { ButtonVariant } from 'components/UI/buttons/Button'
+import InputWithBtnIcon from 'components/UI/inputs/InputWithBtnIcon'
 import { setPageName } from 'utils/setPageName'
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification'
-import { registration } from '../../../redux/slices/myProfileSlice'
-import AboutService from './components/AboutService'
+import { registration } from '../../../../redux/slices/myProfileSlice'
+import AboutService from '../components/AboutService'
 import LoadingSpiner from 'components/UI/loaders/LoadingSpiner'
 import AuthService from 'services/authService'
 
 import { ReactComponent as EyeSVG } from 'assets/svgs/eye.svg'
-import styles from './SignUp.module.scss'
+import styles from '../SignUp.module.scss'
 
 function SignUp() {
   const dispatch = useDispatch()

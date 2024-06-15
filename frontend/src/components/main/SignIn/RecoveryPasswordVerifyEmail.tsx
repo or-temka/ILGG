@@ -11,7 +11,7 @@ import ImgEnvelope from '../../../assets/images/posters/email-envelope.png'
 import Input from 'components/UI/inputs/Input'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button'
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification'
-import RepeatButton from 'pages/account/signUp/components/verifyEmail/RepeatButton'
+import RepeatButton from 'pages/account/signUp/SignUpEmail/VerifyEmail/RepeatButton/RepeatButton'
 import RecoveryPasswordService from 'services/recoveryPasswordservice'
 import {
   RecoveryEmailError,

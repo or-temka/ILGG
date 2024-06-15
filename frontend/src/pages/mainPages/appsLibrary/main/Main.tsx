@@ -1,6 +1,6 @@
 import { ViewAppsType } from '../AppsLibrary'
-import BigPicturesMain from './bigPicturesMain/BigPicturesMain'
-import ListAppsMain from './listAppsMain/ListAppsMain'
+import BigPicturesMain from './BigPicturesMain/BigPicturesMain'
+import ListAppsMain from './ListAppsMain/ListAppsMain'
 
 import styles from './Main.module.scss'
 

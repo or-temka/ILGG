@@ -1,7 +1,8 @@
+import { useEffect, useState } from 'react'
+
 import Button, { ButtonVariant } from 'components/UI/buttons/Button'
 
 import styles from './RepeatButton.module.scss'
-import { useEffect, useState } from 'react'
 
 const timerTime = 60 // seconds
 
