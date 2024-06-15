@@ -1,7 +1,6 @@
 import { AppLanguage } from 'models/application/types/AppLanguage'
 
-import { ReactComponent as TickSVG } from '../../../../../assets/svgs/tick.svg'
-
+import { ReactComponent as TickSVG } from 'assets/svgs/tick.svg'
 import style from './LanguageSupport.module.scss'
 
 const langData: AppLanguage[] = [

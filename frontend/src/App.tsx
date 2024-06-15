@@ -30,7 +30,7 @@ const EditProfile = lazy(
   () => import('./pages/account/editProfile/EditProfile')
 )
 
-const Game = lazy(() => import('./pages/games/Game'))
+const Game = lazy(() => import('./pages/games/Game/Game'))
 
 function App() {
   // init all data

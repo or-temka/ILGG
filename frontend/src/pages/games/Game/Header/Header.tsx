@@ -1,6 +1,6 @@
-import GameControlButtons from './GameControlButtons'
-import GamePhotoLibrary from './GamePhotoLibrary'
-import HeaderAboutGame from './HeaderAboutGame'
+import GameControlButtons from './GameContolButtons/GameControlButtons'
+import GamePhotoLibrary from './GamePhotoLibrary/GamePhotoLibrary'
+import HeaderAboutGame from './HeaderAboutGame/HeaderAboutGame'
 
 import styles from './Header.module.scss'
 
@@ -28,7 +28,7 @@ function Header() {
       <div className={[styles.header__background, styles.background].join(' ')}>
         <div className={styles.background__gradient} />
         <img
-          src={require('../../../../../assets/images/applications/find-number/large-poster.jpg')}
+          src={require('assets/images/applications/find-number/large-poster.jpg')}
           className={styles.background__img}
         />
       </div>

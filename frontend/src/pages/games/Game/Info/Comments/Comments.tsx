@@ -1,5 +1,5 @@
-import Comment from '../../../../../components/UI/blocks/Comment'
-import CommentPositivity from '../../../../../components/UI/blocks/CommentPositivity'
+import Comment from 'components/UI/blocks/Comment'
+import CommentPositivity from 'components/UI/blocks/CommentPositivity'
 
 import style from './Comments.module.scss'
 

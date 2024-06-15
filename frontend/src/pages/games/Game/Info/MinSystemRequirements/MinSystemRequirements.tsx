@@ -1,4 +1,5 @@
-import DescriptionList from '../../../../../components/UI/texts/DescriptionList'
+import DescriptionList from 'components/UI/texts/DescriptionList'
+
 import styles from './MinSystemRequirements.module.scss'
 
 const minSysReq = {

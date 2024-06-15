@@ -1,6 +1,6 @@
-import { ReactComponent as ScreenSharingSVG } from '../../../../../assets/svgs/screenSharing.svg'
-import InfoTooltip from '../../../../../components/UI/tooltips/InfoTooltip'
+import InfoTooltip from 'components/UI/tooltips/InfoTooltip'
 
+import { ReactComponent as ScreenSharingSVG } from 'assets/svgs/screenSharing.svg'
 import styles from './ScreenSharingInfo.module.scss'
 
 interface ScreenSharingInfoProps {

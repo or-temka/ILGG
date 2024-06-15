@@ -1,10 +1,10 @@
-import AboutGameText from './AboutGameText'
-import Categories from './Categories'
-import Comments from './Comments'
-import LanguageSupport from './LanguageSupport'
-import MinSystemRequirements from './MinSystemRequirements'
-import ScreenSharingInfo from './ScreenSharingInfo'
-import Tags from './Tags'
+import AboutGameText from './AboutGameText/AboutGameText'
+import Categories from './Categories/Categories'
+import Comments from './Comments/Comments'
+import LanguageSupport from './LanguageSupport/LanguageSupport'
+import MinSystemRequirements from './MinSystemRequirements/MinSystemRequirements'
+import ScreenSharingInfo from './ScreenSharingInfo/ScreenSharingInfo'
+import Tags from './Tags/Tags'
 
 import styles from './Info.module.scss'
 
