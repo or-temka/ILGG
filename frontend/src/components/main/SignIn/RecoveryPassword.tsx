@@ -1,20 +1,17 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { AxiosError } from 'axios'
-import { useDispatch } from 'react-redux'
+
+import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
 
 import PopUpContainer from 'components/UI/popUps/skeletons/PopUpContainer'
 import Input from 'components/UI/inputs/Input'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button'
 import RecoveryPasswordVerifyEmail from './RecoveryPasswordVerifyEmail'
-
-import styles from './RecoveryPassword.module.scss'
+import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification'
 import RecoveryPasswordService from 'services/recoveryPasswordservice'
 import { RecoveryEmailError } from 'models/response/RecoveryPasswordResponse'
-import {
-  PanelVariant,
-  addPanel,
-} from '../../../redux/slices/floatingPanelsQueueSlice'
-import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification'
+
+import styles from './RecoveryPassword.module.scss'
 
 interface RecoveryPasswordProps {
   onClose: Function
@@ -22,17 +19,17 @@ interface RecoveryPasswordProps {
 }
 
 function RecoveryPassword({ onClose, onCloseSignIn }: RecoveryPasswordProps) {
-  const dispatch = useDispatch()
-
+  const addNotificationErrorPanel = useNotificationPanel({
+    variant: FloatingNotificationVariant.error,
+  })
   const [userDataValue, setUserDataValue] = useState('')
   const [isDisabledSendBtn, setIsDisabledSendBtn] = useState(false)
   const [showVerifyEmail, setShowVerifyEmail] = useState(false)
 
-  const onSendDataHandler = async () => {
+  const onSendDataHandler = useCallback(async () => {
     setIsDisabledSendBtn(true)
-
     await RecoveryPasswordService.recoveryByEmail(userDataValue)
-      .then((res) => {
+      .then(() => {
         setShowVerifyEmail(true)
       })
       .catch((err: AxiosError<RecoveryEmailError>) => {
@@ -41,19 +38,10 @@ function RecoveryPassword({ onClose, onCloseSignIn }: RecoveryPasswordProps) {
         if (err.response?.status === 409) {
           return setShowVerifyEmail(true)
         }
-
-        dispatch(
-          addPanel({
-            item: {
-              type: PanelVariant.textNotification,
-              variant: FloatingNotificationVariant.error,
-              text: errMsg || 'Произошла ошибка!',
-            },
-          })
-        )
+        addNotificationErrorPanel(errMsg || 'Произошла ошибка!')
       })
       .finally(() => setIsDisabledSendBtn(false))
-  }
+  }, [userDataValue, addNotificationErrorPanel])
 
   return (
     <>

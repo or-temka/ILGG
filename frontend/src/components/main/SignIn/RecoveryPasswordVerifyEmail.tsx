@@ -1,29 +1,25 @@
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
 import { useCallback, useState } from 'react'
+import { AxiosError } from 'axios'
 
 import useImagePreloader from 'hooks/useImagePreloader'
+import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
 
 import PopUpContainer from 'components/UI/popUps/skeletons/PopUpContainer'
 import LoadingPopUp from 'components/UI/loaders/LoadingPopUp'
 import ImgEnvelope from '../../../assets/images/posters/email-envelope.png'
 import Input from 'components/UI/inputs/Input'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button'
-import {
-  PanelVariant,
-  addPanel,
-} from '../../../redux/slices/floatingPanelsQueueSlice'
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification'
-
-import styles from './RecoveryPasswordVerifyEmail.module.scss'
 import RepeatButton from 'pages/account/signUp/components/verifyEmail/RepeatButton'
 import RecoveryPasswordService from 'services/recoveryPasswordservice'
-import { AxiosError } from 'axios'
 import {
   RecoveryEmailError,
   sendRecoveryActivationCodeResponse,
 } from 'models/response/RecoveryPasswordResponse'
 import EnterNewPassword from './EnterNewPassword'
+
+import styles from './RecoveryPasswordVerifyEmail.module.scss'
 
 const preloadSrcList: string[] = [ImgEnvelope]
 
@@ -39,7 +35,12 @@ function RecoveryPasswordVerifyEmail({
   onCloseSignIn,
 }: VerifyEmailProps) {
   const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const addNotificationErrorPanel = useNotificationPanel({
+    variant: FloatingNotificationVariant.error,
+  })
+  const addNotificationSuccessPanel = useNotificationPanel({
+    variant: FloatingNotificationVariant.success,
+  })
   const { imagesPreloaded } = useImagePreloader(preloadSrcList)
   const [codeValue, setCodeValue] = useState('')
   const [disabledSendBtn, setDisabledSendBtn] = useState(false)
@@ -51,33 +52,16 @@ function RecoveryPasswordVerifyEmail({
     setDisabledSendBtn(true)
     await RecoveryPasswordService.repeatRecoveryByEmail(emailOrLogin)
       .then(() => {
-        dispatch(
-          addPanel({
-            item: {
-              type: PanelVariant.textNotification,
-              variant: FloatingNotificationVariant.success,
-              text: 'Сообщение успешно отправлено!',
-            },
-          })
-        )
+        addNotificationSuccessPanel('Сообщение успешно отправлено!')
       })
       .catch((error: AxiosError<RecoveryEmailError>) => {
         const errorMsg = error?.response?.data.errorMsg
-
-        dispatch(
-          addPanel({
-            item: {
-              type: PanelVariant.textNotification,
-              variant: FloatingNotificationVariant.error,
-              text: errorMsg || 'Произошла ошибка!',
-            },
-          })
-        )
+        addNotificationErrorPanel(errorMsg || 'Произошла ошибка!')
       })
       .finally(() => {
         setDisabledSendBtn(false)
       })
-  }, [emailOrLogin, dispatch])
+  }, [emailOrLogin, addNotificationErrorPanel, addNotificationSuccessPanel])
 
   const onClickSendCodeHandler = useCallback(async () => {
     setDisabledSendBtn(true)
@@ -87,7 +71,6 @@ function RecoveryPasswordVerifyEmail({
     )
       .then((res) => {
         const data = res.data
-
         setUserChangePassData({
           email: data.email,
           activationLink: data.activationLink,
@@ -95,18 +78,10 @@ function RecoveryPasswordVerifyEmail({
       })
       .catch((error: AxiosError<RecoveryEmailError>) => {
         const errorMsg = error?.response?.data.errorMsg
-        dispatch(
-          addPanel({
-            item: {
-              type: PanelVariant.textNotification,
-              variant: FloatingNotificationVariant.error,
-              text: errorMsg || 'Произошла ошибка!',
-            },
-          })
-        )
+        addNotificationErrorPanel(errorMsg || 'Произошла ошибка!')
       })
       .finally(() => setDisabledSendBtn(false))
-  }, [emailOrLogin, codeValue, dispatch, navigate])
+  }, [emailOrLogin, codeValue, navigate, addNotificationErrorPanel])
 
   if (!imagesPreloaded) {
     return <LoadingPopUp />

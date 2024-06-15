@@ -1,21 +1,19 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { AxiosError } from 'axios'
+
+import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
 
 import PopUpContainer from 'components/UI/popUps/skeletons/PopUpContainer'
 import Input from 'components/UI/inputs/Input'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button'
 import RecoveryPasswordService from 'services/recoveryPasswordservice'
 import { RecoveryEmailError } from 'models/response/RecoveryPasswordResponse'
-import {
-  PanelVariant,
-  addPanel,
-} from '../../../redux/slices/floatingPanelsQueueSlice'
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification'
 import { setMyUser } from '../../../redux/slices/myProfileSlice'
 
 import styles from './EnterNewPassword.module.scss'
-import { useNavigate } from 'react-router-dom'
 
 interface EnterNewPasswordProps {
   email: string
@@ -32,13 +30,15 @@ function EnterNewPassword({
 }: EnterNewPasswordProps) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const addNotificationErrorPanel = useNotificationPanel({
+    variant: FloatingNotificationVariant.error,
+  })
   const [passwordValue, setPasswordValue] = useState('')
   const [confirmPasswordValue, setConfirmPasswordValue] = useState('')
   const [isDisabledSendBtn, setIsDisabledSendBtn] = useState(false)
 
-  const onClickSendHandler = async () => {
+  const onClickSendHandler = useCallback(async () => {
     setIsDisabledSendBtn(true)
-
     await RecoveryPasswordService.recovery(
       email,
       activationLink,
@@ -53,18 +53,19 @@ function EnterNewPassword({
       })
       .catch((error: AxiosError<RecoveryEmailError>) => {
         const errorMsg = error.response?.data.errorMsg
-        dispatch(
-          addPanel({
-            item: {
-              type: PanelVariant.textNotification,
-              variant: FloatingNotificationVariant.error,
-              text: errorMsg || 'Произошла ошибка!',
-            },
-          })
-        )
+        addNotificationErrorPanel(errorMsg || 'Произошла ошибка!')
       })
       .finally(() => setIsDisabledSendBtn(false))
-  }
+  }, [
+    passwordValue,
+    confirmPasswordValue,
+    email,
+    activationLink,
+    dispatch,
+    navigate,
+    onCloseSingIn,
+    addNotificationErrorPanel,
+  ])
 
   return (
     <PopUpContainer

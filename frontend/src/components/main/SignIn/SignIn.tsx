@@ -2,6 +2,9 @@ import { Suspense, lazy, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
+import useImagePreloader from 'hooks/useImagePreloader'
+import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
+
 import Input, { InputVariant } from '../../UI/inputs/Input'
 import PopUpSkeleton from '../../UI/popUps/skeletons/PopUpSkeleton'
 import InputWithBtnIcon, {
@@ -10,10 +13,6 @@ import InputWithBtnIcon, {
 import Button, { ButtonVariant } from '../../UI/buttons/Button'
 import pageLink from 'pagesLinks'
 import { login } from '../../../redux/slices/myProfileSlice'
-import {
-  PanelVariant,
-  addPanel,
-} from '../../../redux/slices/floatingPanelsQueueSlice'
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification'
 import LoadingPopUp from 'components/UI/loaders/LoadingPopUp'
 
@@ -21,7 +20,6 @@ import { ReactComponent as ShowPasswordSVG } from '../../../assets/svgs/eye.svg'
 import { ReactComponent as LogoSVG } from '../../../assets/svgs/logo.svg'
 import PosterImage from '../../../assets/images/posters/poster1.jpg'
 import styles from './SignIn.module.scss'
-import useImagePreloader from 'hooks/useImagePreloader'
 
 const preloadSrcList: string[] = [PosterImage]
 
@@ -30,6 +28,9 @@ const RecoveryPassword = lazy(() => import('./RecoveryPassword'))
 function SignIn({ onClose = () => {} }) {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const addNotificationErrorPanel = useNotificationPanel({
+    variant: FloatingNotificationVariant.error,
+  })
 
   const [userLogin, setUserLogin] = useState('')
   const [userPassword, setUserPassword] = useState('')
@@ -63,15 +64,7 @@ function SignIn({ onClose = () => {} }) {
       const errorPayload = res.payload
 
       if (requestStatus === 'rejected') {
-        dispatch(
-          addPanel({
-            item: {
-              type: PanelVariant.textNotification,
-              variant: FloatingNotificationVariant.error,
-              text: errorPayload?.errorMsg || 'Произошла ошибка!',
-            },
-          })
-        )
+        addNotificationErrorPanel(errorPayload?.errorMsg)
       } else {
         onClose()
         navigate('/')
