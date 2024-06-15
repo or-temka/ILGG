@@ -9,8 +9,29 @@
   top: 0;
   left: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
+
+  &_Vcenter {
+    align-items: center;
+
+    & > .popUpSkeleton__content {
+      margin-bottom: 7vh;
+    }
+  }
+  &_Hcenter {
+    justify-content: center;
+  }
+  &_top {
+    align-items: flex-start;
+  }
+  &_bottom {
+    align-items: flex-end;
+  }
+  &_left {
+    justify-content: flex-start;
+  }
+  &_right {
+    justify-content: flex-end;
+  }
 
   &__back {
     position: absolute;
@@ -26,7 +47,6 @@
 
   &__content {
     position: relative;
-    margin-bottom: 7vh;
   }
 
   &__closeButton {

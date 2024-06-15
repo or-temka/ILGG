@@ -1,6 +1,9 @@
 import { ReactNode } from 'react'
 
-import PopUpSkeleton from './PopUpSkeleton'
+import PopUpSkeleton, {
+  PopUpHorizontalPosition,
+  PopUpVerticalPosition,
+} from './PopUpSkeleton'
 
 import styles from './PopUpContainer.module.scss'
 
@@ -10,6 +13,8 @@ interface PopUpContainerProps {
   onClose?: (...args: any[]) => any
   showCloseButton?: boolean
   showBack?: boolean
+  horizontalPosition?: PopUpHorizontalPosition
+  verticalPosition?: PopUpVerticalPosition
   classNames?: {
     className?: string
     wrapperClassName?: string
@@ -24,6 +29,8 @@ function PopUpContainer({
   onClose = () => {},
   showCloseButton = true,
   showBack = true,
+  horizontalPosition,
+  verticalPosition,
   classNames = {},
 }: PopUpContainerProps) {
   return (
@@ -31,6 +38,8 @@ function PopUpContainer({
       onClose={onClose}
       showCloseButton={showCloseButton}
       showBack={showBack}
+      horizontalPosition={horizontalPosition}
+      verticalPosition={verticalPosition}
       classNames={{ contentClassName: classNames.wrapperClassName }}
     >
       <div className={[styles.popUpContainer, classNames.className].join(' ')}>
