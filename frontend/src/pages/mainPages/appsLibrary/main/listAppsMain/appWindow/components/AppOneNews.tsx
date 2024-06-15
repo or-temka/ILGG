@@ -11,7 +11,7 @@ function AppOneNews({ classNames }: AppOneNewsProps) {
     <article className={[styles.oneNews, classNames?.wrapper].join(' ')}>
       <div className={styles.oneNews__imgContainer}>
         <img
-          src={require('../../../../assets/images/applications/find-number/news/1/1.jpg')}
+          src={require('assets/images/applications/find-number/news/1/1.jpg')}
           alt="Фото новости"
           className={styles.oneNews__img}
         />

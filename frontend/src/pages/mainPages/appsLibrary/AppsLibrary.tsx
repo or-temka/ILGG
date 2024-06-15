@@ -1,14 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { setLibraryApps } from '../redux/slices/myAppsLibrarySlice'
-
+import { setLibraryApps } from '../../../redux/slices/myAppsLibrarySlice'
 import { IAppFromLibrary } from 'models/application/IAppFromLibrary'
-
-import Header from './components/AppsLibrary/Header'
-import Main from './components/AppsLibrary/Main'
-
-import { setPageName } from '../utils/setPageName'
+import Header from './header/Header'
+import Main from './main/Main'
+import { setPageName } from 'utils/setPageName'
 
 import styles from './AppsLibrary.module.scss'
 

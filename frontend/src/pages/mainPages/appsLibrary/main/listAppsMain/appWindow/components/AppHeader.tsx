@@ -1,7 +1,7 @@
-import Button, { ButtonVariant } from '../../../../components/UI/buttons/Button'
-import ButtonWithIcon from '../../../../components/UI/buttons/ButtonWithIcon'
-import { ReactComponent as PlaySVG } from '../../../../assets/svgs/play.svg'
+import Button, { ButtonVariant } from 'components/UI/buttons/Button'
+import ButtonWithIcon from 'components/UI/buttons/ButtonWithIcon'
 
+import { ReactComponent as PlaySVG } from 'assets/svgs/play.svg'
 import styles from './AppHeader.module.scss'
 
 interface AppHeaderProps {
@@ -15,7 +15,7 @@ function AppHeader({ classNames }: AppHeaderProps) {
     <header className={[styles.header, classNames?.wrapper].join(' ')}>
       <div className={styles.header__poster}>
         <img
-          src={require('../../../../assets/images/applications/find-number/large-poster.jpg')}
+          src={require('assets/images/applications/find-number/large-poster.jpg')}
           className={styles.header__posterImg}
         />
         <div className={styles.header__appNameContainer}>

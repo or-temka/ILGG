@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux'
 
-import { selectApps } from '../../../redux/slices/myAppsLibrarySlice'
+import { selectApps } from '../../../../../redux/slices/myAppsLibrarySlice'
 
-import GameBigCard from '../../../components/cards/GameBigCard'
-import pageLink from '../../../pagesLinks'
-import GameBigCardSkeleton from '../../../components/cards/GameBigCardSkeleton'
+import GameBigCard from 'components/cards/GameBigCard'
+import pageLink from 'pagesLinks'
+import GameBigCardSkeleton from 'components/cards/GameBigCardSkeleton'
 
 import styles from './BigPicturesMain.module.scss'
 

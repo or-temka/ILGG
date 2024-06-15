@@ -1,6 +1,4 @@
-import Tooltip, {
-  VerticalDirection,
-} from '../../../../components/UI/tooltips/Tooltip'
+import Tooltip from 'components/UI/tooltips/Tooltip'
 
 import styles from './AppFriends.module.scss'
 
@@ -22,7 +20,7 @@ function AppFriends({ classNames }: AppFriendsProps) {
         <div className={styles.friends__friendsList}>
           <Tooltip text="Алина" className={styles.friends__friendTooltip}>
             <img
-              src={require('../../../../assets/images/profiles/alina.jpg')}
+              src={require('assets/images/profiles/alina.jpg')}
               alt="Пользователь "
               className={styles.friends__friendImage}
             />

@@ -1,6 +1,6 @@
-import AppHeader from './AppHeader'
-import AppFriends from './AppFriends'
-import AppNews from './AppNews'
+import AppHeader from './components/AppHeader'
+import AppFriends from './components/AppFriends'
+import AppNews from './components/AppNews'
 
 import styles from './AppWindow.module.scss'
 

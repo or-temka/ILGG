@@ -1,13 +1,11 @@
 import { useState } from 'react'
 
-import { ViewAppsType } from '../../AppsLibrary'
+import { ViewAppsType } from '../AppsLibrary'
 
-import Input from '../../../components/UI/inputs/Input'
-import { ReactComponent as ListPapersSVG } from '../../../assets/svgs/listsPapers.svg'
-import { ReactComponent as TilesSVG } from '../../../assets/svgs/tiles.svg'
-import Tooltip, {
-  VerticalDirection,
-} from '../../../components/UI/tooltips/Tooltip'
+import Input from 'components/UI/inputs/Input'
+import { ReactComponent as ListPapersSVG } from 'assets/svgs/listsPapers.svg'
+import { ReactComponent as TilesSVG } from 'assets/svgs/tiles.svg'
+import Tooltip, { VerticalDirection } from 'components/UI/tooltips/Tooltip'
 
 import styles from './Header.module.scss'
 

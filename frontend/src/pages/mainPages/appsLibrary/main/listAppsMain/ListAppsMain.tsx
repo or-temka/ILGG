@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 
-import { selectApps } from '../../../redux/slices/myAppsLibrarySlice'
+import { selectApps } from '../../../../../redux/slices/myAppsLibrarySlice'
 
-import AppsList from './ListAppsMain/AppsList'
-import AppWindow from './ListAppsMain/AppWindow'
+import AppsList from './appsList/AppsList'
+import AppWindow from './appWindow/AppWindow'
 
 import styles from './ListAppsMain.module.scss'
 
