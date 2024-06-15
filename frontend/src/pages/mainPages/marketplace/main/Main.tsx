@@ -1,6 +1,6 @@
-import ItemInfo from './ItemInfo'
-import ItemsField from './ItemsField'
-import Apps from './Apps'
+import ItemInfo from './components/ItemInfo'
+import ItemsField from './components/ItemsField'
+import Apps from './components/Apps'
 
 import styles from './Main.module.scss'
 

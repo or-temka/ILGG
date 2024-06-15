@@ -1,4 +1,5 @@
-import Button from '../../../components/UI/buttons/Button'
+import Button from 'components/UI/buttons/Button'
+
 import styles from './ItemInfo.module.scss'
 
 interface ItemInfoProps {
@@ -12,7 +13,7 @@ function ItemInfo({ classNames }: ItemInfoProps) {
     <section className={[styles.item, classNames?.wrapper].join(' ')}>
       <header className={styles.item__imgContainer}>
         <img
-          src={require('../../../assets/images/applications/find-number/items/1.png')}
+          src={require('../../../../../assets/images/applications/find-number/items/1.png')}
           alt="Изображение '[название предмета]'"
           className={styles.item__img}
         />

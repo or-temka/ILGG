@@ -15,14 +15,14 @@ function Apps({ classNames }: AppsProps) {
       <main className={styles.apps__main}>
         <button className={styles.app}>
           <img
-            src={require('../../../assets/images/applications/find-number/poster.jpg')}
+            src={require('../../../../../assets/images/applications/find-number/poster.jpg')}
             className={styles.app__img}
           />
           <span className={styles.app__name}>Find Number</span>
         </button>
         <button className={styles.app}>
           <img
-            src={require('../../../assets/images/applications/find-number/poster.jpg')}
+            src={require('../../../../../assets/images/applications/find-number/poster.jpg')}
             className={styles.app__img}
           />
           <span className={styles.app__name}>Find Number</span>

@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
 
-import Header from './components/Marketplace/Header'
-import Main from './components/Marketplace/Main'
+import Header from './header/Header'
+import Main from './main/Main'
 
-import { setPageName } from '../utils/setPageName'
+import { setPageName } from '../../../utils/setPageName'
 
 import styles from './Marketplace.module.scss'
 
