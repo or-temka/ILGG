@@ -1,6 +1,6 @@
-import AsideInfo from './AsideInfo'
-import Comments from './Comments'
-import UserGames from './UserGames'
+import AsideInfo from './AsideInfo/AsideInfo'
+import Comments from './Comments/Comments'
+import UserGames from './UserGames/UserGames'
 import UserGamesSkeleton from './skeletons/UserGamesSkeleton'
 
 import styles from './AdoptInfo.module.scss'

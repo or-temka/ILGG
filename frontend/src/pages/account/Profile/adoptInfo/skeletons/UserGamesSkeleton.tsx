@@ -1,7 +1,7 @@
 import SkeletonText, {
   SkeletonTextVariant,
-} from '../../../../../components/skeletons/SkeletonText'
-import styles from '../UserGames.module.scss'
+} from 'components/skeletons/SkeletonText'
+import styles from '../../adoptInfo/UserGames/UserGames.module.scss'
 
 function UserGames() {
   const count = [1, 2, 3]

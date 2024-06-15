@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom'
 
 import { IUserProfile } from 'models/user/IUserProfile'
 
-import pageLink from '../../../../pagesLinks'
+import pageLink from 'pagesLinks'
 import Tooltip, {
   VerticalDirection,
-} from '../../../../components/UI/tooltips/Tooltip'
+} from 'components/UI/tooltips/Tooltip'
 
 import styles from './FriendsPanel.module.scss'
 
@@ -26,7 +26,7 @@ function FriendsPanel({ friends }: FriendsPanelProps) {
               text={friend.name}
             >
               <img
-                src={require(`../../../../assets/images/profiles/${friend.imgName}`)}
+                src={require(`assets/images/profiles/${friend.imgName}`)}
                 alt="Профиль пользователя"
                 className={[
                   styles.panel__friendImg,

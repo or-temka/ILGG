@@ -2,8 +2,8 @@ import { useNavigate } from 'react-router-dom'
 
 import { IFullUserProfile } from 'models/user/IFullUserProfile'
 
-import Button from '../../../../components/UI/buttons/Button'
-import pageLink from '../../../../pagesLinks'
+import Button from 'components/UI/buttons/Button'
+import pageLink from 'pagesLinks'
 
 import styles from './Header.module.scss'
 
@@ -14,7 +14,7 @@ interface HeaderProps {
 function Header({ userData }: HeaderProps) {
   const navigate = useNavigate()
 
-  const profileImg = require('../../../../assets/images/profiles/large/profileImage.jpg')
+  const profileImg = require('assets/images/profiles/large/profileImage.jpg')
 
   const progressLineWidthInProcent =
     (userData.level.points.now / userData.level.points.atLevel) * 100

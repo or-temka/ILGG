@@ -3,11 +3,11 @@ import { useParams } from 'react-router-dom'
 
 import { IFullUserProfile } from 'models/user/IFullUserProfile'
 
-import Header from './components/Profile/Header'
-import AdoptInfo from './components/Profile/AdoptInfo'
-import HeaderSkeleton from './components/Profile/skeletons/HeaderSkeleton'
+import Header from './header/Header'
+import AdoptInfo from './adoptInfo/AdoptInfo'
+import HeaderSkeleton from './header/components/HeaderSkeleton'
 
-import { setPageName } from '../../utils/setPageName'
+import { setPageName } from 'utils/setPageName'
 
 import styles from './Profile.module.scss'
 

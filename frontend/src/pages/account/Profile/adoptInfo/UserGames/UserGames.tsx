@@ -1,4 +1,4 @@
-import ImgLightRightContnent from '../../../../components/cards/ImgLightRightContnent'
+import ImgLightRightContnent from 'components/cards/ImgLightRightContnent'
 
 import styles from './UserGames.module.scss'
 
@@ -9,7 +9,7 @@ function UserGames() {
 
       <ImgLightRightContnent
         img={{
-          src: require('.././../../../assets/images/applications/find-number/large-poster.jpg'),
+          src: require('assets/images/applications/find-number/large-poster.jpg'),
         }}
         classNames={{
           wrapper: styles.gameCard,

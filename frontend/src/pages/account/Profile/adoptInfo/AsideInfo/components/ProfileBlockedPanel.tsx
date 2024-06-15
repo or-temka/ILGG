@@ -1,5 +1,5 @@
-import { ReactComponent as ProfileBlockedSVG } from '../../../../assets/svgs/profileBlocked.svg'
-import InfoTooltip from '../../../../components/UI/tooltips/InfoTooltip'
+import { ReactComponent as ProfileBlockedSVG } from 'assets/svgs/profileBlocked.svg'
+import InfoTooltip from 'components/UI/tooltips/InfoTooltip'
 
 import styles from './ProfileBlockedPanel.module.scss'
 

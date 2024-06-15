@@ -1,9 +1,9 @@
 import { IUserProfile } from 'models/user/IUserProfile'
 
-import FriendsPanel from './FriendsPanel'
-import ProfileBlockedPanel from './ProfileBlockedPanel'
-import FriendsPanelSkeleton from './skeletons/FriendsPanelSkeleton'
-import Button from '../../../../components/UI/buttons/Button'
+import FriendsPanel from './components/FriendsPanel'
+import ProfileBlockedPanel from './components/ProfileBlockedPanel'
+import FriendsPanelSkeleton from '../skeletons/FriendsPanelSkeleton'
+import Button from 'components/UI/buttons/Button'
 
 import styles from './AsideInfo.module.scss'
 
