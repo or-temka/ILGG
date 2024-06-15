@@ -17,8 +17,10 @@ const Marketplace = lazy(() => import('./pages/Marketplace'))
 const PageNotFound = lazy(() => import('./pages/PageNotFound'))
 const SignUp = lazy(() => import('./pages/account/signUp/SignUp'))
 const SignUpEmail = lazy(() => import('./pages/account/signUp/SignUpEmail'))
-const Profile = lazy(() => import('./pages/account/Profile'))
-const EditProfile = lazy(() => import('./pages/account/EditProfile'))
+const Profile = lazy(() => import('./pages/account/Profile/Profile'))
+const EditProfile = lazy(
+  () => import('./pages/account/editProfile/EditProfile')
+)
 
 const Game = lazy(() => import('./pages/games/Game'))
 
