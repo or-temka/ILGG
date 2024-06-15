@@ -1,7 +1,7 @@
 import { lazy, useMemo } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import MainLayout from './layouts/MainLayout'
+import MainLayout from './layouts/mainLayout/MainLayout'
 
 import FloatingPanelsQueue from './components/UI/floatingPanels/FloatingPanelsQueue'
 import pageLink from './pagesLinks'

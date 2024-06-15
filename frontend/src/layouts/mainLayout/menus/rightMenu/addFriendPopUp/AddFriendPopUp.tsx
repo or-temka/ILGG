@@ -1,9 +1,8 @@
 import { useState } from 'react'
 
-import PopUpContainer from '../../../../../components/UI/popUps/skeletons/PopUpContainer'
-import Input from '../../../../../components/UI/inputs/Input'
-import MiniProfile from './MiniProfile'
-
+import PopUpContainer from 'components/UI/popUps/skeletons/PopUpContainer'
+import Input from 'components/UI/inputs/Input'
+import MiniProfile from '../components/miniProfile/MiniProfile'
 import { IUserProfile } from 'models/user/IUserProfile'
 
 import styles from './AddFriendPopUp.module.scss'

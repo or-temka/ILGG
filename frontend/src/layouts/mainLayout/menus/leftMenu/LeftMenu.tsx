@@ -1,28 +1,27 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-import { selectMyUser } from '../../../redux/slices/myProfileSlice'
-
-import ButtonPage from './components/leftMenu/ButtonPage'
-import { ReactComponent as HomeSVG } from '../../../assets/svgs/home.svg'
-import { ReactComponent as GamepadSVG } from '../../../assets/svgs/gamepad.svg'
-import { ReactComponent as LibrarySVG } from '../../../assets/svgs/library.svg'
-import { ReactComponent as DiamondSVG } from '../../../assets/svgs/diamond.svg'
-import { ReactComponent as PackageSVG } from '../../../assets/svgs/package.svg'
-import { ReactComponent as PeopleSVG } from '../../../assets/svgs/people.svg'
-import { ReactComponent as HelpSVG } from '../../../assets/svgs/help.svg'
-import pageLink from '../../../pagesLinks'
-
-import menuStyles from './Menu.module.scss'
-import styles from './LeftMenu.module.scss'
+import { selectMyUser } from '../../../../redux/slices/myProfileSlice'
+import ButtonPage from './components/ButtonPage'
+import pageLink from 'pagesLinks'
+import menuStyles from '../Menu.module.scss'
 import Tooltip, {
   HorizontalDirection,
   VerticalDirection,
-} from '../../../components/UI/tooltips/Tooltip'
-import changeSiteTheme from '../../../utils/changeSiteTheme'
+} from 'components/UI/tooltips/Tooltip'
+import changeSiteTheme from 'utils/changeSiteTheme'
 import SkeletonText, {
   SkeletonTextVariant,
 } from 'components/skeletons/SkeletonText'
+
+import { ReactComponent as HomeSVG } from 'assets/svgs/home.svg'
+import { ReactComponent as GamepadSVG } from 'assets/svgs/gamepad.svg'
+import { ReactComponent as LibrarySVG } from 'assets/svgs/library.svg'
+import { ReactComponent as DiamondSVG } from 'assets/svgs/diamond.svg'
+import { ReactComponent as PackageSVG } from 'assets/svgs/package.svg'
+import { ReactComponent as PeopleSVG } from 'assets/svgs/people.svg'
+import { ReactComponent as HelpSVG } from 'assets/svgs/help.svg'
+import styles from './LeftMenu.module.scss'
 
 interface LeftMenuProps {
   className?: string

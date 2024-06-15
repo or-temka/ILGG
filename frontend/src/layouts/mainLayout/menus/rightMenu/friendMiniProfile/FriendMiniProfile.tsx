@@ -1,6 +1,6 @@
 import { IUserProfile } from 'models/user/IUserProfile'
 
-import MiniProfile, { Button } from './MiniProfile'
+import MiniProfile, { Button } from '../components/miniProfile/MiniProfile'
 
 const buttons: Button[] = [
   { title: 'Открыть профиль', handler: () => {} },

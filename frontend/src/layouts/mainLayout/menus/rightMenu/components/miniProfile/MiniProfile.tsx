@@ -2,7 +2,6 @@ import { ReactNode, useState } from 'react'
 
 import { IUserProfile } from 'models/user/IUserProfile'
 import { IMyUser } from 'models/myUser/IMyUser'
-
 import Tooltip, { VerticalDirection } from 'components/UI/tooltips/Tooltip'
 
 import styles from './MiniProfile.module.scss'
@@ -53,7 +52,7 @@ function MiniProfile({
             ></div>
           ) : (
             <img
-              src={require('../../../../../assets/images/profiles/alina.jpg')}
+              src={require('assets/images/profiles/alina.jpg')}
               alt={userData.login}
               className={[styles.aboutUser__image, classNames.img].join(' ')}
             ></img>

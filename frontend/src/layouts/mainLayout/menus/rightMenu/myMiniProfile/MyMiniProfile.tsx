@@ -3,12 +3,12 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
 import { IMyUser } from 'models/myUser/IMyUser'
-import MiniProfile, { Button } from './MiniProfile'
-import { ReactComponent as ArrowSVG } from '../../../../../assets/svgs/arrow.svg'
-
-import styles from './MyMiniProfile.module.scss'
-import pageLink from '../../../../../pagesLinks'
+import MiniProfile, { Button } from '../components/miniProfile/MiniProfile'
+import pageLink from 'pagesLinks'
 import { logout } from '../../../../../redux/slices/myProfileSlice'
+
+import { ReactComponent as ArrowSVG } from '../../../../../assets/svgs/arrow.svg'
+import styles from './MyMiniProfile.module.scss'
 
 interface MyMiniProfileProps {
   myUserData: IMyUser | null

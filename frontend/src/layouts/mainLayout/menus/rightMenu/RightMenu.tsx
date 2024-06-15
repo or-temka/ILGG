@@ -1,24 +1,23 @@
 import { Suspense, lazy, useState } from 'react'
 import { useSelector } from 'react-redux'
 
-import { selectFriends } from '../../../redux/slices/friendsSlice'
+import { selectFriends } from '../../../../redux/slices/friendsSlice'
 import { IUserProfile } from 'models/user/IUserProfile'
-import { selectMyUser } from '../../../redux/slices/myProfileSlice'
-
-import Button, { ButtonVariant } from '../../../components/UI/buttons/Button'
-import AddFriendPopUp from './components/rightMenu/AddFriendPopUp'
-import FriendMiniProfile from './components/rightMenu/FriendMiniProfile'
-import MyMiniProfile from './components/rightMenu/MyMiniProfile'
-import TextLink from '../../../components/UI/links/TextLink'
-import pageLink from '../../../pagesLinks'
-import { ReactComponent as SignInDoorSVG } from '../../../assets/svgs/door.svg'
-
-import menuStyles from './Menu.module.scss'
-import styles from './RightMenu.module.scss'
-import LoadingRightMenu from './components/rightMenu/LoadingRightMenu'
+import { selectMyUser } from '../../../../redux/slices/myProfileSlice'
+import Button, { ButtonVariant } from 'components/UI/buttons/Button'
+import AddFriendPopUp from './addFriendPopUp/AddFriendPopUp'
+import FriendMiniProfile from './friendMiniProfile/FriendMiniProfile'
+import MyMiniProfile from './myMiniProfile/MyMiniProfile'
+import TextLink from 'components/UI/links/TextLink'
+import pageLink from 'pagesLinks'
+import LoadingRightMenu from './loadingRightMenu/LoadingRightMenu'
 import LoadingPopUp from 'components/UI/loaders/LoadingPopUp'
 
-const SignIn = lazy(() => import('../../../components/main/SignIn/SignIn'))
+import { ReactComponent as SignInDoorSVG } from 'assets/svgs/door.svg'
+import menuStyles from '../Menu.module.scss'
+import styles from './RightMenu.module.scss'
+
+const SignIn = lazy(() => import('components/main/SignIn/SignIn'))
 
 interface RightMenuProps {
   className?: string

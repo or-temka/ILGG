@@ -1,13 +1,13 @@
 import { Suspense, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 
-import Header from './components/header/Header'
-import LeftMenu from './components/menu/LeftMenu'
-import RightMenu from './components/menu/RightMenu'
-import LoadingSpiner from '../components/UI/loaders/LoadingSpiner'
-import CookiesAccept from './components/cookiesAccept/CookiesAccept'
+import Header from './header/Header'
+import LeftMenu from './menus/leftMenu/LeftMenu'
+import RightMenu from './menus/rightMenu/RightMenu'
+import LoadingSpiner from 'components/UI/loaders/LoadingSpiner'
+import CookiesAccept from './cookiesAccept/CookiesAccept'
 
-import styles from './Layout.module.scss'
+import styles from './MainLayout.module.scss'
 
 function MainLayout() {
   const [showCookiesAccept, setShowCookiesAccept] = useState(
