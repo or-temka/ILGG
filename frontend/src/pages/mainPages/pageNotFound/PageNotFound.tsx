@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 
-import { ReactComponent as EmojiSadSVG } from '../assets/svgs/emoji/sad.svg'
+import { ReactComponent as EmojiSadSVG } from 'assets/svgs/emoji/sad.svg'
 
-import { setPageName } from '../utils/setPageName'
+import { setPageName } from 'utils/setPageName'
 
 import styles from './PageNotFound.module.scss'
 
