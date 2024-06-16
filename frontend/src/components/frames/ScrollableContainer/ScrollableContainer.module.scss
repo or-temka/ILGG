@@ -1,0 +1,21 @@
+.container {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  scrollbar-width: none;
+  transition: scrollbar-width 0.5s, opacity 0.5s;
+  opacity: 1;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &_scrolling {
+    scrollbar-width: auto;
+    transition: scrollbar-width 0.5s, opacity 0.5s;
+
+    &::-webkit-scrollbar {
+      display: block;
+    }
+  }
+}
