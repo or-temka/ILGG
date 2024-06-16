@@ -5,25 +5,27 @@ import { useDispatch } from 'react-redux'
 import useImagePreloader from 'hooks/useImagePreloader'
 import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
 
-import Input, { InputVariant } from '../../UI/inputs/Input'
-import PopUpSkeleton from '../../UI/popUps/skeletons/PopUpSkeleton'
+import Input, { InputVariant } from 'components/UI/inputs/Input/Input'
+import PopUpSkeleton from 'components/UI/popUps/skeletons/PopUpSkeleton/PopUpSkeleton'
 import InputWithBtnIcon, {
   InputWithBtnIconVariant,
-} from '../../UI/inputs/InputWithBtnIcon'
-import Button, { ButtonVariant } from '../../UI/buttons/Button'
+} from 'components/UI/inputs/InputWithBtnIcon/InputWithBtnIcon'
+import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import pageLink from 'pagesLinks'
 import { login } from '../../../redux/slices/myProfileSlice'
-import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification'
-import LoadingPopUp from 'components/UI/loaders/LoadingPopUp'
+import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
+import LoadingPopUp from 'components/UI/loaders/LoadingPopUp/LoadingPopUp'
 
-import { ReactComponent as ShowPasswordSVG } from '../../../assets/svgs/eye.svg'
-import { ReactComponent as LogoSVG } from '../../../assets/svgs/logo.svg'
-import PosterImage from '../../../assets/images/posters/poster1.jpg'
+import { ReactComponent as ShowPasswordSVG } from 'assets/svgs/eye.svg'
+import { ReactComponent as LogoSVG } from 'assets/svgs/logo.svg'
+import PosterImage from 'assets/images/posters/poster1.jpg'
 import styles from './SignIn.module.scss'
 
 const preloadSrcList: string[] = [PosterImage]
 
-const RecoveryPassword = lazy(() => import('./RecoveryPassword'))
+const RecoveryPassword = lazy(
+  () => import('./RecoveryPassword/RecoveryPassword')
+)
 
 function SignIn({ onClose = () => {} }) {
   const navigate = useNavigate()
@@ -82,7 +84,7 @@ function SignIn({ onClose = () => {} }) {
       >
         <div className={styles.poster}>
           <img
-            src={require('../../../assets/images/posters/poster1.jpg')}
+            src={require('assets/images/posters/poster1.jpg')}
             className={styles.poster__backgroundImg}
           />
           <LogoSVG className={styles.poster__logo} />

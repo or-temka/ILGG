@@ -1,4 +1,4 @@
-import Tooltip from 'components/UI/tooltips/Tooltip'
+import Tooltip from 'components/UI/tooltips/Tooltip/Tooltip'
 
 import styles from './AppFriends.module.scss'
 

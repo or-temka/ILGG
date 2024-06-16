@@ -1,0 +1,41 @@
+@import 'mixins.scss';
+
+.text {
+  display: flex;
+  flex-direction: row;
+  border-radius: 3px;
+  overflow: hidden;
+  width: fit-content;
+  width: 100%;
+
+  &_clickable {
+    cursor: pointer;
+
+    &:hover {
+      & .text {
+        &__textContainer {
+          background-color: var(--background-3-hover-color);
+        }
+      }
+    }
+  }
+
+  &__svgContainer {
+    width: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--active-2-color);
+  }
+
+  &__textContainer {
+    @include paragraph;
+
+    display: flex;
+    align-items: center;
+
+    padding: 7px 17px;
+    flex: 1;
+    background-color: var(--background-color);
+  }
+}

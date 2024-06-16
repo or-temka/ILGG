@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import HeaderSearchInput from './HeaderSearchInput'
-import { ReactComponent as LogoSVG } from '../../../assets/svgs/logo.svg'
+import { ReactComponent as LogoSVG } from 'assets/svgs/logo.svg'
 import AccountBalance from './AccountBalance'
-import pageLink from '../../../pagesLinks'
+import pageLink from 'pagesLinks'
 
 import styles from './Header.module.scss'
 

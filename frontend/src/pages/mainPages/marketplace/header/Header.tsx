@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import Input from 'components/UI/inputs/Input'
+import Input from 'components/UI/inputs/Input/Input'
 
 import styles from './Header.module.scss'
 

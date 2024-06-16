@@ -5,7 +5,7 @@ import { IUserProfile } from 'models/user/IUserProfile'
 import pageLink from 'pagesLinks'
 import Tooltip, {
   VerticalDirection,
-} from 'components/UI/tooltips/Tooltip'
+} from 'components/UI/tooltips/Tooltip/Tooltip'
 
 import styles from './FriendsPanel.module.scss'
 

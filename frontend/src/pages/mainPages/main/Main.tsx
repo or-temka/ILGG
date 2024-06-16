@@ -8,9 +8,9 @@ import {
 } from '../../../redux/slices/mainPageApplicationsSlice'
 import pageLink from '../../../pagesLinks'
 
-import Input from '../../../components/UI/inputs/Input'
-import GameBigCard from '../../../components/cards/GameBigCard'
-import GameBigCardSkeleton from '../../../components/cards/GameBigCardSkeleton'
+import Input from '../../../components/UI/inputs/Input/Input'
+import GameBigCard from '../../../components/cards/GameBigCard/GameBigCard'
+import GameBigCardSkeleton from '../../../components/cards/GameBigCardSkeleton/GameBigCardSkeleton'
 
 import { clearPageName } from '../../../utils/setPageName'
 

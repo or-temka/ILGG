@@ -1,21 +1,23 @@
-import { Suspense, lazy, useState } from 'react'
+import { Suspense, lazy, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import { selectFriends } from '../../../../redux/slices/friendsSlice'
 import { IUserProfile } from 'models/user/IUserProfile'
 import { selectMyUser } from '../../../../redux/slices/myProfileSlice'
-import Button, { ButtonVariant } from 'components/UI/buttons/Button'
+import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import AddFriendPopUp from './addFriendPopUp/AddFriendPopUp'
 import FriendMiniProfile from './friendMiniProfile/FriendMiniProfile'
 import MyMiniProfile from './myMiniProfile/MyMiniProfile'
-import TextLink from 'components/UI/links/TextLink'
+import TextLink from 'components/UI/links/TextLink/TextLink'
 import pageLink from 'pagesLinks'
 import LoadingRightMenu from './loadingRightMenu/LoadingRightMenu'
-import LoadingPopUp from 'components/UI/loaders/LoadingPopUp'
+import LoadingPopUp from 'components/UI/loaders/LoadingPopUp/LoadingPopUp'
 
 import { ReactComponent as SignInDoorSVG } from 'assets/svgs/door.svg'
 import menuStyles from '../Menu.module.scss'
 import styles from './RightMenu.module.scss'
+import useScrollVisibility from 'hooks/useScrollVisibility'
+import ScrollableContainer from 'components/frames/ScrollableContainer/ScrollableContainer'
 
 const SignIn = lazy(() => import('components/main/SignIn/SignIn'))
 
@@ -52,6 +54,8 @@ function RightMenu({ className = '' }: RightMenuProps) {
     addFriend: false,
     signIn: false,
   })
+  const friendsContainerRef = useRef(null)
+  const isScrolling = useScrollVisibility(friendsContainerRef)
 
   const mySelectedUser = useSelector(selectMyUser)
 
@@ -125,25 +129,27 @@ function RightMenu({ className = '' }: RightMenuProps) {
           <span className={styles.rightMenu__friendsLabelText}>Друзья</span>
         </div>
 
-        {!friends ? ( //Friends
-          <>
-            <FriendMiniProfile userData={null} />
-            <FriendMiniProfile userData={null} />
-            <FriendMiniProfile userData={null} />
-            <FriendMiniProfile userData={null} />
-            <FriendMiniProfile userData={null} />
-          </>
-        ) : friends.length > 0 ? (
-          friends.map((userData, index) => (
-            <FriendMiniProfile key={index} userData={userData} />
-          ))
-        ) : (
-          <div className={styles.rightMenu__withoutFriends}>
-            <span className={styles.rightMenu__withoutFriendsLabel}>
-              У вас нет друзей
-            </span>
-          </div>
-        )}
+        <ScrollableContainer className={styles.rightMenu__friends}>
+          {!friends ? ( //Friends
+            <>
+              <FriendMiniProfile userData={null} />
+              <FriendMiniProfile userData={null} />
+              <FriendMiniProfile userData={null} />
+              <FriendMiniProfile userData={null} />
+              <FriendMiniProfile userData={null} />
+            </>
+          ) : friends.length > 0 ? (
+            friends.map((userData, index) => (
+              <FriendMiniProfile key={index} userData={userData} />
+            ))
+          ) : (
+            <div className={styles.rightMenu__withoutFriends}>
+              <span className={styles.rightMenu__withoutFriendsLabel}>
+                У вас нет друзей
+              </span>
+            </div>
+          )}
+        </ScrollableContainer>
 
         <div className={styles.rightMenu__addFriendBtnContainer}>
           <Button

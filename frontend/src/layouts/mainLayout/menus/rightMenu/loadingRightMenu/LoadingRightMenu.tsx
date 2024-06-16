@@ -1,4 +1,5 @@
 import miniProfileStyle from '../components/miniProfile/MiniProfile.module.scss'
+
 import styles from './LoadingRightMenu.module.scss'
 
 const LoadingUser = () => {

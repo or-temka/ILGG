@@ -2,7 +2,7 @@ import { ReactNode, useState } from 'react'
 
 import { IUserProfile } from 'models/user/IUserProfile'
 import { IMyUser } from 'models/myUser/IMyUser'
-import Tooltip, { VerticalDirection } from 'components/UI/tooltips/Tooltip'
+import Tooltip from 'components/UI/tooltips/Tooltip/Tooltip'
 
 import styles from './MiniProfile.module.scss'
 
@@ -76,10 +76,7 @@ function MiniProfile({
               </>
             ) : (
               <>
-                <Tooltip
-                  postitionVertical={VerticalDirection.top}
-                  text={userData.login}
-                >
+                <Tooltip text={userData.login}>
                   <span
                     className={[
                       styles.aboutUser__name,

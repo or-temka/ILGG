@@ -2,10 +2,10 @@ import { useState } from 'react'
 
 import { ViewAppsType } from '../AppsLibrary'
 
-import Input from 'components/UI/inputs/Input'
+import Input from 'components/UI/inputs/Input/Input'
 import { ReactComponent as ListPapersSVG } from 'assets/svgs/listsPapers.svg'
 import { ReactComponent as TilesSVG } from 'assets/svgs/tiles.svg'
-import Tooltip, { VerticalDirection } from 'components/UI/tooltips/Tooltip'
+import Tooltip, { VerticalDirection } from 'components/UI/tooltips/Tooltip/Tooltip'
 
 import styles from './Header.module.scss'
 

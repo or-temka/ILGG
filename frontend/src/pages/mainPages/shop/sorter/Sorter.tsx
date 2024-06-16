@@ -8,7 +8,7 @@ import {
 } from '../../../../redux/slices/shopAppsSlice'
 import ButtonWithIcon, {
   ButtonWithIconIconPosition,
-} from 'components/UI/buttons/ButtonWithIcon'
+} from 'components/UI/buttons/ButtonWithIcon/ButtonWithIcon'
 
 import { ReactComponent as ArrowSVG } from 'assets/svgs/arrow.svg'
 import styles from './Sorter.module.scss'

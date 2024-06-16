@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import Button, { ButtonVariant } from 'components/UI/buttons/Button'
+import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 
 import styles from './RepeatButton.module.scss'
 

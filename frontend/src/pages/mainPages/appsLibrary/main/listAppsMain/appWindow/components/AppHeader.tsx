@@ -1,5 +1,5 @@
-import Button, { ButtonVariant } from 'components/UI/buttons/Button'
-import ButtonWithIcon from 'components/UI/buttons/ButtonWithIcon'
+import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
+import ButtonWithIcon from 'components/UI/buttons/ButtonWithIcon/ButtonWithIcon'
 
 import { ReactComponent as PlaySVG } from 'assets/svgs/play.svg'
 import styles from './AppHeader.module.scss'

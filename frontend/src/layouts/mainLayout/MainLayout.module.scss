@@ -14,7 +14,7 @@
   }
 
   &__menu {
-    height: 100%;
+    max-height: calc(100vh - 53px);
   }
 
   &__main {

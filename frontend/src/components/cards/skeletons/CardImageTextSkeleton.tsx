@@ -1,4 +1,4 @@
-import styles from '../CardImageText.module.scss'
+import styles from '../CardImageText/CardImageText.module.scss'
 
 function CardImageTextSkeleton() {
   return <div className={[styles.card, 'pulse'].join(' ')}></div>

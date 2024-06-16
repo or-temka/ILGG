@@ -2,13 +2,13 @@ import { useSelector } from 'react-redux'
 
 import { selectMyBalance } from '../../../redux/slices/myProfileSlice'
 
-import { ReactComponent as PlusSVG } from '../../../assets/svgs/plus.svg'
+import { ReactComponent as PlusSVG } from 'assets/svgs/plus.svg'
 import Tooltip, {
   VerticalDirection,
-} from '../../../components/UI/tooltips/Tooltip'
+} from 'components/UI/tooltips/Tooltip/Tooltip'
 import SkeletonText, {
   SkeletonTextVariant,
-} from '../../../components/skeletons/SkeletonText'
+} from 'components/skeletons/SkeletonText/SkeletonText'
 
 import styles from './AccountBalance.module.scss'
 

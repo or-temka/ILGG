@@ -1,7 +1,7 @@
 import { IUserProfile } from 'models/user/IUserProfile'
 
-import Comment from 'components/UI/blocks/Comment'
-import CommentSkeleton from 'components/UI/blocks/skeletons/CommentSkeleton'
+import Comment from 'components/UI/blocks/comments/Comment/Comment'
+import CommentSkeleton from 'components/UI/blocks/comments/skeletons/CommentSkeleton'
 
 import styles from './Comments.module.scss'
 

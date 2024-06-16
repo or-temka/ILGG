@@ -1,4 +1,4 @@
-import DescriptionList from 'components/UI/texts/DescriptionList'
+import DescriptionList from 'components/UI/texts/DescriptionList/DescriptionList'
 
 import styles from './HeaderAboutGame.module.scss'
 
