@@ -4,4 +4,8 @@
   @include background-main-lg;
   display: flex;
   flex-direction: column;
+
+  @include media('desktop') {
+    display: none;
+  }
 }
