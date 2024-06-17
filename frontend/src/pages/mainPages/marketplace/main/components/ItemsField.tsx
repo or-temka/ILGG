@@ -1,4 +1,4 @@
-import Button, { ButtonVariant } from 'components/UI/buttons/Button'
+import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 
 import styles from './ItemsField.module.scss'
 

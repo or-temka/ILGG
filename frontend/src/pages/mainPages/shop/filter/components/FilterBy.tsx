@@ -5,7 +5,7 @@ import {
   FilterFields,
   FilterValue,
 } from '../../../../../redux/slices/shopAppsSlice'
-import Checkbox from 'components/UI/inputs/Checkbox'
+import Checkbox from 'components/UI/inputs/Checkbox/Checkbox'
 
 import styles from './FilterBy.module.scss'
 

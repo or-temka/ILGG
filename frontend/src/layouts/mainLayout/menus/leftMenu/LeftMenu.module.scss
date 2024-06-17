@@ -4,6 +4,15 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow-y: scroll;
+
+  @include media('desktop') {
+    display: none;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .nav {

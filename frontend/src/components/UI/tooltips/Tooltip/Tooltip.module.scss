@@ -1,0 +1,60 @@
+@import 'mixins.scss';
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+
+  &:hover {
+    .tooltip__tooltip {
+      display: block;
+      animation: goes 0.2s forwards;
+    }
+  }
+
+  &__tooltip {
+    @include smallText;
+
+    width: fit-content;
+    background-color: var(--background-3-color);
+    color: var(--text-color);
+    display: none;
+    opacity: 0;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+
+    // Vertical pos
+    &_top {
+      bottom: 110%;
+    }
+
+    &_bottom {
+      top: 110%;
+    }
+
+    // Horizontal pos
+    &_left {
+      right: 100%;
+    }
+
+    &_center {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &_right {
+      left: 100%;
+    }
+  }
+}
+
+@keyframes goes {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -8,7 +8,7 @@ import {
   resetFiltersShopApps,
 } from '../../../../redux/slices/shopAppsSlice'
 import FilterBy from './components/FilterBy'
-import Button, { ButtonVariant } from 'components/UI/buttons/Button'
+import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import appTypes from 'data/tempData/appTypes'
 import appCategories from 'data/tempData/appCategories'
 import appPlayerTypes from 'data/tempData/appPlayerTypes'

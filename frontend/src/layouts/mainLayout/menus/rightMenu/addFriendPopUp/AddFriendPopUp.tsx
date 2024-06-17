@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-import PopUpContainer from 'components/UI/popUps/skeletons/PopUpContainer'
-import Input from 'components/UI/inputs/Input'
+import PopUpContainer from 'components/UI/popUps/skeletons/PopUpContainer/PopUpContainer'
+import Input from 'components/UI/inputs/Input/Input'
 import MiniProfile from '../components/miniProfile/MiniProfile'
 import { IUserProfile } from 'models/user/IUserProfile'
 

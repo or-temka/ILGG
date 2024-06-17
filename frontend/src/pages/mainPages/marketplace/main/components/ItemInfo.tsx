@@ -1,4 +1,4 @@
-import Button from 'components/UI/buttons/Button'
+import Button from 'components/UI/buttons/Button/Button'
 
 import styles from './ItemInfo.module.scss'
 

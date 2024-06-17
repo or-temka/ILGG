@@ -166,3 +166,23 @@
   letter-spacing: 0.5px;
 }
 //#endregion
+
+//#region breakpoints
+$breakpoints: (
+  'phone': 576px,
+  'tablet': 768px,
+  'laptop': 992px,
+  'desktop': 1200px,
+  'large-desktop': 1400px,
+);
+@mixin media($breakpoint) {
+  $value: map-get($breakpoints, $breakpoint);
+  @if $value {
+    @media (max-width: $value) {
+      @content;
+    }
+  } @else {
+    @warn "No value found for breakpoint: #{$breakpoint}";
+  }
+}
+//#endregion

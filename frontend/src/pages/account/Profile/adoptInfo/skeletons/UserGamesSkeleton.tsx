@@ -1,6 +1,6 @@
 import SkeletonText, {
   SkeletonTextVariant,
-} from 'components/skeletons/SkeletonText'
+} from 'components/skeletons/SkeletonText/SkeletonText'
 import styles from '../UserGames/UserGames.module.scss'
 
 function UserGames() {

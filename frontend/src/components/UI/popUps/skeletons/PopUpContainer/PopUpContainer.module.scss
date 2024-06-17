@@ -1,0 +1,20 @@
+@import 'mixins.scss';
+@import 'animations/fadeIn.animation.scss';
+
+.popUpContainer {
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: var(--background-5-color);
+  @include big-shadow;
+  height: 100%;
+
+  &__header {
+    padding: 10px 20px;
+    background-color: var(--background-color);
+    color: var(--grey-text-color);
+  }
+
+  &__main {
+    padding: 20px;
+  }
+}

@@ -1,4 +1,4 @@
-import IconTextIslet from 'components/UI/islets/IconTextIslet'
+import IconTextIslet from 'components/UI/islets/IconTextIslet/IconTextIslet'
 
 import { ReactComponent as HumanSVG } from 'assets/svgs/human.svg'
 import { ReactComponent as GlassesSVG } from 'assets/svgs/glasses.svg'

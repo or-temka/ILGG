@@ -9,12 +9,16 @@
   grid-template-rows: auto 1fr;
   flex: 1;
 
+  @include media('desktop') {
+    grid-template-columns: 1fr;
+  }
+
   &__header {
     grid-area: header;
   }
 
   &__menu {
-    height: 100%;
+    max-height: calc(100vh - 53px);
   }
 
   &__main {

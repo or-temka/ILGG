@@ -1,0 +1,48 @@
+@import 'animations/fadeIn.animation.scss';
+
+.skeleton {
+  position: fixed;
+  z-index: 101;
+
+  // postitions
+  &_horizontal {
+    &_left {
+      left: 0;
+      margin-left: 20px;
+      animation: fadeInLeft 0.4s;
+    }
+    &_center {
+      left: 50%;
+      transform: translateX(-50%);
+      animation: fadeInTop 0.4s;
+    }
+    &_right {
+      right: 0;
+      margin-right: 20px;
+      animation: fadeInRight 0.4s;
+    }
+  }
+
+  &_vertical {
+    &_top {
+      top: 0;
+      margin-top: 20px;
+    }
+    &_center {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &_bottom {
+      bottom: 0;
+      margin-bottom: 20px;
+    }
+  }
+
+  &_center {
+    transform: translate(-50%, -50%);
+  }
+}
+
+@include fadeIn(left);
+@include fadeIn(right);
+@include fadeIn(top, -50%);

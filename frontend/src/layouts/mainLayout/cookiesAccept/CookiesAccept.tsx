@@ -1,7 +1,7 @@
 import PopUpSkeleton, {
   PopUpVerticalPosition,
-} from 'components/UI/popUps/skeletons/PopUpSkeleton'
-import Button, { ButtonVariant } from 'components/UI/buttons/Button'
+} from 'components/UI/popUps/skeletons/PopUpSkeleton/PopUpSkeleton'
+import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 
 import styles from './CookiesAccept.module.scss'
 

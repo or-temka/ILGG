@@ -8,11 +8,11 @@ import menuStyles from '../Menu.module.scss'
 import Tooltip, {
   HorizontalDirection,
   VerticalDirection,
-} from 'components/UI/tooltips/Tooltip'
+} from 'components/UI/tooltips/Tooltip/Tooltip'
 import changeSiteTheme from 'utils/changeSiteTheme'
 import SkeletonText, {
   SkeletonTextVariant,
-} from 'components/skeletons/SkeletonText'
+} from 'components/skeletons/SkeletonText/SkeletonText'
 
 import { ReactComponent as HomeSVG } from 'assets/svgs/home.svg'
 import { ReactComponent as GamepadSVG } from 'assets/svgs/gamepad.svg'

@@ -1,3 +1,5 @@
+@import 'mixins.scss';
+
 .header {
   width: 100%;
   height: 53px;
@@ -6,6 +8,43 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
+  &__menuBurger {
+    display: none;
+    width: 30px;
+    height: 20px;
+    flex-flow: column;
+    justify-content: space-between;
+    padding: (53px - 20px)/2;
+    cursor: pointer;
+
+    @include media('desktop') {
+      display: flex;
+    }
+
+    &:hover {
+      background-color: var(--background-2-color);
+    }
+  }
+
+  &__menuBurgerItem {
+    width: 100%;
+    height: 2px;
+    background-color: var(--active-color);
+    border-radius: 5px;
+  }
+
+  &__searchInput {
+    @include media('desktop') {
+      display: none;
+    }
+  }
+
+  &__balance {
+    @include media('desktop') {
+      display: none;
+    }
+  }
 
   &__logoContainer {
     display: flex;
@@ -37,6 +76,46 @@
 
   &__aside {
     width: 280px;
+    height: 100%;
+  }
+}
+
+.menu {
+  &__popUpContent {
+    width: 100%;
+    height: 100%;
+    pointer-events: none !important;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__back {
+  }
+
+  &__MenuContent {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    pointer-events: all;
+  }
+
+  &__balance {
+    height: 52px;
+    min-height: 52px;
+  }
+
+  &__left {
+    display: flex !important;
+    height: 100%;
+  }
+  &__right {
+    display: flex !important;
     height: 100%;
   }
 }

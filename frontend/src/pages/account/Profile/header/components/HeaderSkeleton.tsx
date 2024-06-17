@@ -1,7 +1,7 @@
 import SkeletonText, {
   SkeletonTextVariant,
-} from 'components/skeletons/SkeletonText'
-import Button from 'components/UI/buttons/Button'
+} from 'components/skeletons/SkeletonText/SkeletonText'
+import Button from 'components/UI/buttons/Button/Button'
 
 import styles from '../Header.module.scss'
 
