@@ -42,7 +42,7 @@ export const TOKEN_KEY = '[ваш уникальный ключ (можно пр
 # структура проекта
 
 ## общая структура
-
+```
 project-root/
 ├── frontend/
 │ ├── public/
@@ -61,7 +61,7 @@ project-root/
 │ └── utils/
 ├── .gitignore
 └── `README.md`
-
+```
 # Управление проектом
 
 ## Скрипты
