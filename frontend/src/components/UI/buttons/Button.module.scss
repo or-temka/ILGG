@@ -50,6 +50,17 @@
     }
   }
 
+  &_menu {
+    background-color: transparent;
+    padding: 10px 30px;
+    text-align: left;
+    width: 100%;
+
+    &:hover {
+      background-color: rgba($color: #000000, $alpha: 0.15);
+    }
+  }
+
   // disabled
   &_disabled {
     cursor: initial;

@@ -7,6 +7,7 @@ export enum ButtonVariant {
   light = styles.button_light,
   primary = styles.button_primary,
   shy = styles.button_shy,
+  menu = styles.button_menu,
 }
 
 interface ButtonProps {
