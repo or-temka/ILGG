@@ -7,9 +7,9 @@ function EditProfile() {
   return (
     <>
       <div className={['wrapper', styles.page].join(' ')}>
-        <div>
-          <Aside />
+        <div className={styles.page__settingsContent}>
           <Content />
+          <Aside />
         </div>
       </div>
     </>

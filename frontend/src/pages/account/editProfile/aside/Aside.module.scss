@@ -1,3 +1,11 @@
 .aside {
-  
+  max-width: 350px;
+  background-color: var(--background-2-color);
+  border: 1px solid var(--background-5-color);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  row-gap: 5px;
 }

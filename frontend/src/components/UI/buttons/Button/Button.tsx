@@ -15,6 +15,7 @@ interface ButtonProps {
   buttonType?: 'button' | 'submit' | 'reset' | undefined
   variant?: ButtonVariant
   disabled?: boolean
+  active?: boolean
   className?: string
   onClick?: MouseEventHandler<HTMLButtonElement>
 }
@@ -24,6 +25,7 @@ function Button({
   buttonType = 'button',
   variant = ButtonVariant.simple,
   disabled = false,
+  active = false,
   className = '',
   onClick = () => {},
 }: ButtonProps) {
@@ -33,6 +35,7 @@ function Button({
       disabled={disabled}
       className={[
         styles.button,
+        active && styles.button_active,
         variant,
         disabled && styles.button_disabled,
         className,
