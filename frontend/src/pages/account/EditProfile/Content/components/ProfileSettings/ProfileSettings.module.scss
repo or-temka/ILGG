@@ -1,3 +1,12 @@
 .settings {
-  
+  display: flex;
+  flex-flow: column;
+  gap: 30px;
+
+  &__label {
+  }
+
+  &__hint {
+    color: var(--grey-text-color);
+  }
 }
