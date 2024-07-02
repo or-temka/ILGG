@@ -1,0 +1,37 @@
+.wrapper {
+  position: relative;
+}
+
+.content {
+}
+
+.toast {
+  position: absolute;
+  top: 100%;
+  background-color: var(--active-2-color);
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--active-color);
+  pointer-events: none;
+  opacity: 0;
+
+  &_animate {
+    animation: surfacing 1s forwards;
+  }
+}
+
+@keyframes surfacing {
+  0% {
+    opacity: 1;
+    top: 30%;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+
+  100% {
+    opacity: 0;
+    top: -40px;
+  }
+}

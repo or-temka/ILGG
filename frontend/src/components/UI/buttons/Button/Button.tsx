@@ -7,6 +7,7 @@ export enum ButtonVariant {
   light = styles.button_light,
   primary = styles.button_primary,
   shy = styles.button_shy,
+  menu = styles.button_menu,
 }
 
 interface ButtonProps {
@@ -14,6 +15,7 @@ interface ButtonProps {
   buttonType?: 'button' | 'submit' | 'reset' | undefined
   variant?: ButtonVariant
   disabled?: boolean
+  active?: boolean
   className?: string
   onClick?: MouseEventHandler<HTMLButtonElement>
 }
@@ -23,6 +25,7 @@ function Button({
   buttonType = 'button',
   variant = ButtonVariant.simple,
   disabled = false,
+  active = false,
   className = '',
   onClick = () => {},
 }: ButtonProps) {
@@ -32,6 +35,7 @@ function Button({
       disabled={disabled}
       className={[
         styles.button,
+        active && styles.button_active,
         variant,
         disabled && styles.button_disabled,
         className,

@@ -1,11 +1,32 @@
+import contentType from '../contentType'
+import Avatar from './components/Avatar/Avatar'
+import MainInfoSettings from './components/MainInfoSettings/MainInfoSettings'
+import Password from './components/Password/Password'
+import PrivacySettings from './components/PrivacySettings/PrivacySettings'
+import ProfileSettings from './components/ProfileSettings/ProfileSettings'
+
 import styles from './Content.module.scss'
 
-interface ContentProps {}
+interface ContentProps {
+  contentType: contentType
+}
 
-function Content({}: ContentProps) {
+function Content({ contentType }: ContentProps) {
   return (
     <>
-      <main>Content</main>
+      <main className={styles.content}>
+        {contentType === 'profile' ? (
+          <ProfileSettings />
+        ) : contentType === 'main' ? (
+          <MainInfoSettings />
+        ) : contentType === 'password' ? (
+          <Password />
+        ) : contentType === 'avatar' ? (
+          <Avatar />
+        ) : (
+          <PrivacySettings />
+        )}
+      </main>
     </>
   )
 }
