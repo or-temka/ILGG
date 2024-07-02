@@ -1,3 +1,18 @@
 .avatar {
-  
+  display: flex;
+  flex-flow: column;
+  gap: 20px;
+
+  &__texts {
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
+  }
+
+  &__label {
+  }
+
+  &__hint {
+    color: var(--grey-text-color);
+  }
 }
