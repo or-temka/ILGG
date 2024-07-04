@@ -5,6 +5,7 @@ import {
   checkOutEmailCodeForRecoveryValidation,
   checkOutEmailCodeValidation,
   editMyUserProfileValidation,
+  editMyUserMainInfoValidation,
   recoveryUserValidation,
   regEmailUserValidation,
   regUserValidation,
@@ -89,16 +90,20 @@ router.delete(
   UserController.delMyProfile
 )
 
-// Изменение пользователя себя
+//#endregion
+//#region edit my user
 router.patch(
   `${routeEnvironment.base}${routeEnvironment.editUser}/profile`,
   authMiddleware,
   editMyUserProfileValidation,
   UserController.editProfileInfo
 )
-//#endregion
-//#region edit my profile
-
+router.patch(
+  `${routeEnvironment.base}${routeEnvironment.editUser}/main`,
+  authMiddleware,
+  editMyUserMainInfoValidation,
+  UserController.editMainInfo
+)
 //#endregion
 //#endregion
 
