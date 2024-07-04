@@ -116,34 +116,23 @@ export const regUserValidation = [
     .withMessage('подтверждение пароля должно содержать от 6 до 50 символов'),
 ]
 
-export const editMyUserDataValidation = [
+export const editMyUserProfileValidation = [
   body('name')
     .optional()
     .isString()
     .withMessage('имя пользователя должно быть строкой')
     .isLength({
       min: 1,
-      max: 50,
+      max: 30,
     })
-    .withMessage('имя пользователя должно содержать от 1 до 50 символов'),
+    .withMessage('имя пользователя должно содержать от 1 до 30 символов')
+    .matches(/^[a-zA-Zа-яА-ЯёЁ0-9]+$/)
+    .withMessage(
+      'Имя пользователя должно содержать только буквы латинского, русского алфавита и цифры'
+    ),
 
-  body('login')
+  body('about')
     .optional()
     .isString()
-    .withMessage('логин пользователя должен быть строкой')
-    .isLength({
-      min: 1,
-      max: 50,
-    })
-    .withMessage('логин пользователя должен содержать от 1 до 50 символов'),
-
-  body('password')
-    .optional()
-    .isString()
-    .withMessage('пароль пользователя должен быть строкой')
-    .isLength({
-      min: 6,
-      max: 50,
-    })
-    .withMessage('пароль пользователя должен содержать от 6 до 50 символов'),
+    .withMessage('Информация о себе должна быть строкой'),
 ]

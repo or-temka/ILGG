@@ -4,7 +4,7 @@ import {
   checkIsActiveEmailLinkValidation,
   checkOutEmailCodeForRecoveryValidation,
   checkOutEmailCodeValidation,
-  editMyUserDataValidation,
+  editMyUserProfileValidation,
   recoveryUserValidation,
   regEmailUserValidation,
   regUserValidation,
@@ -16,6 +16,7 @@ import authMiddleware from '../middlewares/authMiddleware'
 const routeEnvironment = {
   base: '/user',
   recoveryAccount: '/user/recovery',
+  editUser: '/edit',
 }
 
 const router = Router()
@@ -90,11 +91,14 @@ router.delete(
 
 // Изменение пользователя себя
 router.patch(
-  `${routeEnvironment.base}`,
+  `${routeEnvironment.base}${routeEnvironment.editUser}/profile`,
   authMiddleware,
-  editMyUserDataValidation,
-  UserController.editMyUserData
+  editMyUserProfileValidation,
+  UserController.editProfileInfo
 )
+//#endregion
+//#region edit my profile
+
 //#endregion
 //#endregion
 
