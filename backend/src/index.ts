@@ -10,11 +10,8 @@ import {
   DB_NAME,
   SITE_FULL_URL,
 } from './variables'
-
 import { serverFatalError, serverLog } from './utils/serverLog'
-
-import userRoutes from './routes/userRoutes'
-import appRoutes from './routes/appRoutes'
+import routes from './routes/routes'
 
 mongoose
   .connect(
@@ -35,8 +32,7 @@ app.use(
   })
 )
 
-app.use(BASE_API_URL, userRoutes)
-app.use(BASE_API_URL, appRoutes)
+app.use(BASE_API_URL, routes)
 
 app.listen(PORT, () => {
   serverLog(`Server started at port: ${PORT}`)
