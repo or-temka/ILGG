@@ -9,7 +9,7 @@ import {
   recoveryUserValidation,
   regEmailUserValidation,
   regUserValidation,
-} from '../validations/userValidation'
+} from '../validations/userValidation/validation'
 import * as UserController from '../controllers/UserController'
 
 import authMiddleware from '../middlewares/authMiddleware'
