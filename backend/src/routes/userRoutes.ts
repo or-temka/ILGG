@@ -13,6 +13,7 @@ import {
 import * as UserController from '../controllers/UserController'
 
 import authMiddleware from '../middlewares/authMiddleware'
+import getUserMiddleware from '../middlewares/getting/getUserMiddleware'
 
 const routeEnvironment = {
   base: '/user',
@@ -96,12 +97,14 @@ router.patch(
   `${routeEnvironment.base}${routeEnvironment.editUser}/profile`,
   authMiddleware,
   editMyUserProfileValidation,
+  getUserMiddleware,
   UserController.editProfileInfo
 )
 router.patch(
   `${routeEnvironment.base}${routeEnvironment.editUser}/main`,
   authMiddleware,
   editMyUserMainInfoValidation,
+  getUserMiddleware,
   UserController.editMainInfo
 )
 //#endregion
