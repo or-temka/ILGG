@@ -4,6 +4,7 @@ import authMiddleware from '../../../middlewares/authMiddleware'
 import getUserMiddleware from '../../../middlewares/getting/getUserMiddleware'
 import {
   editMyUserMainInfoValidation,
+  editMyUserPasswordValidation,
   editMyUserProfileValidation,
 } from '../../../validations/userValidation/validation'
 import * as UserController from '../../../controllers/UserController'
@@ -23,6 +24,13 @@ router.patch(
   editMyUserMainInfoValidation,
   getUserMiddleware,
   UserController.editMainInfo
+)
+router.patch(
+  `/password`,
+  authMiddleware,
+  editMyUserPasswordValidation,
+  getUserMiddleware,
+  UserController.editPassword
 )
 
 export default router
