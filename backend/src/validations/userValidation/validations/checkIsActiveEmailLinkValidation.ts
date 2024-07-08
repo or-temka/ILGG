@@ -1,11 +1,8 @@
 import { query } from 'express-validator'
+import { email } from '../validationCases/userValidationCases'
 
 const checkIsActiveEmailLinkValidation = [
-  query('email')
-    .isEmail()
-    .normalizeEmail()
-    .withMessage('Не соответствует формату Email'),
-
+  email('email', 'query'),
   query('activationLink').isString().withMessage('Код должен быть строкой'),
 ]
 

@@ -1,10 +1,5 @@
-import { body } from 'express-validator'
+import { email } from '../validationCases/userValidationCases'
 
-const regEmailUserValidation = [
-  body('email')
-    .isEmail()
-    .normalizeEmail()
-    .withMessage('Не соответствует формату Email'),
-]
+const regEmailUserValidation = [email()]
 
 export default regEmailUserValidation

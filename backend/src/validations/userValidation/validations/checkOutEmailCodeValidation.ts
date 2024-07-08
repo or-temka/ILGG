@@ -1,10 +1,8 @@
 import { query } from 'express-validator'
+import { email } from '../validationCases/userValidationCases'
 
 const checkOutEmailCodeValidation = [
-  query('email')
-    .isEmail()
-    .normalizeEmail()
-    .withMessage('Не соответствует формату Email'),
+  email('email', 'query'),
 
   query('activationCode')
     .isLength({ min: 6, max: 6 })
