@@ -14,6 +14,8 @@ const getQueryType = (queryType: queryType = 'body', name: string = 'name') => {
   }
 }
 
+// cases --------------------------------------------------------------------
+
 export const login = (name: string = 'login', queryType: queryType = 'body') =>
   getQueryType(queryType, name)
     .isString()

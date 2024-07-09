@@ -32,5 +32,11 @@ router.patch(
   getUserMiddleware,
   UserController.editPassword
 )
+router.patch(
+  `/privacy`,
+  authMiddleware,
+  getUserMiddleware,
+  UserController.editPrivacy
+)
 
 export default router
