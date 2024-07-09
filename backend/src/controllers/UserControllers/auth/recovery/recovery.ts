@@ -3,7 +3,7 @@ import { validationResult } from 'express-validator'
 import { serverError } from '../../../../utils/serverLog'
 import hashPassword from '../../../../utils/auth/hashPassword'
 
-import UserModel from '../../../../models/User'
+import UserModel from '../../../../models/User/User'
 import RecoveryEmailModel from '../../../../models/RecoveryEmailModel'
 
 import TokenService from '../../../../services/TokenService'

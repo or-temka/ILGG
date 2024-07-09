@@ -1,6 +1,6 @@
 import { serverError } from '../../../../utils/serverLog'
 
-import UserModel from '../../../../models/User'
+import UserModel from '../../../../models/User/User'
 
 import MailService from '../../../../services/MailService'
 import getDateDifference from '../../../../utils/math/date/getDateDifference'

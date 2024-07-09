@@ -1,17 +1,17 @@
 import mongoose from 'mongoose'
 
+import PrivacySchema from './Scheme/Privacy/Privacy'
+
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
   },
-
   email: {
     type: String,
     required: true,
     unique: true,
   },
-
   login: {
     type: String,
     required: true,
@@ -32,6 +32,12 @@ const UserSchema = new mongoose.Schema({
   },
 
   about: String,
+
+  privacy: {
+    type: PrivacySchema,
+    required: true,
+    default: () => ({}),
+  },
 })
 
 export default mongoose.model('User', UserSchema)

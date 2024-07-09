@@ -16,6 +16,7 @@ export { default as recovery } from './UserControllers/auth/recovery/recovery'
 export { default as editProfileInfo } from './UserControllers/edit/editProfileInfo'
 export { default as editMainInfo } from './UserControllers/edit/editMainInfo'
 export { default as editPassword } from './UserControllers/edit/editPassword'
+export { default as editPrivacy } from './UserControllers/edit/editPrivacy'
 //other
 export { default as getFullUserData } from './UserControllers/getFullUserData'
 export { default as getMyData } from './UserControllers/getMyData'

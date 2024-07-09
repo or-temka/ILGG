@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt'
 import { validationResult } from 'express-validator'
 import { serverError } from '../../../utils/serverLog'
 
-import UserModel from '../../../models/User'
+import UserModel from '../../../models/User/User'
 
 import UserDto from '../../../dtos/MyUserDto'
 import TokenService from '../../../services/TokenService'
