@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import TokenModel from '../models/TokenModel'
+import TokenModel from '../models/Token/Token'
 
 import { JWT_ACCESS_KEY, JWT_REFRESH_KEY } from '../PASSWORDS'
 

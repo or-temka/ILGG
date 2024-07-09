@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 
 import { serverError } from '../../utils/serverLog'
 
-import ApplicationModel from '../../models/Application'
+import ApplicationModel from '../../models/Application/Application'
 import isMongoId from '../../utils/typeValidators/isValidMongoId'
 
 const getAppFullData = async (req: Request, res: Response) => {

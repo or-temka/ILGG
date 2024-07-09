@@ -7,7 +7,7 @@ import UserModel from '../../../../models/User/User'
 import MailService from '../../../../services/MailService'
 import getDateDifference from '../../../../utils/math/date/getDateDifference'
 import generateNumericCode from '../../../../utils/math/generate/generateNumericCode'
-import RecoveryEmailModel from '../../../../models/RecoveryEmailModel'
+import RecoveryEmailModel from '../../../../models/RecoveryEmail/RecoveryEmail'
 
 const recoveryByEmail = async (req: any, res: any) => {
   try {

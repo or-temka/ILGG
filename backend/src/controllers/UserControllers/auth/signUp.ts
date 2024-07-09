@@ -4,7 +4,7 @@ import { serverError } from '../../../utils/serverLog'
 import hashPassword from '../../../utils/auth/hashPassword'
 
 import UserModel from '../../../models/User/User'
-import UnauthorizedEmailModel from '../../../models/UnauthorizedEmailModel'
+import UnauthorizedEmailModel from '../../../models/UnauthorizedEmail/UnauthorizedEmail'
 
 import TokenService from '../../../services/TokenService'
 import UserDto from '../../../dtos/MyUserDto'
