@@ -1,3 +1,4 @@
+import { AvatarInterface } from '../Scheme/Avatar/interfaces/AvatarInterface'
 import { PrivacyInterface } from '../Scheme/Privacy/interfaces/PrivacyInterface'
 
 export interface UserInterface {
@@ -8,5 +9,6 @@ export interface UserInterface {
   isOnline?: Boolean
   balance: Number
   about: string
+  avatar: AvatarInterface
   privacy: PrivacyInterface
 }

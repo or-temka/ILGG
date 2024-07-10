@@ -8,6 +8,7 @@ import {
   editMyUserProfileValidation,
 } from '../../../validations/userValidation/validation'
 import * as UserController from '../../../controllers/UserController'
+import imageUploadMiddleware from '../../../middlewares/upload/image.uploadMiddleware'
 
 const router = Router()
 
@@ -37,6 +38,13 @@ router.patch(
   authMiddleware,
   getUserMiddleware,
   UserController.editPrivacy
+)
+router.patch(
+  `/avatar`,
+  authMiddleware,
+  getUserMiddleware,
+  imageUploadMiddleware.single('avatar'),
+  UserController.editAvatar
 )
 
 export default router

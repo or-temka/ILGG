@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 
 import PrivacySchema from './Scheme/Privacy/Privacy'
+import AvatarSchema from './Scheme/Avatar/Avatar'
 
 const UserSchema = new mongoose.Schema({
   name: {
@@ -32,6 +33,11 @@ const UserSchema = new mongoose.Schema({
   },
 
   about: String,
+
+  avatar: {
+    type: AvatarSchema,
+    default: null,
+  },
 
   privacy: {
     type: PrivacySchema,
