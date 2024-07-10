@@ -3,11 +3,12 @@ import { validationResult } from 'express-validator'
 import { serverError } from '../../../utils/serverLog'
 import hashPassword from '../../../utils/auth/hashPassword'
 
-import UserModel from '../../../models/User'
-import UnauthorizedEmailModel from '../../../models/UnauthorizedEmailModel'
+import UserModel from '../../../models/User/User'
+import UnauthorizedEmailModel from '../../../models/UnauthorizedEmail/UnauthorizedEmail'
 
 import TokenService from '../../../services/TokenService'
 import UserDto from '../../../dtos/MyUserDto'
+import createDirectories from '../../../utils/fs/createDirectories'
 
 const reg = async (req: any, res: any) => {
   try {
@@ -54,6 +55,10 @@ const reg = async (req: any, res: any) => {
     })
 
     const user = await doc.save()
+
+    // Создание папки с uploads для данного пользователя для загрузки его личных файлов
+    const dirsForCreate = ['profile', 'posts']
+    createDirectories(dirsForCreate, `users/${user._id}/`)
 
     const userDto = new UserDto(user)
     const tokens = TokenService.generateTokens({ ...userDto })

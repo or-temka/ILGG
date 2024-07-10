@@ -11,3 +11,5 @@ export const BASE_API_URL = '/api'
 export const EMAIL_SMTP_HOST = 'smtp.mail.ru'
 export const EMAIL_SMTP_PORT = 465
 export const EMAIL_SMTP_USER = 'hello@ilgg.ru' // Пароль лежит в PASSWORDS.ts
+
+export const UPLOADS_DIR = 'uploads'

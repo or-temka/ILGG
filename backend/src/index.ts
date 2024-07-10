@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
+import path from 'path'
 
 import { DB_LOGIN, DB_PASSWORD } from './PASSWORDS'
 import {
@@ -10,11 +11,8 @@ import {
   DB_NAME,
   SITE_FULL_URL,
 } from './variables'
-
 import { serverFatalError, serverLog } from './utils/serverLog'
-
-import userRoutes from './routes/userRoutes'
-import appRoutes from './routes/appRoutes'
+import routes from './routes/routes'
 
 mongoose
   .connect(
@@ -26,6 +24,7 @@ mongoose
 const app = express()
 const PORT = process.env.PORT || 4000
 
+app.use('/uploads', express.static(path.join()))
 app.use(express.json())
 app.use(cookieParser())
 app.use(
@@ -35,8 +34,7 @@ app.use(
   })
 )
 
-app.use(BASE_API_URL, userRoutes)
-app.use(BASE_API_URL, appRoutes)
+app.use(BASE_API_URL, routes)
 
 app.listen(PORT, () => {
   serverLog(`Server started at port: ${PORT}`)

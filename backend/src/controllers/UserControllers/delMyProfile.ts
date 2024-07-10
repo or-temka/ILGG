@@ -1,6 +1,6 @@
 import { serverError } from '../../utils/serverLog'
 
-import UserModel from '../../models/User'
+import UserModel from '../../models/User/User'
 
 const delMyProfile = async (req: any, res: any) => {
   try {

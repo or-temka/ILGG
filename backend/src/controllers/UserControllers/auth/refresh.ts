@@ -1,6 +1,6 @@
 import { serverError } from '../../../utils/serverLog'
 
-import UserModel from '../../../models/User'
+import UserModel from '../../../models/User/User'
 
 import TokenService from '../../../services/TokenService'
 import UserDto from '../../../dtos/MyUserDto'

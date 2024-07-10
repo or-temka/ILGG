@@ -12,9 +12,15 @@ export { default as checkRecoveryEmailCode } from './UserControllers/auth/recove
 export { default as recovery } from './UserControllers/auth/recovery/recovery'
 
 // my user
+//edit
+export { default as editProfileInfo } from './UserControllers/edit/editProfileInfo'
+export { default as editMainInfo } from './UserControllers/edit/editMainInfo'
+export { default as editPassword } from './UserControllers/edit/editPassword'
+export { default as editPrivacy } from './UserControllers/edit/editPrivacy'
+export { default as editAvatar } from './UserControllers/edit/editAvatar'
+//other
 export { default as getFullUserData } from './UserControllers/getFullUserData'
 export { default as getMyData } from './UserControllers/getMyData'
 export { default as delMyProfile } from './UserControllers/delMyProfile'
-export { default as editMyUserData } from './UserControllers/editMyUserData'
 export { default as logOut } from './UserControllers/auth/logOut'
 export { default as refresh } from './UserControllers/auth/refresh'

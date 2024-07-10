@@ -6,6 +6,7 @@ class UserDto {
   login
   isOnline
   balance
+  privacy
 
   constructor(model: any) {
     this.email = model.email
@@ -18,6 +19,7 @@ class UserDto {
       value: model.balance,
       currency: 'руб.',
     }
+    this.privacy = model.privacy
   }
 }
 
