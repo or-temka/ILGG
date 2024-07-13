@@ -1,98 +1,81 @@
-import { useCallback, useState } from 'react'
+import { useForm } from 'react-hook-form'
 
 import Input from 'components/UI/inputs/Input/Input'
 import TextArea from 'components/UI/inputs/TextArea/TextArea'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
-import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
-import EditUserService from 'services/editUserService'
+import { ProfileSettingsForm } from './interfaces'
+import onSubmit from './onSubmit'
 import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
+import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
 
 import styles from './Form.module.scss'
+import { useState } from 'react'
 
 function Form() {
-  const [formData, setFormData] = useState({
-    name: { value: '', error: '' },
-    about: { value: '', error: '' },
+  const [isSendBtnLoading, setIsSendBtnLoading] = useState(false)
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setError,
+  } = useForm<ProfileSettingsForm>({
+    defaultValues: {},
+    mode: 'onChange',
   })
-  const setFormDataField = useCallback(
-    (
-      field: string,
-      changeEvent:
-        | React.ChangeEvent<HTMLInputElement>
-        | React.ChangeEvent<HTMLTextAreaElement>
-    ) => {
-      setFormData((prev) => ({
-        ...prev,
-        [field]: { value: changeEvent.target.value, error: '' },
-      }))
-    },
-    []
-  )
-  const [disabledSendBtn, setDisabledSendBtn] = useState(false)
-  const addNotificationErrorPanel = useNotificationPanel({
-    variant: FloatingNotificationVariant.error,
-  })
+
   const addNotificationSuccessPanel = useNotificationPanel({
     variant: FloatingNotificationVariant.success,
   })
 
-  const onSubmit = useCallback(
-    async (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault()
-      setDisabledSendBtn(true)
-
-      await EditUserService.editProfile(
-        formData.name.value,
-        formData.about.value
-      )
-        .then((res) =>
-          addNotificationSuccessPanel('Изменения успешно сохранены!')
-        )
-        .catch((err) => {
-          const data = err?.response?.data
-          const status = err?.response?.status
-
-          if (Array.isArray(data)) {
-            const newInputs = new Set()
-            data.map((wrongInput) => {
-              const wrongInputPath: 'name' | 'about' = wrongInput.path
-              const newInputWithError = formData[wrongInputPath]
-              newInputWithError.error = wrongInput.msg
-              newInputs.add(newInputWithError)
-            })
-            setFormData((prev) => ({ ...prev, newInputs }))
-          } else {
-            addNotificationErrorPanel(data?.errorMsg || 'Произошла ошибка!')
-          }
-        })
-        .finally(() => setDisabledSendBtn(false))
-    },
-    [formData, setFormData, disabledSendBtn]
-  )
-
   return (
     <>
-      <form onSubmit={onSubmit} className={styles.form}>
+      <form
+        onSubmit={handleSubmit((data) =>
+          onSubmit(
+            data,
+            setError,
+            addNotificationSuccessPanel,
+            setIsSendBtnLoading
+          )
+        )}
+        className={styles.form}
+      >
         <Input
+          register={register('name', {
+            required: 'Поле обязательно для заполнения',
+            maxLength: {
+              value: 30,
+              message: 'Максимальная длина имени: 30 символов',
+            },
+            pattern: {
+              value:
+                /^(?!.*\s{2})[a-zA-Zа-яА-ЯёЁ0-9_]+(?:\s[a-zA-Zа-яА-ЯёЁ0-9_]+)*$/,
+              message: 'Неверный формат имени пользователя',
+            },
+          })}
           label="Имя пользователя:"
           placeholder="Укажите имя пользователя"
-          value={formData.name.value}
-          onChange={(e) => setFormDataField('name', e)}
-          errorText={formData.name.error}
+          errorText={errors.name?.message}
         />
         <TextArea
+          register={register('about', {
+            maxLength: {
+              value: 500,
+              message: 'Максимальная длина имени: 500 символов',
+            },
+          })}
+          cols={45}
+          rows={5}
           label="О себе:"
           placeholder="Укажите информацию о себе"
-          value={formData.about.value}
-          onChange={(e) => setFormDataField('about', e)}
-          errorText={formData.about.error}
+          errorText={errors.about?.message}
         />
 
         <Button
           title="Сохранить"
           variant={ButtonVariant.primary}
-          buttonType={'submit'}
-          disabled={disabledSendBtn}
+          type="submit"
+          disabled={isSendBtnLoading}
         />
       </form>
     </>
