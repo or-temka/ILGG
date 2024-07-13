@@ -35,6 +35,7 @@ function Button({
         disabled && styles.button_disabled,
         className,
       ].join(' ')}
+      disabled={disabled}
       {...restProps}
     >
       {title}

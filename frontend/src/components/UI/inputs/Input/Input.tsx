@@ -1,4 +1,5 @@
 import { InputHTMLAttributes, useRef } from 'react'
+import { UseFormRegisterReturn } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 
 import styles from './Input.module.scss'
@@ -18,6 +19,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     input?: string
     wrapper?: string
   }
+  register?: UseFormRegisterReturn
   [key: string]: any
 }
 
@@ -28,6 +30,7 @@ function Input({
   variant = InputVariant.simple, // types: simple, light
   errorText = '',
   classNames = {},
+  register,
   ...restProps
 }: InputProps) {
   const htmlIdRef = useRef(uuidv4())
@@ -49,6 +52,7 @@ function Input({
           variant,
           classNames.input,
         ].join(' ')}
+        {...register}
         {...restProps}
       />
       {errorText && (

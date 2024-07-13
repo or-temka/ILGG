@@ -67,3 +67,6 @@ export const about = (name: string = 'about', queryType: queryType = 'body') =>
   getQueryType(queryType, name)
     .isString()
     .withMessage('Информация о себе должна быть строкой')
+    .isLength({
+      max: 500,
+    })

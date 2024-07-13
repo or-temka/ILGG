@@ -1,4 +1,5 @@
 import { TextareaHTMLAttributes, useRef } from 'react'
+import { UseFormRegisterReturn } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 
 import styles from './TextArea.module.scss'
@@ -14,6 +15,7 @@ interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   errorText?: string
   className?: string
   wrapperClassName?: string
+  register?: UseFormRegisterReturn
   [key: string]: any
 }
 
@@ -23,6 +25,7 @@ function TextArea({
   errorText = '',
   className = '',
   wrapperClassName = '',
+  register,
   ...restProps
 }: TextAreaProps) {
   const htmlIdRef = useRef(uuidv4())
@@ -44,6 +47,7 @@ function TextArea({
           errorText ? styles.textArea__input_error : '',
           className,
         ].join(' ')}
+        {...register}
         {...restProps}
       ></textarea>
       {errorText && (
