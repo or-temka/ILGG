@@ -105,11 +105,9 @@ function SignIn({ onClose = () => {} }) {
               <InputWithBtnIcon
                 label="Пароль:"
                 placeholder="Введите ваш пароль"
-                input={{
-                  type: passwordInputType,
-                  name: 'password',
-                  autocomplete: 'current-password',
-                }}
+                type={passwordInputType}
+                name="password"
+                autoComplete="current-password"
                 variant={InputWithBtnIconVariant.light}
                 value={userPassword}
                 onChange={(e) => setUserPassword(e.target.value)}

@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactNode } from 'react'
+import { ButtonHTMLAttributes, ReactNode } from 'react'
 
 import styles from '../Button.module.scss'
 
@@ -13,14 +13,13 @@ export enum ButtonWithIconIconPosition {
   right = 'right',
 }
 
-interface ButtonWithIconProps {
-  title: string
+interface ButtonWithIconProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   iconSVG?: ReactNode
   variant?: ButtonWithIconVariant
   iconPosition?: ButtonWithIconIconPosition
-  disabled?: boolean
   className?: string
-  onClick?: MouseEventHandler<HTMLButtonElement>
+
+  [key: string]: any
 }
 
 function ButtonWithIcon({
@@ -30,11 +29,11 @@ function ButtonWithIcon({
   iconPosition = ButtonWithIconIconPosition.left,
   disabled = false,
   className = '',
-  onClick = () => {},
+
+  ...restProps
 }: ButtonWithIconProps) {
   return (
     <button
-      disabled={disabled}
       className={[
         styles.button,
         styles.buttonWithIcon,
@@ -42,7 +41,7 @@ function ButtonWithIcon({
         disabled ? styles.button_disabled : '',
         className,
       ].join(' ')}
-      onClick={onClick}
+      {...restProps}
     >
       {iconPosition === 'left' ? (
         <>

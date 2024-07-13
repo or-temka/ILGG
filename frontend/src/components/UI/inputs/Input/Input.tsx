@@ -1,4 +1,4 @@
-import { ChangeEventHandler, MouseEventHandler, useRef } from 'react'
+import { InputHTMLAttributes, useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import styles from './Input.module.scss'
@@ -8,33 +8,27 @@ export enum InputVariant {
   light = styles.input__input_light,
 }
 
-interface InputProps {
-  value: string
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   inputType?: string
-  placeholder?: string
   inputAutocomplete?: string
   label?: string
   variant?: InputVariant
   errorText?: string
-  onChange?: ChangeEventHandler<HTMLInputElement>
-  onClick?: MouseEventHandler<HTMLInputElement>
   classNames?: {
     input?: string
     wrapper?: string
   }
+  [key: string]: any
 }
 
 function Input({
-  value = '',
   inputType = 'text',
-  placeholder = '',
   label = '',
   inputAutocomplete,
   variant = InputVariant.simple, // types: simple, light
   errorText = '',
-  onChange = () => {},
-  onClick = () => {},
   classNames = {},
+  ...restProps
 }: InputProps) {
   const htmlIdRef = useRef(uuidv4())
 
@@ -47,18 +41,15 @@ function Input({
       )}
       <input
         id={htmlIdRef.current}
-        value={value}
         type={inputType}
         autoComplete={inputAutocomplete}
-        onChange={onChange}
-        onClick={onClick}
-        placeholder={placeholder}
         className={[
           styles.input__input,
           errorText && styles.input__input_error,
           variant,
           classNames.input,
         ].join(' ')}
+        {...restProps}
       />
       {errorText && (
         <span className={['small-text', styles.input__errorText].join(' ')}>

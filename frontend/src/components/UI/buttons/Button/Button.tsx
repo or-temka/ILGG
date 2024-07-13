@@ -1,4 +1,4 @@
-import { MouseEventHandler } from 'react'
+import { ButtonHTMLAttributes } from 'react'
 
 import styles from '../Button.module.scss'
 
@@ -10,29 +10,24 @@ export enum ButtonVariant {
   menu = styles.button_menu,
 }
 
-interface ButtonProps {
-  title: string | number
-  buttonType?: 'button' | 'submit' | 'reset' | undefined
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant
-  disabled?: boolean
   active?: boolean
   className?: string
-  onClick?: MouseEventHandler<HTMLButtonElement>
+
+  [key: string]: any
 }
 
 function Button({
   title = '',
-  buttonType = 'button',
   variant = ButtonVariant.simple,
   disabled = false,
   active = false,
   className = '',
-  onClick = () => {},
+  ...restProps
 }: ButtonProps) {
   return (
     <button
-      type={buttonType}
-      disabled={disabled}
       className={[
         styles.button,
         active && styles.button_active,
@@ -40,7 +35,7 @@ function Button({
         disabled && styles.button_disabled,
         className,
       ].join(' ')}
-      onClick={onClick}
+      {...restProps}
     >
       {title}
     </button>

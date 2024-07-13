@@ -1,19 +1,20 @@
-import { MouseEventHandler } from 'react'
+import { HTMLAttributes } from 'react'
 
 import styles from './CloseButton.module.scss'
 
-interface CloseButtonProps {
-  onClick: MouseEventHandler<HTMLDivElement>
+interface CloseButtonProps extends HTMLAttributes<HTMLDivElement> {
   isWithoutPadding?: boolean
   className?: string
   crossClassName?: string
+
+  [key: string]: any
 }
 
 function CloseButton({
-  onClick = () => {},
   isWithoutPadding = false,
   className = '',
   crossClassName = '',
+  ...restProps
 }: CloseButtonProps) {
   return (
     <div
@@ -22,7 +23,7 @@ function CloseButton({
         className,
         isWithoutPadding && styles.closeButton_withoutPadding,
       ].join(' ')}
-      onClick={onClick}
+      {...restProps}
     >
       <div
         className={[styles.closeButton__cross, crossClassName].join(' ')}

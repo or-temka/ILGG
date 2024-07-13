@@ -1,7 +1,7 @@
 import {
   ChangeEvent,
   ChangeEventHandler,
-  MouseEventHandler,
+  SelectHTMLAttributes,
   useState,
 } from 'react'
 
@@ -12,17 +12,18 @@ interface IOption {
   label: string
 }
 
-interface SelectProps {
+interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   options: IOption[]
   placeholder?: string
   errorText?: string
   defaultValue?: string | number
   disabledNotEntered?: boolean
   notEnteredColor?: string
-  onClick?: MouseEventHandler<HTMLSelectElement>
   onChange?: (...args: any[]) => any
   className?: string
   containerClassName?: string
+
+  [key: string]: any
 }
 
 function Select({
@@ -32,10 +33,10 @@ function Select({
   defaultValue = 'default',
   disabledNotEntered = false,
   notEnteredColor = 'var(--text-color)',
-  onClick = () => {},
   onChange = () => {},
   className = '',
   containerClassName = '',
+  ...restProps
 }: SelectProps) {
   const [selectedValue, setSelectedValue] = useState(defaultValue)
 
@@ -50,7 +51,6 @@ function Select({
   return (
     <div className={[styles.select, containerClassName].join(' ')}>
       <select
-        onClick={onClick}
         onChange={onChangeHandler}
         className={[
           styles.select__select,
@@ -58,6 +58,7 @@ function Select({
           errorText && styles.select__select_error,
         ].join(' ')}
         value={selectedValue}
+        {...restProps}
       >
         <option
           value="default"

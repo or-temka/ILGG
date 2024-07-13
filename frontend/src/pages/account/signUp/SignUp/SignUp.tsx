@@ -174,7 +174,7 @@ function SignUp() {
               <InputWithBtnIcon
                 label="Пароль: *"
                 placeholder="Введите пароль"
-                input={{ type: 'password' }}
+                type="password"
                 value={formData.password.value}
                 onClickBtnIcon={changePasswordVisible}
                 onChange={(e) => setFormDataField('password', e)}
@@ -184,7 +184,7 @@ function SignUp() {
               <InputWithBtnIcon
                 label="Подтверждение пароля: *"
                 placeholder="Введите пароль ещё раз"
-                input={{ type: 'password' }}
+                type="password"
                 value={formData.confirmPassword.value}
                 onClickBtnIcon={changePasswordVisible}
                 onChange={(e) => setFormDataField('confirmPassword', e)}
