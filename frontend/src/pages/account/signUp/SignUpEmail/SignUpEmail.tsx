@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
 import Input from 'components/UI/inputs/Input/Input'
@@ -7,74 +7,31 @@ import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import { setPageName } from 'utils/setPageName'
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
 import AboutService from '../components/AboutService'
-import VerifyEmail from './VerifyEmail/VerifyEmail'
-import AuthService from 'services/authService'
-
+import VerifyEmail from './components/VerifyEmail/VerifyEmail'
 import styles from '../SignUp.module.scss'
+import { useForm } from 'react-hook-form'
+import { SignUpEmailForm } from './interfaces'
+import onSubmit from './onSubmit'
+import Regex from 'utils/regex'
 
 function SignUpEmail() {
-  const addNotificationErrorPanel = useNotificationPanel({
-    variant: FloatingNotificationVariant.error,
-  })
-  const [formData, setFormData] = useState({
-    email: { value: '', error: '' },
-    personalDataConsent: false,
-    disabledSendButton: false,
-  })
+  const [isSendBtnLoading, setIsSendBtnLoading] = useState(false)
   const [showEmailConfirmModal, setShowEmailConfirmModal] = useState(false)
-
   useEffect(() => {
     setPageName('Регистрация')
   }, [])
 
-  const changeSendButtonDisable = useCallback((disable = false) => {
-    setFormData((prev) => ({
-      ...prev,
-      disabledSendButton: disable,
-    }))
-  }, [])
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setError,
+    watch,
+  } = useForm<SignUpEmailForm>({ mode: 'onSubmit' })
 
-  const setFormDataField = useCallback(
-    (field: string, changeEvent: React.ChangeEvent<HTMLInputElement>) => {
-      setFormData((prev) => ({
-        ...prev,
-        [field]: { value: changeEvent.target.value, error: '' },
-      }))
-    },
-    []
-  )
-
-  const onClickCreateAccountButton = useCallback(
-    async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-      event.preventDefault()
-      changeSendButtonDisable(true)
-      const userEmail = formData.email.value
-      await AuthService.registrationEmail(userEmail)
-        .then(() => setShowEmailConfirmModal(true))
-        .catch((err) => {
-          const data = err?.response?.data
-          const status = err?.response?.status
-
-          if (Array.isArray(data)) {
-            const newInputs = new Set()
-            data.map((wrongInput) => {
-              const wrongInputPath: 'email' = wrongInput.path
-              const newInputWithError = formData[wrongInputPath]
-              newInputWithError.error = wrongInput.msg
-              newInputs.add(newInputWithError)
-            })
-            setFormData((prev) => ({ ...prev, newInputs }))
-          } else {
-            if (status === 409) return setShowEmailConfirmModal(true)
-            addNotificationErrorPanel(data?.errorMsg || 'Произошла ошибка!')
-          }
-        })
-        .finally(() => {
-          changeSendButtonDisable()
-        })
-    },
-    [formData, addNotificationErrorPanel]
-  )
+  const addNotificationErrorPanel = useNotificationPanel({
+    variant: FloatingNotificationVariant.error,
+  })
 
   return (
     <>
@@ -94,34 +51,42 @@ function SignUpEmail() {
                 <br /> Вам на почту будет направлено письмо с подтверждением.
               </span>
             </div>
-            <form className={styles.form}>
+            <form
+              className={styles.form}
+              onSubmit={handleSubmit((data) =>
+                onSubmit(
+                  data,
+                  setError,
+                  addNotificationErrorPanel,
+                  setIsSendBtnLoading,
+                  setShowEmailConfirmModal
+                )
+              )}
+            >
               <Input
+                register={register('email', {
+                  required: true,
+                  maxLength: 150,
+                  pattern: {
+                    value: Regex.email,
+                    message: 'Неверный формат E-mail',
+                  },
+                })}
                 label="E-mail:"
                 placeholder="Введите ваш E-mail"
-                value={formData.email.value}
-                onChange={(e) => setFormDataField('email', e)}
-                errorText={formData.email.error}
+                errorText={errors.email?.message}
               />
 
               <Checkbox
                 label="Даю согласие на обработку персональных данных"
-                checked={formData.personalDataConsent}
-                onChange={() =>
-                  setFormData((prev) => ({
-                    ...prev,
-                    personalDataConsent: !formData.personalDataConsent,
-                  }))
-                }
+                register={register('personalDataConsent', { required: true })}
                 className={styles.form__checkbox}
               />
               <Button
-                buttonType="submit"
+                type="submit"
                 title="Отправить письмо с подтверждением"
-                disabled={
-                  !formData.personalDataConsent || formData.disabledSendButton
-                }
+                disabled={isSendBtnLoading || !watch('personalDataConsent')}
                 variant={ButtonVariant.primary}
-                onClick={onClickCreateAccountButton}
                 className={styles.form__createButton}
               />
             </form>
@@ -135,7 +100,7 @@ function SignUpEmail() {
       {showEmailConfirmModal && (
         <VerifyEmail
           onClose={() => setShowEmailConfirmModal(false)}
-          email={formData.email.value}
+          email={watch('email')}
         />
       )}
     </>

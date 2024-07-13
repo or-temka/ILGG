@@ -1,4 +1,5 @@
 import { InputHTMLAttributes, useRef } from 'react'
+import { UseFormRegisterReturn } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 
 import styles from './Checkbox.module.scss'
@@ -6,7 +7,7 @@ import styles from './Checkbox.module.scss'
 interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string
   className?: string
-
+  register?: UseFormRegisterReturn
   [key: string]: any
 }
 
@@ -15,7 +16,7 @@ function Checkbox({
   checked = false,
   disabled = false,
   className = '',
-
+  register,
   ...restProps
 }: CheckboxProps) {
   const htmlIdRef = useRef(uuidv4())
@@ -27,6 +28,7 @@ function Checkbox({
         type="checkbox"
         id={htmlIdRef.current}
         className={[styles.checkbox__input, className].join(' ')}
+        {...register}
         {...restProps}
       />
       <label
