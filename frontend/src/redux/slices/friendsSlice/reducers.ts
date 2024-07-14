@@ -1,9 +1,7 @@
-import UserState, { SetFriendsAction } from './interfaces'
+import setFriends from './reducers/setFriends'
 
 const reducers = {
-  setFriends: (state: UserState, action: SetFriendsAction): any => [
-    ...action.payload,
-  ],
+  setFriends,
 }
 
 export default reducers

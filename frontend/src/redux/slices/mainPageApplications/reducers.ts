@@ -1,14 +1,7 @@
-import MainPageApplicationsState, { SetUserAction } from './interfaces'
+import setMainPageApplications from './reducers/setMainPageApplications'
 
 const reducers = {
-  setMainPageApplications: (
-    state: MainPageApplicationsState,
-    action: SetUserAction
-  ): any => ({
-    data: action.payload,
-    loading: false,
-    error: null,
-  }),
+  setMainPageApplications,
 }
 
 export default reducers

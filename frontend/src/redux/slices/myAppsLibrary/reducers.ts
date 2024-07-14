@@ -1,14 +1,7 @@
-import AppsLibraryState, { SetLibraryAppsAction } from "./interfaces"
+import setLibraryApps from './reducers/setLibraryApps'
 
 const reducers = {
-  setLibraryApps: (
-    state: AppsLibraryState,
-    action: SetLibraryAppsAction
-  ): any => ({
-    data: action.payload,
-    loading: false,
-    error: null,
-  }),
+  setLibraryApps,
 }
 
 export default reducers

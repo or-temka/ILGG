@@ -1,11 +1,7 @@
-import ProfileState, { SetMyUserAction } from './interfaces'
+import setMyUser from './reducers/setMyUser'
 
 const reducers = {
-  setMyUser: (state: ProfileState, action: SetMyUserAction): any => ({
-    data: action.payload,
-    loading: false,
-    error: null,
-  }),
+  setMyUser,
 }
 
 export default reducers
