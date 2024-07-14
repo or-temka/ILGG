@@ -1,5 +1,6 @@
 import { InputHTMLAttributes, ReactNode, useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
+import { UseFormRegisterReturn } from 'react-hook-form'
 
 import btnStyles from '../Input/Input.module.scss'
 import styles from './InputWithBtnIcon.module.scss'
@@ -17,7 +18,7 @@ interface InputWithBtnIconProps extends InputHTMLAttributes<HTMLInputElement> {
   onClickBtnIcon?: (input: ParentNode | null) => void
   className?: string
   wrapperClassName?: string
-
+  register?: UseFormRegisterReturn
   [key: string]: any
 }
 
@@ -30,6 +31,7 @@ function InputWithBtnIcon({
   onClick = () => {},
   className = '',
   wrapperClassName = '',
+  register,
   ...restProps
 }: InputWithBtnIconProps) {
   const htmlIdRef = useRef(uuidv4())
@@ -56,6 +58,7 @@ function InputWithBtnIcon({
               : btnStyles.input__input_simple,
             className,
           ].join(' ')}
+          {...register}
           {...restProps}
         />
         {svgComponent && (
