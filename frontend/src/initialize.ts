@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from './redux/store'
 
-import { fetchFriends } from './redux/slices/friendsSlice'
+import fetchFriends from './redux/slices/friendsSlice/thunks/fetchFriends'
 import { setSiteThemeFromLocalStorage } from './utils/changeSiteTheme'
 import checkAuth from './redux/slices/myProfile/thunks/checkAuth'
 

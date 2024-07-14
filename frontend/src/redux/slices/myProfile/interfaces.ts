@@ -1,10 +1,7 @@
 import { IMyUser } from 'models/myUser/IMyUser'
+import { SliceState } from 'redux/interfaces'
 
-type ProfileState = {
-  data: IMyUser | null
-  loading: boolean
-  error: string | null | undefined
-}
+type ProfileState = SliceState<IMyUser | null>
 
 export default ProfileState
 
