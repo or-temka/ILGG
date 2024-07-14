@@ -4,4 +4,5 @@ export default class Regex {
   static user = {
     name: /^(?!.*\s{2})[a-zA-Zа-яА-ЯёЁ0-9_]+(?:\s[a-zA-Zа-яА-ЯёЁ0-9_]+)*$/,
   }
+  static verifyCode = /^[a-zA-Z0-9]{6}$/
 }

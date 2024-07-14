@@ -16,7 +16,15 @@ const onSubmit = async (
     await AuthService.registrationEmail(data.email)
     setDone(true)
   } catch (error: any) {
-    const errData = error.response.data
+    const errRes = error.response
+    const errData = errRes.data
+    const errStatus = errRes.status
+    const errMsg = errRes?.data?.errorMsg
+
+    if (errMsg === 'Пользователь с такой почтой уже существует')
+      return setErrorPanel('Пользователь с такой почтой уже существует')
+    if (errStatus === 409) return setDone(true)
+
     if (Array.isArray(errData)) {
       errData.forEach((errField) => {
         setError(errField.path, { message: errField.msg })

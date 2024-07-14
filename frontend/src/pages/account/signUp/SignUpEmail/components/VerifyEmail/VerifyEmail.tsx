@@ -14,6 +14,9 @@ import { FloatingNotificationVariant } from 'components/UI/floatingPanels/Floati
 import pageLink from 'pagesLinks'
 
 import styles from './VerifyEmail.module.scss'
+import { useForm } from 'react-hook-form'
+import { VerifyEmailForm } from './interfaces'
+import Regex from 'utils/regex'
 
 const preloadSrcList: string[] = [ImgEnvelope]
 
@@ -23,6 +26,10 @@ interface VerifyEmailProps {
 }
 
 function VerifyEmail({ onClose, email }: VerifyEmailProps) {
+  const { register, handleSubmit, watch } = useForm<VerifyEmailForm>({
+    defaultValues: { code: '' },
+    mode: 'onSubmit',
+  })
   const navigate = useNavigate()
   const addNotificationErrorPanel = useNotificationPanel({
     variant: FloatingNotificationVariant.error,
@@ -31,8 +38,7 @@ function VerifyEmail({ onClose, email }: VerifyEmailProps) {
     variant: FloatingNotificationVariant.success,
   })
   const { imagesPreloaded } = useImagePreloader(preloadSrcList)
-  const [codeValue, setCodeValue] = useState('')
-  const [disabledSendBtn, setDisabledSendBtn] = useState(false)
+  const [isSendBtnLoading, setIsSendBtnLoading] = useState(false)
 
   const onClickRepeatSendEmailHandler = useCallback(async () => {
     await AuthService.repeatSendEmail(email)
@@ -45,9 +51,9 @@ function VerifyEmail({ onClose, email }: VerifyEmailProps) {
       })
   }, [email, addNotificationSuccessPanel, addNotificationErrorPanel])
 
-  const onClickSendCodeHandler = useCallback(async () => {
-    setDisabledSendBtn(true)
-    await AuthService.sendEmailActivationCode(email, codeValue)
+  const onSubmit = useCallback(async () => {
+    setIsSendBtnLoading(true)
+    await AuthService.sendEmailActivationCode(email, watch('code'))
       .then((res) => {
         const activationLink = res.data.activationLink
         navigate(
@@ -58,8 +64,8 @@ function VerifyEmail({ onClose, email }: VerifyEmailProps) {
         const data = error?.response?.data
         addNotificationErrorPanel(data?.errorMsg || 'Произошла ошибка!')
       })
-      .finally(() => setDisabledSendBtn(false))
-  }, [email, codeValue, addNotificationErrorPanel, navigate])
+      .finally(() => setIsSendBtnLoading(false))
+  }, [email, addNotificationErrorPanel, navigate, watch])
 
   if (!imagesPreloaded) {
     return <LoadingPopUp />
@@ -78,25 +84,32 @@ function VerifyEmail({ onClose, email }: VerifyEmailProps) {
         </span>
 
         <div className={styles.modal__confirmField}>
-          <div className={styles.modal__confirmCodeField}>
+          <form
+            className={styles.modal__confirmCodeField}
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <Input
-              value={codeValue}
-              onChange={(e) => setCodeValue(e.target.value)}
+              register={register('code', {
+                pattern: {
+                  value: Regex.verifyCode,
+                  message: 'Код должен состоять из 6 чисел',
+                },
+              })}
               placeholder="Код подтверждения"
               classNames={{ wrapper: styles.modal__inputWrapper }}
             />
-            {!codeValue.length ? (
+            {!watch('code').length ? (
               <RepeatButton onClick={onClickRepeatSendEmailHandler} />
             ) : (
               <Button
+                type="submit"
                 title="Подтвердить"
                 variant={ButtonVariant.primary}
                 className={styles.modal__confirmEmailCodeBtn}
-                disabled={codeValue.length !== 6 || disabledSendBtn}
-                onClick={onClickSendCodeHandler}
+                disabled={watch('code').length !== 6 || isSendBtnLoading}
               />
             )}
-          </div>
+          </form>
 
           <img
             src={require('assets/images/posters/email-envelope.png')}
