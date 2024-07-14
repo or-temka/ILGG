@@ -1,13 +1,10 @@
 import { AppType } from 'models/application/types/AppType'
 import { MongoId } from 'models/mongoDB'
 
-import {
-  FilterFields,
-  FilterValue,
-} from '../../../../../redux/slices/shopAppsSlice'
 import Checkbox from 'components/UI/inputs/Checkbox/Checkbox'
 
 import styles from './FilterBy.module.scss'
+import { FilterFields, FilterValue } from '../../../../../redux/slices/shopApps/interfaces'
 
 interface FilterByProps {
   headerText: string

@@ -2,19 +2,20 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 import {
-  FilterFields,
-  FilterValue,
   filterShopAppsBy,
   resetFiltersShopApps,
-} from '../../../../redux/slices/shopAppsSlice'
+} from '../../../../redux/slices/shopApps/slice'
 import FilterBy from './components/FilterBy'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import appTypes from 'data/tempData/appTypes'
 import appCategories from 'data/tempData/appCategories'
 import appPlayerTypes from 'data/tempData/appPlayerTypes'
 import appThemes from 'data/tempData/appThemes'
-
 import styles from './Filter.module.scss'
+import {
+  FilterFields,
+  FilterValue,
+} from '../../../../redux/slices/shopApps/interfaces'
 
 type Filters = {
   [key in FilterFields]: FilterValue
