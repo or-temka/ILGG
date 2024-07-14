@@ -7,13 +7,13 @@ import { ProfileSettingsForm } from './interfaces'
 const onSubmit = async (
   data: ProfileSettingsForm,
   setError: UseFormSetError<ProfileSettingsForm>,
-  setSuccess: (message: string) => any,
+  setSuccess: Function,
   setIsLoading: Dispatch<SetStateAction<boolean>>
 ) => {
   try {
     setIsLoading(true)
-    await EditUserService.editProfile(data.name, data.about)
-    setSuccess('Успешно сохранено!')
+    const res = await EditUserService.editProfile(data.name, data.about)
+    setSuccess(res)
   } catch (error: any) {
     const errData = error.response.data
     if (Array.isArray(errData)) {

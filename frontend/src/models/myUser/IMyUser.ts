@@ -8,4 +8,5 @@ export interface IMyUser {
   isActivated: Boolean
   balance: IMyUserBalance
   isOnline: Boolean
+  about: string
 }

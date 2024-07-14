@@ -1,5 +1,7 @@
+import { useDispatch, useSelector } from 'react-redux'
 import { useForm } from 'react-hook-form'
-import { useState } from 'react'
+import { AxiosResponse } from 'axios'
+import { useCallback, useState } from 'react'
 
 import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import { ProfileSettingsForm } from './interfaces'
@@ -9,8 +11,13 @@ import { FloatingNotificationVariant } from 'components/UI/floatingPanels/Floati
 import styles from './Form.module.scss'
 import InputName from './components/InputName'
 import InputAbout from './components/InputAbout'
+import {
+  selectMyUser,
+  setMyUser,
+} from '../../../../../../../redux/slices/myProfileSlice'
 
 function Form() {
+  const dispatch = useDispatch()
   const [isSendBtnLoading, setIsSendBtnLoading] = useState(false)
   const {
     register,
@@ -18,7 +25,10 @@ function Form() {
     formState: { errors },
     setError,
   } = useForm<ProfileSettingsForm>({
-    defaultValues: {},
+    defaultValues: {
+      name: useSelector(selectMyUser).data?.name,
+      about: useSelector(selectMyUser).data?.about,
+    },
     mode: 'onChange',
   })
 
@@ -26,16 +36,19 @@ function Form() {
     variant: FloatingNotificationVariant.success,
   })
 
+  const onSubmited = useCallback(
+    (res: AxiosResponse) => {
+      addNotificationSuccessPanel('Успешно сохранено!')
+      dispatch(setMyUser(res.data))
+    },
+    [addNotificationSuccessPanel, dispatch]
+  )
+
   return (
     <>
       <form
         onSubmit={handleSubmit((data) =>
-          onSubmit(
-            data,
-            setError,
-            addNotificationSuccessPanel,
-            setIsSendBtnLoading
-          )
+          onSubmit(data, setError, onSubmited, setIsSendBtnLoading)
         )}
         className={styles.form}
       >

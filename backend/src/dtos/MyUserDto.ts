@@ -7,6 +7,7 @@ class UserDto {
   isOnline
   balance
   privacy
+  about
 
   constructor(model: any) {
     this.email = model.email
@@ -15,6 +16,7 @@ class UserDto {
     this.name = model.name
     this.login = model.login
     this.isOnline = model.isOnline
+    this.about = model.about
     this.balance = {
       value: model.balance,
       currency: 'руб.',
