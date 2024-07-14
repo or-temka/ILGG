@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 
-import { selectMyBalance } from '../../../redux/slices/myProfileSlice'
+import { selectMyBalance } from '../../../redux/slices/myProfile/slice'
 
 import { ReactComponent as PlusSVG } from 'assets/svgs/plus.svg'
 import Tooltip, {

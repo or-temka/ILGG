@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import { IMyUser } from 'models/myUser/IMyUser'
 import MiniProfile, { Button } from '../components/miniProfile/MiniProfile'
 import pageLink from 'pagesLinks'
-import { logout } from '../../../../../redux/slices/myProfileSlice'
+import logout from '../../../../../redux/slices/myProfile/thunks/logout'
 
 import { ReactComponent as ArrowSVG } from 'assets/svgs/arrow.svg'
 import styles from './MyMiniProfile.module.scss'

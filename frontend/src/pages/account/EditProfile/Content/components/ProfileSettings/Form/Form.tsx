@@ -14,7 +14,7 @@ import InputAbout from './components/InputAbout'
 import {
   selectMyUser,
   setMyUser,
-} from '../../../../../../../redux/slices/myProfileSlice'
+} from '../../../../../../../redux/slices/myProfile/slice'
 
 function Form() {
   const dispatch = useDispatch()

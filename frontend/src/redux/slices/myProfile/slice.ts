@@ -1,12 +1,11 @@
-import axios from 'axios'
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 import { IMyUser } from 'models/myUser/IMyUser'
 import { IMyUserBalance } from 'models/myUser/IMyUserBalance'
-import { AuthResponse } from 'models/response/AuthResponse'
-import { API_URL } from 'variables'
-
-import AuthService from 'services/authService'
+import login from './thunks/login'
+import registration from './thunks/registration'
+import logout from './thunks/logout'
+import checkAuth from './thunks/checkAuth'
 
 // #region reducers interfaces
 interface SetMyUserAction {
@@ -14,86 +13,6 @@ interface SetMyUserAction {
   payload: IMyUser | null
 }
 // #endregion
-
-export const login = createAsyncThunk(
-  'myProfile/login',
-  async (
-    credentials: { login: string; password: string },
-    { rejectWithValue }
-  ) => {
-    try {
-      const response = await AuthService.login(
-        credentials.login,
-        credentials.password
-      )
-      localStorage.setItem('token', response.data.accessToken)
-      return response.data.user
-    } catch (error: any) {
-      return rejectWithValue(error.response.data)
-    }
-  }
-)
-
-export const registration = createAsyncThunk(
-  'myProfile/registration',
-  async (
-    userData: {
-      login: string
-      name: string
-      password: string
-      confirmPassword: string
-      email: string
-      activationLink: string
-    },
-    { rejectWithValue }
-  ) => {
-    try {
-      const response = await AuthService.registration(
-        userData.login,
-        userData.name,
-        userData.password,
-        userData.confirmPassword,
-        userData.email,
-        userData.activationLink
-      )
-
-      localStorage.setItem('token', response.data.accessToken)
-      return response.data.user
-    } catch (error: any) {
-      return rejectWithValue(error.response.data)
-    }
-  }
-)
-
-export const logout = createAsyncThunk(
-  'myProfile/logout',
-  async (_, { rejectWithValue }) => {
-    try {
-      await AuthService.logout()
-      localStorage.removeItem('token')
-      return null
-    } catch (error: any) {
-      return rejectWithValue(error.response.data)
-    }
-  }
-)
-
-export const checkAuth = createAsyncThunk(
-  'myProfile/checkAuth',
-  async (_, { rejectWithValue }) => {
-    try {
-      const response = await axios.get<AuthResponse>(
-        `${API_URL}/user/refresh`,
-        { withCredentials: true }
-      )
-
-      localStorage.setItem('token', response.data.accessToken)
-      return response.data.user
-    } catch (error: any) {
-      return rejectWithValue(error.response.data)
-    }
-  }
-)
 
 export type ProfileState = {
   data: IMyUser | null

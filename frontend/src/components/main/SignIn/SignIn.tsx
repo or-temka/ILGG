@@ -12,7 +12,7 @@ import InputWithBtnIcon, {
 } from 'components/UI/inputs/InputWithBtnIcon/InputWithBtnIcon'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import pageLink from 'pagesLinks'
-import { login } from '../../../redux/slices/myProfileSlice'
+import login from '../../../redux/slices/myProfile/thunks/login'
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
 import LoadingPopUp from 'components/UI/loaders/LoadingPopUp/LoadingPopUp'
 

@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import floatingPanelsQueueReducer from './slices/floatingPanelsQueueSlice'
-import myProfileSlice from './slices/myProfileSlice'
+import myProfileSlice from './slices/myProfile/slice'
 import friendsSlice from './slices/friendsSlice'
 import mainPageApplicationsSlice from './slices/mainPageApplicationsSlice'
 import shopAppsSlice from './slices/shopAppsSlice'

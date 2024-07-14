@@ -11,7 +11,7 @@ import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import RecoveryPasswordService from 'services/recoveryPasswordservice'
 import { RecoveryEmailError } from 'models/response/RecoveryPasswordResponse'
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
-import { setMyUser } from '../../../../../../redux/slices/myProfileSlice'
+import { setMyUser } from '../../../../../../redux/slices/myProfile/slice'
 
 import styles from './EnterNewPassword.module.scss'
 

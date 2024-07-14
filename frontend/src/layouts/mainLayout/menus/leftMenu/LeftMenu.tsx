@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-import { selectMyUser } from '../../../../redux/slices/myProfileSlice'
+import { selectMyUser } from '../../../../redux/slices/myProfile/slice'
 import ButtonPage from './components/ButtonPage'
 import pageLink from 'pagesLinks'
 import menuStyles from '../Menu.module.scss'
