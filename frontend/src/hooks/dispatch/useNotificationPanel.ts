@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import {
   PanelVariant,
   addPanel,
-} from '../../redux/slices/floatingPanelsQueueSlice'
+} from '../../redux/slices/floatingPanelsQueue/slice'
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
 
 interface useDispatchPanelProps {
