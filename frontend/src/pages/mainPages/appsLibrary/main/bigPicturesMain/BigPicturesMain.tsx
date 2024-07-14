@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 
-import { selectApps } from '../../../../../redux/slices/myAppsLibrarySlice'
+import { selectApps } from '../../../../../redux/slices/myAppsLibrary/slice'
 
 import GameBigCard from 'components/cards/GameBigCard/GameBigCard'
 import pageLink from 'pagesLinks'

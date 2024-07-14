@@ -1,8 +1,6 @@
-import { AppsLibraryState } from '../../../../../../redux/slices/myAppsLibrarySlice'
-
 import AppInList from './components/AppInList'
-
 import styles from './AppsList.module.scss'
+import AppsLibraryState from '../../../../../../redux/slices/myAppsLibrary/interfaces'
 
 interface AppsListProps {
   apps: AppsLibraryState

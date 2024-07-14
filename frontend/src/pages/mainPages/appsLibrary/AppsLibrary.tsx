@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { setLibraryApps } from '../../../redux/slices/myAppsLibrarySlice'
+import { setLibraryApps } from '../../../redux/slices/myAppsLibrary/slice'
 import { IAppFromLibrary } from 'models/application/IAppFromLibrary'
 import Header from './Header/Header'
 import Main from './Main/Main'
