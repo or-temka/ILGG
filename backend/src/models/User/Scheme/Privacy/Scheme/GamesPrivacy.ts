@@ -7,6 +7,11 @@ const GamesPrivacySchema = new mongoose.Schema<GamesPrivacyInterface>({
     required: true,
     default: 'all',
   },
+  availableToViewAchievement: {
+    type: String,
+    required: true,
+    default: 'all',
+  },
 })
 
 export default GamesPrivacySchema

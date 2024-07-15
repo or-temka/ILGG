@@ -15,7 +15,7 @@ function AppsFieldset({ control, errors }: AppsFieldsetProps) {
     <fieldset className={styles.fieldset}>
       <legend className={styles.fieldset__legend}>Приложения:</legend>
       <div className={styles.fieldset__content}>
-        <span>Мои приложения доступны для просмотра:</span>
+        <span>Информация о моих приложениях доступна:</span>
         <Controller
           name="games.availableToView"
           control={control}
@@ -24,10 +24,32 @@ function AppsFieldset({ control, errors }: AppsFieldsetProps) {
             <Select<IMyUserPrivacy['games']['availableToView']>
               options={[
                 { value: 'all', label: 'Всем' },
-                { value: 'friends', label: 'Только мне и моим друзьям' },
+                { value: 'friends', label: 'мне и моим друзьям' },
                 { value: 'onlyMe', label: 'Только мне' },
               ]}
               errorText={errors.games?.availableToView?.message}
+              value={field.value || 'default'}
+              onChangeValue={field.onChange}
+              hideDefault
+            />
+          )}
+        />
+      </div>
+
+      <div className={styles.fieldset__content}>
+        <span>Мои достижения из приложений доступны для просмотра:</span>
+        <Controller
+          name="games.availableToViewAchievement"
+          control={control}
+          rules={{ required: 'This field is required' }}
+          render={({ field }) => (
+            <Select<IMyUserPrivacy['games']['availableToViewAchievement']>
+              options={[
+                { value: 'all', label: 'Всем' },
+                { value: 'friends', label: 'мне и моим друзьям' },
+                { value: 'onlyMe', label: 'Только мне' },
+              ]}
+              errorText={errors.games?.availableToViewAchievement?.message}
               value={field.value || 'default'}
               onChangeValue={field.onChange}
               hideDefault

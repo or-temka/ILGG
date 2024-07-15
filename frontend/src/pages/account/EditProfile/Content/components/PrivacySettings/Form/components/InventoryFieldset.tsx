@@ -24,10 +24,10 @@ function InventoryFieldset({ control, errors }: AppsFieldsetProps) {
             <Select<IMyUserPrivacy['inventory']['availableToView']>
               options={[
                 { value: 'all', label: 'Всем' },
-                { value: 'friends', label: 'Только мне и моим друзьям' },
+                { value: 'friends', label: 'Мне и моим друзьям' },
                 { value: 'onlyMe', label: 'Только мне' },
               ]}
-              errorText={errors.games?.availableToView?.message}
+              errorText={errors.inventory?.availableToView?.message}
               value={field.value || 'default'}
               onChangeValue={field.onChange}
               hideDefault

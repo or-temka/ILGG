@@ -7,6 +7,16 @@ const MessagesPrivacySchema = new mongoose.Schema<MessagesPrivacyInterface>({
     required: true,
     default: 'all',
   },
+  presentSendingAvailable: {
+    type: String,
+    required: true,
+    default: 'all',
+  },
+  inviteAppAvailable: {
+    type: String,
+    required: true,
+    default: 'friends',
+  },
 })
 
 export default MessagesPrivacySchema
