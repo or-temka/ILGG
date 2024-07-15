@@ -21,6 +21,7 @@ import styles from './RecoveryPasswordVerifyEmail.module.scss'
 import { useForm } from 'react-hook-form'
 import { RecoveryPasswordVerifyEmailForm } from './interfaces'
 import Regex from 'utils/regex'
+import Validations from 'validations/validations'
 
 const preloadSrcList: string[] = [ImgEnvelope]
 
@@ -112,16 +113,10 @@ function RecoveryPasswordVerifyEmail({
               onSubmit={handleSubmit(onSubmit)}
             >
               <Input
-                register={register('activationCode', {
-                  required: {
-                    value: true,
-                    message: 'Поле обязательно для заполнения',
-                  },
-                  pattern: {
-                    value: Regex.verifyCode,
-                    message: 'Код должен состоять из 6 символов',
-                  },
-                })}
+                register={register(
+                  'activationCode',
+                  Validations.UseForm.Auth.activationCode
+                )}
                 placeholder="Код подтверждения"
                 classNames={{ wrapper: styles.modal__inputWrapper }}
               />

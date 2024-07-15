@@ -16,8 +16,8 @@ import LoadingSpiner from 'components/UI/loaders/LoadingSpiner/LoadingSpiner'
 import AuthService from 'services/authService'
 import styles from '../SignUp.module.scss'
 import { SignUpForm } from './interfaces'
-import Regex from 'utils/regex'
 import InputPassword from 'components/UI/inputs/InputPassword/InputPassword'
+import Validations from 'validations/validations'
 
 function SignUp() {
   const queryParams = useLocationQuery()
@@ -121,74 +121,31 @@ function SignUp() {
             </div>
             <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
               <Input
-                register={register('login', {
-                  required: true,
-                  minLength: {
-                    value: 1,
-                    message: 'Минимальная длина логина 1 символ',
-                  },
-                  maxLength: {
-                    value: 30,
-                    message: 'Максимальная длина логина 30 символов',
-                  },
-                  pattern: {
-                    value: Regex.user.login,
-                    message:
-                      'Логин должен содержать символы латинского алфавита и/или цифры',
-                  },
-                })}
+                register={register('login', Validations.UseForm.User.login)}
                 label="Логин: *"
                 placeholder="Введите ваш логин"
                 errorText={errors.login?.message}
               />
               <Input
-                register={register('name', {
-                  required: true,
-                  minLength: {
-                    value: 1,
-                    message: 'Минимальная длина никнейма 1 символ',
-                  },
-                  maxLength: {
-                    value: 30,
-                    message: 'Максимальная длина никнейма 30 символов',
-                  },
-                  pattern: {
-                    value: Regex.user.name,
-                    message: 'Неверный формат никнейма',
-                  },
-                })}
+                register={register('name', Validations.UseForm.User.username)}
                 label="Никнейм: *"
                 placeholder="Введите ваш никнейм"
                 errorText={errors.name?.message}
               />
               <InputPassword
-                register={register('password', {
-                  required: true,
-                  minLength: {
-                    value: 5,
-                    message: 'Минимальная длина пароля 6 символов',
-                  },
-                  maxLength: {
-                    value: 50,
-                    message: 'Максимальная длина пароля 50 символов',
-                  },
-                })}
+                register={register(
+                  'password',
+                  Validations.UseForm.User.password
+                )}
                 label="Пароль: *"
                 placeholder="Введите пароль"
                 errorText={errors.password?.message}
               />
               <InputPassword
-                register={register('confirmPassword', {
-                  required: true,
-                  minLength: {
-                    value: 5,
-                    message: 'Минимальная длина пароля 6 символов',
-                  },
-                  maxLength: {
-                    value: 50,
-                    message: 'Максимальная длина пароля 50 символов',
-                  },
-                })}
+                register={register(
+                  'confirmPassword',
+                  Validations.UseForm.User.password
+                )}
                 label="Подтверждение пароля: *"
                 placeholder="Введите пароль ещё раз"
                 errorText={errors.confirmPassword?.message}

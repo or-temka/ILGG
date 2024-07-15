@@ -17,7 +17,7 @@ import styles from './SignIn.module.scss'
 import InputPassword from 'components/UI/inputs/InputPassword/InputPassword'
 import { useForm } from 'react-hook-form'
 import { SignInForm } from './interfaces'
-import Regex from 'utils/regex'
+import Validations from 'validations/validations'
 
 const preloadSrcList: string[] = [PosterImage]
 
@@ -83,28 +83,17 @@ function SignIn({ onClose = () => {} }) {
           >
             <div className={styles.popUp__inputs}>
               <Input
-                register={register('login', {
-                  required: {
-                    value: true,
-                    message: 'Поле обязательно для заполнения',
-                  },
-                  pattern: {
-                    value: Regex.user.login,
-                    message: 'Не соответствует формату логина',
-                  },
-                })}
+                register={register('login', Validations.UseForm.User.login)}
                 label="Логин:"
                 placeholder="Введите ваш логин"
                 variant={InputVariant.light}
                 errorText={errors.login?.message}
               />
               <InputPassword
-                register={register('password', {
-                  required: {
-                    value: true,
-                    message: 'Поле обязательно для заполнения',
-                  },
-                })}
+                register={register(
+                  'password',
+                  Validations.UseForm.User.password
+                )}
                 label="Пароль:"
                 placeholder="Введите ваш пароль"
                 name="password"

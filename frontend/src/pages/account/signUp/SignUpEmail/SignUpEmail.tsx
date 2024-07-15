@@ -1,3 +1,4 @@
+import { useForm } from 'react-hook-form'
 import { useEffect, useState } from 'react'
 
 import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
@@ -9,10 +10,9 @@ import { FloatingNotificationVariant } from 'components/UI/floatingPanels/Floati
 import AboutService from '../components/AboutService'
 import VerifyEmail from './components/VerifyEmail/VerifyEmail'
 import styles from '../SignUp.module.scss'
-import { useForm } from 'react-hook-form'
 import { SignUpEmailForm } from './interfaces'
 import onSubmit from './onSubmit'
-import Regex from 'utils/regex'
+import Validations from 'validations/validations'
 
 function SignUpEmail() {
   const [isSendBtnLoading, setIsSendBtnLoading] = useState(false)
@@ -64,14 +64,7 @@ function SignUpEmail() {
               )}
             >
               <Input
-                register={register('email', {
-                  required: true,
-                  maxLength: 150,
-                  pattern: {
-                    value: Regex.email,
-                    message: 'Неверный формат E-mail',
-                  },
-                })}
+                register={register('email', Validations.UseForm.User.email)}
                 label="E-mail:"
                 placeholder="Введите ваш E-mail"
                 errorText={errors.email?.message}

@@ -1,8 +1,8 @@
 import { FieldErrors, UseFormRegister } from 'react-hook-form'
 
 import { ProfileSettingsForm } from '../interfaces'
-import Regex from 'utils/regex'
 import Input from 'components/UI/inputs/Input/Input'
+import Validations from 'validations/validations'
 
 interface InputNameProps {
   register: UseFormRegister<ProfileSettingsForm>
@@ -13,17 +13,7 @@ interface InputNameProps {
 function InputName({ register, errors }: InputNameProps) {
   return (
     <Input
-      register={register('name', {
-        required: 'Поле обязательно для заполнения',
-        maxLength: {
-          value: 30,
-          message: 'Максимальная длина имени: 30 символов',
-        },
-        pattern: {
-          value: Regex.user.name,
-          message: 'Неверный формат имени пользователя',
-        },
-      })}
+      register={register('name', Validations.UseForm.User.username)}
       label="Имя пользователя:"
       placeholder="Укажите имя пользователя"
       errorText={errors.name?.message}

@@ -12,6 +12,7 @@ import RecoveryPasswordService from 'services/recoveryPasswordservice'
 import { RecoveryEmailError } from 'models/response/RecoveryPasswordResponse'
 import styles from './RecoveryPassword.module.scss'
 import { RecoveryPasswordForm } from './interfaces'
+import { GenericUseFormValidation } from 'validations/useFormValidations/generic'
 
 interface RecoveryPasswordProps {
   onClose: Function
@@ -60,10 +61,7 @@ function RecoveryPassword({ onClose, onCloseSignIn }: RecoveryPasswordProps) {
             <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
               <Input
                 register={register('userLoginOrEmail', {
-                  required: {
-                    value: true,
-                    message: 'Поле обязательно для заполнени',
-                  },
+                  required: GenericUseFormValidation.required,
                 })}
                 classNames={{ wrapper: styles.form__inputWrapper }}
                 placeholder="Введите ваш Email или логин"
