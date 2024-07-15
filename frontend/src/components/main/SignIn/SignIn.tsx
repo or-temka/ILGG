@@ -4,22 +4,17 @@ import { useDispatch } from 'react-redux'
 
 import useImagePreloader from 'hooks/useImagePreloader'
 import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
-
 import Input, { InputVariant } from 'components/UI/inputs/Input/Input'
 import PopUpSkeleton from 'components/UI/popUps/skeletons/PopUpSkeleton/PopUpSkeleton'
-import InputWithBtnIcon, {
-  InputWithBtnIconVariant,
-} from 'components/UI/inputs/InputWithBtnIcon/InputWithBtnIcon'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import pageLink from 'pagesLinks'
 import login from '../../../redux/slices/myProfile/thunks/login'
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
 import LoadingPopUp from 'components/UI/loaders/LoadingPopUp/LoadingPopUp'
-
-import { ReactComponent as ShowPasswordSVG } from 'assets/svgs/eye.svg'
 import { ReactComponent as LogoSVG } from 'assets/svgs/logo.svg'
 import PosterImage from 'assets/images/posters/poster1.jpg'
 import styles from './SignIn.module.scss'
+import InputPassword from 'components/UI/inputs/InputPassword/InputPassword'
 
 const preloadSrcList: string[] = [PosterImage]
 
@@ -36,7 +31,6 @@ function SignIn({ onClose = () => {} }) {
 
   const [userLogin, setUserLogin] = useState('')
   const [userPassword, setUserPassword] = useState('')
-  const [passwordInputType, setPasswordInputType] = useState('password')
   const [isDisabledLoginBtn, setIsDisabledLoginBtn] = useState(false)
   const [showRecoveryPassword, setShowRecoveryPassword] = useState(false)
 
@@ -44,13 +38,6 @@ function SignIn({ onClose = () => {} }) {
 
   if (!imagesPreloaded) {
     return <LoadingPopUp />
-  }
-
-  const onClickBtnIcon = (input: ParentNode | null) => {
-    if (!input) return
-    const nowInputType = input.querySelector('input')?.type
-    if (!nowInputType) return
-    setPasswordInputType(nowInputType === 'password' ? 'text' : 'password')
   }
 
   const onClickLoginHandler = () => {
@@ -102,17 +89,13 @@ function SignIn({ onClose = () => {} }) {
                 variant={InputVariant.light}
                 onChange={(e) => setUserLogin(e.target.value)}
               />
-              <InputWithBtnIcon
+              <InputPassword
                 label="Пароль:"
                 placeholder="Введите ваш пароль"
-                type={passwordInputType}
                 name="password"
                 autoComplete="current-password"
-                variant={InputWithBtnIconVariant.light}
                 value={userPassword}
                 onChange={(e) => setUserPassword(e.target.value)}
-                svgComponent={<ShowPasswordSVG />}
-                onClickBtnIcon={onClickBtnIcon}
               />
             </div>
             <div className={styles.popUp__buttons}>

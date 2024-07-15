@@ -10,7 +10,8 @@ export enum InputWithBtnIconVariant {
   light = 'light',
 }
 
-interface InputWithBtnIconProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputWithBtnIconProps
+  extends InputHTMLAttributes<HTMLInputElement> {
   label?: string
   variant?: InputWithBtnIconVariant
   errorText?: string

@@ -8,17 +8,16 @@ import useLocationQuery from 'hooks/useLocationQuery'
 import Input from 'components/UI/inputs/Input/Input'
 import Checkbox from 'components/UI/inputs/Checkbox/Checkbox'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
-import InputWithBtnIcon from 'components/UI/inputs/InputWithBtnIcon/InputWithBtnIcon'
 import { setPageName } from 'utils/setPageName'
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
 import registration from '../../../../redux/slices/myProfile/thunks/registration'
 import AboutService from '../components/AboutService'
 import LoadingSpiner from 'components/UI/loaders/LoadingSpiner/LoadingSpiner'
 import AuthService from 'services/authService'
-import { ReactComponent as EyeSVG } from 'assets/svgs/eye.svg'
 import styles from '../SignUp.module.scss'
 import { SignUpForm } from './interfaces'
 import Regex from 'utils/regex'
+import InputPassword from 'components/UI/inputs/InputPassword/InputPassword'
 
 function SignUp() {
   const queryParams = useLocationQuery()
@@ -63,12 +62,6 @@ function SignUp() {
     setPageName('Регистрация')
   }, [])
 
-  const changePasswordVisible = useCallback((elem: ParentNode | null) => {
-    const input = elem?.querySelector('input')
-    if (!input) return
-    input.type = input?.type === 'password' ? 'text' : 'password'
-  }, [])
-
   const onSubmit = useCallback(
     async (data: SignUpForm) => {
       setIsSendBtnLoading(true)
@@ -91,7 +84,13 @@ function SignUp() {
       })
       setIsSendBtnLoading(false)
     },
-    [setIsSendBtnLoading, dispatch, addNotificationErrorPanel, navigate]
+    [
+      setIsSendBtnLoading,
+      dispatch,
+      addNotificationErrorPanel,
+      navigate,
+      setError,
+    ]
   )
 
   if (!isQuery) {
@@ -162,7 +161,7 @@ function SignUp() {
                 placeholder="Введите ваш никнейм"
                 errorText={errors.name?.message}
               />
-              <InputWithBtnIcon
+              <InputPassword
                 register={register('password', {
                   required: true,
                   minLength: {
@@ -176,12 +175,9 @@ function SignUp() {
                 })}
                 label="Пароль: *"
                 placeholder="Введите пароль"
-                type="password"
-                onClickBtnIcon={changePasswordVisible}
-                svgComponent={<EyeSVG />}
                 errorText={errors.password?.message}
               />
-              <InputWithBtnIcon
+              <InputPassword
                 register={register('confirmPassword', {
                   required: true,
                   minLength: {
@@ -195,9 +191,6 @@ function SignUp() {
                 })}
                 label="Подтверждение пароля: *"
                 placeholder="Введите пароль ещё раз"
-                type="password"
-                onClickBtnIcon={changePasswordVisible}
-                svgComponent={<EyeSVG />}
                 errorText={errors.confirmPassword?.message}
               />
 
