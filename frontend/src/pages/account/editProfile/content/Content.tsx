@@ -1,7 +1,7 @@
 import contentType from '../contentType'
 import Avatar from './components/Avatar/Avatar'
 import MainInfoSettings from './components/MainInfoSettings/MainInfoSettings'
-import Password from './components/Password/Password'
+import Password from './components/PasswordSettings/Password'
 import PrivacySettings from './components/PrivacySettings/PrivacySettings'
 import ProfileSettings from './components/ProfileSettings/ProfileSettings'
 

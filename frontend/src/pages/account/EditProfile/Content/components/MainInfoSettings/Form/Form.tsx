@@ -28,7 +28,7 @@ function Form() {
     defaultValues: {
       login: useSelector(selectMyUser).data?.login,
     },
-    mode: 'onChange',
+    mode: 'onSubmit',
   })
 
   const addNotificationSuccessPanel = useNotificationPanel({
