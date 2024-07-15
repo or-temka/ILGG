@@ -2,28 +2,4 @@
   display: flex;
   flex-flow: column;
   gap: 20px;
-
-  &__fieldset {
-    margin: 0;
-    padding: 0;
-    border: none;
-    display: flex;
-    flex-flow: column;
-  }
-
-  &__legend {
-    background-color: var(--background-3-color);
-    padding: 8px 20px;
-    border-radius: 5px;
-    color: var(--active-color);
-  }
-
-  &__fieldsetContent {
-    margin-left: 10px;
-    display: flex;
-    flex-flow: column;
-    gap: 10px;
-    margin-top: 10px;
-    padding: 10px 20px;
-  }
 }

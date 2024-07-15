@@ -1,3 +1,3 @@
 export interface MessagesPrivacyInterface {
-  onlyFriendMessages: Boolean
+  sendingAvailable: 'friends' | 'all'
 }

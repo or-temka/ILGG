@@ -1,20 +1,15 @@
-import {
-  ChangeEvent,
-  ChangeEventHandler,
-  SelectHTMLAttributes,
-  useState,
-} from 'react'
+import { ChangeEvent, ChangeEventHandler, SelectHTMLAttributes } from 'react'
+import { UseFormRegisterReturn } from 'react-hook-form'
 
 import styles from './Select.module.scss'
 
-interface IOption {
-  value: string | number
+interface IOption<T> {
+  value: T
   label: string
 }
 
-interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
-  options: IOption[]
-  placeholder?: string
+interface SelectProps<T> extends SelectHTMLAttributes<HTMLSelectElement> {
+  options?: IOption<T>[]
   errorText?: string
   defaultValue?: string | number
   disabledNotEntered?: boolean
@@ -22,11 +17,14 @@ interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   onChange?: (...args: any[]) => any
   className?: string
   containerClassName?: string
-
+  value?: string | number
+  hideDefault?: boolean
+  onChangeValue?: (value: string | number) => void
+  register?: UseFormRegisterReturn
   [key: string]: any
 }
 
-function Select({
+function Select<T>({
   options = [],
   placeholder = 'Выберите...',
   errorText = '',
@@ -36,16 +34,18 @@ function Select({
   onChange = () => {},
   className = '',
   containerClassName = '',
+  value,
+  hideDefault = false,
+  onChangeValue,
+  register,
   ...restProps
-}: SelectProps) {
-  const [selectedValue, setSelectedValue] = useState(defaultValue)
-
+}: SelectProps<T>) {
   const onChangeHandler: ChangeEventHandler<HTMLSelectElement> = (
     e: ChangeEvent<HTMLSelectElement>
   ) => {
-    const value: string = e.target.value
+    const value: string = e.target.value as string
     onChange(value)
-    setSelectedValue(value)
+    onChangeValue && onChangeValue(value)
   }
 
   return (
@@ -57,21 +57,25 @@ function Select({
           className,
           errorText && styles.select__select_error,
         ].join(' ')}
-        value={selectedValue}
+        value={value}
+        {...register}
         {...restProps}
       >
-        <option
-          value="default"
-          className={styles.select__option}
-          disabled={disabledNotEntered}
-          style={{ color: notEnteredColor }}
-        >
-          {placeholder}
-        </option>
+        {!hideDefault && (
+          <option
+            value="default"
+            className={styles.select__option}
+            disabled={disabledNotEntered}
+            style={{ color: notEnteredColor }}
+          >
+            {placeholder}
+          </option>
+        )}
+
         {options.map((option) => (
           <option
-            key={option.value}
-            value={option.value}
+            key={option.value as string}
+            value={option.value as string}
             className={styles.select__option}
           >
             {option.label}

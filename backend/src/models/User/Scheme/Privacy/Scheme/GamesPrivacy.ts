@@ -1,10 +1,11 @@
 import mongoose from 'mongoose'
+import { GamesPrivacyInterface } from './interfaces/GamesPrivacyInterface'
 
-const GamesPrivacySchema = new mongoose.Schema({
-  onlyAvailableToMe: {
-    type: Boolean,
+const GamesPrivacySchema = new mongoose.Schema<GamesPrivacyInterface>({
+  availableToView: {
+    type: String,
     required: true,
-    default: false,
+    default: 'all',
   },
 })
 

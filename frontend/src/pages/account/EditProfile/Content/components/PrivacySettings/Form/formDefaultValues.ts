@@ -1,18 +1,25 @@
 import { IMyUserPrivacy } from 'models/myUser/IMyUserPrivacy'
 
-const formDefaultValues = (myUserPrivacy: IMyUserPrivacy | undefined) => ({
-  games: { onlyAvailableToMe: myUserPrivacy?.games.onlyAvailableToMe },
-  inventory: {
-    onlyAvailableToMe: myUserPrivacy?.inventory.onlyAvailableToMe,
-    onlyAvailableToMeAndFriends:
-      myUserPrivacy?.inventory.onlyAvailableToMeAndFriends,
-  },
-  messages: {
-    onlyFriendMessages: myUserPrivacy?.messages.onlyFriendMessages,
-  },
-  profile: {
-    mainInfoOnlyFriends: myUserPrivacy?.profile.mainInfoOnlyFriends,
-  },
-})
+const formDefaultValues = (
+  myUserPrivacy: IMyUserPrivacy | undefined
+): IMyUserPrivacy | {} =>
+  myUserPrivacy
+    ? {
+        games: {
+          availableToView: myUserPrivacy.games.availableToView,
+        },
+        inventory: {
+          availableToView: myUserPrivacy.inventory.availableToView,
+        },
+        messages: {
+          sendingAvailable: myUserPrivacy.messages.sendingAvailable,
+        },
+        profile: {
+          availableToViewMainInfo:
+            myUserPrivacy.profile.availableToViewMainInfo,
+          availableToSearch: myUserPrivacy.profile.availableToSearch,
+        },
+      }
+    : {}
 
 export default formDefaultValues

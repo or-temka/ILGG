@@ -1,3 +1,3 @@
 export interface GamesPrivacyInterface {
-  onlyAvailableToMe: Boolean
+  availableToView: 'onlyMe' | 'friends' | 'all'
 }

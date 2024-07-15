@@ -1,3 +1,4 @@
 export interface ProfilePrivacyInterface {
-  mainInfoOnlyFriends: Boolean
+  availableToViewMainInfo: 'onlyMe' | 'friends' | 'all'
+  availableToSearch: 'friends' | 'all'
 }

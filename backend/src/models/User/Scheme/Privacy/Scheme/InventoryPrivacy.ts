@@ -1,15 +1,11 @@
 import mongoose from 'mongoose'
+import { InventoryPrivacyInterface } from './interfaces/InventoryPrivacyInterface'
 
-const InventoryPrivacySchema = new mongoose.Schema({
-  onlyAvailableToMe: {
-    type: Boolean,
+const InventoryPrivacySchema = new mongoose.Schema<InventoryPrivacyInterface>({
+  availableToView: {
+    type: String,
     required: true,
-    default: false,
-  },
-  onlyAvailableToMeAndFriends: {
-    type: Boolean,
-    required: true,
-    default: false,
+    default: 'all',
   },
 })
 

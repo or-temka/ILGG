@@ -16,24 +16,28 @@ const editPrivacy = async (req: any, res: any) => {
 
     const privacy: UserInterface['privacy'] = User.privacy
 
-    privacy.games.onlyAvailableToMe =
-      privacyBody.games?.onlyAvailableToMe ?? privacy.games.onlyAvailableToMe
+    privacy.games.availableToView =
+      privacyBody.games?.availableToView ?? privacy.games.availableToView
 
-    privacy.inventory.onlyAvailableToMe =
-      privacyBody.inventory?.onlyAvailableToMe ??
-      privacy.inventory.onlyAvailableToMe
+    privacy.inventory.availableToView =
+      privacyBody.inventory?.availableToView ??
+      privacy.inventory.availableToView
 
-    privacy.inventory.onlyAvailableToMeAndFriends =
-      privacyBody.inventory?.onlyAvailableToMeAndFriends ??
-      privacy.inventory.onlyAvailableToMeAndFriends
+    privacy.inventory.availableToView =
+      privacyBody.inventory?.availableToView ??
+      privacy.inventory.availableToView
 
-    privacy.messages.onlyFriendMessages =
-      privacyBody.messages?.onlyFriendMessages ??
-      privacy.messages.onlyFriendMessages
+    privacy.messages.sendingAvailable =
+      privacyBody.messages?.sendingAvailable ??
+      privacy.messages.sendingAvailable
 
-    privacy.profile.mainInfoOnlyFriends =
-      privacyBody.profile?.mainInfoOnlyFriends ??
-      privacy.profile.mainInfoOnlyFriends
+    privacy.profile.availableToViewMainInfo =
+      privacyBody.profile?.availableToViewMainInfo ??
+      privacy.profile.availableToViewMainInfo
+
+    privacy.profile.availableToSearch =
+      privacyBody.profile?.availableToSearch ??
+      privacy.profile.availableToSearch
 
     User.save()
 
