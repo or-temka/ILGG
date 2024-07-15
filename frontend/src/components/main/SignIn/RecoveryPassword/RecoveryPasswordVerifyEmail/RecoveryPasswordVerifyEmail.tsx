@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom'
 import { useCallback, useState } from 'react'
 import { AxiosError } from 'axios'
 
@@ -18,8 +17,10 @@ import {
   sendRecoveryActivationCodeResponse,
 } from 'models/response/RecoveryPasswordResponse'
 import EnterNewPassword from './EnterNewPassword/EnterNewPassword'
-
 import styles from './RecoveryPasswordVerifyEmail.module.scss'
+import { useForm } from 'react-hook-form'
+import { RecoveryPasswordVerifyEmailForm } from './interfaces'
+import Regex from 'utils/regex'
 
 const preloadSrcList: string[] = [ImgEnvelope]
 
@@ -34,7 +35,10 @@ function RecoveryPasswordVerifyEmail({
   emailOrLogin,
   onCloseSignIn,
 }: VerifyEmailProps) {
-  const navigate = useNavigate()
+  const { register, handleSubmit, watch } =
+    useForm<RecoveryPasswordVerifyEmailForm>({
+      defaultValues: { activationCode: '' },
+    })
   const addNotificationErrorPanel = useNotificationPanel({
     variant: FloatingNotificationVariant.error,
   })
@@ -42,7 +46,6 @@ function RecoveryPasswordVerifyEmail({
     variant: FloatingNotificationVariant.success,
   })
   const { imagesPreloaded } = useImagePreloader(preloadSrcList)
-  const [codeValue, setCodeValue] = useState('')
   const [disabledSendBtn, setDisabledSendBtn] = useState(false)
 
   const [userChangePassData, setUserChangePassData] =
@@ -63,25 +66,28 @@ function RecoveryPasswordVerifyEmail({
       })
   }, [emailOrLogin, addNotificationErrorPanel, addNotificationSuccessPanel])
 
-  const onClickSendCodeHandler = useCallback(async () => {
-    setDisabledSendBtn(true)
-    await RecoveryPasswordService.sendRecoveryActivationCode(
-      emailOrLogin,
-      codeValue
-    )
-      .then((res) => {
-        const data = res.data
-        setUserChangePassData({
-          email: data.email,
-          activationLink: data.activationLink,
+  const onSubmit = useCallback(
+    async (data: RecoveryPasswordVerifyEmailForm) => {
+      setDisabledSendBtn(true)
+      await RecoveryPasswordService.sendRecoveryActivationCode(
+        emailOrLogin,
+        data.activationCode
+      )
+        .then((res) => {
+          const data = res.data
+          setUserChangePassData({
+            email: data.email,
+            activationLink: data.activationLink,
+          })
         })
-      })
-      .catch((error: AxiosError<RecoveryEmailError>) => {
-        const errorMsg = error?.response?.data.errorMsg
-        addNotificationErrorPanel(errorMsg || 'Произошла ошибка!')
-      })
-      .finally(() => setDisabledSendBtn(false))
-  }, [emailOrLogin, codeValue, navigate, addNotificationErrorPanel])
+        .catch((error: AxiosError<RecoveryEmailError>) => {
+          const errorMsg = error?.response?.data.errorMsg
+          addNotificationErrorPanel(errorMsg || 'Произошла ошибка!')
+        })
+        .finally(() => setDisabledSendBtn(false))
+    },
+    [emailOrLogin, addNotificationErrorPanel]
+  )
 
   if (!imagesPreloaded) {
     return <LoadingPopUp />
@@ -101,25 +107,38 @@ function RecoveryPasswordVerifyEmail({
           </span>
 
           <div className={styles.modal__confirmField}>
-            <div className={styles.modal__confirmCodeField}>
+            <form
+              className={styles.modal__confirmCodeField}
+              onSubmit={handleSubmit(onSubmit)}
+            >
               <Input
-                value={codeValue}
-                onChange={(e) => setCodeValue(e.target.value)}
+                register={register('activationCode', {
+                  required: {
+                    value: true,
+                    message: 'Поле обязательно для заполнения',
+                  },
+                  pattern: {
+                    value: Regex.verifyCode,
+                    message: 'Код должен состоять из 6 символов',
+                  },
+                })}
                 placeholder="Код подтверждения"
                 classNames={{ wrapper: styles.modal__inputWrapper }}
               />
-              {!codeValue.length ? (
+              {!watch('activationCode').length ? (
                 <RepeatButton onClick={onClickRepeatSendEmailHandler} />
               ) : (
                 <Button
+                  type="submit"
                   title="Подтвердить"
                   variant={ButtonVariant.primary}
                   className={styles.modal__confirmEmailCodeBtn}
-                  disabled={codeValue.length !== 6 || disabledSendBtn}
-                  onClick={onClickSendCodeHandler}
+                  disabled={
+                    watch('activationCode').length !== 6 || disabledSendBtn
+                  }
                 />
               )}
-            </div>
+            </form>
 
             <img
               src={require('assets/images/posters/email-envelope.png')}
