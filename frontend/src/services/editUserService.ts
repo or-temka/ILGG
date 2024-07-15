@@ -11,4 +11,8 @@ export default class EditUserService {
   ): Promise<AxiosResponse<IMyUser>> {
     return $api.patch<IMyUser>('user/edit/profile', { name, about })
   }
+
+  static async editMainInfo(login: string): Promise<AxiosResponse<IMyUser>> {
+    return $api.patch<IMyUser>('user/edit/main', { login })
+  }
 }

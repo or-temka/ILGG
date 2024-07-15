@@ -1,10 +1,8 @@
-import { RegisterOptions } from 'react-hook-form'
-
 import Regex from 'utils/regex'
 import { GenericUseFormValidation } from '../generic'
 
 export default class AuthUserFormValidation {
-  static activationCode: RegisterOptions = {
+  static activationCode = {
     required: GenericUseFormValidation.required,
     pattern: {
       value: Regex.verifyCode,
