@@ -15,6 +15,9 @@ import { ReactComponent as LogoSVG } from 'assets/svgs/logo.svg'
 import PosterImage from 'assets/images/posters/poster1.jpg'
 import styles from './SignIn.module.scss'
 import InputPassword from 'components/UI/inputs/InputPassword/InputPassword'
+import { useForm } from 'react-hook-form'
+import { SignInForm } from './interfaces'
+import Regex from 'utils/regex'
 
 const preloadSrcList: string[] = [PosterImage]
 
@@ -28,37 +31,31 @@ function SignIn({ onClose = () => {} }) {
   const addNotificationErrorPanel = useNotificationPanel({
     variant: FloatingNotificationVariant.error,
   })
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignInForm>()
 
-  const [userLogin, setUserLogin] = useState('')
-  const [userPassword, setUserPassword] = useState('')
   const [isDisabledLoginBtn, setIsDisabledLoginBtn] = useState(false)
   const [showRecoveryPassword, setShowRecoveryPassword] = useState(false)
 
   const { imagesPreloaded } = useImagePreloader(preloadSrcList)
-
   if (!imagesPreloaded) {
     return <LoadingPopUp />
   }
 
-  const onClickLoginHandler = () => {
+  const onSubmit = (data: SignInForm) => {
     setIsDisabledLoginBtn(true)
-
-    const credentials = {
-      login: userLogin,
-      password: userPassword,
-    }
-
-    dispatch<any>(login(credentials)).then((res: any) => {
+    dispatch<any>(login(data)).then((res: any) => {
       const requestStatus: 'rejected' | 'fullfiled' = res.meta.requestStatus
       const errorPayload = res.payload
-
       if (requestStatus === 'rejected') {
         addNotificationErrorPanel(errorPayload?.errorMsg)
       } else {
         onClose()
         navigate('/')
       }
-
       setIsDisabledLoginBtn(false)
     })
   }
@@ -80,30 +77,47 @@ function SignIn({ onClose = () => {} }) {
           <div className={styles.popUp__label}>
             <h2 className={styles.popUp__labelText}>Вход в аккаунт</h2>
           </div>
-          <div className={styles.popUp__form}>
+          <form
+            className={styles.popUp__form}
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <div className={styles.popUp__inputs}>
               <Input
+                register={register('login', {
+                  required: {
+                    value: true,
+                    message: 'Поле обязательно для заполнения',
+                  },
+                  pattern: {
+                    value: Regex.user.login,
+                    message: 'Не соответствует формату логина',
+                  },
+                })}
                 label="Логин:"
                 placeholder="Введите ваш логин"
-                value={userLogin}
                 variant={InputVariant.light}
-                onChange={(e) => setUserLogin(e.target.value)}
+                errorText={errors.login?.message}
               />
               <InputPassword
+                register={register('password', {
+                  required: {
+                    value: true,
+                    message: 'Поле обязательно для заполнения',
+                  },
+                })}
                 label="Пароль:"
                 placeholder="Введите ваш пароль"
                 name="password"
                 autoComplete="current-password"
-                value={userPassword}
-                onChange={(e) => setUserPassword(e.target.value)}
+                errorText={errors.password?.message}
               />
             </div>
             <div className={styles.popUp__buttons}>
               <Button
                 title="Войти"
+                type="submit"
                 variant={ButtonVariant.primary}
                 disabled={isDisabledLoginBtn}
-                onClick={onClickLoginHandler}
               />
               <span
                 className={styles.popUp__recoveryPasswordLink}
@@ -114,13 +128,14 @@ function SignIn({ onClose = () => {} }) {
               <Button
                 title="У меня нет аккаунта"
                 variant={ButtonVariant.light}
+                type="button"
                 onClick={() => {
                   navigate(pageLink.signUpEmail)
                   onClose()
                 }}
               />
             </div>
-          </div>
+          </form>
         </div>
       </PopUpSkeleton>
 
