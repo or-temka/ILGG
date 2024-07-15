@@ -1,4 +1,5 @@
 import { IMyUserBalance } from './IMyUserBalance'
+import { IMyUserPrivacy } from './IMyUserPrivacy'
 
 export interface IMyUser {
   id: string
@@ -9,4 +10,5 @@ export interface IMyUser {
   balance: IMyUserBalance
   isOnline: Boolean
   about: string
+  privacy: IMyUserPrivacy
 }

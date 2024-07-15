@@ -3,6 +3,7 @@ import { AxiosResponse } from 'axios'
 import $api from 'http/axios'
 
 import { IMyUser } from 'models/myUser/IMyUser'
+import { IMyUserPrivacy } from 'models/myUser/IMyUserPrivacy'
 
 export default class EditUserService {
   static async editProfile(
@@ -26,5 +27,11 @@ export default class EditUserService {
       newPassword,
       newPasswordConfirm,
     })
+  }
+
+  static async editPrivacy(
+    privacy: IMyUserPrivacy
+  ): Promise<AxiosResponse<IMyUser>> {
+    return $api.patch<IMyUser>('user/edit/privacy', privacy)
   }
 }
