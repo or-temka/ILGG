@@ -1,5 +1,6 @@
-import { ChangeEventHandler, MouseEventHandler, ReactNode, useRef } from 'react'
+import { InputHTMLAttributes, ReactNode, useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
+import { UseFormRegisterReturn } from 'react-hook-form'
 
 import btnStyles from '../Input/Input.module.scss'
 import styles from './InputWithBtnIcon.module.scss'
@@ -9,38 +10,30 @@ export enum InputWithBtnIconVariant {
   light = 'light',
 }
 
-interface InputWithBtnIconProps {
-  value: string
-  input?: {
-    type?: React.HTMLInputTypeAttribute
-    name?: string
-    autocomplete?: string
-  }
-  placeholder?: string
+export interface InputWithBtnIconProps
+  extends InputHTMLAttributes<HTMLInputElement> {
   label?: string
   variant?: InputWithBtnIconVariant
   errorText?: string
   svgComponent?: ReactNode
-  onChange?: ChangeEventHandler<HTMLInputElement>
-  onClick?: MouseEventHandler<HTMLDivElement>
   onClickBtnIcon?: (input: ParentNode | null) => void
   className?: string
   wrapperClassName?: string
+  register?: UseFormRegisterReturn
+  [key: string]: any
 }
 
 function InputWithBtnIcon({
-  value = '',
-  input = {},
-  placeholder = '',
   label = '',
   variant = InputWithBtnIconVariant.simple,
   errorText = '',
   svgComponent,
-  onChange = () => {},
-  onClick = () => {},
   onClickBtnIcon = () => {},
+  onClick = () => {},
   className = '',
   wrapperClassName = '',
+  register,
+  ...restProps
 }: InputWithBtnIconProps) {
   const htmlIdRef = useRef(uuidv4())
 
@@ -57,12 +50,6 @@ function InputWithBtnIcon({
       <div className={styles.input__inputContainer}>
         <input
           id={htmlIdRef.current}
-          value={value}
-          type={input.type || 'text'}
-          name={input.name}
-          autoComplete={input.autocomplete}
-          onChange={onChange}
-          placeholder={placeholder}
           className={[
             btnStyles.input__input,
             styles.input__input,
@@ -72,6 +59,8 @@ function InputWithBtnIcon({
               : btnStyles.input__input_simple,
             className,
           ].join(' ')}
+          {...register}
+          {...restProps}
         />
         {svgComponent && (
           <div

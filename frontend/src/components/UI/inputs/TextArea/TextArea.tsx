@@ -1,4 +1,5 @@
-import { ChangeEventHandler, MouseEventHandler, useRef } from 'react'
+import { TextareaHTMLAttributes, useRef } from 'react'
+import { UseFormRegisterReturn } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 
 import styles from './TextArea.module.scss'
@@ -8,32 +9,24 @@ export enum Variant {
   light = 'light',
 }
 
-interface TextAreaProps {
-  value: string
-  placeholder?: string
+interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   variant?: Variant
   label?: string
   errorText?: string
-  cols?: number
-  rows?: number
-  onChange?: ChangeEventHandler<HTMLTextAreaElement>
-  onClick?: MouseEventHandler<HTMLTextAreaElement>
   className?: string
   wrapperClassName?: string
+  register?: UseFormRegisterReturn
+  [key: string]: any
 }
 
 function TextArea({
-  value = '',
-  placeholder = '',
   variant = Variant.simple,
   label = '',
   errorText = '',
-  cols = 45,
-  rows = 5,
-  onChange = () => {},
-  onClick = () => {},
   className = '',
   wrapperClassName = '',
+  register,
+  ...restProps
 }: TextAreaProps) {
   const htmlIdRef = useRef(uuidv4())
 
@@ -46,12 +39,6 @@ function TextArea({
       )}
       <textarea
         id={htmlIdRef.current}
-        cols={cols}
-        rows={rows}
-        value={value}
-        placeholder={placeholder}
-        onChange={onChange}
-        onClick={onClick}
         className={[
           styles.textArea__input,
           variant === 'simple'
@@ -60,6 +47,8 @@ function TextArea({
           errorText ? styles.textArea__input_error : '',
           className,
         ].join(' ')}
+        {...register}
+        {...restProps}
       ></textarea>
       {errorText && (
         <span className={['small-text', styles.textArea__errorText].join(' ')}>

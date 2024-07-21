@@ -1,0 +1,43 @@
+.fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: flex;
+  flex-flow: column;
+
+  &__legend {
+    padding: 8px 20px;
+    border-radius: 5px;
+    color: var(--active-color);
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      flex: 1;
+      height: 2px;
+      background-color: var(--background-3-hover-color);
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+    padding: 5px 0px;
+
+    & > span,
+    & > div {
+      max-width: 50%;
+    }
+  }
+}

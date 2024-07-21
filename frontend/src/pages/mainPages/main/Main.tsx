@@ -2,19 +2,14 @@ import { useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch } from '../../../redux/store'
 
-import {
-  fetchApplicationsSimpleInfo,
-  selectMainPageApplications,
-} from '../../../redux/slices/mainPageApplicationsSlice'
+import { selectMainPageApplications } from '../../../redux/slices/mainPageApplications/slice'
 import pageLink from '../../../pagesLinks'
-
 import Input from '../../../components/UI/inputs/Input/Input'
 import GameBigCard from '../../../components/cards/GameBigCard/GameBigCard'
 import GameBigCardSkeleton from '../../../components/cards/GameBigCardSkeleton/GameBigCardSkeleton'
-
 import { clearPageName } from '../../../utils/setPageName'
-
 import styles from './Main.module.scss'
+import fetchApplicationsSimpleInfo from '../../../redux/slices/mainPageApplications/thunks/fetchApplicationsSimpleInfo'
 
 function Main() {
   const [searchValue, setSearchValue] = useState<string>('')

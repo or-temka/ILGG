@@ -1,4 +1,3 @@
 export interface InventoryPrivacyInterface {
-  onlyAvailableToMe: Boolean
-  onlyAvailableToMeAndFriends: Boolean
+  availableToView: 'onlyMe' | 'friends' | 'all'
 }

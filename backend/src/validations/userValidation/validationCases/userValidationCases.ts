@@ -58,7 +58,7 @@ export const name = (name: string = 'name', queryType: queryType = 'body') =>
       max: 30,
     })
     .withMessage('имя пользователя должно содержать от 1 до 30 символов')
-    .matches(/^[a-zA-Zа-яА-ЯёЁ0-9]+$/)
+    .matches(/^(?!.*\s{2})[a-zA-Zа-яА-ЯёЁ0-9_]+(?:\s[a-zA-Zа-яА-ЯёЁ0-9_]+)*$/)
     .withMessage(
       'Имя пользователя должно содержать только буквы латинского, русского алфавита и цифры'
     )
@@ -67,3 +67,6 @@ export const about = (name: string = 'about', queryType: queryType = 'body') =>
   getQueryType(queryType, name)
     .isString()
     .withMessage('Информация о себе должна быть строкой')
+    .isLength({
+      max: 500,
+    })

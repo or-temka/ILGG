@@ -1,10 +1,4 @@
-import {
-  ChangeEventHandler,
-  MouseEventHandler,
-  useCallback,
-  useRef,
-  useState,
-} from 'react'
+import { InputHTMLAttributes, useCallback, useRef, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { ReactComponent as ImageSVG } from 'assets/svgs/image.svg'
@@ -16,36 +10,31 @@ export enum InputFileVariant {
   light = styles.input__input_light,
 }
 
-interface InputFileProps {
+interface InputFileProps extends InputHTMLAttributes<HTMLInputElement> {
   setFile: React.Dispatch<React.SetStateAction<File | null>>
   file: File | null
 
-  accept?: string | undefined
-  placeholder?: string
-  label?: string
   variant?: InputFileVariant
   errorText?: string
-  onChange?: ChangeEventHandler<HTMLInputElement>
-  onClick?: MouseEventHandler<HTMLInputElement>
 
   classNames?: {
     input?: string
     placeholder?: string
     wrapper?: string
   }
+  [key: string]: any
 }
 
 function InputFile({
   placeholder = 'Выберите файл...',
   file,
   label = '',
-  accept,
   setFile,
-  variant = InputFileVariant.simple, // types: simple, light
+  variant = InputFileVariant.simple,
   errorText = '',
   onChange = () => {},
-  onClick = () => {},
   classNames = {},
+  ...restProps
 }: InputFileProps) {
   const [fileContent, setFileContent] = useState<any>(null)
   const htmlIdRef = useRef(uuidv4())
@@ -91,10 +80,9 @@ function InputFile({
       <input
         id={htmlIdRef.current}
         type="file"
-        accept={accept}
         onChange={fileChangeHandle}
-        onClick={onClick}
         className={[styles.input__input, classNames.input].join(' ')}
+        {...restProps}
       />
       {errorText && (
         <span className={['small-text', styles.input__errorText].join(' ')}>

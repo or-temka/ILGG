@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, LinkProps } from 'react-router-dom'
 
 import styles from './TextLink.module.scss'
 
@@ -9,22 +9,20 @@ export enum Variant {
   bold = 'bold',
 }
 
-interface TextLinkProps {
-  to: string
+interface TextLinkProps extends LinkProps {
   children?: ReactNode
   variant?: Variant
   text?: string
-  onClick?: Function
   className?: string
+  [key: string]: any
 }
 
 function TextLink({
-  to = '/',
   children,
   variant = Variant.simple, // types: simple, text, bold
   text = '',
-  onClick = () => {},
   className = '',
+  ...restProps
 }: TextLinkProps) {
   return (
     <Link
@@ -37,8 +35,7 @@ function TextLink({
           : styles.link_bold,
         className,
       ].join(' ')}
-      to={to}
-      onClick={() => onClick()}
+      {...restProps}
     >
       {text || children}
     </Link>

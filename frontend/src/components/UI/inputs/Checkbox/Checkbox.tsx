@@ -1,26 +1,23 @@
-import { ChangeEventHandler, MouseEventHandler, useRef } from 'react'
+import { InputHTMLAttributes, useRef } from 'react'
+import { UseFormRegisterReturn } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 
 import styles from './Checkbox.module.scss'
 
-interface CheckboxProps {
+interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string
-  style?: any
-  checked?: boolean
-  disabled?: boolean
-  onClick?: MouseEventHandler<HTMLInputElement>
-  onChange?: ChangeEventHandler<HTMLInputElement>
   className?: string
+  register?: UseFormRegisterReturn
+  [key: string]: any
 }
 
 function Checkbox({
   label = '',
-  style,
   checked = false,
   disabled = false,
-  onClick = () => {},
-  onChange = () => {},
   className = '',
+  register,
+  ...restProps
 }: CheckboxProps) {
   const htmlIdRef = useRef(uuidv4())
 
@@ -28,14 +25,11 @@ function Checkbox({
     <div className={[styles.checkbox, className].join(' ')}>
       <div className={['preload', styles.preload].join(' ')} />
       <input
-        id={htmlIdRef.current}
         type="checkbox"
-        checked={checked}
-        disabled={disabled}
+        id={htmlIdRef.current}
         className={[styles.checkbox__input, className].join(' ')}
-        style={style}
-        onClick={onClick}
-        onChange={onChange}
+        {...register}
+        {...restProps}
       />
       <label
         htmlFor={htmlIdRef.current}

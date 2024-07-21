@@ -1,9 +1,9 @@
 import { Suspense, lazy, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 
-import { selectFriends } from '../../../../redux/slices/friendsSlice'
+import { selectFriends } from '../../../../redux/slices/friendsSlice/slice'
 import { IUserProfile } from 'models/user/IUserProfile'
-import { selectMyUser } from '../../../../redux/slices/myProfileSlice'
+import { selectMyUser } from '../../../../redux/slices/myProfile/slice'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import AddFriendPopUp from './addFriendPopUp/AddFriendPopUp'
 import FriendMiniProfile from './friendMiniProfile/FriendMiniProfile'

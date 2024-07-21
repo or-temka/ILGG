@@ -1,17 +1,16 @@
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-import {
-  SortValue,
-  SorterFields,
-  sortShopAppsBy,
-} from '../../../../redux/slices/shopAppsSlice'
+import { sortShopAppsBy } from '../../../../redux/slices/shopApps/slice'
 import ButtonWithIcon, {
   ButtonWithIconIconPosition,
 } from 'components/UI/buttons/ButtonWithIcon/ButtonWithIcon'
-
 import { ReactComponent as ArrowSVG } from 'assets/svgs/arrow.svg'
 import styles from './Sorter.module.scss'
+import {
+  SorterFields,
+  SortValue,
+} from '../../../../redux/slices/shopApps/interfaces'
 
 type Sorted = { [key in SorterFields]: SortValue }
 

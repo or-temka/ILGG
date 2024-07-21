@@ -1,58 +1,67 @@
 import { useCallback, useState } from 'react'
-
-import Input from 'components/UI/inputs/Input/Input'
-import Checkbox from 'components/UI/inputs/Checkbox/Checkbox'
+import { useForm } from 'react-hook-form'
+import { useDispatch, useSelector } from 'react-redux'
+import { AxiosResponse } from 'axios'
 
 import styles from './Form.module.scss'
+import {
+  selectMyUser,
+  setMyUser,
+} from '../../../../../../../redux/slices/myProfile/slice'
+import { PrivacySettingsForm } from './interfaces'
+import formDefaultValues from './formDefaultValues'
+import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
+import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
+import onSubmit from './onSubmit'
+import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
+import AppsFieldset from './components/AppsFieldset'
+import InventoryFieldset from './components/InventoryFieldset'
+import MessagesFieldset from './components/MessagesFieldset'
+import ProfileFieldset from './components/ProfileFieldset'
 
 function Form() {
-  const [checkboxsValues, setCheckboxValues] = useState({
-    onlyFriendProfile: false,
-    onlyFriendMsg: false,
-    onlyMeInventory: false,
+  const dispatch = useDispatch()
+  const [isSendBtnLoading, setIsSendBtnLoading] = useState(false)
+  const myUserPrivacy = useSelector(selectMyUser).data?.privacy
+  const {
+    control,
+    handleSubmit,
+    setError,
+    formState: { errors },
+  } = useForm<PrivacySettingsForm>({
+    defaultValues: formDefaultValues(myUserPrivacy),
   })
 
-  const onSubmit = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault()
+  const addNotificationSuccessPanel = useNotificationPanel({
+    variant: FloatingNotificationVariant.success,
+  })
+
+  const onSubmited = useCallback(
+    (res: AxiosResponse) => {
+      addNotificationSuccessPanel('Успешно сохранено!')
+      dispatch(setMyUser(res.data))
     },
-    [checkboxsValues]
+    [addNotificationSuccessPanel, dispatch]
   )
 
   return (
     <>
-      <form onSubmit={onSubmit} className={styles.form}>
-        <Checkbox
-          label="Основная информация моего профиля доступна только друзьям"
-          checked={checkboxsValues.onlyFriendProfile}
-          onChange={() =>
-            setCheckboxValues((prev) => ({
-              ...prev,
-              onlyFriendProfile: !prev.onlyFriendProfile,
-            }))
-          }
-        />
+      <form
+        onSubmit={handleSubmit((data) =>
+          onSubmit(data, setError, onSubmited, setIsSendBtnLoading)
+        )}
+        className={styles.form}
+      >
+        <AppsFieldset control={control} errors={errors} />
+        <InventoryFieldset control={control} errors={errors} />
+        <MessagesFieldset control={control} errors={errors} />
+        <ProfileFieldset control={control} errors={errors} />
 
-        <Checkbox
-          label="Мне могут писать личные сообщения только друзья"
-          checked={checkboxsValues.onlyFriendMsg}
-          onChange={() =>
-            setCheckboxValues((prev) => ({
-              ...prev,
-              onlyFriendMsg: !prev.onlyFriendMsg,
-            }))
-          }
-        />
-
-        <Checkbox
-          label="Информация о моем инвентаре доступна только мне"
-          checked={checkboxsValues.onlyMeInventory}
-          onChange={() =>
-            setCheckboxValues((prev) => ({
-              ...prev,
-              onlyMeInventory: !prev.onlyMeInventory,
-            }))
-          }
+        <Button
+          title="Сохранить"
+          type="submit"
+          variant={ButtonVariant.primary}
+          disabled={isSendBtnLoading}
         />
       </form>
     </>

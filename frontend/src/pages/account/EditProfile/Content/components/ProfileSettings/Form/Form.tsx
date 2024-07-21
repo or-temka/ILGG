@@ -1,49 +1,65 @@
+import { useDispatch, useSelector } from 'react-redux'
+import { useForm } from 'react-hook-form'
+import { AxiosResponse } from 'axios'
 import { useCallback, useState } from 'react'
 
-import Input from 'components/UI/inputs/Input/Input'
-import TextArea from 'components/UI/inputs/TextArea/TextArea'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
-
+import { ProfileSettingsForm } from './interfaces'
+import onSubmit from './onSubmit'
+import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
+import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
 import styles from './Form.module.scss'
+import InputName from './components/InputName'
+import InputAbout from './components/InputAbout'
+import {
+  selectMyUser,
+  setMyUser,
+} from '../../../../../../../redux/slices/myProfile/slice'
 
 function Form() {
-  const [aboutInput, setAboutInput] = useState('')
-  const [usernameInput, setUsernameInput] = useState('')
-  const [realNameInput, setRealNameInput] = useState('')
-
-  const onSubmit = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault()
+  const dispatch = useDispatch()
+  const [isSendBtnLoading, setIsSendBtnLoading] = useState(false)
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setError,
+  } = useForm<ProfileSettingsForm>({
+    defaultValues: {
+      name: useSelector(selectMyUser).data?.name,
+      about: useSelector(selectMyUser).data?.about,
     },
-    [aboutInput, usernameInput, realNameInput]
+    mode: 'onChange',
+  })
+
+  const addNotificationSuccessPanel = useNotificationPanel({
+    variant: FloatingNotificationVariant.success,
+  })
+
+  const onSubmited = useCallback(
+    (res: AxiosResponse) => {
+      addNotificationSuccessPanel('Успешно сохранено!')
+      dispatch(setMyUser(res.data))
+    },
+    [addNotificationSuccessPanel, dispatch]
   )
 
   return (
     <>
-      <form onSubmit={onSubmit} className={styles.form}>
-        <Input
-          label="Имя пользователя:"
-          placeholder="Укажите имя пользователя"
-          value={usernameInput}
-          onChange={(e) => setUsernameInput(e.target.value)}
-        />
-        <Input
-          label="Настоящее имя:"
-          placeholder="Укажите ваше настоящее имя"
-          value={realNameInput}
-          onChange={(e) => setRealNameInput(e.target.value)}
-        />
-        <TextArea
-          label="О себе:"
-          placeholder="Укажите информацию о себе"
-          value={aboutInput}
-          onChange={(e) => setAboutInput(e.target.value)}
-        />
+      <form
+        onSubmit={handleSubmit((data) =>
+          onSubmit(data, setError, onSubmited, setIsSendBtnLoading)
+        )}
+        className={styles.form}
+      >
+        <InputName register={register} errors={errors} />
+        <InputAbout register={register} errors={errors} />
 
         <Button
           title="Сохранить"
           variant={ButtonVariant.primary}
-          buttonType={'submit'}
+          type="submit"
+          disabled={isSendBtnLoading}
         />
       </form>
     </>

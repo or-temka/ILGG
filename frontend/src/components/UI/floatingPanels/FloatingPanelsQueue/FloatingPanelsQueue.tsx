@@ -2,16 +2,15 @@ import { useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import {
-  IFloatingPanelsQueue,
   PanelVariant,
   prepareToRemove,
   removePanel,
   selectPanels,
-} from '../../../../redux/slices/floatingPanelsQueueSlice'
+} from '../../../../redux/slices/floatingPanelsQueue/slice'
 import FloatingPanelSkeleton from '../skeletons/FloatingPanelSkeleton/FloatingPanelSkeleton'
 import FloatingNotification from '../FloatingNotification/FloatingNotification'
-
 import styles from './FloatingPanelsQueue.module.scss'
+import IFloatingPanelsQueue from '../../../../redux/slices/floatingPanelsQueue/interfaces'
 
 interface FloatingPanelsQueueProps {
   itemLifeTime?: number

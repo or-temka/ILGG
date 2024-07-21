@@ -16,24 +16,64 @@ const editPrivacy = async (req: any, res: any) => {
 
     const privacy: UserInterface['privacy'] = User.privacy
 
-    privacy.games.onlyAvailableToMe =
-      privacyBody.games?.onlyAvailableToMe ?? privacy.games.onlyAvailableToMe
+    // games
+    privacy.games.availableToView =
+      privacyBody.games?.availableToView ?? privacy.games.availableToView
 
-    privacy.inventory.onlyAvailableToMe =
-      privacyBody.inventory?.onlyAvailableToMe ??
-      privacy.inventory.onlyAvailableToMe
+    privacy.games.availableToViewAchievement =
+      privacyBody.games?.availableToViewAchievement ??
+      privacy.games.availableToViewAchievement
 
-    privacy.inventory.onlyAvailableToMeAndFriends =
-      privacyBody.inventory?.onlyAvailableToMeAndFriends ??
-      privacy.inventory.onlyAvailableToMeAndFriends
+    // inventory
+    privacy.inventory.availableToView =
+      privacyBody.inventory?.availableToView ??
+      privacy.inventory.availableToView
 
-    privacy.messages.onlyFriendMessages =
-      privacyBody.messages?.onlyFriendMessages ??
-      privacy.messages.onlyFriendMessages
+    // messages
+    privacy.messages.sendingAvailable =
+      privacyBody.messages?.sendingAvailable ??
+      privacy.messages.sendingAvailable
 
-    privacy.profile.mainInfoOnlyFriends =
-      privacyBody.profile?.mainInfoOnlyFriends ??
-      privacy.profile.mainInfoOnlyFriends
+    privacy.messages.presentSendingAvailable =
+      privacyBody.messages?.presentSendingAvailable ??
+      privacy.messages.presentSendingAvailable
+
+    privacy.messages.inviteAppAvailable =
+      privacyBody.messages?.inviteAppAvailable ??
+      privacy.messages.inviteAppAvailable
+
+    // profile
+    privacy.profile.availableToViewMainInfo =
+      privacyBody.profile?.availableToViewMainInfo ??
+      privacy.profile.availableToViewMainInfo
+
+    privacy.profile.availableToSearch =
+      privacyBody.profile?.availableToSearch ??
+      privacy.profile.availableToSearch
+
+    privacy.profile.availableToViewRealName =
+      privacyBody.profile?.availableToViewRealName ??
+      privacy.profile.availableToViewRealName
+
+    privacy.profile.sendCommentInMyProfileAvailable =
+      privacyBody.profile?.sendCommentInMyProfileAvailable ??
+      privacy.profile.sendCommentInMyProfileAvailable
+
+    privacy.profile.availableToViewCommentsInMyProfile =
+      privacyBody.profile?.availableToViewCommentsInMyProfile ??
+      privacy.profile.availableToViewCommentsInMyProfile
+
+    privacy.profile.availableToViewMyFriends =
+      privacyBody.profile?.availableToViewMyFriends ??
+      privacy.profile.availableToViewMyFriends
+
+    privacy.profile.availableToViewMyProfileLevel =
+      privacyBody.profile?.availableToViewMyProfileLevel ??
+      privacy.profile.availableToViewMyProfileLevel
+
+    privacy.profile.availableToViewMyOnlineStatus =
+      privacyBody.profile?.availableToViewMyOnlineStatus ??
+      privacy.profile.availableToViewMyOnlineStatus
 
     User.save()
 
