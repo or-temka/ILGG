@@ -1,10 +1,10 @@
 import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
-import contentType from '../contentType'
+import contentType from '../interfaces'
 
 import styles from './Aside.module.scss'
 
 interface AsideProps {
-  setContentType: React.Dispatch<React.SetStateAction<contentType>>
+  setContentType: Function
   activeContentType: contentType
 }
 

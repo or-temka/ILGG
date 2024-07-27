@@ -1,13 +1,27 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useLocation, useSearchParams } from 'react-router-dom'
+import queryString from 'query-string'
 
 import Aside from './Aside/Aside'
 import Content from './Content/Content'
-import contentType from './contentType'
-
 import styles from './EditProfile.module.scss'
+import ContentType, { isContentType } from './interfaces'
 
 function EditProfile() {
-  const [activeContent, setActiveContent] = useState<contentType>('profile')
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [activeContent, setActiveContent] = useState<ContentType>('profile')
+
+  useEffect(() => {
+    const params = queryString.parse(searchParams.toString())
+    if (isContentType(params.tab)) {
+      setActiveContent(params.tab)
+    }
+  }, [setActiveContent, searchParams])
+
+  const setActiveContentTab = (tab: ContentType) => {
+    setActiveContent(tab)
+    setSearchParams({ tab })
+  }
 
   return (
     <>
@@ -16,7 +30,7 @@ function EditProfile() {
           <Content contentType={activeContent} />
 
           <Aside
-            setContentType={setActiveContent}
+            setContentType={setActiveContentTab}
             activeContentType={activeContent}
           />
         </div>

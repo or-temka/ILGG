@@ -34,4 +34,14 @@ export default class EditUserService {
   ): Promise<AxiosResponse<IMyUser>> {
     return $api.patch<IMyUser>('user/edit/privacy', privacy)
   }
+
+  static async editAvatar(
+    fileFormData: FormData
+  ): Promise<AxiosResponse<IMyUser>> {
+    return $api.patch<IMyUser>('user/edit/avatar', fileFormData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
+  }
 }

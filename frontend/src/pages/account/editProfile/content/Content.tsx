@@ -1,4 +1,4 @@
-import contentType from '../contentType'
+import contentType from '../interfaces'
 import Avatar from './components/Avatar/Avatar'
 import MainInfoSettings from './components/MainInfoSettings/MainInfoSettings'
 import Password from './components/PasswordSettings/Password'

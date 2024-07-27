@@ -1,5 +1,9 @@
 import Regex from 'utils/regex'
 import { GenericUseFormValidation } from '../generic'
+import {
+  thisFileIsImage,
+  thisFileMoreMb,
+} from 'utils/validations/fileValidations'
 
 export default class UserUseFormValidation {
   static username = {
@@ -56,4 +60,17 @@ export default class UserUseFormValidation {
       message: 'Пароль должен содеражать не более 50 символов',
     },
   }
+
+  static avatar = {
+    required: GenericUseFormValidation.required,
+    validate: validateUserAvatar,
+  }
+}
+
+function validateUserAvatar(value: FileList) {
+  const file = value[0]
+  if (!thisFileIsImage(file))
+    return 'Только изображение в формате jpg, jpeg, png'
+  if (thisFileMoreMb(file)) return 'Размер файла не должен превышать 2 мб'
+  return true
 }

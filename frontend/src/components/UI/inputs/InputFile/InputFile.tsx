@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { ReactComponent as ImageSVG } from 'assets/svgs/image.svg'
 
 import styles from './InputFile.module.scss'
+import { UseFormRegisterReturn } from 'react-hook-form'
 
 export enum InputFileVariant {
   simple = styles.input__input_simple,
@@ -11,8 +12,8 @@ export enum InputFileVariant {
 }
 
 interface InputFileProps extends InputHTMLAttributes<HTMLInputElement> {
-  setFile: React.Dispatch<React.SetStateAction<File | null>>
-  file: File | null
+  setFile?: React.Dispatch<React.SetStateAction<File | null>>
+  file?: File | null
 
   variant?: InputFileVariant
   errorText?: string
@@ -22,6 +23,7 @@ interface InputFileProps extends InputHTMLAttributes<HTMLInputElement> {
     placeholder?: string
     wrapper?: string
   }
+  register?: UseFormRegisterReturn
   [key: string]: any
 }
 
@@ -29,11 +31,12 @@ function InputFile({
   placeholder = 'Выберите файл...',
   file,
   label = '',
-  setFile,
+  setFile = () => {},
   variant = InputFileVariant.simple,
   errorText = '',
   onChange = () => {},
   classNames = {},
+  register,
   ...restProps
 }: InputFileProps) {
   const [fileContent, setFileContent] = useState<any>(null)
@@ -52,7 +55,6 @@ function InputFile({
 
       reader.onload = () => {
         setFileContent(reader.result)
-        console.log(reader.result)
       }
       reader.readAsDataURL(selectedFile)
     },
@@ -83,6 +85,7 @@ function InputFile({
         onChange={fileChangeHandle}
         className={[styles.input__input, classNames.input].join(' ')}
         {...restProps}
+        {...register}
       />
       {errorText && (
         <span className={['small-text', styles.input__errorText].join(' ')}>
