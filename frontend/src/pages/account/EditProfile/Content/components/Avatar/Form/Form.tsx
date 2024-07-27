@@ -9,6 +9,7 @@ import { FloatingNotificationVariant } from 'components/UI/floatingPanels/Floati
 import { AvatarSettingsForm } from './interfaces'
 import onSubmit from './onSubmit'
 import Validations from 'validations/validations'
+import ShowUploadedImage from './components/ShowUploadedImage'
 
 function Form() {
   const [isSendBtnLoading, setIsSendBtnLoading] = useState(false)
@@ -62,8 +63,11 @@ function Form() {
           title="Сохранить"
           type="submit"
           variant={ButtonVariant.primary}
+          disabled={isSendBtnLoading}
         />
       </form>
+
+      <ShowUploadedImage image={watch('avatar') ? watch('avatar')[0] : null} />
     </>
   )
 }
