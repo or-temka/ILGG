@@ -5,11 +5,12 @@ import styles from './Comments.module.scss'
 const usersWithComments: IUserWithComment[] = [
   {
     userData: {
-      _id: 1,
+      id: 1,
       name: 'Алина убивца',
       login: 'alina',
       isOnline: true,
       imgName: 'alina.jpg',
+      avatar: null,
     },
     commentData: {
       id: 1,
@@ -19,11 +20,12 @@ const usersWithComments: IUserWithComment[] = [
   },
   {
     userData: {
-      _id: 2,
+      id: 2,
       name: 'Freevel',
       login: 'freevel',
       isOnline: true,
       imgName: 'serega.jpg',
+      avatar: null,
     },
     commentData: {
       id: 2,

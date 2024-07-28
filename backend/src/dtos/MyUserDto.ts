@@ -8,6 +8,7 @@ class UserDto {
   balance
   privacy
   about
+  avatar
 
   constructor(model: any) {
     this.email = model.email
@@ -22,6 +23,9 @@ class UserDto {
       currency: 'руб.',
     }
     this.privacy = model.privacy
+    this.avatar = {
+      filename: model.avatar.filename,
+    }
   }
 }
 

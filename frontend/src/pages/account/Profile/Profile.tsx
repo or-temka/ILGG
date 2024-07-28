@@ -9,7 +9,7 @@ import { user } from 'models'
 import styles from './Profile.module.scss'
 
 const tempUserData: user.IFullUserProfile = {
-  _id: 1,
+  id: 1,
   imgName: 'profileImage.jpg',
   name: 'Приора',
   login: 'sversys',
@@ -23,6 +23,7 @@ const tempUserData: user.IFullUserProfile = {
       atLevel: 1000,
     },
   },
+  avatar: null,
 }
 
 const fetchUserData = () => {

@@ -28,25 +28,28 @@ const SignIn = lazy(() =>
 
 const usersData: user.IUserProfile[] = [
   {
-    _id: 1,
+    id: 1,
     name: 'Алина убивца',
     login: 'alina',
     isOnline: true,
     imgName: 'alina.jpg',
+    avatar: null,
   },
   {
-    _id: 2,
+    id: 2,
     name: 'Freevel',
     login: 'freevel',
     isOnline: true,
     imgName: 'serega.jpg',
+    avatar: null,
   },
   {
-    _id: 3,
+    id: 3,
     name: 'мухтар в снегу 3000',
     login: 'myhtar',
     isOnline: false,
     imgName: 'myhtar.jpg',
+    avatar: null,
   },
 ]
 

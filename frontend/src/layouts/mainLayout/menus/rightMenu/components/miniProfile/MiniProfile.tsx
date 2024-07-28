@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { MiniProfileProps } from './interfaces'
 import { HoverableText } from 'components'
 import styles from './MiniProfile.module.scss'
+import { API_IMAGES_URL } from 'variables'
 
 function MiniProfile({
   userData,
@@ -30,7 +31,7 @@ function MiniProfile({
             ></div>
           ) : (
             <img
-              src={require('assets/images/profiles/alina.jpg')}
+              src={`${API_IMAGES_URL}/users/${userData.id}/profile/${userData.avatar?.filename}`}
               alt={userData.login}
               className={[styles.aboutUser__image, classNames.img].join(' ')}
             ></img>

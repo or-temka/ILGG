@@ -7,18 +7,20 @@ import styles from './AsideInfo.module.scss'
 
 const friends: user.IUserProfile[] = [
   {
-    _id: 1,
+    id: 1,
     name: 'Алинка',
     login: 'alina',
     imgName: 'alina.jpg',
     isOnline: true,
+    avatar: null,
   },
   {
-    _id: 2,
+    id: 2,
     name: 'муха',
     login: 'muhtar',
     imgName: 'myhtar.jpg',
     isOnline: false,
+    avatar: null,
   },
 ]
 
