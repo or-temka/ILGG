@@ -1,3 +1,3 @@
-import { IMyUserPrivacy } from 'models/myUser/IMyUserPrivacy'
+import { myUser } from 'models';
 
-export interface PrivacySettingsForm extends IMyUserPrivacy {}
+export interface PrivacySettingsForm extends myUser.IMyUserPrivacy {}

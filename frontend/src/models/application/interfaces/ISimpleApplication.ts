@@ -1,7 +1,7 @@
-import { MongoId } from 'models/mongoDB'
+import { mongoDB } from "models"
 
 export interface ISimpleApplication {
-  _id: MongoId
+  _id: mongoDB.id
   name: string
   imgSrc: string
   aboutApp: string

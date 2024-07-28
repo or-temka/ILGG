@@ -8,11 +8,11 @@ import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import RecoveryPasswordVerifyEmail from './RecoveryPasswordVerifyEmail/RecoveryPasswordVerifyEmail'
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
 import RecoveryPasswordService from 'services/recoveryPasswordservice'
-import { RecoveryEmailError } from 'models/response/RecoveryPasswordResponse'
 import styles from './RecoveryPassword.module.scss'
 import { RecoveryPasswordForm, RecoveryPasswordProps } from './interfaces'
 import { GenericUseFormValidation } from 'validations/useFormValidations/generic'
 import { useNotificationPanel } from 'hooks'
+import { response } from 'models'
 
 function RecoveryPassword({ onClose, onCloseSignIn }: RecoveryPasswordProps) {
   const { register, handleSubmit, watch } = useForm<RecoveryPasswordForm>({})
@@ -27,7 +27,7 @@ function RecoveryPassword({ onClose, onCloseSignIn }: RecoveryPasswordProps) {
       setIsDisabledSendBtn(true)
       await RecoveryPasswordService.recoveryByEmail(data.userLoginOrEmail)
         .then(() => setShowVerifyEmail(true))
-        .catch((err: AxiosError<RecoveryEmailError>) => {
+        .catch((err: AxiosError<response.RecoveryEmailError>) => {
           const errMsg = err.response?.data.errorMsg
           if (err.response?.status === 409) {
             return setShowVerifyEmail(true)

@@ -6,7 +6,6 @@ import { AxiosError } from 'axios'
 import PopUpContainer from 'components/UI/popUps/skeletons/PopUpContainer/PopUpContainer'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import RecoveryPasswordService from 'services/recoveryPasswordservice'
-import { RecoveryEmailError } from 'models/response/RecoveryPasswordResponse'
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
 import { setMyUser } from '../../../../../../redux/slices/myProfile/slice'
 import styles from './EnterNewPassword.module.scss'
@@ -15,6 +14,7 @@ import { EnterNewPasswordForm, EnterNewPasswordProps } from './interfaces'
 import InputPassword from 'components/UI/inputs/InputPassword/InputPassword'
 import Validations from 'validations/validations'
 import { useNotificationPanel } from 'hooks'
+import { response } from 'models'
 
 function EnterNewPassword({
   email,
@@ -49,7 +49,7 @@ function EnterNewPassword({
           onCloseSingIn()
           navigate('/')
         })
-        .catch((error: AxiosError<RecoveryEmailError>) => {
+        .catch((error: AxiosError<response.RecoveryEmailError>) => {
           const errorMsg = error.response?.data.errorMsg
           addNotificationErrorPanel(errorMsg || 'Произошла ошибка!')
         })

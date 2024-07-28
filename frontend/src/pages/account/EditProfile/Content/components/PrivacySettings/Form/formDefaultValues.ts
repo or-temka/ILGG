@@ -1,8 +1,8 @@
-import { IMyUserPrivacy } from 'models/myUser/IMyUserPrivacy'
+import { myUser } from 'models'
 
 const formDefaultValues = (
-  myUserPrivacy: IMyUserPrivacy | undefined
-): IMyUserPrivacy | {} =>
+  myUserPrivacy: myUser.IMyUserPrivacy | undefined
+): myUser.IMyUserPrivacy | {} =>
   myUserPrivacy
     ? {
         games: {

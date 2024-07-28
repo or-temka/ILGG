@@ -2,7 +2,6 @@ import { Suspense, lazy, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import { selectFriends } from '../../../../redux/slices/friendsSlice/slice'
-import { IUserProfile } from 'models/user/IUserProfile'
 import { selectMyUser } from '../../../../redux/slices/myProfile/slice'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import AddFriendPopUp from './addFriendPopUp/AddFriendPopUp'
@@ -18,10 +17,11 @@ import styles from './RightMenu.module.scss'
 import ScrollableContainer from 'components/frames/ScrollableContainer/ScrollableContainer'
 import { RightMenuProps } from './interfaces'
 import { useScrollVisibility } from 'hooks'
+import { user } from 'models'
 
 const SignIn = lazy(() => import('components/main/SignIn/SignIn'))
 
-const usersData: IUserProfile[] = [
+const usersData: user.IUserProfile[] = [
   {
     _id: 1,
     name: 'Алина убивца',

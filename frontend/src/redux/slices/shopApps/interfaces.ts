@@ -1,14 +1,13 @@
-import { IShopApplication } from 'models/application/IShopApplication'
-import { MongoId } from 'models/mongoDB'
+import { application, mongoDB } from 'models'
 
 export type FilterFields = 'categories' | 'playerTypes' | 'themes' | 'types'
 export type SorterFields = 'price' | 'rating' | 'releaseDate' | 'popularity'
 export type SortValue = boolean | null
-export type FilterValue = Set<MongoId> | null
+export type FilterValue = Set<mongoDB.id> | null
 
 type ShopAppsStateData = {
-  init: IShopApplication[] | []
-  filtered: IShopApplication[] | []
+  init: application.IShopApplication[] | []
+  filtered: application.IShopApplication[] | []
 }
 
 type ShopAppsState = {
@@ -23,7 +22,7 @@ export default ShopAppsState
 export interface FilterShopAppsByAction {
   type: string
   payload: {
-    filtersSet: MongoId[] | null
+    filtersSet: mongoDB.id[] | null
     filterFieldName: FilterFields
   }
 }

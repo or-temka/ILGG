@@ -1,13 +1,13 @@
-import { IUserProfile } from 'models/user/IUserProfile'
+import { user } from 'models'
 import { SliceState } from 'redux/interfaces'
 
-type UserState = SliceState<IUserProfile[] | []>
+type UserState = SliceState<user.IUserProfile[] | []>
 
 export default UserState
 
 //#region reduces interfaces
 export interface SetFriendsAction {
   type: string
-  payload: IUserProfile[]
+  payload: user.IUserProfile[]
 }
 //#endregion

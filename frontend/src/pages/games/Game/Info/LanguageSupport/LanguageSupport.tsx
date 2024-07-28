@@ -1,9 +1,9 @@
-import { AppLanguage } from 'models/application/types/AppLanguage'
 import { ReactComponent as TickSVG } from 'assets/svgs/tick.svg'
 import style from './LanguageSupport.module.scss'
 import { LanguageSupportProps } from './interfaces'
+import { application } from 'models'
 
-const langData: AppLanguage[] = [
+const langData: application.AppLanguage[] = [
   {
     _id: 1,
     name: 'русский',

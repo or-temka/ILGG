@@ -1,7 +1,7 @@
-import { IUserProfile } from 'models/user/IUserProfile'
+import { user } from 'models'
 
 export interface IUserWithComment {
-  userData: IUserProfile
+  userData: user.IUserProfile
   commentData: {
     id: number | string
     text: string

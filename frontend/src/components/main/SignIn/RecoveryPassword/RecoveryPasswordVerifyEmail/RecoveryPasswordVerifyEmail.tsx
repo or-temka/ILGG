@@ -9,16 +9,13 @@ import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
 import RepeatButton from 'pages/account/signUp/SignUpEmail/components/VerifyEmail/RepeatButton/RepeatButton'
 import RecoveryPasswordService from 'services/recoveryPasswordservice'
-import {
-  RecoveryEmailError,
-  sendRecoveryActivationCodeResponse,
-} from 'models/response/RecoveryPasswordResponse'
 import EnterNewPassword from './EnterNewPassword/EnterNewPassword'
 import styles from './RecoveryPasswordVerifyEmail.module.scss'
 import { useForm } from 'react-hook-form'
 import { RecoveryPasswordVerifyEmailForm, VerifyEmailProps } from './interfaces'
 import Validations from 'validations/validations'
 import { useImagePreloader, useNotificationPanel } from 'hooks'
+import { response } from 'models'
 
 const preloadSrcList: string[] = [ImgEnvelope]
 
@@ -41,7 +38,7 @@ function RecoveryPasswordVerifyEmail({
   const [disabledSendBtn, setDisabledSendBtn] = useState(false)
 
   const [userChangePassData, setUserChangePassData] =
-    useState<null | sendRecoveryActivationCodeResponse>(null)
+    useState<null | response.sendRecoveryActivationCodeResponse>(null)
 
   const onClickRepeatSendEmailHandler = useCallback(async () => {
     setDisabledSendBtn(true)
@@ -49,7 +46,7 @@ function RecoveryPasswordVerifyEmail({
       .then(() => {
         addNotificationSuccessPanel('Сообщение успешно отправлено!')
       })
-      .catch((error: AxiosError<RecoveryEmailError>) => {
+      .catch((error: AxiosError<response.RecoveryEmailError>) => {
         const errorMsg = error?.response?.data.errorMsg
         addNotificationErrorPanel(errorMsg || 'Произошла ошибка!')
       })
@@ -72,7 +69,7 @@ function RecoveryPasswordVerifyEmail({
             activationLink: data.activationLink,
           })
         })
-        .catch((error: AxiosError<RecoveryEmailError>) => {
+        .catch((error: AxiosError<response.RecoveryEmailError>) => {
           const errorMsg = error?.response?.data.errorMsg
           addNotificationErrorPanel(errorMsg || 'Произошла ошибка!')
         })

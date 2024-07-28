@@ -1,7 +1,7 @@
-import { MongoId } from 'models/mongoDB'
 import Checkbox from 'components/UI/inputs/Checkbox/Checkbox'
 import styles from './FilterBy.module.scss'
 import { FilterByProps } from './interfaces'
+import { mongoDB } from 'models'
 
 function FilterBy({
   headerText,
@@ -10,8 +10,8 @@ function FilterBy({
   filters,
   setFilterHandler,
 }: FilterByProps) {
-  const onClickCheckboxHandler = (id: MongoId) => {
-    const types = new Set<MongoId>(filters)
+  const onClickCheckboxHandler = (id: mongoDB.id) => {
+    const types = new Set<mongoDB.id>(filters)
 
     if (filters?.has(id)) {
       types.delete(id)

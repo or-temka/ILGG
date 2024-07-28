@@ -1,12 +1,11 @@
 // Запрос на получение приложений
 import { createAsyncThunk } from '@reduxjs/toolkit'
-
-import { ISimpleApplication } from 'models/application/ISimpleApplication'
+import { application } from 'models'
 
 const fetchApplicationsSimpleInfo = createAsyncThunk(
   'mainPageApplications/fetchApplicationsSimpleInfo',
   async () => {
-    const returnedData: ISimpleApplication[] = [
+    const returnedData: application.ISimpleApplication[] = [
       {
         _id: 1,
         name: 'Find Number',

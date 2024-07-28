@@ -1,9 +1,9 @@
-import { IMyUser } from "models/myUser/IMyUser"
+import { myUser } from 'models'
 
 export interface AuthResponse {
   accessToken: string
   refreshToken: string
-  user: IMyUser
+  user: myUser.IMyUser
 }
 
 export interface SendActivationEmailCodeResponse {

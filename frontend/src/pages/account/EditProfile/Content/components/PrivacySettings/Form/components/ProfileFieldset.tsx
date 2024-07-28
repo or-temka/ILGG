@@ -2,8 +2,8 @@ import { Controller } from 'react-hook-form'
 
 import styles from './fieldset.module.scss'
 import Select from 'components/UI/inputs/Select/Select'
-import { IMyUserPrivacy } from 'models/myUser/IMyUserPrivacy'
 import { AppsFieldsetProps } from './interfaces'
+import { myUser } from 'models'
 
 function ProfileFieldset({ control, errors }: AppsFieldsetProps) {
   return (
@@ -16,7 +16,7 @@ function ProfileFieldset({ control, errors }: AppsFieldsetProps) {
           control={control}
           rules={{ required: 'This field is required' }}
           render={({ field }) => (
-            <Select<IMyUserPrivacy['profile']['availableToViewMainInfo']>
+            <Select<myUser.IMyUserPrivacy['profile']['availableToViewMainInfo']>
               options={[
                 { value: 'all', label: 'Всем' },
                 { value: 'friends', label: 'Только мне и моим друзьям' },
@@ -38,7 +38,7 @@ function ProfileFieldset({ control, errors }: AppsFieldsetProps) {
           control={control}
           rules={{ required: 'This field is required' }}
           render={({ field }) => (
-            <Select<IMyUserPrivacy['profile']['availableToSearch']>
+            <Select<myUser.IMyUserPrivacy['profile']['availableToSearch']>
               options={[
                 { value: 'all', label: 'Все' },
                 { value: 'friends', label: 'Только друзья' },
@@ -59,7 +59,7 @@ function ProfileFieldset({ control, errors }: AppsFieldsetProps) {
           control={control}
           rules={{ required: 'This field is required' }}
           render={({ field }) => (
-            <Select<IMyUserPrivacy['profile']['availableToViewRealName']>
+            <Select<myUser.IMyUserPrivacy['profile']['availableToViewRealName']>
               options={[
                 { value: 'all', label: 'Все' },
                 { value: 'friends', label: 'Я и мои друзья' },
@@ -82,7 +82,7 @@ function ProfileFieldset({ control, errors }: AppsFieldsetProps) {
           rules={{ required: 'This field is required' }}
           render={({ field }) => (
             <Select<
-              IMyUserPrivacy['profile']['sendCommentInMyProfileAvailable']
+              myUser.IMyUserPrivacy['profile']['sendCommentInMyProfileAvailable']
             >
               options={[
                 { value: 'all', label: 'Все' },
@@ -108,7 +108,7 @@ function ProfileFieldset({ control, errors }: AppsFieldsetProps) {
           rules={{ required: 'This field is required' }}
           render={({ field }) => (
             <Select<
-              IMyUserPrivacy['profile']['availableToViewCommentsInMyProfile']
+              myUser.IMyUserPrivacy['profile']['availableToViewCommentsInMyProfile']
             >
               options={[
                 { value: 'all', label: 'Все' },
@@ -133,7 +133,7 @@ function ProfileFieldset({ control, errors }: AppsFieldsetProps) {
           control={control}
           rules={{ required: 'This field is required' }}
           render={({ field }) => (
-            <Select<IMyUserPrivacy['profile']['availableToViewMyFriends']>
+            <Select<myUser.IMyUserPrivacy['profile']['availableToViewMyFriends']>
               options={[
                 { value: 'all', label: 'Все' },
                 { value: 'friends', label: 'Я и мои друзья' },
@@ -155,7 +155,7 @@ function ProfileFieldset({ control, errors }: AppsFieldsetProps) {
           control={control}
           rules={{ required: 'This field is required' }}
           render={({ field }) => (
-            <Select<IMyUserPrivacy['profile']['availableToViewMyProfileLevel']>
+            <Select<myUser.IMyUserPrivacy['profile']['availableToViewMyProfileLevel']>
               options={[
                 { value: 'all', label: 'Все' },
                 { value: 'friends', label: 'Я и мои друзья' },
@@ -177,7 +177,7 @@ function ProfileFieldset({ control, errors }: AppsFieldsetProps) {
           control={control}
           rules={{ required: 'This field is required' }}
           render={({ field }) => (
-            <Select<IMyUserPrivacy['profile']['availableToViewMyOnlineStatus']>
+            <Select<myUser.IMyUserPrivacy['profile']['availableToViewMyOnlineStatus']>
               options={[
                 { value: 'all', label: 'Все' },
                 { value: 'friends', label: 'Я и мои друзья' },

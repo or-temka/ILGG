@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { IShopApplication } from 'models/application/IShopApplication'
 import extraReducers from './extraReducers'
 import reducers from './reducers'
 import ShopAppsState from './interfaces'
+import { application } from 'models'
 
 const initialState: ShopAppsState = {
   data: {
@@ -25,9 +25,9 @@ export const { filterShopAppsBy, sortShopAppsBy, resetFiltersShopApps } =
   shopAppsSlice.actions
 
 export const selectShopAppsState = (state: any): ShopAppsState => state.shopApps
-export const selectShopApps = (state: any): IShopApplication[] | [] =>
+export const selectShopApps = (state: any): application.IShopApplication[] | [] =>
   state.shopApps.data.filtered
-export const selectUnfilteredShopApps = (state: any): IShopApplication[] | [] =>
+export const selectUnfilteredShopApps = (state: any): application.IShopApplication[] | [] =>
   state.shopApps.data.init
 export const selectShopAppsIsLoaded = (state: any): boolean =>
   state.shopApps.loading

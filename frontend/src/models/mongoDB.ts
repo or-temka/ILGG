@@ -1,1 +1,1 @@
-export type MongoId = string | number
+export type id = string | number

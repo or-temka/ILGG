@@ -1,5 +1,5 @@
-import { IFullUserProfile } from 'models/user/IFullUserProfile'
+import { user } from 'models'
 
 export interface HeaderProps {
-  userData: IFullUserProfile
+  userData: user.IFullUserProfile
 }

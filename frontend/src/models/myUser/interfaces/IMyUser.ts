@@ -1,5 +1,4 @@
-import { IMyUserBalance } from './IMyUserBalance'
-import { IMyUserPrivacy } from './IMyUserPrivacy'
+import { myUser } from 'models'
 
 export interface IMyUser {
   id: string
@@ -7,8 +6,8 @@ export interface IMyUser {
   name: string
   email: string
   isActivated: Boolean
-  balance: IMyUserBalance
+  balance: myUser.IMyUserBalance
   isOnline: Boolean
   about: string
-  privacy: IMyUserPrivacy
+  privacy: myUser.IMyUserPrivacy
 }

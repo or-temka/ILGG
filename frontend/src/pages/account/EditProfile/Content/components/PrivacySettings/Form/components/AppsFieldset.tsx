@@ -2,8 +2,8 @@ import { Controller } from 'react-hook-form'
 
 import styles from './fieldset.module.scss'
 import Select from 'components/UI/inputs/Select/Select'
-import { IMyUserPrivacy } from 'models/myUser/IMyUserPrivacy'
 import { AppsFieldsetProps } from './interfaces'
+import { myUser } from 'models'
 
 function AppsFieldset({ control, errors }: AppsFieldsetProps) {
   return (
@@ -16,7 +16,7 @@ function AppsFieldset({ control, errors }: AppsFieldsetProps) {
           control={control}
           rules={{ required: 'This field is required' }}
           render={({ field }) => (
-            <Select<IMyUserPrivacy['games']['availableToView']>
+            <Select<myUser.IMyUserPrivacy['games']['availableToView']>
               options={[
                 { value: 'all', label: 'Всем' },
                 { value: 'friends', label: 'мне и моим друзьям' },
@@ -38,7 +38,9 @@ function AppsFieldset({ control, errors }: AppsFieldsetProps) {
           control={control}
           rules={{ required: 'This field is required' }}
           render={({ field }) => (
-            <Select<IMyUserPrivacy['games']['availableToViewAchievement']>
+            <Select<
+              myUser.IMyUserPrivacy['games']['availableToViewAchievement']
+            >
               options={[
                 { value: 'all', label: 'Всем' },
                 { value: 'friends', label: 'мне и моим друзьям' },

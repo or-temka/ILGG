@@ -1,6 +1,6 @@
-import { IUserProfile } from './IUserProfile'
+import { user } from 'models'
 
-export interface IFullUserProfile extends IUserProfile {
+export interface IFullUserProfile extends user.IUserProfile {
   aboutText: string
   level: {
     value: number

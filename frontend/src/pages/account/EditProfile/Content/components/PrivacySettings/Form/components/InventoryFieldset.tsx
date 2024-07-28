@@ -2,8 +2,8 @@ import { Controller } from 'react-hook-form'
 
 import styles from './fieldset.module.scss'
 import Select from 'components/UI/inputs/Select/Select'
-import { IMyUserPrivacy } from 'models/myUser/IMyUserPrivacy'
 import { AppsFieldsetProps } from './interfaces'
+import { myUser } from 'models'
 
 function InventoryFieldset({ control, errors }: AppsFieldsetProps) {
   return (
@@ -16,7 +16,7 @@ function InventoryFieldset({ control, errors }: AppsFieldsetProps) {
           control={control}
           rules={{ required: 'This field is required' }}
           render={({ field }) => (
-            <Select<IMyUserPrivacy['inventory']['availableToView']>
+            <Select<myUser.IMyUserPrivacy['inventory']['availableToView']>
               options={[
                 { value: 'all', label: 'Всем' },
                 { value: 'friends', label: 'Мне и моим друзьям' },
