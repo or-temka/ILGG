@@ -1,12 +1,6 @@
 import Button from 'components/UI/buttons/Button/Button'
-
 import styles from './ItemInfo.module.scss'
-
-interface ItemInfoProps {
-  classNames?: {
-    wrapper?: string
-  }
-}
+import { ItemInfoProps } from './interfaces'
 
 function ItemInfo({ classNames }: ItemInfoProps) {
   return (

@@ -5,17 +5,13 @@ import HeaderSearchInput from './HeaderSearchInput'
 import { ReactComponent as LogoSVG } from 'assets/svgs/logo.svg'
 import AccountBalance from './AccountBalance'
 import pageLink from 'pagesLinks'
-
 import styles from './Header.module.scss'
 import PopUpSkeleton, {
   PopUpVerticalPosition,
 } from 'components/UI/popUps/skeletons/PopUpSkeleton/PopUpSkeleton'
 import LeftMenu from '../menus/leftMenu/LeftMenu'
 import RightMenu from '../menus/rightMenu/RightMenu'
-
-interface HeaderProps {
-  className?: string
-}
+import { HeaderProps } from './interfaces'
 
 function Header({ className }: HeaderProps) {
   const [searchValue, setSearchValue] = useState<string>('')
@@ -55,7 +51,7 @@ function Header({ className }: HeaderProps) {
           classNames={{
             className: styles.menu,
             contentClassName: styles.menu__popUpContent,
-            backClassName: styles.menu__back
+            backClassName: styles.menu__back,
           }}
           verticalPosition={PopUpVerticalPosition.top}
           onClose={() => setShowLaptopMenu(false)}

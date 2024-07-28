@@ -1,5 +1,4 @@
 import CardImageTextSkeleton from '../skeletons/CardImageTextSkeleton'
-
 import styles from '../GameBigCard/GameBigCard.module.scss'
 
 function GameBigCard() {

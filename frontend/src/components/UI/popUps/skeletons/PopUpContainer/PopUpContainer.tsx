@@ -1,27 +1,6 @@
-import { ReactNode } from 'react'
-
-import PopUpSkeleton, {
-  PopUpHorizontalPosition,
-  PopUpVerticalPosition,
-} from '../PopUpSkeleton/PopUpSkeleton'
-
+import PopUpSkeleton from '../PopUpSkeleton/PopUpSkeleton'
 import styles from './PopUpContainer.module.scss'
-
-interface PopUpContainerProps {
-  children: ReactNode
-  headerText?: string
-  onClose?: (...args: any[]) => any
-  showCloseButton?: boolean
-  showBack?: boolean
-  horizontalPosition?: PopUpHorizontalPosition
-  verticalPosition?: PopUpVerticalPosition
-  classNames?: {
-    className?: string
-    wrapperClassName?: string
-    contentClassName?: string
-    headerClassName?: string
-  }
-}
+import { PopUpContainerProps } from './interfaces'
 
 function PopUpContainer({
   children,

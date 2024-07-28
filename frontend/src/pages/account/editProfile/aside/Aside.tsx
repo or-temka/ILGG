@@ -1,12 +1,6 @@
 import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
-import contentType from '../interfaces'
-
 import styles from './Aside.module.scss'
-
-interface AsideProps {
-  setContentType: Function
-  activeContentType: contentType
-}
+import { AsideProps } from './interfaces'
 
 function Aside({ setContentType, activeContentType }: AsideProps) {
   return (

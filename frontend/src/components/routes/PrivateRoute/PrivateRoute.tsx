@@ -1,13 +1,8 @@
-import { ReactNode } from 'react'
 import { useSelector } from 'react-redux'
 import { Navigate, Outlet } from 'react-router-dom'
-import { selectMyUser } from '../../../redux/slices/myProfile/slice'
 
-interface PrivateRouteProps {
-  isAllowed?: Boolean
-  redirectPath?: string
-  children?: ReactNode
-}
+import { selectMyUser } from '../../../redux/slices/myProfile/slice'
+import { PrivateRouteProps } from './interfaces'
 
 function PrivateRoute({
   isAllowed,

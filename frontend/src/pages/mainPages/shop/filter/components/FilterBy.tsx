@@ -1,18 +1,7 @@
-import { AppType } from 'models/application/types/AppType'
 import { MongoId } from 'models/mongoDB'
-
 import Checkbox from 'components/UI/inputs/Checkbox/Checkbox'
-
 import styles from './FilterBy.module.scss'
-import { FilterFields, FilterValue } from '../../../../../redux/slices/shopApps/interfaces'
-
-interface FilterByProps {
-  headerText: string
-  filterField: FilterFields
-  appFiltersElements: AppType[]
-  filters: FilterValue
-  setFilterHandler: (field: FilterFields, newValue: FilterValue) => void
-}
+import { FilterByProps } from './interfaces'
 
 function FilterBy({
   headerText,

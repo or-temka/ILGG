@@ -1,19 +1,7 @@
 import Comment from 'components/UI/blocks/comments/Comment/Comment'
 import CommentPositivity from 'components/UI/blocks/comments/CommentPositivity/CommentPositivity'
-
 import style from './Comments.module.scss'
-
-interface CommentsProps {
-  classNames?: {
-    wrapper?: string
-    header?: string
-    content?: string
-    comment?: {
-      wrapper?: string
-      content?: string
-    }
-  }
-}
+import { CommentsProps } from './interfaces'
 
 function Comments({ classNames }: CommentsProps) {
   return (

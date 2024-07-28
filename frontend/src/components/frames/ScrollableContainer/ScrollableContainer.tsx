@@ -1,13 +1,8 @@
-import { ReactNode, useRef } from 'react'
+import { useRef } from 'react'
 
 import useScrollVisibility from 'hooks/useScrollVisibility'
-
 import styles from './ScrollableContainer.module.scss'
-
-interface ScrollableContainerProps {
-  children?: ReactNode
-  className?: string
-}
+import { ScrollableContainerProps } from './interfaces'
 
 const ScrollableContainer = ({
   children,

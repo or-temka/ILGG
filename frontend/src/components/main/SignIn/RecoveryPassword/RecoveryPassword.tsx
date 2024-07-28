@@ -11,13 +11,8 @@ import { FloatingNotificationVariant } from 'components/UI/floatingPanels/Floati
 import RecoveryPasswordService from 'services/recoveryPasswordservice'
 import { RecoveryEmailError } from 'models/response/RecoveryPasswordResponse'
 import styles from './RecoveryPassword.module.scss'
-import { RecoveryPasswordForm } from './interfaces'
+import { RecoveryPasswordForm, RecoveryPasswordProps } from './interfaces'
 import { GenericUseFormValidation } from 'validations/useFormValidations/generic'
-
-interface RecoveryPasswordProps {
-  onClose: Function
-  onCloseSignIn: Function
-}
 
 function RecoveryPassword({ onClose, onCloseSignIn }: RecoveryPasswordProps) {
   const { register, handleSubmit, watch } = useForm<RecoveryPasswordForm>({})

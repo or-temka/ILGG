@@ -1,26 +1,6 @@
-import { MouseEventHandler, ReactNode } from 'react'
-
 import styles from './Tooltip.module.scss'
-
-export enum HorizontalDirection {
-  left = 'left',
-  center = 'center',
-  right = 'right',
-}
-export enum VerticalDirection {
-  top = 'top',
-  bottom = 'bottom',
-}
-
-interface TooltipProps {
-  children?: ReactNode
-  text?: string
-  postitionHorizontal?: HorizontalDirection
-  postitionVertical?: VerticalDirection
-  className?: string
-  tooltipClassName?: string
-  onClick?: MouseEventHandler<HTMLDivElement>
-}
+import { HorizontalDirection, VerticalDirection } from './enums'
+import { TooltipProps } from './interfaces'
 
 function Tooltip({
   children,
@@ -56,3 +36,4 @@ function Tooltip({
 }
 
 export default Tooltip
+export { HorizontalDirection, VerticalDirection }

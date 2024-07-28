@@ -1,18 +1,11 @@
 import { useSelector } from 'react-redux'
 
 import { selectApps } from '../../../../../redux/slices/myAppsLibrary/slice'
-
 import GameBigCard from 'components/cards/GameBigCard/GameBigCard'
 import pageLink from 'pagesLinks'
 import GameBigCardSkeleton from 'components/cards/GameBigCardSkeleton/GameBigCardSkeleton'
-
 import styles from './BigPicturesMain.module.scss'
-
-interface BigPicturesMainProps {
-  classNames?: {
-    wrapper?: string
-  }
-}
+import { BigPicturesMainProps } from './interfaces'
 
 function BigPicturesMain({ classNames }: BigPicturesMainProps) {
   const myGames = useSelector(selectApps)

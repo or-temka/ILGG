@@ -1,17 +1,5 @@
-import { MongoId } from 'models/mongoDB'
-
 import styles from './AppInList.module.scss'
-
-interface AppInListProps {
-  appData: {
-    _id: MongoId
-    name: string
-    imgSrc: string
-  }
-  classNames?: {
-    wrapper?: string
-  }
-}
+import { AppInListProps } from './interfaces'
 
 function AppInList({ appData, classNames }: AppInListProps) {
   return (

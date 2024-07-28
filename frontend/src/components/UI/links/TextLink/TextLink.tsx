@@ -1,21 +1,8 @@
-import { ReactNode } from 'react'
-import { Link, LinkProps } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import styles from './TextLink.module.scss'
-
-export enum Variant {
-  simple = 'simple',
-  text = 'text',
-  bold = 'bold',
-}
-
-interface TextLinkProps extends LinkProps {
-  children?: ReactNode
-  variant?: Variant
-  text?: string
-  className?: string
-  [key: string]: any
-}
+import { TextLinkProps } from './interfaces'
+import { Variant } from './enums'
 
 function TextLink({
   children,
@@ -43,3 +30,4 @@ function TextLink({
 }
 
 export default TextLink
+export { Variant }

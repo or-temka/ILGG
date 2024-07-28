@@ -1,14 +1,7 @@
 import PopUpContainer from 'components/UI/popUps/skeletons/PopUpContainer/PopUpContainer'
 import LoadingSpiner from '../LoadingSpiner/LoadingSpiner'
-
 import styles from './LoadingPopUp.module.scss'
-
-interface LoadingPopUpProps {
-  classNames?: {
-    containerClassName?: string
-    loadingSpinner?: string
-  }
-}
+import { LoadingPopUpProps } from './interfaces'
 
 function LoadingPopUp({ classNames }: LoadingPopUpProps) {
   return (

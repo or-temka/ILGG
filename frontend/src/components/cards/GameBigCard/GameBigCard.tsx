@@ -4,17 +4,8 @@ import CardImageText from '../CardImageText/CardImageText'
 import Tooltip, {
   VerticalDirection,
 } from 'components/UI/tooltips/Tooltip/Tooltip'
-
 import styles from './GameBigCard.module.scss'
-
-interface GameBigCardProps {
-  name: string
-  imgSrc: string
-  aboutGame: string
-  to: string
-  alt?: string
-  newGame?: boolean
-}
+import { GameBigCardProps } from './interfaces'
 
 function GameBigCard({
   name,

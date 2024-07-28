@@ -12,18 +12,13 @@ import TextLink from 'components/UI/links/TextLink/TextLink'
 import pageLink from 'pagesLinks'
 import LoadingRightMenu from './loadingRightMenu/LoadingRightMenu'
 import LoadingPopUp from 'components/UI/loaders/LoadingPopUp/LoadingPopUp'
-
 import { ReactComponent as SignInDoorSVG } from 'assets/svgs/door.svg'
 import menuStyles from '../Menu.module.scss'
 import styles from './RightMenu.module.scss'
 import useScrollVisibility from 'hooks/useScrollVisibility'
 import ScrollableContainer from 'components/frames/ScrollableContainer/ScrollableContainer'
-
+import { RightMenuProps } from './interfaces'
 const SignIn = lazy(() => import('components/main/SignIn/SignIn'))
-
-interface RightMenuProps {
-  className?: string
-}
 
 const usersData: IUserProfile[] = [
   {

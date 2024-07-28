@@ -1,22 +1,6 @@
+import { horizontalDirection, verticalDirection } from './enums'
 import styles from './FloatingPanelSkeleton.module.scss'
-
-export enum horizontalDirection {
-  left = 'left',
-  center = 'center',
-  right = 'right',
-}
-export enum verticalDirection {
-  top = 'top',
-  center = 'center',
-  bottom = 'bottom',
-}
-
-interface FloatingPanelSkeletonProps {
-  children?: any
-  posHorizontal?: horizontalDirection
-  posVertical?: verticalDirection
-  className?: string
-}
+import { FloatingPanelSkeletonProps } from './interfaces'
 
 function FloatingPanelSkeleton({
   children,
@@ -58,3 +42,4 @@ function FloatingPanelSkeleton({
 }
 
 export default FloatingPanelSkeleton
+export { horizontalDirection, verticalDirection }

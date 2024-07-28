@@ -1,14 +1,9 @@
-import { Control, Controller, FieldErrors } from 'react-hook-form'
+import { Controller } from 'react-hook-form'
 
 import styles from './fieldset.module.scss'
 import Select from 'components/UI/inputs/Select/Select'
 import { IMyUserPrivacy } from 'models/myUser/IMyUserPrivacy'
-import { PrivacySettingsForm } from '../interfaces'
-
-interface AppsFieldsetProps {
-  control: Control<PrivacySettingsForm, any>
-  errors: FieldErrors<PrivacySettingsForm>
-}
+import { AppsFieldsetProps } from './interfaces'
 
 function ProfileFieldset({ control, errors }: AppsFieldsetProps) {
   return (

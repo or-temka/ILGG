@@ -1,27 +1,10 @@
-import { InputHTMLAttributes, ReactNode, useRef } from 'react'
+import { useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import { UseFormRegisterReturn } from 'react-hook-form'
 
 import btnStyles from '../Input/Input.module.scss'
 import styles from './InputWithBtnIcon.module.scss'
-
-export enum InputWithBtnIconVariant {
-  simple = 'simple',
-  light = 'light',
-}
-
-export interface InputWithBtnIconProps
-  extends InputHTMLAttributes<HTMLInputElement> {
-  label?: string
-  variant?: InputWithBtnIconVariant
-  errorText?: string
-  svgComponent?: ReactNode
-  onClickBtnIcon?: (input: ParentNode | null) => void
-  className?: string
-  wrapperClassName?: string
-  register?: UseFormRegisterReturn
-  [key: string]: any
-}
+import { InputWithBtnIconVariant } from './enums'
+import { InputWithBtnIconProps } from './interfaces'
 
 function InputWithBtnIcon({
   label = '',
@@ -87,3 +70,4 @@ function InputWithBtnIcon({
 }
 
 export default InputWithBtnIcon
+export { InputWithBtnIconVariant }

@@ -1,10 +1,5 @@
 import styles from './Apps.module.scss'
-
-interface AppsProps {
-  classNames?: {
-    wrapper?: string
-  }
-}
+import { AppsProps } from './interfaces'
 
 function Apps({ classNames }: AppsProps) {
   return (

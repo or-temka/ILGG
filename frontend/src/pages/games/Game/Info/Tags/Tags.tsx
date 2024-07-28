@@ -1,8 +1,7 @@
 import { AppTheme } from 'models/application/types/AppTheme'
-
 import TextIslet from 'components/UI/islets/TextIslet/TextIslet'
-
 import style from './Tags.module.scss'
+import { TagsProps } from './interfaces'
 
 const tags: AppTheme[] = [
   { _id: 1, name: 'игра на выживание' },
@@ -16,15 +15,6 @@ const tags: AppTheme[] = [
   { _id: 9, name: 'страшное' },
   { _id: 10, name: 'стратегия' },
 ]
-
-interface TagsProps {
-  classNames?: {
-    wrapper?: string
-    header?: string
-    content?: string
-    textIslet?: string
-  }
-}
 
 function Tags({ classNames }: TagsProps) {
   return (

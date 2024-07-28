@@ -6,10 +6,9 @@ import { IAppFromLibrary } from 'models/application/IAppFromLibrary'
 import Header from './Header/Header'
 import Main from './Main/Main'
 import { setPageName } from 'utils/setPageName'
-
 import styles from './AppsLibrary.module.scss'
-
-export type ViewAppsType = 'list' | 'bigPictures'
+import { AppsLibraryProps } from './interfaces'
+import { ViewAppsType } from './types'
 
 export const getMyAppsLibrary = async () => {
   const returnedData: IAppFromLibrary[] = [
@@ -49,12 +48,6 @@ export const getMyAppsLibrary = async () => {
   return returnedData
 }
 
-interface AppsLibraryProps {
-  classNames?: {
-    wrapper?: string
-  }
-}
-
 function AppsLibrary({ classNames }: AppsLibraryProps) {
   const dispatch = useDispatch()
   const [viewAppsType, setViewAppsType] = useState<ViewAppsType>('list')
@@ -65,7 +58,7 @@ function AppsLibrary({ classNames }: AppsLibraryProps) {
     getMyAppsLibrary().then((res) => {
       dispatch(setLibraryApps(res))
     })
-  }, [])
+  }, [dispatch])
 
   return (
     <>

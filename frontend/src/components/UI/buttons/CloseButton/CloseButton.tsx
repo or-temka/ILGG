@@ -1,14 +1,5 @@
-import { HTMLAttributes } from 'react'
-
 import styles from './CloseButton.module.scss'
-
-interface CloseButtonProps extends HTMLAttributes<HTMLDivElement> {
-  isWithoutPadding?: boolean
-  className?: string
-  crossClassName?: string
-
-  [key: string]: any
-}
+import { CloseButtonProps } from './interfaces'
 
 function CloseButton({
   isWithoutPadding = false,

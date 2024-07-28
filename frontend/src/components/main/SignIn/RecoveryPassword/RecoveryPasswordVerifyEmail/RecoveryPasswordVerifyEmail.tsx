@@ -3,7 +3,6 @@ import { AxiosError } from 'axios'
 
 import useImagePreloader from 'hooks/useImagePreloader'
 import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
-
 import PopUpContainer from 'components/UI/popUps/skeletons/PopUpContainer/PopUpContainer'
 import LoadingPopUp from 'components/UI/loaders/LoadingPopUp/LoadingPopUp'
 import ImgEnvelope from 'assets/images/posters/email-envelope.png'
@@ -19,17 +18,10 @@ import {
 import EnterNewPassword from './EnterNewPassword/EnterNewPassword'
 import styles from './RecoveryPasswordVerifyEmail.module.scss'
 import { useForm } from 'react-hook-form'
-import { RecoveryPasswordVerifyEmailForm } from './interfaces'
-import Regex from 'utils/regex'
+import { RecoveryPasswordVerifyEmailForm, VerifyEmailProps } from './interfaces'
 import Validations from 'validations/validations'
 
 const preloadSrcList: string[] = [ImgEnvelope]
-
-interface VerifyEmailProps {
-  onClose: Function
-  emailOrLogin: string
-  onCloseSignIn: Function
-}
 
 function RecoveryPasswordVerifyEmail({
   onClose,

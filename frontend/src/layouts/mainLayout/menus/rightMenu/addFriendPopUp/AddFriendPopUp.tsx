@@ -3,14 +3,8 @@ import { useState } from 'react'
 import PopUpContainer from 'components/UI/popUps/skeletons/PopUpContainer/PopUpContainer'
 import Input from 'components/UI/inputs/Input/Input'
 import MiniProfile from '../components/miniProfile/MiniProfile'
-import { IUserProfile } from 'models/user/IUserProfile'
-
 import styles from './AddFriendPopUp.module.scss'
-
-interface AddFriendPopUpProps {
-  usersData: IUserProfile[] | []
-  onClose?: (...args: any[]) => any
-}
+import { AddFriendPopUpProps } from './interfaces'
 
 function AddFriendPopUp({ usersData, onClose }: AddFriendPopUpProps) {
   const [searchValue, setSearchValue] = useState<string>('')

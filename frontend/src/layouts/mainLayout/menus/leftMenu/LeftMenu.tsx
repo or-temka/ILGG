@@ -13,7 +13,6 @@ import changeSiteTheme from 'utils/changeSiteTheme'
 import SkeletonText, {
   SkeletonTextVariant,
 } from 'components/skeletons/SkeletonText/SkeletonText'
-
 import { ReactComponent as HomeSVG } from 'assets/svgs/home.svg'
 import { ReactComponent as GamepadSVG } from 'assets/svgs/gamepad.svg'
 import { ReactComponent as LibrarySVG } from 'assets/svgs/library.svg'
@@ -22,10 +21,7 @@ import { ReactComponent as PackageSVG } from 'assets/svgs/package.svg'
 import { ReactComponent as PeopleSVG } from 'assets/svgs/people.svg'
 import { ReactComponent as HelpSVG } from 'assets/svgs/help.svg'
 import styles from './LeftMenu.module.scss'
-
-interface LeftMenuProps {
-  className?: string
-}
+import { LeftMenuProps } from './interfaces'
 
 function LeftMenu({ className = '' }: LeftMenuProps) {
   const location = useLocation().pathname

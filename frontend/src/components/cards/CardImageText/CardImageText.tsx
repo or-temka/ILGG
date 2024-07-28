@@ -1,17 +1,5 @@
-import { MouseEventHandler, ReactNode } from 'react'
-
 import styles from './CardImageText.module.scss'
-
-interface CardImageTextProps {
-  children?: ReactNode
-  text?: string
-  imgSrc?: string
-  alt?: string
-  onClick?: MouseEventHandler<HTMLDivElement>
-  className?: string
-  imageClassName?: string
-  textClassName?: string
-}
+import { CardImageTextProps } from './interfaces'
 
 function CardImageText({
   children,

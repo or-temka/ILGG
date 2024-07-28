@@ -5,7 +5,6 @@ import LanguageSupport from './LanguageSupport/LanguageSupport'
 import MinSystemRequirements from './MinSystemRequirements/MinSystemRequirements'
 import ScreenSharingInfo from './ScreenSharingInfo/ScreenSharingInfo'
 import Tags from './Tags/Tags'
-
 import styles from './Info.module.scss'
 
 function Info() {

@@ -1,26 +1,6 @@
-import { ButtonHTMLAttributes, ReactNode } from 'react'
-
 import styles from '../Button.module.scss'
-
-export enum ButtonWithIconVariant {
-  simple = styles.button_simple,
-  light = styles.button_light,
-  primary = styles.button_primary,
-}
-
-export enum ButtonWithIconIconPosition {
-  left = 'left',
-  right = 'right',
-}
-
-interface ButtonWithIconProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  iconSVG?: ReactNode
-  variant?: ButtonWithIconVariant
-  iconPosition?: ButtonWithIconIconPosition
-  className?: string
-
-  [key: string]: any
-}
+import { ButtonWithIconIconPosition, ButtonWithIconVariant } from './enums'
+import { ButtonWithIconProps } from './interfaces'
 
 function ButtonWithIcon({
   title = '',
@@ -57,3 +37,4 @@ function ButtonWithIcon({
 }
 
 export default ButtonWithIcon
+export { ButtonWithIconIconPosition, ButtonWithIconVariant }

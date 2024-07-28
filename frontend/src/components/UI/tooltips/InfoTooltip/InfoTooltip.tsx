@@ -1,22 +1,7 @@
 import { ReactComponent as InfoTooltipSVG } from 'assets/svgs/infoTooltip.svg'
-
 import styles from './InfoTooltip.module.scss'
-
-export enum HorizontalDirection {
-  right = 'right',
-  left = 'left',
-}
-export enum VerticalDirection {
-  top = 'top',
-  bottom = 'bottom',
-}
-
-interface InfoTooltipProps {
-  text: string
-  positionHorizontal?: HorizontalDirection
-  positionVertical?: VerticalDirection
-  className?: string
-}
+import { HorizontalDirection, VerticalDirection } from './enums'
+import { InfoTooltipProps } from './interfaces'
 
 function InfoTooltip({
   text = '',
@@ -47,3 +32,4 @@ function InfoTooltip({
 }
 
 export default InfoTooltip
+export { HorizontalDirection, VerticalDirection }

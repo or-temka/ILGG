@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useLocation, useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import queryString from 'query-string'
 
 import Aside from './Aside/Aside'

@@ -12,16 +12,9 @@ import { FloatingNotificationVariant } from 'components/UI/floatingPanels/Floati
 import { setMyUser } from '../../../../../../redux/slices/myProfile/slice'
 import styles from './EnterNewPassword.module.scss'
 import { useForm } from 'react-hook-form'
-import { EnterNewPasswordForm } from './interfaces'
+import { EnterNewPasswordForm, EnterNewPasswordProps } from './interfaces'
 import InputPassword from 'components/UI/inputs/InputPassword/InputPassword'
 import Validations from 'validations/validations'
-
-interface EnterNewPasswordProps {
-  email: string
-  activationLink: string
-  onClose: Function
-  onCloseSingIn: Function
-}
 
 function EnterNewPassword({
   email,

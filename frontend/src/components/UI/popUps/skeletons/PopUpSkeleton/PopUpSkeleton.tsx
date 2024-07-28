@@ -1,35 +1,7 @@
-import { ReactNode } from 'react'
-
 import CloseButton from 'components/UI/buttons/CloseButton/CloseButton'
-
 import styles from './PopUpSkeleton.module.scss'
-
-export enum PopUpVerticalPosition {
-  center = styles.popUpSkeleton_Vcenter,
-  top = styles.popUpSkeleton_top,
-  bottom = styles.popUpSkeleton_bottom,
-}
-export enum PopUpHorizontalPosition {
-  center = styles.popUpSkeleton_Hcenter,
-  left = styles.popUpSkeleton_left,
-  right = styles.popUpSkeleton_right,
-}
-
-interface PopUpSkeletonProps {
-  children: ReactNode
-  onClose?: (...args: any[]) => any
-  showCloseButton?: boolean
-  showBack?: boolean
-  backgroundBlur?: boolean
-  verticalPosition?: PopUpVerticalPosition
-  horizontalPosition?: PopUpHorizontalPosition
-  classNames?: {
-    className?: string
-    backClassName?: string
-    contentClassName?: string
-    mainClassName?: string
-  }
-}
+import { PopUpHorizontalPosition, PopUpVerticalPosition } from './enums'
+import { PopUpSkeletonProps } from './interfaces'
 
 function PopUpSkeleton({
   children,
@@ -81,3 +53,4 @@ function PopUpSkeleton({
 }
 
 export default PopUpSkeleton
+export { PopUpHorizontalPosition, PopUpVerticalPosition }

@@ -1,12 +1,6 @@
 import Tooltip from 'components/UI/tooltips/Tooltip/Tooltip'
-
 import styles from './AppFriends.module.scss'
-
-interface AppFriendsProps {
-  classNames?: {
-    wrapper?: string
-  }
-}
+import { AppFriendsProps } from './interfaces'
 
 function AppFriends({ classNames }: AppFriendsProps) {
   return (

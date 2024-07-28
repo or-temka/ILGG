@@ -1,16 +1,7 @@
 import getRandomInt from 'utils/getRandomInt'
-
 import styles from './SkeletonText.module.scss'
-
-export enum SkeletonTextVariant {
-  simple = 'pulse',
-  light = 'pulse-light',
-}
-
-interface SkeletonTextProps {
-  variant?: SkeletonTextVariant
-  className?: string
-}
+import { SkeletonTextVariant } from './enums'
+import { SkeletonTextProps } from './interfaces'
 
 function SkeletonText({
   variant = SkeletonTextVariant.simple, // types: simple, light
@@ -27,3 +18,4 @@ function SkeletonText({
 }
 
 export default SkeletonText
+export { SkeletonTextVariant }

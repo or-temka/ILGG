@@ -2,9 +2,7 @@ import { useEffect } from 'react'
 
 import Header from './Header/Header'
 import Main from './Main/Main'
-
 import { setPageName } from '../../../utils/setPageName'
-
 import styles from './Marketplace.module.scss'
 
 function Marketplace() {

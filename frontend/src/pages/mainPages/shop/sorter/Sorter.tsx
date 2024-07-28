@@ -7,22 +7,15 @@ import ButtonWithIcon, {
 } from 'components/UI/buttons/ButtonWithIcon/ButtonWithIcon'
 import { ReactComponent as ArrowSVG } from 'assets/svgs/arrow.svg'
 import styles from './Sorter.module.scss'
-import {
-  SorterFields,
-  SortValue,
-} from '../../../../redux/slices/shopApps/interfaces'
-
-type Sorted = { [key in SorterFields]: SortValue }
+import { SorterFields } from '../../../../redux/slices/shopApps/interfaces'
+import { Sorted } from './types'
+import { SorterProps } from './interfaces'
 
 const sortedInitial: Sorted = {
   price: null,
   rating: null,
   releaseDate: null,
   popularity: null,
-}
-
-interface SorterProps {
-  resetSort?: number
 }
 
 function Sorter({ resetSort }: SorterProps) {

@@ -1,21 +1,7 @@
-import SkeletonText, {
-  SkeletonTextVariant,
-} from 'components/skeletons/SkeletonText/SkeletonText'
-
+import SkeletonText from 'components/skeletons/SkeletonText/SkeletonText'
 import styles from '../Comment/Comment.module.scss'
-
-interface CommentProps {
-  background?: boolean
-  classNames?: {
-    wrapper?: string
-    header?: string
-    content?: string
-    textContent?: string
-    authorImg?: string
-    authorName?: string
-    dateCreate?: string
-  }
-}
+import { SkeletonTextVariant } from 'components/skeletons/SkeletonText/enums'
+import { CommentProps } from './interfaces'
 
 function Comment({ background = true, classNames }: CommentProps) {
   return (

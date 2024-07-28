@@ -12,18 +12,12 @@ import RepeatButton from './RepeatButton/RepeatButton'
 import AuthService from 'services/authService'
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
 import pageLink from 'pagesLinks'
-
 import styles from './VerifyEmail.module.scss'
 import { useForm } from 'react-hook-form'
-import { VerifyEmailForm } from './interfaces'
+import { VerifyEmailForm, VerifyEmailProps } from './interfaces'
 import Regex from 'utils/regex'
 
 const preloadSrcList: string[] = [ImgEnvelope]
-
-interface VerifyEmailProps {
-  onClose: Function
-  email: string
-}
 
 function VerifyEmail({ onClose, email }: VerifyEmailProps) {
   const { register, handleSubmit, watch } = useForm<VerifyEmailForm>({

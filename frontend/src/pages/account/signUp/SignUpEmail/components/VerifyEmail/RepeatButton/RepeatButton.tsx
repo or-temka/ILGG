@@ -1,14 +1,10 @@
 import { useEffect, useState } from 'react'
 
 import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
-
 import styles from './RepeatButton.module.scss'
+import { RepeatButtonProps } from './interfaces'
 
 const timerTime = 60 // seconds
-
-interface RepeatButtonProps {
-  onClick: Function
-}
 
 function RepeatButton({ onClick }: RepeatButtonProps) {
   const [timeLeft, setTimeLeft] = useState(timerTime)

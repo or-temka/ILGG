@@ -1,28 +1,7 @@
-import { ChangeEvent, ChangeEventHandler, SelectHTMLAttributes } from 'react'
-import { UseFormRegisterReturn } from 'react-hook-form'
+import { ChangeEvent, ChangeEventHandler } from 'react'
 
 import styles from './Select.module.scss'
-
-interface IOption<T> {
-  value: T
-  label: string
-}
-
-interface SelectProps<T> extends SelectHTMLAttributes<HTMLSelectElement> {
-  options?: IOption<T>[]
-  errorText?: string
-  defaultValue?: string | number
-  disabledNotEntered?: boolean
-  notEnteredColor?: string
-  onChange?: (...args: any[]) => any
-  className?: string
-  containerClassName?: string
-  value?: string | number
-  hideDefault?: boolean
-  onChangeValue?: (value: string | number) => void
-  register?: UseFormRegisterReturn
-  [key: string]: any
-}
+import { SelectProps } from './interfaces'
 
 function Select<T>({
   options = [],
