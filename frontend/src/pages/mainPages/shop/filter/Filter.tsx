@@ -16,23 +16,14 @@ import {
   FilterFields,
   FilterValue,
 } from '../../../../redux/slices/shopApps/interfaces'
-
-type Filters = {
-  [key in FilterFields]: FilterValue
-}
+import { Filters } from './types'
+import { FilterProps } from './interfaces'
 
 const filtersInitial: Filters = {
   categories: null,
   playerTypes: null,
   themes: null,
   types: null,
-}
-
-interface FilterProps {
-  resetSortHandler: Function
-  classNames?: {
-    main?: string
-  }
 }
 
 function Filter({ classNames, resetSortHandler }: FilterProps) {

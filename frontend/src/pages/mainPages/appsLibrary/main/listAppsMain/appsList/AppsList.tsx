@@ -1,13 +1,6 @@
 import AppInList from './components/AppInList'
 import styles from './AppsList.module.scss'
-import AppsLibraryState from '../../../../../../redux/slices/myAppsLibrary/interfaces'
-
-interface AppsListProps {
-  apps: AppsLibraryState
-  classNames?: {
-    wrapper?: string
-  }
-}
+import { AppsListProps } from './interfaces'
 
 function AppsList({ apps, classNames }: AppsListProps) {
   const myGames = [...(apps.data || [])].filter((app) => app.types.includes(1))

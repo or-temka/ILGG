@@ -1,15 +1,7 @@
-import { ViewAppsType } from '../AppsLibrary'
 import BigPicturesMain from './BigPicturesMain/BigPicturesMain'
+import { MainProps } from './interfaces'
 import ListAppsMain from './ListAppsMain/ListAppsMain'
-
 import styles from './Main.module.scss'
-
-interface MainProps {
-  viewAppsType: ViewAppsType
-  classNames?: {
-    wrapper?: string
-  }
-}
 
 function Main({ viewAppsType, classNames }: MainProps) {
   return (

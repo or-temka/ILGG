@@ -1,28 +1,7 @@
-import { ReactNode, useRef, useState } from 'react'
-
-import { IUserProfile } from 'models/user/IUserProfile'
+import { useRef, useState } from 'react'
 
 import styles from './Comment.module.scss'
-
-
-interface CommentProps {
-  commentData: {
-    text: string
-    date: string
-  }
-  userAuthor: IUserProfile
-  headerChildren?: ReactNode
-  background?: boolean
-  classNames?: {
-    wrapper?: string
-    header?: string
-    content?: string
-    textContent?: string
-    authorImg?: string
-    authorName?: string
-    dateCreate?: string
-  }
-}
+import { CommentProps } from './interfaces'
 
 function Comment({
   commentData,

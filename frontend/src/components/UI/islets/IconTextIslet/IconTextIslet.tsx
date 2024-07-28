@@ -1,17 +1,5 @@
-import { ReactNode } from 'react'
-
 import styles from './IconTextIslet.module.scss'
-
-interface IconTextIsletProps {
-  svgComponent: ReactNode
-  text: string
-  onClick?: Function
-  classNames?: {
-    wrapper?: string
-    iconContainer?: string
-    textContainer?: string
-  }
-}
+import { IconTextIsletProps } from './interfaces'
 
 function IconTextIslet({
   svgComponent,

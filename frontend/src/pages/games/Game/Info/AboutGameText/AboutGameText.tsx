@@ -1,13 +1,5 @@
 import styles from './AboutGameText.module.scss'
-
-interface AboutGameTextProps {
-  classNames?: {
-    wrapper?: string
-    header?: string
-    content?: string
-    textBlock?: string
-  }
-}
+import { AboutGameTextProps } from './interfaces'
 
 function AboutGameText({ classNames }: AboutGameTextProps) {
   return (

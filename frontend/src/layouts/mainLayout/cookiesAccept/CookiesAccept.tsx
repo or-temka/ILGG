@@ -2,12 +2,8 @@ import PopUpSkeleton, {
   PopUpVerticalPosition,
 } from 'components/UI/popUps/skeletons/PopUpSkeleton/PopUpSkeleton'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
-
 import styles from './CookiesAccept.module.scss'
-
-interface CookiesAcceptProps {
-  onClose: Function
-}
+import { CookiesAcceptProps } from './interfaces'
 
 function CookiesAccept({ onClose }: CookiesAcceptProps) {
   const onAcceptHandler = () => {

@@ -1,7 +1,6 @@
 import GameControlButtons from './GameContolButtons/GameControlButtons'
 import GamePhotoLibrary from './GamePhotoLibrary/GamePhotoLibrary'
 import HeaderAboutGame from './HeaderAboutGame/HeaderAboutGame'
-
 import styles from './Header.module.scss'
 
 function Header() {

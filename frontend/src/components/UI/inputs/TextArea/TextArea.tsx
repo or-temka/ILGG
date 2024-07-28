@@ -1,23 +1,9 @@
-import { TextareaHTMLAttributes, useRef } from 'react'
-import { UseFormRegisterReturn } from 'react-hook-form'
+import { useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import styles from './TextArea.module.scss'
-
-export enum Variant {
-  simple = 'simple',
-  light = 'light',
-}
-
-interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
-  variant?: Variant
-  label?: string
-  errorText?: string
-  className?: string
-  wrapperClassName?: string
-  register?: UseFormRegisterReturn
-  [key: string]: any
-}
+import { Variant } from './enums'
+import { TextAreaProps } from './interfaces'
 
 function TextArea({
   variant = Variant.simple,
@@ -60,3 +46,4 @@ function TextArea({
 }
 
 export default TextArea
+export { Variant }

@@ -1,31 +1,10 @@
-import { InputHTMLAttributes, useCallback, useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { ReactComponent as ImageSVG } from 'assets/svgs/image.svg'
-
 import styles from './InputFile.module.scss'
-import { UseFormRegisterReturn } from 'react-hook-form'
-
-export enum InputFileVariant {
-  simple = styles.input__input_simple,
-  light = styles.input__input_light,
-}
-
-interface InputFileProps extends InputHTMLAttributes<HTMLInputElement> {
-  setFile?: React.Dispatch<React.SetStateAction<File | null>>
-  file?: File | null
-
-  variant?: InputFileVariant
-  errorText?: string
-
-  classNames?: {
-    input?: string
-    placeholder?: string
-    wrapper?: string
-  }
-  register?: UseFormRegisterReturn
-  [key: string]: any
-}
+import { InputFileVariant } from './enums'
+import { InputFileProps } from './interfaces'
 
 function InputFile({
   placeholder = 'Выберите файл...',
@@ -39,7 +18,7 @@ function InputFile({
   register,
   ...restProps
 }: InputFileProps) {
-  const [fileContent, setFileContent] = useState<any>(null)
+  const [_, setFileContent] = useState<any>(null)
   const htmlIdRef = useRef(uuidv4())
 
   const fileChangeHandle = useCallback(
@@ -97,3 +76,4 @@ function InputFile({
 }
 
 export default InputFile
+export { InputFileVariant }

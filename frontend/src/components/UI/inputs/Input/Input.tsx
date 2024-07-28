@@ -1,27 +1,9 @@
-import { InputHTMLAttributes, useRef } from 'react'
-import { UseFormRegisterReturn } from 'react-hook-form'
+import { useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import styles from './Input.module.scss'
-
-export enum InputVariant {
-  simple = styles.input__input_simple,
-  light = styles.input__input_light,
-}
-
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  inputType?: string
-  inputAutocomplete?: string
-  label?: string
-  variant?: InputVariant
-  errorText?: string
-  classNames?: {
-    input?: string
-    wrapper?: string
-  }
-  register?: UseFormRegisterReturn
-  [key: string]: any
-}
+import { InputVariant } from './enums'
+import { InputProps } from './interfaces'
 
 function Input({
   inputType = 'text',
@@ -65,3 +47,4 @@ function Input({
 }
 
 export default Input
+export { InputVariant }

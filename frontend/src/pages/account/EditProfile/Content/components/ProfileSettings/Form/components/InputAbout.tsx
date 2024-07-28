@@ -1,14 +1,6 @@
-import { FieldErrors, UseFormRegister } from 'react-hook-form'
-
-import { ProfileSettingsForm } from '../interfaces'
 import TextArea from 'components/UI/inputs/TextArea/TextArea'
 import Validations from 'validations/validations'
-
-interface InputAboutProps {
-  register: UseFormRegister<ProfileSettingsForm>
-  errors: FieldErrors<ProfileSettingsForm>
-  [key: string]: any
-}
+import { InputAboutProps } from './interfaces'
 
 function InputAbout({ register, errors }: InputAboutProps) {
   return (

@@ -1,14 +1,8 @@
 import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import ButtonWithIcon from 'components/UI/buttons/ButtonWithIcon/ButtonWithIcon'
-
 import { ReactComponent as PlaySVG } from 'assets/svgs/play.svg'
 import styles from './AppHeader.module.scss'
-
-interface AppHeaderProps {
-  classNames?: {
-    wrapper?: string
-  }
-}
+import { AppHeaderProps } from './interfaces'
 
 function AppHeader({ classNames }: AppHeaderProps) {
   return (

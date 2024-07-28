@@ -1,30 +1,8 @@
-import { ReactNode, useState } from 'react'
+import { useState } from 'react'
 
-import { IUserProfile } from 'models/user/IUserProfile'
-import { IMyUser } from 'models/myUser/IMyUser'
 import Tooltip from 'components/UI/tooltips/Tooltip/Tooltip'
-
 import styles from './MiniProfile.module.scss'
-
-export interface Button {
-  title: string
-  handler: (...args: any[]) => any
-}
-
-interface MiniProfileProps {
-  userData: IUserProfile | IMyUser | null
-  buttons: Button[] | []
-  iconComponent?: ReactNode
-  onClickProfile?: (showProfile: boolean) => any
-  classNames?: {
-    wrapper?: string
-    username?: string
-    img?: string
-    onlineStatus?: string
-    menu?: string
-    button?: string
-  }
-}
+import { MiniProfileProps } from './interfaces'
 
 function MiniProfile({
   userData,

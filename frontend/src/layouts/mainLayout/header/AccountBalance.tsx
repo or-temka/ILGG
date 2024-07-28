@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux'
 
 import { selectMyBalance } from '../../../redux/slices/myProfile/slice'
-
 import { ReactComponent as PlusSVG } from 'assets/svgs/plus.svg'
 import Tooltip, {
   VerticalDirection,
@@ -9,14 +8,8 @@ import Tooltip, {
 import SkeletonText, {
   SkeletonTextVariant,
 } from 'components/skeletons/SkeletonText/SkeletonText'
-
 import styles from './AccountBalance.module.scss'
-
-interface AccountBalanceProps {
-  onClickAccount?: (...args: any[]) => any
-  onClickToReplenish?: (...args: any[]) => any
-  className?: string
-}
+import { AccountBalanceProps } from './interfaces'
 
 function AccountBalance({
   onClickAccount = () => {},

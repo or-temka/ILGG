@@ -1,12 +1,7 @@
-import { ReactNode, useCallback, useRef } from 'react'
+import { useCallback, useRef } from 'react'
 
 import styles from './ToastNotification.module.scss'
-
-interface ToastNotificationProps {
-  children: ReactNode
-  text: string
-  onEvent?: Function
-}
+import { ToastNotificationProps } from './interfaces'
 
 function ToastNotification({
   children,

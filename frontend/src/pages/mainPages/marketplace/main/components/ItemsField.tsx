@@ -1,12 +1,6 @@
 import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
-
 import styles from './ItemsField.module.scss'
-
-interface ItemsFieldProps {
-  classNames?: {
-    wrapper?: string
-  }
-}
+import { ItemsFieldProps } from './interfaces'
 
 function ItemsField({ classNames }: ItemsFieldProps) {
   return (

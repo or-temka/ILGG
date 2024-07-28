@@ -1,14 +1,5 @@
-import { ReactNode } from 'react'
-
+import { TextIsletProps } from './interfaces'
 import styles from './TextIslet.module.scss'
-
-interface TextIsletProps {
-  children?: ReactNode
-  onClick?: Function
-  classNames?: {
-    text?: string
-  }
-}
 
 function TextIslet({ children, onClick, classNames }: TextIsletProps) {
   const onClickHandler = () => {

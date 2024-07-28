@@ -3,7 +3,6 @@ import { useEffect } from 'react'
 import Header from './Header/Header'
 import Info from './Info/Info'
 import { setPageName } from 'utils/setPageName'
-
 import styles from './Game.module.scss'
 
 function Game() {

@@ -1,7 +1,7 @@
 import { AppLanguage } from 'models/application/types/AppLanguage'
-
 import { ReactComponent as TickSVG } from 'assets/svgs/tick.svg'
 import style from './LanguageSupport.module.scss'
+import { LanguageSupportProps } from './interfaces'
 
 const langData: AppLanguage[] = [
   {
@@ -20,15 +20,6 @@ const langData: AppLanguage[] = [
     support: { interface: false, subtitles: false, voiceover: false },
   },
 ]
-
-interface LanguageSupportProps {
-  classNames?: {
-    wrapper?: string
-    header?: string
-    content?: string
-    table?: string
-  }
-}
 
 function LanguageSupport({ classNames }: LanguageSupportProps) {
   return (

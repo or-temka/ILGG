@@ -1,15 +1,10 @@
-import contentType from '../interfaces'
 import Avatar from './components/Avatar/Avatar'
 import MainInfoSettings from './components/MainInfoSettings/MainInfoSettings'
 import Password from './components/PasswordSettings/Password'
 import PrivacySettings from './components/PrivacySettings/PrivacySettings'
 import ProfileSettings from './components/ProfileSettings/ProfileSettings'
-
 import styles from './Content.module.scss'
-
-interface ContentProps {
-  contentType: contentType
-}
+import { ContentProps } from './interfaces'
 
 function Content({ contentType }: ContentProps) {
   return (

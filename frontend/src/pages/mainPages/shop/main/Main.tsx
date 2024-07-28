@@ -7,7 +7,6 @@ import {
 import GameBigCardSkeleton from 'components/cards/GameBigCardSkeleton/GameBigCardSkeleton'
 import GameBigCard from 'components/cards/GameBigCard/GameBigCard'
 import pageLink from 'pagesLinks'
-
 import styles from './Main.module.scss'
 
 function Main() {

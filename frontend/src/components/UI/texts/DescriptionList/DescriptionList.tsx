@@ -1,28 +1,6 @@
 import styles from './DescriptionList.module.scss'
-
-export enum DescListTermVariant {
-  light = styles.desc__term_light,
-  simple = styles.desc__term_simple,
-}
-
-interface desc {
-  term: string
-  definition: string | string[]
-  termVariant?: DescListTermVariant
-  onClickDefinition?: (
-    event?: React.MouseEvent<HTMLElement, MouseEvent>
-  ) => void
-}
-
-interface DescriptionListProps {
-  descs: desc[]
-  classNames?: {
-    list?: string
-    term?: string
-    definition?: string
-    listItem?: string
-  }
-}
+import { DescListTermVariant } from './enums'
+import { DescriptionListProps } from './interfaces'
 
 function DescriptionList({ descs, classNames }: DescriptionListProps) {
   return (
@@ -74,3 +52,4 @@ function DescriptionList({ descs, classNames }: DescriptionListProps) {
 }
 
 export default DescriptionList
+export { DescListTermVariant }

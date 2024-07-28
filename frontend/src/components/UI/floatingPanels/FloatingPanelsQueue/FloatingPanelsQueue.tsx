@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import {
@@ -11,11 +11,7 @@ import FloatingPanelSkeleton from '../skeletons/FloatingPanelSkeleton/FloatingPa
 import FloatingNotification from '../FloatingNotification/FloatingNotification'
 import styles from './FloatingPanelsQueue.module.scss'
 import IFloatingPanelsQueue from '../../../../redux/slices/floatingPanelsQueue/interfaces'
-
-interface FloatingPanelsQueueProps {
-  itemLifeTime?: number
-  className?: string
-}
+import { FloatingPanelsQueueProps } from './interfaces'
 
 function FloatingPanelsQueue({
   itemLifeTime = 5000,
@@ -26,19 +22,22 @@ function FloatingPanelsQueue({
   const dispatch = useDispatch()
 
   // Auto destroy items
-  const smoothDeleteItemFromQueueHandler = (panelId: number | string) => {
-    dispatch(prepareToRemove({ id: panelId }))
-    setTimeout(() => {
-      dispatch(removePanel({ id: panelId }))
-    }, 400)
-  }
+  const smoothDeleteItemFromQueueHandler = useCallback(
+    (panelId: number | string) => {
+      dispatch(prepareToRemove({ id: panelId }))
+      setTimeout(() => {
+        dispatch(removePanel({ id: panelId }))
+      }, 400)
+    },
+    [dispatch]
+  )
   useMemo(() => {
     panelsQueue.map((item) => {
       setTimeout(() => {
         smoothDeleteItemFromQueueHandler(item.id)
       }, item.lifeTime || itemLifeTime)
     })
-  }, [panelsQueue])
+  }, [panelsQueue, itemLifeTime, smoothDeleteItemFromQueueHandler])
 
   return (
     <FloatingPanelSkeleton className={[styles.queue, className].join(' ')}>

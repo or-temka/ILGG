@@ -1,6 +1,5 @@
 import { ReactComponent as ProfileBlockedSVG } from 'assets/svgs/profileBlocked.svg'
 import InfoTooltip from 'components/UI/tooltips/InfoTooltip/InfoTooltip'
-
 import styles from './ProfileBlockedPanel.module.scss'
 
 function ProfileBlockedPanel() {

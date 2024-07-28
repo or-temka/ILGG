@@ -1,6 +1,6 @@
 import DescriptionList from 'components/UI/texts/DescriptionList/DescriptionList'
-
 import styles from './MinSystemRequirements.module.scss'
+import { MinSystemRequirementsProps } from './interfaces'
 
 const minSysReq = {
   windows: [
@@ -55,16 +55,6 @@ const minSysReq = {
       ],
     },
   ],
-}
-
-interface MinSystemRequirementsProps {
-  classNames?: {
-    wrapper?: string
-    header?: string
-    content?: string
-    requirementBlock?: string
-    decorLine?: string
-  }
 }
 
 function MinSystemRequirements({ classNames }: MinSystemRequirementsProps) {
