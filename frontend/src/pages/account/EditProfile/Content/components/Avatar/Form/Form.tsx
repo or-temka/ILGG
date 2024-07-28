@@ -4,12 +4,12 @@ import { useForm } from 'react-hook-form'
 import InputFile from 'components/UI/inputs/InputFile/InputFile'
 import styles from './Form.module.scss'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
-import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
 import { AvatarSettingsForm } from './interfaces'
 import onSubmit from './onSubmit'
 import Validations from 'validations/validations'
 import ShowUploadedImage from './components/ShowUploadedImage'
+import { useNotificationPanel } from 'hooks'
 
 function Form() {
   const [isSendBtnLoading, setIsSendBtnLoading] = useState(false)

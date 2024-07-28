@@ -15,9 +15,10 @@ import LoadingPopUp from 'components/UI/loaders/LoadingPopUp/LoadingPopUp'
 import { ReactComponent as SignInDoorSVG } from 'assets/svgs/door.svg'
 import menuStyles from '../Menu.module.scss'
 import styles from './RightMenu.module.scss'
-import useScrollVisibility from 'hooks/useScrollVisibility'
 import ScrollableContainer from 'components/frames/ScrollableContainer/ScrollableContainer'
 import { RightMenuProps } from './interfaces'
+import { useScrollVisibility } from 'hooks'
+
 const SignIn = lazy(() => import('components/main/SignIn/SignIn'))
 
 const usersData: IUserProfile[] = [

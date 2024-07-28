@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { AxiosError } from 'axios'
 
-import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
 import PopUpContainer from 'components/UI/popUps/skeletons/PopUpContainer/PopUpContainer'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import RecoveryPasswordService from 'services/recoveryPasswordservice'
@@ -15,6 +14,7 @@ import { useForm } from 'react-hook-form'
 import { EnterNewPasswordForm, EnterNewPasswordProps } from './interfaces'
 import InputPassword from 'components/UI/inputs/InputPassword/InputPassword'
 import Validations from 'validations/validations'
+import { useNotificationPanel } from 'hooks'
 
 function EnterNewPassword({
   email,

@@ -1,7 +1,6 @@
 import { useForm } from 'react-hook-form'
 import { useEffect, useState } from 'react'
 
-import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
 import Input from 'components/UI/inputs/Input/Input'
 import Checkbox from 'components/UI/inputs/Checkbox/Checkbox'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
@@ -13,6 +12,7 @@ import styles from '../SignUp.module.scss'
 import { SignUpEmailForm } from './interfaces'
 import onSubmit from './onSubmit'
 import Validations from 'validations/validations'
+import { useNotificationPanel } from 'hooks'
 
 function SignUpEmail() {
   const [isSendBtnLoading, setIsSendBtnLoading] = useState(false)

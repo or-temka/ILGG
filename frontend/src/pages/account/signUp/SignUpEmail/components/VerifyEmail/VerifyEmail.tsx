@@ -1,8 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useCallback, useState } from 'react'
 
-import useImagePreloader from 'hooks/useImagePreloader'
-import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
 import PopUpContainer from 'components/UI/popUps/skeletons/PopUpContainer/PopUpContainer'
 import LoadingPopUp from 'components/UI/loaders/LoadingPopUp/LoadingPopUp'
 import ImgEnvelope from 'assets/images/posters/email-envelope.png'
@@ -16,6 +14,7 @@ import styles from './VerifyEmail.module.scss'
 import { useForm } from 'react-hook-form'
 import { VerifyEmailForm, VerifyEmailProps } from './interfaces'
 import Regex from 'utils/regex'
+import { useImagePreloader, useNotificationPanel } from 'hooks'
 
 const preloadSrcList: string[] = [ImgEnvelope]
 

@@ -7,7 +7,6 @@ import Input from 'components/UI/inputs/Input/Input'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import styles from './Form.module.scss'
 import onSubmit from './onSubmit'
-import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
 import {
   selectMyUser,
@@ -15,6 +14,7 @@ import {
 } from '../../../../../../../redux/slices/myProfile/slice'
 import { MainInfoSettingsForm } from './interfaces'
 import Validations from 'validations/validations'
+import { useNotificationPanel } from 'hooks'
 
 function Form() {
   const dispatch = useDispatch()

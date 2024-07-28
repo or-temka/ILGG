@@ -1,4 +1,4 @@
-import useHover from 'hooks/useHover'
+import { useHover } from 'hooks'
 import styles from './HoverableText.module.scss'
 import { HoverableTextProps } from './interfaces'
 import { useRef } from 'react'

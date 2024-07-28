@@ -2,7 +2,6 @@ import { useCallback, useState } from 'react'
 import { AxiosError } from 'axios'
 import { useForm } from 'react-hook-form'
 
-import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
 import PopUpContainer from 'components/UI/popUps/skeletons/PopUpContainer/PopUpContainer'
 import Input from 'components/UI/inputs/Input/Input'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
@@ -13,6 +12,7 @@ import { RecoveryEmailError } from 'models/response/RecoveryPasswordResponse'
 import styles from './RecoveryPassword.module.scss'
 import { RecoveryPasswordForm, RecoveryPasswordProps } from './interfaces'
 import { GenericUseFormValidation } from 'validations/useFormValidations/generic'
+import { useNotificationPanel } from 'hooks'
 
 function RecoveryPassword({ onClose, onCloseSignIn }: RecoveryPasswordProps) {
   const { register, handleSubmit, watch } = useForm<RecoveryPasswordForm>({})

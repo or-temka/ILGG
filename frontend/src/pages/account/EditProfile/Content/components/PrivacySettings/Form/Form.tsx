@@ -10,7 +10,6 @@ import {
 } from '../../../../../../../redux/slices/myProfile/slice'
 import { PrivacySettingsForm } from './interfaces'
 import formDefaultValues from './formDefaultValues'
-import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
 import onSubmit from './onSubmit'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
@@ -18,6 +17,7 @@ import AppsFieldset from './components/AppsFieldset'
 import InventoryFieldset from './components/InventoryFieldset'
 import MessagesFieldset from './components/MessagesFieldset'
 import ProfileFieldset from './components/ProfileFieldset'
+import { useNotificationPanel } from 'hooks'
 
 function Form() {
   const dispatch = useDispatch()

@@ -6,12 +6,12 @@ import { AxiosResponse } from 'axios'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import styles from './Form.module.scss'
 import InputPassword from 'components/UI/inputs/InputPassword/InputPassword'
-import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
 import { setMyUser } from '../../../../../../../redux/slices/myProfile/slice'
 import { PasswordSettingsForm } from './interfaces'
 import onSubmit from './onSubmit'
 import Validations from 'validations/validations'
+import { useNotificationPanel } from 'hooks'
 
 function Form() {
   const dispatch = useDispatch()

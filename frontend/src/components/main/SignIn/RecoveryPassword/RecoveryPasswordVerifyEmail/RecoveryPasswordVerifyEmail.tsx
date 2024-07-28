@@ -1,8 +1,6 @@
 import { useCallback, useState } from 'react'
 import { AxiosError } from 'axios'
 
-import useImagePreloader from 'hooks/useImagePreloader'
-import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
 import PopUpContainer from 'components/UI/popUps/skeletons/PopUpContainer/PopUpContainer'
 import LoadingPopUp from 'components/UI/loaders/LoadingPopUp/LoadingPopUp'
 import ImgEnvelope from 'assets/images/posters/email-envelope.png'
@@ -20,6 +18,7 @@ import styles from './RecoveryPasswordVerifyEmail.module.scss'
 import { useForm } from 'react-hook-form'
 import { RecoveryPasswordVerifyEmailForm, VerifyEmailProps } from './interfaces'
 import Validations from 'validations/validations'
+import { useImagePreloader, useNotificationPanel } from 'hooks'
 
 const preloadSrcList: string[] = [ImgEnvelope]
 

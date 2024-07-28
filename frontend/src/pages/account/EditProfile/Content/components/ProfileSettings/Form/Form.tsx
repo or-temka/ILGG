@@ -6,7 +6,6 @@ import { useCallback, useState } from 'react'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import { ProfileSettingsForm } from './interfaces'
 import onSubmit from './onSubmit'
-import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
 import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
 import styles from './Form.module.scss'
 import InputName from './components/InputName'
@@ -15,6 +14,7 @@ import {
   selectMyUser,
   setMyUser,
 } from '../../../../../../../redux/slices/myProfile/slice'
+import { useNotificationPanel } from 'hooks'
 
 function Form() {
   const dispatch = useDispatch()

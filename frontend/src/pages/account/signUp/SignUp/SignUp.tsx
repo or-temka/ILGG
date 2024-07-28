@@ -3,8 +3,6 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
-import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
-import useLocationQuery from 'hooks/useLocationQuery'
 import Input from 'components/UI/inputs/Input/Input'
 import Checkbox from 'components/UI/inputs/Checkbox/Checkbox'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
@@ -18,6 +16,7 @@ import styles from '../SignUp.module.scss'
 import { SignUpForm } from './interfaces'
 import InputPassword from 'components/UI/inputs/InputPassword/InputPassword'
 import Validations from 'validations/validations'
+import { useLocationQuery, useNotificationPanel } from 'hooks'
 
 function SignUp() {
   const queryParams = useLocationQuery()

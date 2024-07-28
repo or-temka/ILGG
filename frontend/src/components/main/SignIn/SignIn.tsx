@@ -2,8 +2,6 @@ import { Suspense, lazy, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
-import useImagePreloader from 'hooks/useImagePreloader'
-import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
 import Input, { InputVariant } from 'components/UI/inputs/Input/Input'
 import PopUpSkeleton from 'components/UI/popUps/skeletons/PopUpSkeleton/PopUpSkeleton'
 import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
@@ -18,6 +16,7 @@ import InputPassword from 'components/UI/inputs/InputPassword/InputPassword'
 import { useForm } from 'react-hook-form'
 import { SignInForm } from './interfaces'
 import Validations from 'validations/validations'
+import { useImagePreloader, useNotificationPanel } from 'hooks'
 
 const preloadSrcList: string[] = [PosterImage]
 
