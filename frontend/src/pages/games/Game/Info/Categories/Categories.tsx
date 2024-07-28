@@ -1,10 +1,10 @@
-import IconTextIslet from 'components/UI/islets/IconTextIslet/IconTextIslet'
 import { ReactComponent as HumanSVG } from 'assets/svgs/human.svg'
 import { ReactComponent as GlassesSVG } from 'assets/svgs/glasses.svg'
 import { ReactComponent as PhoneSVG } from 'assets/svgs/phone.svg'
 import { ReactComponent as PcSVG } from 'assets/svgs/pc.svg'
-import style from './Categories.module.scss'
 import { CategoriesProps } from './interfaces'
+import { IconTextIslet } from 'components'
+import style from './Categories.module.scss'
 
 function Categories({ classNames }: CategoriesProps) {
   return (

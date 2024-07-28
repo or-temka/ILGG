@@ -1,6 +1,6 @@
-import style from './AppNews.module.scss'
 import AppOneNews from './AppOneNews'
 import { AppNewsProps } from './interfaces'
+import style from './AppNews.module.scss'
 
 function AppNews({ classNames }: AppNewsProps) {
   return (

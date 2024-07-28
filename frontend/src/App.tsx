@@ -2,10 +2,10 @@ import { lazy, useMemo } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import MainLayout from 'layouts/mainLayout/MainLayout'
-import FloatingPanelsQueue from 'components/UI/floatingPanels/FloatingPanelsQueue/FloatingPanelsQueue'
 import useInitialization from 'initialize'
 import UnauthorizedPages from 'routes/UnauthorizedPages'
 import AuthorizedPages from 'routes/AuthorizedPages'
+import { FloatingPanelsQueue } from 'components'
 
 const PageNotFound = lazy(
   () => import('pages/mainPages/PageNotFound/PageNotFound')

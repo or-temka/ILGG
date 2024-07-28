@@ -1,9 +1,8 @@
 import { useState } from 'react'
 
-import Tooltip from 'components/UI/tooltips/Tooltip/Tooltip'
-import styles from './MiniProfile.module.scss'
 import { MiniProfileProps } from './interfaces'
-import HoverableText from 'components/UI/texts/HoverableText/HoverableText'
+import { HoverableText } from 'components'
+import styles from './MiniProfile.module.scss'
 
 function MiniProfile({
   userData,

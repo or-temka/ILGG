@@ -5,8 +5,8 @@ import Header from './Header/Header'
 import AdoptInfo from './AdoptInfo/AdoptInfo'
 import HeaderSkeleton from './Header/components/HeaderSkeleton'
 import { setPageName } from 'utils/setPageName'
-import styles from './Profile.module.scss'
 import { user } from 'models'
+import styles from './Profile.module.scss'
 
 const tempUserData: user.IFullUserProfile = {
   _id: 1,

@@ -10,4 +10,4 @@ function LoadingSpiner({ className = '' }) {
   )
 }
 
-export default LoadingSpiner
+export { LoadingSpiner }

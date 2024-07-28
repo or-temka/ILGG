@@ -1,7 +1,7 @@
-import TextIslet from 'components/UI/islets/TextIslet/TextIslet'
-import style from './Tags.module.scss'
+import { TextIslet } from 'components'
 import { TagsProps } from './interfaces'
 import { application } from 'models'
+import style from './Tags.module.scss'
 
 const tags: application.AppTheme[] = [
   { _id: 1, name: 'игра на выживание' },

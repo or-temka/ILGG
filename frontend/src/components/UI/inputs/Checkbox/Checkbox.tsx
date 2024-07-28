@@ -1,8 +1,8 @@
 import { useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import styles from './Checkbox.module.scss'
 import { CheckboxProps } from './interfaces'
+import styles from './Checkbox.module.scss'
 
 function Checkbox({
   label = '',
@@ -34,4 +34,4 @@ function Checkbox({
   )
 }
 
-export default Checkbox
+export { Checkbox }

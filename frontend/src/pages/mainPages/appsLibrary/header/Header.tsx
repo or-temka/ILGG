@@ -1,13 +1,10 @@
 import { useState } from 'react'
 
-import Input from 'components/UI/inputs/Input/Input'
 import { ReactComponent as ListPapersSVG } from 'assets/svgs/listsPapers.svg'
 import { ReactComponent as TilesSVG } from 'assets/svgs/tiles.svg'
-import Tooltip, {
-  VerticalDirection,
-} from 'components/UI/tooltips/Tooltip/Tooltip'
-import styles from './Header.module.scss'
 import { HeaderProps } from './interfaces'
+import { Input, Tooltip, tooltipVerticalDirection } from 'components'
+import styles from './Header.module.scss'
 
 function Header({
   viewAppsType,
@@ -25,7 +22,7 @@ function Header({
         </div>
         <div className={styles.header__manageBtns}>
           <Tooltip
-            postitionVertical={VerticalDirection.bottom}
+            postitionVertical={tooltipVerticalDirection.bottom}
             text="Список приложений"
           >
             <button
@@ -40,7 +37,7 @@ function Header({
             </button>
           </Tooltip>
           <Tooltip
-            postitionVertical={VerticalDirection.bottom}
+            postitionVertical={tooltipVerticalDirection.bottom}
             text="Большие значки"
           >
             <button

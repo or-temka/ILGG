@@ -1,5 +1,5 @@
-import styles from './AppInList.module.scss'
 import { AppInListProps } from './interfaces'
+import styles from './AppInList.module.scss'
 
 function AppInList({ appData, classNames }: AppInListProps) {
   return (

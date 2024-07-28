@@ -1,18 +1,21 @@
 import { useForm } from 'react-hook-form'
 import { useEffect, useState } from 'react'
 
-import Input from 'components/UI/inputs/Input/Input'
-import Checkbox from 'components/UI/inputs/Checkbox/Checkbox'
-import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import { setPageName } from 'utils/setPageName'
-import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
 import AboutService from '../components/AboutService'
 import VerifyEmail from './components/VerifyEmail/VerifyEmail'
-import styles from '../SignUp.module.scss'
 import { SignUpEmailForm } from './interfaces'
 import onSubmit from './onSubmit'
 import Validations from 'validations/validations'
 import { useNotificationPanel } from 'hooks'
+import {
+  Button,
+  buttonVariant,
+  Checkbox,
+  floatingNotificationVariant,
+  Input,
+} from 'components'
+import styles from '../SignUp.module.scss'
 
 function SignUpEmail() {
   const [isSendBtnLoading, setIsSendBtnLoading] = useState(false)
@@ -30,7 +33,7 @@ function SignUpEmail() {
   } = useForm<SignUpEmailForm>({ mode: 'onSubmit' })
 
   const addNotificationErrorPanel = useNotificationPanel({
-    variant: FloatingNotificationVariant.error,
+    variant: floatingNotificationVariant.error,
   })
 
   return (
@@ -79,7 +82,7 @@ function SignUpEmail() {
                 type="submit"
                 title="Отправить письмо с подтверждением"
                 disabled={isSendBtnLoading || !watch('personalDataConsent')}
-                variant={ButtonVariant.primary}
+                variant={buttonVariant.primary}
                 className={styles.form__createButton}
               />
             </form>

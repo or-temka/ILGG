@@ -1,7 +1,7 @@
 import { ChangeEvent, ChangeEventHandler } from 'react'
 
-import styles from './Select.module.scss'
 import { SelectProps } from './interfaces'
+import styles from './Select.module.scss'
 
 function Select<T>({
   options = [],
@@ -70,4 +70,4 @@ function Select<T>({
   )
 }
 
-export default Select
+export { Select }

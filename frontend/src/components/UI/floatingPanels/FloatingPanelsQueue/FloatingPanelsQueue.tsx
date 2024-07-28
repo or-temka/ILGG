@@ -7,11 +7,10 @@ import {
   removePanel,
   selectPanels,
 } from '../../../../redux/slices/floatingPanelsQueue/slice'
-import FloatingPanelSkeleton from '../skeletons/FloatingPanelSkeleton/FloatingPanelSkeleton'
-import FloatingNotification from '../FloatingNotification/FloatingNotification'
-import styles from './FloatingPanelsQueue.module.scss'
 import IFloatingPanelsQueue from '../../../../redux/slices/floatingPanelsQueue/interfaces'
 import { FloatingPanelsQueueProps } from './interfaces'
+import { FloatingNotification, FloatingPanelSkeleton } from 'components'
+import styles from './FloatingPanelsQueue.module.scss'
 
 function FloatingPanelsQueue({
   itemLifeTime = 5000,
@@ -64,4 +63,4 @@ function FloatingPanelsQueue({
   )
 }
 
-export default FloatingPanelsQueue
+export { FloatingPanelsQueue }

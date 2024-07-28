@@ -1,5 +1,5 @@
-import styles from './Apps.module.scss'
 import { AppsProps } from './interfaces'
+import styles from './Apps.module.scss'
 
 function Apps({ classNames }: AppsProps) {
   return (

@@ -2,22 +2,25 @@ import { useCallback, useState } from 'react'
 import { AxiosError } from 'axios'
 import { useForm } from 'react-hook-form'
 
-import PopUpContainer from 'components/UI/popUps/skeletons/PopUpContainer/PopUpContainer'
-import Input from 'components/UI/inputs/Input/Input'
-import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import RecoveryPasswordVerifyEmail from './RecoveryPasswordVerifyEmail/RecoveryPasswordVerifyEmail'
-import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
 import RecoveryPasswordService from 'services/recoveryPasswordservice'
-import styles from './RecoveryPassword.module.scss'
 import { RecoveryPasswordForm, RecoveryPasswordProps } from './interfaces'
 import { GenericUseFormValidation } from 'validations/useFormValidations/generic'
 import { useNotificationPanel } from 'hooks'
 import { response } from 'models'
+import {
+  Button,
+  buttonVariant,
+  floatingNotificationVariant,
+  Input,
+  PopUpContainer,
+} from 'components'
+import styles from './RecoveryPassword.module.scss'
 
 function RecoveryPassword({ onClose, onCloseSignIn }: RecoveryPasswordProps) {
   const { register, handleSubmit, watch } = useForm<RecoveryPasswordForm>({})
   const addNotificationErrorPanel = useNotificationPanel({
-    variant: FloatingNotificationVariant.error,
+    variant: floatingNotificationVariant.error,
   })
   const [isDisabledSendBtn, setIsDisabledSendBtn] = useState(false)
   const [showVerifyEmail, setShowVerifyEmail] = useState(false)
@@ -65,7 +68,7 @@ function RecoveryPassword({ onClose, onCloseSignIn }: RecoveryPasswordProps) {
               <Button
                 type="submit"
                 title="Подтвердить"
-                variant={ButtonVariant.primary}
+                variant={buttonVariant.primary}
                 className={styles.form__sendBtn}
                 disabled={isDisabledSendBtn || !watch('userLoginOrEmail')}
               />

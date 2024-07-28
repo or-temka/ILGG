@@ -1,5 +1,5 @@
-import styles from './IconTextIslet.module.scss'
 import { IconTextIsletProps } from './interfaces'
+import styles from './IconTextIslet.module.scss'
 
 function IconTextIslet({
   svgComponent,
@@ -39,4 +39,4 @@ function IconTextIslet({
   )
 }
 
-export default IconTextIslet
+export { IconTextIslet }

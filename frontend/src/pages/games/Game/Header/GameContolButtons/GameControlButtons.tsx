@@ -1,6 +1,6 @@
-import ButtonWithIcon from 'components/UI/buttons/ButtonWithIcon/ButtonWithIcon'
 import { ReactComponent as PlaySVG } from 'assets/svgs/play.svg'
 import { ReactComponent as PlusSVG } from 'assets/svgs/plus.svg'
+import { ButtonWithIcon } from 'components'
 import styles from './GameControlButtons.module.scss'
 
 function GameControlButtons() {

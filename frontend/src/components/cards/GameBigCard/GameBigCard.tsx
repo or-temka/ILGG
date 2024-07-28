@@ -1,11 +1,9 @@
 import { Link } from 'react-router-dom'
 
-import CardImageText from '../CardImageText/CardImageText'
-import Tooltip, {
-  VerticalDirection,
-} from 'components/UI/tooltips/Tooltip/Tooltip'
-import styles from './GameBigCard.module.scss'
 import { GameBigCardProps } from './interfaces'
+import { CardImageText } from '../cards'
+import { Tooltip, tooltipVerticalDirection } from 'components'
+import styles from './GameBigCard.module.scss'
 
 function GameBigCard({
   name,
@@ -23,7 +21,7 @@ function GameBigCard({
         {newGame && (
           <Tooltip
             className={styles.card__isNewGame}
-            postitionVertical={VerticalDirection.bottom}
+            postitionVertical={tooltipVerticalDirection.bottom}
             text="Игра вышла недавно"
           >
             New
@@ -34,4 +32,4 @@ function GameBigCard({
   )
 }
 
-export default GameBigCard
+export { GameBigCard }

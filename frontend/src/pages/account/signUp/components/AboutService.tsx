@@ -1,5 +1,5 @@
-import styles from './AboutService.module.scss'
 import { AboutServiceProps } from './interfaces'
+import styles from './AboutService.module.scss'
 
 function AboutService({ classNames }: AboutServiceProps) {
   return (

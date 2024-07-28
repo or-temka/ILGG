@@ -1,6 +1,6 @@
-import TextArea from 'components/UI/inputs/TextArea/TextArea'
 import Validations from 'validations/validations'
 import { InputAboutProps } from './interfaces'
+import { TextArea } from 'components'
 
 function InputAbout({ register, errors }: InputAboutProps) {
   return (

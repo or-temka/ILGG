@@ -1,8 +1,8 @@
 import ItemInfo from './components/ItemInfo'
 import ItemsField from './components/ItemsField'
 import Apps from './components/Apps'
-import styles from './Main.module.scss'
 import { MainProps } from './interfaces'
+import styles from './Main.module.scss'
 
 function Main({ classNames }: MainProps) {
   return (

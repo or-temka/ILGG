@@ -1,12 +1,12 @@
-import styles from './Tooltip.module.scss'
-import { HorizontalDirection, VerticalDirection } from './enums'
+import { tooltipHorizontalDirection, tooltipVerticalDirection } from './enums'
 import { TooltipProps } from './interfaces'
+import styles from './Tooltip.module.scss'
 
 function Tooltip({
   children,
   text = '',
-  postitionHorizontal = HorizontalDirection.center,
-  postitionVertical = VerticalDirection.top,
+  postitionHorizontal = tooltipHorizontalDirection.center,
+  postitionVertical = tooltipVerticalDirection.top,
   className = '',
   tooltipClassName = '',
   onClick = () => {},
@@ -35,5 +35,4 @@ function Tooltip({
   )
 }
 
-export default Tooltip
-export { HorizontalDirection, VerticalDirection }
+export { Tooltip, tooltipHorizontalDirection, tooltipVerticalDirection }

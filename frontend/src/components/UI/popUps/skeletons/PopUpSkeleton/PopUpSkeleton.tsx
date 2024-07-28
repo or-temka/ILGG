@@ -1,7 +1,7 @@
-import CloseButton from 'components/UI/buttons/CloseButton/CloseButton'
-import styles from './PopUpSkeleton.module.scss'
-import { PopUpHorizontalPosition, PopUpVerticalPosition } from './enums'
+import { CloseButton } from 'components'
+import { popUpHorizontalPosition, popUpVerticalPosition } from './enums'
 import { PopUpSkeletonProps } from './interfaces'
+import styles from './PopUpSkeleton.module.scss'
 
 function PopUpSkeleton({
   children,
@@ -10,8 +10,8 @@ function PopUpSkeleton({
   showBack = true,
   backgroundBlur = true,
   classNames = {},
-  verticalPosition = PopUpVerticalPosition.center,
-  horizontalPosition = PopUpHorizontalPosition.center,
+  verticalPosition = popUpVerticalPosition.center,
+  horizontalPosition = popUpHorizontalPosition.center,
 }: PopUpSkeletonProps) {
   return (
     <div
@@ -52,5 +52,4 @@ function PopUpSkeleton({
   )
 }
 
-export default PopUpSkeleton
-export { PopUpHorizontalPosition, PopUpVerticalPosition }
+export { PopUpSkeleton, popUpHorizontalPosition, popUpVerticalPosition }

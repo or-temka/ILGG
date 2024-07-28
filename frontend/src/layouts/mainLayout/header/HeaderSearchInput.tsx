@@ -1,5 +1,5 @@
-import styles from './HeaderSearchInput.module.scss'
 import { HeaderSearchInputProps } from './interfaces'
+import styles from './HeaderSearchInput.module.scss'
 
 function HeaderSearchInput({
   value = '',

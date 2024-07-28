@@ -1,7 +1,7 @@
-import CardImageTextSkeleton from '../skeletons/CardImageTextSkeleton'
+import { CardImageTextSkeleton } from '../skeletons/CardImageTextSkeleton'
 import styles from '../GameBigCard/GameBigCard.module.scss'
 
-function GameBigCard() {
+function GameBigCardSkeleton() {
   return (
     <div className={[styles.card, styles.cardSkeleton].join(' ')}>
       <CardImageTextSkeleton />
@@ -16,4 +16,4 @@ function GameBigCard() {
   )
 }
 
-export default GameBigCard
+export { GameBigCardSkeleton }

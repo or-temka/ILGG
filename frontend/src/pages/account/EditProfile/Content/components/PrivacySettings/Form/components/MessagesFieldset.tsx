@@ -1,9 +1,9 @@
 import { Controller } from 'react-hook-form'
 
-import styles from './fieldset.module.scss'
-import Select from 'components/UI/inputs/Select/Select'
 import { AppsFieldsetProps } from './interfaces'
 import { myUser } from 'models'
+import { Select } from 'components'
+import styles from './fieldset.module.scss'
 
 function MessagesFieldset({ control, errors }: AppsFieldsetProps) {
   return (

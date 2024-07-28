@@ -3,11 +3,8 @@ import { useForm } from 'react-hook-form'
 import { AxiosResponse } from 'axios'
 import { useCallback, useState } from 'react'
 
-import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import { ProfileSettingsForm } from './interfaces'
 import onSubmit from './onSubmit'
-import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
-import styles from './Form.module.scss'
 import InputName from './components/InputName'
 import InputAbout from './components/InputAbout'
 import {
@@ -15,6 +12,8 @@ import {
   setMyUser,
 } from '../../../../../../../redux/slices/myProfile/slice'
 import { useNotificationPanel } from 'hooks'
+import { Button, buttonVariant, floatingNotificationVariant } from 'components'
+import styles from './Form.module.scss'
 
 function Form() {
   const dispatch = useDispatch()
@@ -33,7 +32,7 @@ function Form() {
   })
 
   const addNotificationSuccessPanel = useNotificationPanel({
-    variant: FloatingNotificationVariant.success,
+    variant: floatingNotificationVariant.success,
   })
 
   const onSubmited = useCallback(
@@ -57,7 +56,7 @@ function Form() {
 
         <Button
           title="Сохранить"
-          variant={ButtonVariant.primary}
+          variant={buttonVariant.primary}
           type="submit"
           disabled={isSendBtnLoading}
         />

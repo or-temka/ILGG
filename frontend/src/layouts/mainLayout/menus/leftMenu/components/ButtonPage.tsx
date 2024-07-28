@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
-import styles from './ButtonPage.module.scss'
 import { ButtonPageProps } from './interfaces'
+import styles from './ButtonPage.module.scss'
 
 function ButtonPage({
   name = '',

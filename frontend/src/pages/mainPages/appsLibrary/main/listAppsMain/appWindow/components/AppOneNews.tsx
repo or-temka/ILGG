@@ -1,5 +1,5 @@
-import styles from './AppOneNews.module.scss'
 import { AppOneNewsProps } from './interfaces'
+import styles from './AppOneNews.module.scss'
 
 function AppOneNews({ classNames }: AppOneNewsProps) {
   return (

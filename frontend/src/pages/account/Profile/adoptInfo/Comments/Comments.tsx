@@ -1,7 +1,6 @@
-import Comment from 'components/UI/blocks/comments/Comment/Comment'
-import CommentSkeleton from 'components/UI/blocks/comments/skeletons/CommentSkeleton'
-import styles from './Comments.module.scss'
+import { CommentSkeleton, Comment } from 'components'
 import { IUserWithComment } from './interfaces'
+import styles from './Comments.module.scss'
 
 const usersWithComments: IUserWithComment[] = [
   {

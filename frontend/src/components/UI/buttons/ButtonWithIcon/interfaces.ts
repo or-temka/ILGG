@@ -1,12 +1,11 @@
+import { buttonWithIconIconPosition, buttonWithIconVariant } from 'components'
 import { ButtonHTMLAttributes, ReactNode } from 'react'
-
-import { ButtonWithIconIconPosition, ButtonWithIconVariant } from './enums'
 
 export interface ButtonWithIconProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
   iconSVG?: ReactNode
-  variant?: ButtonWithIconVariant
-  iconPosition?: ButtonWithIconIconPosition
+  variant?: buttonWithIconVariant
+  iconPosition?: buttonWithIconIconPosition
   className?: string
 
   [key: string]: any

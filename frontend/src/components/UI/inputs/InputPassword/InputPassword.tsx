@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
-import InputWithBtnIcon from '../InputWithBtnIcon/InputWithBtnIcon'
 import { ReactComponent as ShowPasswordSVG } from 'assets/svgs/eye.svg'
 import { InputPasswordProps } from './interfaces'
+import { InputWithBtnIcon } from 'components'
 
 function InputPassword({ showPass = false, ...rest }: InputPasswordProps) {
   const [isShowPass, setIsShowPass] = useState(false)
@@ -17,4 +17,4 @@ function InputPassword({ showPass = false, ...rest }: InputPasswordProps) {
   )
 }
 
-export default InputPassword
+export { InputPassword }

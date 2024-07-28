@@ -6,9 +6,9 @@ import MiniProfile from '../components/miniProfile/MiniProfile'
 import pageLink from 'pagesLinks'
 import logout from '../../../../../redux/slices/myProfile/thunks/logout'
 import { ReactComponent as ArrowSVG } from 'assets/svgs/arrow.svg'
-import styles from './MyMiniProfile.module.scss'
 import { Button } from '../components/miniProfile/interfaces'
 import { MyMiniProfileProps } from './interfaces'
+import styles from './MyMiniProfile.module.scss'
 
 function MyMiniProfile({ myUserData }: MyMiniProfileProps) {
   const navigate = useNavigate()

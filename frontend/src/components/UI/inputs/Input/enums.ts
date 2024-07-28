@@ -1,6 +1,6 @@
 import styles from './Input.module.scss'
 
-export enum InputVariant {
+export enum inputVariant {
   simple = styles.input__input_simple,
   light = styles.input__input_light,
 }

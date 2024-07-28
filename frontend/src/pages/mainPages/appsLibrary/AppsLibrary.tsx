@@ -5,10 +5,10 @@ import { setLibraryApps } from '../../../redux/slices/myAppsLibrary/slice'
 import Header from './Header/Header'
 import Main from './Main/Main'
 import { setPageName } from 'utils/setPageName'
-import styles from './AppsLibrary.module.scss'
 import { AppsLibraryProps } from './interfaces'
 import { ViewAppsType } from './types'
 import { application } from 'models'
+import styles from './AppsLibrary.module.scss'
 
 export const getMyAppsLibrary = async () => {
   const returnedData: application.IAppFromLibrary[] = [

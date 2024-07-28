@@ -1,12 +1,12 @@
 import { useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import styles from './TextArea.module.scss'
-import { Variant } from './enums'
+import { variant as textAreaVariant } from './enums'
 import { TextAreaProps } from './interfaces'
+import styles from './TextArea.module.scss'
 
 function TextArea({
-  variant = Variant.simple,
+  variant = textAreaVariant.simple,
   label = '',
   errorText = '',
   className = '',
@@ -45,5 +45,4 @@ function TextArea({
   )
 }
 
-export default TextArea
-export { Variant }
+export { TextArea, textAreaVariant }

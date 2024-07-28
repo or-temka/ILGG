@@ -3,18 +3,21 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { AxiosError } from 'axios'
 
-import PopUpContainer from 'components/UI/popUps/skeletons/PopUpContainer/PopUpContainer'
-import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import RecoveryPasswordService from 'services/recoveryPasswordservice'
-import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
 import { setMyUser } from '../../../../../../redux/slices/myProfile/slice'
-import styles from './EnterNewPassword.module.scss'
 import { useForm } from 'react-hook-form'
 import { EnterNewPasswordForm, EnterNewPasswordProps } from './interfaces'
-import InputPassword from 'components/UI/inputs/InputPassword/InputPassword'
 import Validations from 'validations/validations'
 import { useNotificationPanel } from 'hooks'
 import { response } from 'models'
+import {
+  Button,
+  buttonVariant,
+  floatingNotificationVariant,
+  InputPassword,
+  PopUpContainer,
+} from 'components'
+import styles from './EnterNewPassword.module.scss'
 
 function EnterNewPassword({
   email,
@@ -30,7 +33,7 @@ function EnterNewPassword({
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const addNotificationErrorPanel = useNotificationPanel({
-    variant: FloatingNotificationVariant.error,
+    variant: floatingNotificationVariant.error,
   })
   const [isDisabledSendBtn, setIsDisabledSendBtn] = useState(false)
 
@@ -99,7 +102,7 @@ function EnterNewPassword({
             <Button
               type="submit"
               title="Подтвердить"
-              variant={ButtonVariant.primary}
+              variant={buttonVariant.primary}
               disabled={isDisabledSendBtn}
               className={styles.form__sendBtn}
             />

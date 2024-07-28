@@ -1,21 +1,24 @@
 import { useCallback, useState } from 'react'
 import { AxiosError } from 'axios'
 
-import PopUpContainer from 'components/UI/popUps/skeletons/PopUpContainer/PopUpContainer'
-import LoadingPopUp from 'components/UI/loaders/LoadingPopUp/LoadingPopUp'
 import ImgEnvelope from 'assets/images/posters/email-envelope.png'
-import Input from 'components/UI/inputs/Input/Input'
-import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
-import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
 import RepeatButton from 'pages/account/signUp/SignUpEmail/components/VerifyEmail/RepeatButton/RepeatButton'
 import RecoveryPasswordService from 'services/recoveryPasswordservice'
 import EnterNewPassword from './EnterNewPassword/EnterNewPassword'
-import styles from './RecoveryPasswordVerifyEmail.module.scss'
 import { useForm } from 'react-hook-form'
 import { RecoveryPasswordVerifyEmailForm, VerifyEmailProps } from './interfaces'
 import Validations from 'validations/validations'
 import { useImagePreloader, useNotificationPanel } from 'hooks'
 import { response } from 'models'
+import {
+  Button,
+  buttonVariant,
+  floatingNotificationVariant,
+  Input,
+  LoadingPopUp,
+  PopUpContainer,
+} from 'components'
+import styles from './RecoveryPasswordVerifyEmail.module.scss'
 
 const preloadSrcList: string[] = [ImgEnvelope]
 
@@ -29,10 +32,10 @@ function RecoveryPasswordVerifyEmail({
       defaultValues: { activationCode: '' },
     })
   const addNotificationErrorPanel = useNotificationPanel({
-    variant: FloatingNotificationVariant.error,
+    variant: floatingNotificationVariant.error,
   })
   const addNotificationSuccessPanel = useNotificationPanel({
-    variant: FloatingNotificationVariant.success,
+    variant: floatingNotificationVariant.success,
   })
   const { imagesPreloaded } = useImagePreloader(preloadSrcList)
   const [disabledSendBtn, setDisabledSendBtn] = useState(false)
@@ -114,7 +117,7 @@ function RecoveryPasswordVerifyEmail({
                 <Button
                   type="submit"
                   title="Подтвердить"
-                  variant={ButtonVariant.primary}
+                  variant={buttonVariant.primary}
                   className={styles.modal__confirmEmailCodeBtn}
                   disabled={
                     watch('activationCode').length !== 6 || disabledSendBtn

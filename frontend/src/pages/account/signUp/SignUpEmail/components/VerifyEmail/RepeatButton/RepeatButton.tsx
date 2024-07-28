@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 
-import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
-import styles from './RepeatButton.module.scss'
 import { RepeatButtonProps } from './interfaces'
+import { Button, buttonVariant } from 'components'
+import styles from './RepeatButton.module.scss'
 
 const timerTime = 60 // seconds
 
@@ -41,7 +41,7 @@ function RepeatButton({ onClick }: RepeatButtonProps) {
       title={`Отправить повторно ${
         timeLeft > 0 ? ` через ${timeLeft} с.` : ''
       }`}
-      variant={ButtonVariant.light}
+      variant={buttonVariant.light}
       className={styles.modal__confirmEmailCodeBtn}
       onClick={onClickHandler}
       disabled={!!timeLeft}

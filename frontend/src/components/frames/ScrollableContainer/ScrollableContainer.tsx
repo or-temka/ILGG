@@ -1,8 +1,8 @@
 import { useRef } from 'react'
 
-import styles from './ScrollableContainer.module.scss'
 import { ScrollableContainerProps } from './interfaces'
 import { useScrollVisibility } from 'hooks'
+import styles from './ScrollableContainer.module.scss'
 
 const ScrollableContainer = ({
   children,
@@ -25,4 +25,4 @@ const ScrollableContainer = ({
   )
 }
 
-export default ScrollableContainer
+export { ScrollableContainer }

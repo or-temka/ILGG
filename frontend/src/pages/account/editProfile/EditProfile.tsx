@@ -4,8 +4,8 @@ import queryString from 'query-string'
 
 import Aside from './Aside/Aside'
 import Content from './Content/Content'
-import styles from './EditProfile.module.scss'
 import ContentType, { isContentType } from './interfaces'
+import styles from './EditProfile.module.scss'
 
 function EditProfile() {
   const [searchParams, setSearchParams] = useSearchParams()

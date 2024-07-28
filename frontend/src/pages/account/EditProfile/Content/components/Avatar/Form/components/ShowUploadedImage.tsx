@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
-import styles from './ShowUploadedImage.module.scss'
 import { ShowUploadedImageProps } from './interfaces'
+import styles from './ShowUploadedImage.module.scss'
 
 function ShowUploadedImage({ image }: ShowUploadedImageProps) {
   const [imageUrl, setImageUrl] = useState<string | null>(null)

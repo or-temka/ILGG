@@ -1,6 +1,6 @@
-import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
-import styles from './ItemsField.module.scss'
+import { Button, buttonVariant } from 'components'
 import { ItemsFieldProps } from './interfaces'
+import styles from './ItemsField.module.scss'
 
 function ItemsField({ classNames }: ItemsFieldProps) {
   return (
@@ -82,7 +82,7 @@ function ItemsField({ classNames }: ItemsFieldProps) {
         <div className={styles.pagination}>
           <Button
             title="Назад"
-            variant={ButtonVariant.light}
+            variant={buttonVariant.light}
             className={[styles.pagination__btn].join(' ')}
           />
           <span className={styles.pagination__pageText}>
@@ -90,7 +90,7 @@ function ItemsField({ classNames }: ItemsFieldProps) {
           </span>
           <Button
             title="Далее"
-            variant={ButtonVariant.light}
+            variant={buttonVariant.light}
             className={[styles.pagination__btn].join(' ')}
           />
         </div>

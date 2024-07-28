@@ -1,6 +1,6 @@
-import Button from 'components/UI/buttons/Button/Button'
-import styles from './ItemInfo.module.scss'
+import { Button } from 'components'
 import { ItemInfoProps } from './interfaces'
+import styles from './ItemInfo.module.scss'
 
 function ItemInfo({ classNames }: ItemInfoProps) {
   return (

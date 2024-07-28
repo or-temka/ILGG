@@ -1,7 +1,7 @@
 import { ReactComponent as TickSVG } from 'assets/svgs/tick.svg'
-import style from './LanguageSupport.module.scss'
 import { LanguageSupportProps } from './interfaces'
 import { application } from 'models'
+import style from './LanguageSupport.module.scss'
 
 const langData: application.AppLanguage[] = [
   {

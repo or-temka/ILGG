@@ -1,6 +1,6 @@
 import { ReactComponent as BigLikeSVG } from 'assets/svgs/bigLike.svg'
-import styles from './CommentPositivity.module.scss'
 import { CommentPositivityProps } from './interfaces'
+import styles from './CommentPositivity.module.scss'
 
 function CommentPositivity({ positive, classNames }: CommentPositivityProps) {
   return (
@@ -21,4 +21,4 @@ function CommentPositivity({ positive, classNames }: CommentPositivityProps) {
   )
 }
 
-export default CommentPositivity
+export { CommentPositivity }

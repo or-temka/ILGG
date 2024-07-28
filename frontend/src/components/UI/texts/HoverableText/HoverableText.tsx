@@ -1,7 +1,7 @@
 import { useHover } from 'hooks'
-import styles from './HoverableText.module.scss'
 import { HoverableTextProps } from './interfaces'
 import { useRef } from 'react'
+import styles from './HoverableText.module.scss'
 
 function HoverableText({ defaultText, hoverText }: HoverableTextProps) {
   const ref = useRef<HTMLSpanElement>(null)
@@ -23,4 +23,4 @@ function HoverableText({ defaultText, hoverText }: HoverableTextProps) {
   )
 }
 
-export default HoverableText
+export { HoverableText }

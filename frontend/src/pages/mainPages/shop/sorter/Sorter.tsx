@@ -2,14 +2,12 @@ import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { sortShopAppsBy } from '../../../../redux/slices/shopApps/slice'
-import ButtonWithIcon, {
-  ButtonWithIconIconPosition,
-} from 'components/UI/buttons/ButtonWithIcon/ButtonWithIcon'
 import { ReactComponent as ArrowSVG } from 'assets/svgs/arrow.svg'
-import styles from './Sorter.module.scss'
 import { SorterFields } from '../../../../redux/slices/shopApps/interfaces'
 import { Sorted } from './types'
 import { SorterProps } from './interfaces'
+import { ButtonWithIcon, buttonWithIconIconPosition } from 'components'
+import styles from './Sorter.module.scss'
 
 const sortedInitial: Sorted = {
   price: null,
@@ -68,7 +66,7 @@ function Sorter({ resetSort }: SorterProps) {
       <div className={styles.sorter__sorts}>
         <ButtonWithIcon
           title="По цене"
-          iconPosition={ButtonWithIconIconPosition.right}
+          iconPosition={buttonWithIconIconPosition.right}
           onClick={() => hadleToggleSort('price')}
           className={sorted.price !== null ? styles.sorter__sortBtn_active : ''}
           iconSVG={
@@ -88,7 +86,7 @@ function Sorter({ resetSort }: SorterProps) {
         />
         <ButtonWithIcon
           title="По популярности"
-          iconPosition={ButtonWithIconIconPosition.right}
+          iconPosition={buttonWithIconIconPosition.right}
           onClick={() => hadleToggleSort('popularity', true)}
           className={
             sorted.popularity !== null ? styles.sorter__sortBtn_active : ''
@@ -110,7 +108,7 @@ function Sorter({ resetSort }: SorterProps) {
         />
         <ButtonWithIcon
           title="По рейтингу"
-          iconPosition={ButtonWithIconIconPosition.right}
+          iconPosition={buttonWithIconIconPosition.right}
           onClick={() => hadleToggleSort('rating', true)}
           className={
             sorted.rating !== null ? styles.sorter__sortBtn_active : ''
@@ -132,7 +130,7 @@ function Sorter({ resetSort }: SorterProps) {
         />
         <ButtonWithIcon
           title="По дате выхода"
-          iconPosition={ButtonWithIconIconPosition.right}
+          iconPosition={buttonWithIconIconPosition.right}
           onClick={() => hadleToggleSort('releaseDate', true)}
           className={
             sorted.releaseDate !== null ? styles.sorter__sortBtn_active : ''

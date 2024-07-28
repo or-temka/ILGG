@@ -1,14 +1,14 @@
 import { useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
+import { inputWithBtnIconVariant } from './enums'
+import { InputWithBtnIconProps } from './interfaces'
 import btnStyles from '../Input/Input.module.scss'
 import styles from './InputWithBtnIcon.module.scss'
-import { InputWithBtnIconVariant } from './enums'
-import { InputWithBtnIconProps } from './interfaces'
 
 function InputWithBtnIcon({
   label = '',
-  variant = InputWithBtnIconVariant.simple,
+  variant = inputWithBtnIconVariant.simple,
   errorText = '',
   svgComponent,
   onClickBtnIcon = () => {},
@@ -69,5 +69,4 @@ function InputWithBtnIcon({
   )
 }
 
-export default InputWithBtnIcon
-export { InputWithBtnIconVariant }
+export { InputWithBtnIcon, inputWithBtnIconVariant }

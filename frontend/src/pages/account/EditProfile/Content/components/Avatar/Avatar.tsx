@@ -1,5 +1,4 @@
 import Form from './Form/Form'
-
 import styles from './Avatar.module.scss'
 
 function Avatar() {

@@ -1,20 +1,23 @@
 import { useNavigate } from 'react-router-dom'
 import { useCallback, useState } from 'react'
 
-import PopUpContainer from 'components/UI/popUps/skeletons/PopUpContainer/PopUpContainer'
-import LoadingPopUp from 'components/UI/loaders/LoadingPopUp/LoadingPopUp'
 import ImgEnvelope from 'assets/images/posters/email-envelope.png'
-import Input from 'components/UI/inputs/Input/Input'
-import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import RepeatButton from './RepeatButton/RepeatButton'
 import AuthService from 'services/authService'
-import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
 import pageLink from 'pagesLinks'
-import styles from './VerifyEmail.module.scss'
 import { useForm } from 'react-hook-form'
 import { VerifyEmailForm, VerifyEmailProps } from './interfaces'
 import Regex from 'utils/regex'
 import { useImagePreloader, useNotificationPanel } from 'hooks'
+import {
+  Button,
+  buttonVariant,
+  floatingNotificationVariant,
+  Input,
+  LoadingPopUp,
+  PopUpContainer,
+} from 'components'
+import styles from './VerifyEmail.module.scss'
 
 const preloadSrcList: string[] = [ImgEnvelope]
 
@@ -25,10 +28,10 @@ function VerifyEmail({ onClose, email }: VerifyEmailProps) {
   })
   const navigate = useNavigate()
   const addNotificationErrorPanel = useNotificationPanel({
-    variant: FloatingNotificationVariant.error,
+    variant: floatingNotificationVariant.error,
   })
   const addNotificationSuccessPanel = useNotificationPanel({
-    variant: FloatingNotificationVariant.success,
+    variant: floatingNotificationVariant.success,
   })
   const { imagesPreloaded } = useImagePreloader(preloadSrcList)
   const [isSendBtnLoading, setIsSendBtnLoading] = useState(false)
@@ -97,7 +100,7 @@ function VerifyEmail({ onClose, email }: VerifyEmailProps) {
               <Button
                 type="submit"
                 title="Подтвердить"
-                variant={ButtonVariant.primary}
+                variant={buttonVariant.primary}
                 className={styles.modal__confirmEmailCodeBtn}
                 disabled={watch('code').length !== 6 || isSendBtnLoading}
               />

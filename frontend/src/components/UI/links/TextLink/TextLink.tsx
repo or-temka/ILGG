@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom'
 
-import styles from './TextLink.module.scss'
 import { TextLinkProps } from './interfaces'
-import { Variant } from './enums'
+import { textLinkVariant } from './enums'
+import styles from './TextLink.module.scss'
 
 function TextLink({
   children,
-  variant = Variant.simple, // types: simple, text, bold
+  variant = textLinkVariant.simple, // types: simple, text, bold
   text = '',
   className = '',
   ...restProps
@@ -29,5 +29,4 @@ function TextLink({
   )
 }
 
-export default TextLink
-export { Variant }
+export { TextLink, textLinkVariant }

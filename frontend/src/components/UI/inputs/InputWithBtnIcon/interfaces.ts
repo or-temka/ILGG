@@ -1,12 +1,11 @@
+import { inputWithBtnIconVariant } from 'components'
 import { InputHTMLAttributes, ReactNode } from 'react'
 import { UseFormRegisterReturn } from 'react-hook-form'
-
-import { InputWithBtnIconVariant } from './enums'
 
 export interface InputWithBtnIconProps
   extends InputHTMLAttributes<HTMLInputElement> {
   label?: string
-  variant?: InputWithBtnIconVariant
+  variant?: inputWithBtnIconVariant
   errorText?: string
   svgComponent?: ReactNode
   onClickBtnIcon?: (input: ParentNode | null) => void

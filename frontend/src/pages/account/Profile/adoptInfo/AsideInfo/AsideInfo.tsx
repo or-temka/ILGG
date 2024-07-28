@@ -1,9 +1,9 @@
 import FriendsPanel from './components/FriendsPanel'
 import ProfileBlockedPanel from './components/ProfileBlockedPanel'
 import FriendsPanelSkeleton from '../skeletons/FriendsPanelSkeleton'
-import Button from 'components/UI/buttons/Button/Button'
-import styles from './AsideInfo.module.scss'
 import { user } from 'models'
+import { Button } from 'components'
+import styles from './AsideInfo.module.scss'
 
 const friends: user.IUserProfile[] = [
   {

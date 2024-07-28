@@ -1,9 +1,9 @@
 import { Controller } from 'react-hook-form'
 
-import styles from './fieldset.module.scss'
-import Select from 'components/UI/inputs/Select/Select'
 import { AppsFieldsetProps } from './interfaces'
 import { myUser } from 'models'
+import { Select } from 'components'
+import styles from './fieldset.module.scss'
 
 function ProfileFieldset({ control, errors }: AppsFieldsetProps) {
   return (
@@ -133,7 +133,9 @@ function ProfileFieldset({ control, errors }: AppsFieldsetProps) {
           control={control}
           rules={{ required: 'This field is required' }}
           render={({ field }) => (
-            <Select<myUser.IMyUserPrivacy['profile']['availableToViewMyFriends']>
+            <Select<
+              myUser.IMyUserPrivacy['profile']['availableToViewMyFriends']
+            >
               options={[
                 { value: 'all', label: 'Все' },
                 { value: 'friends', label: 'Я и мои друзья' },
@@ -155,7 +157,9 @@ function ProfileFieldset({ control, errors }: AppsFieldsetProps) {
           control={control}
           rules={{ required: 'This field is required' }}
           render={({ field }) => (
-            <Select<myUser.IMyUserPrivacy['profile']['availableToViewMyProfileLevel']>
+            <Select<
+              myUser.IMyUserPrivacy['profile']['availableToViewMyProfileLevel']
+            >
               options={[
                 { value: 'all', label: 'Все' },
                 { value: 'friends', label: 'Я и мои друзья' },
@@ -177,7 +181,9 @@ function ProfileFieldset({ control, errors }: AppsFieldsetProps) {
           control={control}
           rules={{ required: 'This field is required' }}
           render={({ field }) => (
-            <Select<myUser.IMyUserPrivacy['profile']['availableToViewMyOnlineStatus']>
+            <Select<
+              myUser.IMyUserPrivacy['profile']['availableToViewMyOnlineStatus']
+            >
               options={[
                 { value: 'all', label: 'Все' },
                 { value: 'friends', label: 'Я и мои друзья' },

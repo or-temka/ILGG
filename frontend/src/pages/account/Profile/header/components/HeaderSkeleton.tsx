@@ -1,8 +1,4 @@
-import SkeletonText, {
-  SkeletonTextVariant,
-} from 'components/skeletons/SkeletonText/SkeletonText'
-import Button from 'components/UI/buttons/Button/Button'
-
+import { Button, SkeletonText, skeletonTextVariant } from 'components'
 import styles from '../Header.module.scss'
 
 function Header() {
@@ -34,9 +30,9 @@ function Header() {
               styles.skeleton__aboutUserInfo,
             ].join(' ')}
           >
-            <SkeletonText variant={SkeletonTextVariant.light} />
-            <SkeletonText variant={SkeletonTextVariant.light} />
-            <SkeletonText variant={SkeletonTextVariant.light} />
+            <SkeletonText variant={skeletonTextVariant.light} />
+            <SkeletonText variant={skeletonTextVariant.light} />
+            <SkeletonText variant={skeletonTextVariant.light} />
           </div>
         </div>
       </div>

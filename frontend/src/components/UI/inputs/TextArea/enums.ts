@@ -1,4 +1,4 @@
-export enum Variant {
+export enum variant {
   simple = 'simple',
   light = 'light',
 }

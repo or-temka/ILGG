@@ -1,6 +1,6 @@
 import styles from './DescriptionList.module.scss'
 
-export enum DescListTermVariant {
+export enum descListTermVariant {
   light = styles.desc__term_light,
   simple = styles.desc__term_simple,
 }

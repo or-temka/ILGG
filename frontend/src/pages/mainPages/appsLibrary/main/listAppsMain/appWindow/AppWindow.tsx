@@ -1,9 +1,8 @@
 import AppHeader from './components/AppHeader'
 import AppFriends from './components/AppFriends'
 import AppNews from './components/AppNews'
-import styles from './AppWindow.module.scss'
 import { AppWindowProps } from './interfaces'
-
+import styles from './AppWindow.module.scss'
 
 function AppWindow({ classNames }: AppWindowProps) {
   return (

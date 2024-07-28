@@ -5,14 +5,14 @@ import {
   PanelVariant,
   addPanel,
 } from '../../../redux/slices/floatingPanelsQueue/slice'
-import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
+import { floatingNotificationVariant } from 'components'
 
 interface useDispatchPanelProps {
-  variant?: FloatingNotificationVariant
+  variant?: floatingNotificationVariant
 }
 
 function useNotificationPanel({
-  variant = FloatingNotificationVariant.msg,
+  variant = floatingNotificationVariant.msg,
 }: useDispatchPanelProps) {
   const dispatch = useDispatch()
 
@@ -25,9 +25,9 @@ function useNotificationPanel({
             variant: variant,
             text:
               message ||
-              (variant === FloatingNotificationVariant.error
+              (variant === floatingNotificationVariant.error
                 ? 'Произошла ошибка!'
-                : variant === FloatingNotificationVariant.success
+                : variant === floatingNotificationVariant.success
                 ? 'Успешно!'
                 : 'Ок.'),
           },

@@ -1,7 +1,7 @@
-import Checkbox from 'components/UI/inputs/Checkbox/Checkbox'
-import styles from './FilterBy.module.scss'
+import { Checkbox } from 'components'
 import { FilterByProps } from './interfaces'
 import { mongoDB } from 'models'
+import styles from './FilterBy.module.scss'
 
 function FilterBy({
   headerText,
