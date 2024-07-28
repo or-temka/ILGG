@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 import { API_URL } from '../variables'
-import { AuthResponse } from 'models/response/AuthResponse'
+import { response } from 'models'
 
 const $api = axios.create({
   withCredentials: true,
@@ -25,7 +25,7 @@ $api.interceptors.response.use(
     ) {
       originalRequest._isRetry = true
       try {
-        const response = await axios.get<AuthResponse>(
+        const response = await axios.get<response.AuthResponse>(
           `${API_URL}/user/refresh`,
           { withCredentials: true }
         )

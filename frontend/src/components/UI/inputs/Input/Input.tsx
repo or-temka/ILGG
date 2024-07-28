@@ -1,15 +1,15 @@
 import { useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import styles from './Input.module.scss'
-import { InputVariant } from './enums'
+import { inputVariant } from './enums'
 import { InputProps } from './interfaces'
+import styles from './Input.module.scss'
 
 function Input({
   inputType = 'text',
   label = '',
   inputAutocomplete,
-  variant = InputVariant.simple, // types: simple, light
+  variant = inputVariant.simple, // types: simple, light
   errorText = '',
   classNames = {},
   register,
@@ -46,5 +46,4 @@ function Input({
   )
 }
 
-export default Input
-export { InputVariant }
+export { Input, inputVariant }

@@ -1,13 +1,15 @@
-import { ISimpleApplication } from 'models/application/ISimpleApplication'
+import { application } from 'models'
 import { SliceState } from 'redux/interfaces'
 
-type MainPageApplicationsState = SliceState<ISimpleApplication[] | []>
+type MainPageApplicationsState = SliceState<
+  application.ISimpleApplication[] | []
+>
 
 export default MainPageApplicationsState
 
 //#region reduces interfaces
 export interface SetUserAction {
   type: string
-  payload: ISimpleApplication[] | null
+  payload: application.ISimpleApplication[] | null
 }
 //#endregion

@@ -1,7 +1,7 @@
-import InfoTooltip from 'components/UI/tooltips/InfoTooltip/InfoTooltip'
 import { ReactComponent as ScreenSharingSVG } from 'assets/svgs/screenSharing.svg'
-import styles from './ScreenSharingInfo.module.scss'
 import { ScreenSharingInfoProps } from './interfaces'
+import { InfoTooltip } from 'components'
+import styles from './ScreenSharingInfo.module.scss'
 
 function ScreenSharingInfo({ classNames }: ScreenSharingInfoProps) {
   return (

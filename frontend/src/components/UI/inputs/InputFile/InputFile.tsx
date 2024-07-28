@@ -2,16 +2,16 @@ import { useCallback, useRef, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { ReactComponent as ImageSVG } from 'assets/svgs/image.svg'
-import styles from './InputFile.module.scss'
-import { InputFileVariant } from './enums'
+import { inputFileVariant } from './enums'
 import { InputFileProps } from './interfaces'
+import styles from './InputFile.module.scss'
 
 function InputFile({
   placeholder = 'Выберите файл...',
   file,
   label = '',
   setFile = () => {},
-  variant = InputFileVariant.simple,
+  variant = inputFileVariant.simple,
   errorText = '',
   onChange = () => {},
   classNames = {},
@@ -75,5 +75,4 @@ function InputFile({
   )
 }
 
-export default InputFile
-export { InputFileVariant }
+export { InputFile, inputFileVariant }

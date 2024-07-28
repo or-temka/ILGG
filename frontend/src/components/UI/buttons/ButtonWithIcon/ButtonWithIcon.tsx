@@ -1,12 +1,12 @@
-import styles from '../Button.module.scss'
-import { ButtonWithIconIconPosition, ButtonWithIconVariant } from './enums'
+import { buttonWithIconIconPosition, buttonWithIconVariant } from './enums'
 import { ButtonWithIconProps } from './interfaces'
+import styles from '../Button.module.scss'
 
 function ButtonWithIcon({
   title = '',
   iconSVG,
-  variant = ButtonWithIconVariant.simple,
-  iconPosition = ButtonWithIconIconPosition.left,
+  variant = buttonWithIconVariant.simple,
+  iconPosition = buttonWithIconIconPosition.left,
   disabled = false,
   className = '',
 
@@ -36,5 +36,4 @@ function ButtonWithIcon({
   )
 }
 
-export default ButtonWithIcon
-export { ButtonWithIconIconPosition, ButtonWithIconVariant }
+export { ButtonWithIcon, buttonWithIconIconPosition, buttonWithIconVariant }

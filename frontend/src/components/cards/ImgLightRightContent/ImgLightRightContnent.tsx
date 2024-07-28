@@ -1,5 +1,5 @@
-import styles from './ImgLightRightContent.module.scss'
 import { ImgLightRightContentPorops } from './interfaces'
+import styles from './ImgLightRightContent.module.scss'
 
 function ImgLightRightContnent({
   children,
@@ -20,4 +20,4 @@ function ImgLightRightContnent({
   )
 }
 
-export default ImgLightRightContnent
+export { ImgLightRightContnent }

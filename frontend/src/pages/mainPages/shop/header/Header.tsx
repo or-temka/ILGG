@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
-import Input from 'components/UI/inputs/Input/Input'
-import styles from './Header.module.scss'
 import { HeaderProps } from './interfaces'
+import { Input } from 'components'
+import styles from './Header.module.scss'
 
 function Header({ classNames }: HeaderProps) {
   const [searchValue, setSearchValue] = useState('')

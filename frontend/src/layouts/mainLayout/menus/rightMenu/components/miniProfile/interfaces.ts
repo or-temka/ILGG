@@ -1,9 +1,8 @@
-import { IMyUser } from 'models/myUser/IMyUser'
-import { IUserProfile } from 'models/user/IUserProfile'
+import { myUser, user } from 'models'
 import { ReactNode } from 'react'
 
 export interface MiniProfileProps {
-  userData: IUserProfile | IMyUser | null
+  userData: user.IUserProfile | myUser.IMyUser | null
   buttons: Button[] | []
   iconComponent?: ReactNode
   onClickProfile?: (showProfile: boolean) => any

@@ -27,4 +27,4 @@ function PrivateRoute({
   return children ? <>{children}</> : <Outlet />
 }
 
-export default PrivateRoute
+export { PrivateRoute }

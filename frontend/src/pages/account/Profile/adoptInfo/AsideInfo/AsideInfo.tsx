@@ -1,11 +1,11 @@
-import { IUserProfile } from 'models/user/IUserProfile'
 import FriendsPanel from './components/FriendsPanel'
 import ProfileBlockedPanel from './components/ProfileBlockedPanel'
 import FriendsPanelSkeleton from '../skeletons/FriendsPanelSkeleton'
-import Button from 'components/UI/buttons/Button/Button'
+import { user } from 'models'
+import { Button } from 'components'
 import styles from './AsideInfo.module.scss'
 
-const friends: IUserProfile[] = [
+const friends: user.IUserProfile[] = [
   {
     _id: 1,
     name: 'Алинка',

@@ -5,14 +5,7 @@ import { selectMyUser } from '../../../../redux/slices/myProfile/slice'
 import ButtonPage from './components/ButtonPage'
 import pageLink from 'pagesLinks'
 import menuStyles from '../Menu.module.scss'
-import Tooltip, {
-  HorizontalDirection,
-  VerticalDirection,
-} from 'components/UI/tooltips/Tooltip/Tooltip'
 import changeSiteTheme from 'utils/changeSiteTheme'
-import SkeletonText, {
-  SkeletonTextVariant,
-} from 'components/skeletons/SkeletonText/SkeletonText'
 import { ReactComponent as HomeSVG } from 'assets/svgs/home.svg'
 import { ReactComponent as GamepadSVG } from 'assets/svgs/gamepad.svg'
 import { ReactComponent as LibrarySVG } from 'assets/svgs/library.svg'
@@ -20,8 +13,15 @@ import { ReactComponent as DiamondSVG } from 'assets/svgs/diamond.svg'
 import { ReactComponent as PackageSVG } from 'assets/svgs/package.svg'
 import { ReactComponent as PeopleSVG } from 'assets/svgs/people.svg'
 import { ReactComponent as HelpSVG } from 'assets/svgs/help.svg'
-import styles from './LeftMenu.module.scss'
 import { LeftMenuProps } from './interfaces'
+import {
+  SkeletonText,
+  skeletonTextVariant,
+  Tooltip,
+  tooltipHorizontalDirection,
+  tooltipVerticalDirection,
+} from 'components'
+import styles from './LeftMenu.module.scss'
 
 function LeftMenu({ className = '' }: LeftMenuProps) {
   const location = useLocation().pathname
@@ -42,15 +42,15 @@ function LeftMenu({ className = '' }: LeftMenuProps) {
                   ' '
                 )}
               />
-              <SkeletonText variant={SkeletonTextVariant.light} />
+              <SkeletonText variant={skeletonTextVariant.light} />
             </div>
           ))}
         </nav>
         <footer className={styles.footer}>
           <div className={styles.footer__changeTheme}>
             <Tooltip
-              postitionVertical={VerticalDirection.top}
-              postitionHorizontal={HorizontalDirection.right}
+              postitionVertical={tooltipVerticalDirection.top}
+              postitionHorizontal={tooltipHorizontalDirection.right}
               text="Сменить тему оформления сайта"
             >
               <div className={styles.changeThemeBtn} onClick={changeSiteTheme}>
@@ -128,8 +128,8 @@ function LeftMenu({ className = '' }: LeftMenuProps) {
       <footer className={styles.footer}>
         <div className={styles.footer__changeTheme}>
           <Tooltip
-            postitionVertical={VerticalDirection.top}
-            postitionHorizontal={HorizontalDirection.right}
+            postitionVertical={tooltipVerticalDirection.top}
+            postitionHorizontal={tooltipHorizontalDirection.right}
             text="Сменить тему оформления сайта"
           >
             <div className={styles.changeThemeBtn} onClick={changeSiteTheme}>

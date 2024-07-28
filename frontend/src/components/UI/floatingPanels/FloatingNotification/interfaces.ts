@@ -1,8 +1,8 @@
-import { FloatingNotificationVariant } from './enums'
+import { floatingNotificationVariant } from 'components'
 
 export interface FloatingNotificationProps {
   text?: string | number
-  variant?: FloatingNotificationVariant
+  variant?: floatingNotificationVariant
   onClose?: () => void
   headerText?: string | number
   className?: string

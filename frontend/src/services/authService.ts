@@ -1,18 +1,14 @@
 import { AxiosResponse } from 'axios'
 
 import $api from 'http/axios'
+import { response } from 'models'
 
-import {
-  AuthResponse,
-  SendActivationEmailCodeResponse,
-} from 'models/response/AuthResponse'
-
-export default class AuthService {
+export class AuthService {
   static async login(
     login: string,
     password: string
-  ): Promise<AxiosResponse<AuthResponse>> {
-    return $api.post<AuthResponse>('user/sign-in', { login, password })
+  ): Promise<AxiosResponse<response.AuthResponse>> {
+    return $api.post<response.AuthResponse>('user/sign-in', { login, password })
   }
 
   static async logout(): Promise<void> {
@@ -34,10 +30,13 @@ export default class AuthService {
   static async sendEmailActivationCode(
     email: string,
     activationCode: string
-  ): Promise<AxiosResponse<SendActivationEmailCodeResponse>> {
-    return $api.get<SendActivationEmailCodeResponse>('user/sign-up-email', {
-      params: { email, activationCode },
-    })
+  ): Promise<AxiosResponse<response.SendActivationEmailCodeResponse>> {
+    return $api.get<response.SendActivationEmailCodeResponse>(
+      'user/sign-up-email',
+      {
+        params: { email, activationCode },
+      }
+    )
   }
 
   static async isActivationEmailLink(
@@ -56,8 +55,8 @@ export default class AuthService {
     confirmPassword: string,
     email: string,
     activationLink: string
-  ): Promise<AxiosResponse<AuthResponse>> {
-    return $api.post<AuthResponse>('user/sign-up', {
+  ): Promise<AxiosResponse<response.AuthResponse>> {
+    return $api.post<response.AuthResponse>('user/sign-up', {
       login,
       name,
       password,

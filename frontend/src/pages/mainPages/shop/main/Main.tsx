@@ -4,9 +4,8 @@ import {
   selectShopApps,
   selectShopAppsIsLoaded,
 } from '../../../../redux/slices/shopApps/slice'
-import GameBigCardSkeleton from 'components/cards/GameBigCardSkeleton/GameBigCardSkeleton'
-import GameBigCard from 'components/cards/GameBigCard/GameBigCard'
 import pageLink from 'pagesLinks'
+import { GameBigCard, GameBigCardSkeleton } from 'components'
 import styles from './Main.module.scss'
 
 function Main() {

@@ -3,15 +3,18 @@ import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { AxiosResponse } from 'axios'
 
-import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
-import styles from './Form.module.scss'
-import InputPassword from 'components/UI/inputs/InputPassword/InputPassword'
-import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
-import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
 import { setMyUser } from '../../../../../../../redux/slices/myProfile/slice'
 import { PasswordSettingsForm } from './interfaces'
 import onSubmit from './onSubmit'
 import Validations from 'validations/validations'
+import { useNotificationPanel } from 'hooks'
+import {
+  Button,
+  buttonVariant,
+  floatingNotificationVariant,
+  InputPassword,
+} from 'components'
+import styles from './Form.module.scss'
 
 function Form() {
   const dispatch = useDispatch()
@@ -24,10 +27,10 @@ function Form() {
   } = useForm<PasswordSettingsForm>({ mode: 'onSubmit' })
 
   const addNotificationSuccessPanel = useNotificationPanel({
-    variant: FloatingNotificationVariant.success,
+    variant: floatingNotificationVariant.success,
   })
   const addNotificationErrorPanel = useNotificationPanel({
-    variant: FloatingNotificationVariant.error,
+    variant: floatingNotificationVariant.error,
   })
 
   const onSubmited = useCallback(
@@ -80,7 +83,7 @@ function Form() {
         <Button
           type="submit"
           title="Сохранить"
-          variant={ButtonVariant.primary}
+          variant={buttonVariant.primary}
           disabled={isSendBtnLoading}
         />
       </form>

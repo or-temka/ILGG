@@ -21,4 +21,4 @@ function TextIslet({ children, onClick, classNames }: TextIsletProps) {
   )
 }
 
-export default TextIslet
+export { TextIslet }

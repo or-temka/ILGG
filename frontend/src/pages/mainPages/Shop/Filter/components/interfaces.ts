@@ -1,10 +1,10 @@
-import { AppType } from 'models/application/types/AppType'
+import { application } from 'models'
 import { FilterFields, FilterValue } from 'redux/slices/shopApps/interfaces'
 
 export interface FilterByProps {
   headerText: string
   filterField: FilterFields
-  appFiltersElements: AppType[]
+  appFiltersElements: application.AppType[]
   filters: FilterValue
   setFilterHandler: (field: FilterFields, newValue: FilterValue) => void
 }

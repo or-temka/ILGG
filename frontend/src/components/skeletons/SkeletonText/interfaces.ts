@@ -1,6 +1,6 @@
-import { SkeletonTextVariant } from './enums'
+import { skeletonTextVariant } from 'components'
 
 export interface SkeletonTextProps {
-  variant?: SkeletonTextVariant
+  variant?: skeletonTextVariant
   className?: string
 }

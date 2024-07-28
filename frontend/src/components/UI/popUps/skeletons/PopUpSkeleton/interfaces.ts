@@ -1,6 +1,5 @@
+import { popUpHorizontalPosition, popUpVerticalPosition } from 'components'
 import { ReactNode } from 'react'
-
-import { PopUpHorizontalPosition, PopUpVerticalPosition } from './enums'
 
 export interface PopUpSkeletonProps {
   children: ReactNode
@@ -8,8 +7,8 @@ export interface PopUpSkeletonProps {
   showCloseButton?: boolean
   showBack?: boolean
   backgroundBlur?: boolean
-  verticalPosition?: PopUpVerticalPosition
-  horizontalPosition?: PopUpHorizontalPosition
+  verticalPosition?: popUpVerticalPosition
+  horizontalPosition?: popUpHorizontalPosition
   classNames?: {
     className?: string
     backClassName?: string

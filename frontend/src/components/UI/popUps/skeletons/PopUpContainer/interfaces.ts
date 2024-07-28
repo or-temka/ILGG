@@ -1,9 +1,5 @@
+import { popUpHorizontalPosition, popUpVerticalPosition } from 'components'
 import { ReactNode } from 'react'
-
-import {
-  PopUpHorizontalPosition,
-  PopUpVerticalPosition,
-} from '../PopUpSkeleton/PopUpSkeleton'
 
 export interface PopUpContainerProps {
   children: ReactNode
@@ -11,8 +7,8 @@ export interface PopUpContainerProps {
   onClose?: (...args: any[]) => any
   showCloseButton?: boolean
   showBack?: boolean
-  horizontalPosition?: PopUpHorizontalPosition
-  verticalPosition?: PopUpVerticalPosition
+  horizontalPosition?: popUpHorizontalPosition
+  verticalPosition?: popUpVerticalPosition
   classNames?: {
     className?: string
     wrapperClassName?: string

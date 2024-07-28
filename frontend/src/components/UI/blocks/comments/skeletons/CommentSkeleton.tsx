@@ -1,9 +1,8 @@
-import SkeletonText from 'components/skeletons/SkeletonText/SkeletonText'
-import styles from '../Comment/Comment.module.scss'
-import { SkeletonTextVariant } from 'components/skeletons/SkeletonText/enums'
 import { CommentProps } from './interfaces'
+import { SkeletonText, skeletonTextVariant } from 'components'
+import styles from '../Comment/Comment.module.scss'
 
-function Comment({ background = true, classNames }: CommentProps) {
+function CommentSkeleton({ background = true, classNames }: CommentProps) {
   return (
     <div
       className={[
@@ -55,13 +54,13 @@ function Comment({ background = true, classNames }: CommentProps) {
             classNames?.textContent,
           ].join(' ')}
         >
-          <SkeletonText variant={SkeletonTextVariant.light} />
-          <SkeletonText variant={SkeletonTextVariant.light} />
-          <SkeletonText variant={SkeletonTextVariant.light} />
+          <SkeletonText variant={skeletonTextVariant.light} />
+          <SkeletonText variant={skeletonTextVariant.light} />
+          <SkeletonText variant={skeletonTextVariant.light} />
         </div>
       </main>
     </div>
   )
 }
 
-export default Comment
+export { CommentSkeleton }

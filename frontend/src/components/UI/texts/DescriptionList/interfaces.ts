@@ -1,9 +1,9 @@
-import { DescListTermVariant } from './enums'
+import { descListTermVariant } from 'components'
 
 interface desc {
   term: string
   definition: string | string[]
-  termVariant?: DescListTermVariant
+  termVariant?: descListTermVariant
   onClickDefinition?: (
     event?: React.MouseEvent<HTMLElement, MouseEvent>
   ) => void

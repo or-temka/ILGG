@@ -1,4 +1,4 @@
-export enum SkeletonTextVariant {
+export enum skeletonTextVariant {
   simple = 'pulse',
   light = 'pulse-light',
 }

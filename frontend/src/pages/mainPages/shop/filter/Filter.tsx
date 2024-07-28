@@ -6,18 +6,18 @@ import {
   resetFiltersShopApps,
 } from '../../../../redux/slices/shopApps/slice'
 import FilterBy from './components/FilterBy'
-import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import appTypes from 'data/tempData/appTypes'
 import appCategories from 'data/tempData/appCategories'
 import appPlayerTypes from 'data/tempData/appPlayerTypes'
 import appThemes from 'data/tempData/appThemes'
-import styles from './Filter.module.scss'
 import {
   FilterFields,
   FilterValue,
 } from '../../../../redux/slices/shopApps/interfaces'
 import { Filters } from './types'
 import { FilterProps } from './interfaces'
+import { Button, buttonVariant } from 'components'
+import styles from './Filter.module.scss'
 
 const filtersInitial: Filters = {
   categories: null,
@@ -54,7 +54,7 @@ function Filter({ classNames, resetSortHandler }: FilterProps) {
       <div className={styles.filter__resetFiltersBtnContainer}>
         <Button
           className={styles.filter__resetFiltersBtn}
-          variant={ButtonVariant.light}
+          variant={buttonVariant.light}
           title="Сбросить фильтры"
           onClick={onClickResetFiltersHandler}
         />

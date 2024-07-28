@@ -1,10 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-
-import { IShopApplication } from 'models/application/IShopApplication'
+import { application } from 'models'
 
 // запрос на программы для магазина
 const fetchShopApps = createAsyncThunk('shopApps/fetchShopApps', async () => {
-  const returnedData: IShopApplication[] = [
+  const returnedData: application.IShopApplication[] = [
     {
       _id: 1,
       name: 'Find number',

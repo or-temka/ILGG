@@ -3,21 +3,23 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
-import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
-import useLocationQuery from 'hooks/useLocationQuery'
-import Input from 'components/UI/inputs/Input/Input'
-import Checkbox from 'components/UI/inputs/Checkbox/Checkbox'
-import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import { setPageName } from 'utils/setPageName'
-import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
 import registration from '../../../../redux/slices/myProfile/thunks/registration'
 import AboutService from '../components/AboutService'
-import LoadingSpiner from 'components/UI/loaders/LoadingSpiner/LoadingSpiner'
-import AuthService from 'services/authService'
-import styles from '../SignUp.module.scss'
 import { SignUpForm } from './interfaces'
-import InputPassword from 'components/UI/inputs/InputPassword/InputPassword'
 import Validations from 'validations/validations'
+import { useLocationQuery, useNotificationPanel } from 'hooks'
+import {
+  Button,
+  buttonVariant,
+  Checkbox,
+  floatingNotificationVariant,
+  Input,
+  InputPassword,
+  LoadingSpiner,
+} from 'components'
+import { AuthService } from 'services'
+import styles from '../SignUp.module.scss'
 
 function SignUp() {
   const queryParams = useLocationQuery()
@@ -55,7 +57,7 @@ function SignUp() {
   const [isSendBtnLoading, setIsSendBtnLoading] = useState(false)
   const dispatch = useDispatch()
   const addNotificationErrorPanel = useNotificationPanel({
-    variant: FloatingNotificationVariant.error,
+    variant: floatingNotificationVariant.error,
   })
   const navigate = useNavigate()
   useEffect(() => {
@@ -160,7 +162,7 @@ function SignUp() {
                 type="submit"
                 title="Создать аккаунт"
                 disabled={isSendBtnLoading || !watch('personalDataConsent')}
-                variant={ButtonVariant.primary}
+                variant={buttonVariant.primary}
                 className={styles.form__createButton}
               />
             </form>

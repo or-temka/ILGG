@@ -1,0 +1,6 @@
+export * from './components/UI/UI'
+export * from './components/cards/cards'
+export * from './components/frames/frames'
+export * from './components/main/main'
+export * from './components/routes/routes'
+export * from './components/skeletons/skeletons'

@@ -1,8 +1,11 @@
-import { HorizontalDirection, VerticalDirection } from './enums'
+import {
+  infoTooltipHorizontalDirection,
+  infoTooltipVerticalDirection,
+} from 'components'
 
 export interface InfoTooltipProps {
   text: string
-  positionHorizontal?: HorizontalDirection
-  positionVertical?: VerticalDirection
+  positionHorizontal?: infoTooltipHorizontalDirection
+  positionVertical?: infoTooltipVerticalDirection
   className?: string
 }

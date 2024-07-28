@@ -1,9 +1,9 @@
 import { Controller } from 'react-hook-form'
 
-import styles from './fieldset.module.scss'
-import Select from 'components/UI/inputs/Select/Select'
-import { IMyUserPrivacy } from 'models/myUser/IMyUserPrivacy'
 import { AppsFieldsetProps } from './interfaces'
+import { myUser } from 'models'
+import { Select } from 'components'
+import styles from './fieldset.module.scss'
 
 function MessagesFieldset({ control, errors }: AppsFieldsetProps) {
   return (
@@ -16,7 +16,7 @@ function MessagesFieldset({ control, errors }: AppsFieldsetProps) {
           control={control}
           rules={{ required: 'This field is required' }}
           render={({ field }) => (
-            <Select<IMyUserPrivacy['messages']['sendingAvailable']>
+            <Select<myUser.IMyUserPrivacy['messages']['sendingAvailable']>
               options={[
                 { value: 'all', label: 'Все' },
                 { value: 'friends', label: 'Только друзья' },
@@ -37,7 +37,9 @@ function MessagesFieldset({ control, errors }: AppsFieldsetProps) {
           control={control}
           rules={{ required: 'This field is required' }}
           render={({ field }) => (
-            <Select<IMyUserPrivacy['messages']['presentSendingAvailable']>
+            <Select<
+              myUser.IMyUserPrivacy['messages']['presentSendingAvailable']
+            >
               options={[
                 { value: 'all', label: 'Все' },
                 { value: 'friends', label: 'Только друзья' },
@@ -59,7 +61,7 @@ function MessagesFieldset({ control, errors }: AppsFieldsetProps) {
           control={control}
           rules={{ required: 'This field is required' }}
           render={({ field }) => (
-            <Select<IMyUserPrivacy['messages']['inviteAppAvailable']>
+            <Select<myUser.IMyUserPrivacy['messages']['inviteAppAvailable']>
               options={[
                 { value: 'nobody', label: 'Никто' },
                 { value: 'friends', label: 'Только друзья' },

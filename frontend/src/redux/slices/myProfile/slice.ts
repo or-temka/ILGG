@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { IMyUserBalance } from 'models/myUser/IMyUserBalance'
 import ProfileState from './interfaces'
 import reducers from './reducers'
 import extraReducers from './extraReducers'
+import { myUser } from 'models'
 
 const initialState: ProfileState = {
   data: null,
@@ -25,7 +25,7 @@ export const selectMyUserData = (state: any): ProfileState =>
   state.myProfile.data
 export const selectMyBalance = (
   state: any
-): IMyUserBalance | null | undefined =>
+): myUser.IMyUserBalance | null | undefined =>
   state.myProfile.data
     ? state.myProfile.data.balance
     : state.myProfile.loading

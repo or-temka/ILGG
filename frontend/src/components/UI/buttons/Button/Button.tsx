@@ -1,10 +1,10 @@
-import styles from '../Button.module.scss'
-import { ButtonVariant } from './enums'
+import { buttonVariant } from './enums'
 import { ButtonProps } from './interfaces'
+import styles from '../Button.module.scss'
 
 function Button({
   title = '',
-  variant = ButtonVariant.simple,
+  variant = buttonVariant.simple,
   disabled = false,
   active = false,
   className = '',
@@ -27,5 +27,4 @@ function Button({
   )
 }
 
-export default Button
-export { ButtonVariant }
+export { Button, buttonVariant }

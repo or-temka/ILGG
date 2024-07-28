@@ -1,5 +1,5 @@
-import styles from './CardImageText.module.scss'
 import { CardImageTextProps } from './interfaces'
+import styles from './CardImageText.module.scss'
 
 function CardImageText({
   children,
@@ -29,4 +29,4 @@ function CardImageText({
   )
 }
 
-export default CardImageText
+export { CardImageText }

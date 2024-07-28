@@ -1,9 +1,9 @@
 import { Route } from 'react-router-dom'
 
-import PrivateRoute from 'components/routes/PrivateRoute/PrivateRoute'
 import ProfilePages from './AuthorizedPages/ProfilePages'
 import InventoryPages from './AuthorizedPages/InventoryPages'
 import AppsLibraryPages from './AuthorizedPages/AppsLibraryPages'
+import { PrivateRoute } from 'components'
 
 function AuthorizedPages() {
   return (

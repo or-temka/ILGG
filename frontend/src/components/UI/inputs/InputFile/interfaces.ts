@@ -1,13 +1,12 @@
+import { inputFileVariant } from 'components'
 import { InputHTMLAttributes } from 'react'
 import { UseFormRegisterReturn } from 'react-hook-form'
-
-import { InputFileVariant } from './enums'
 
 export interface InputFileProps extends InputHTMLAttributes<HTMLInputElement> {
   setFile?: React.Dispatch<React.SetStateAction<File | null>>
   file?: File | null
 
-  variant?: InputFileVariant
+  variant?: inputFileVariant
   errorText?: string
 
   classNames?: {

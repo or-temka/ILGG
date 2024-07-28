@@ -1,6 +1,6 @@
-import styles from './DescriptionList.module.scss'
-import { DescListTermVariant } from './enums'
+import { descListTermVariant } from './enums'
 import { DescriptionListProps } from './interfaces'
+import styles from './DescriptionList.module.scss'
 
 function DescriptionList({ descs, classNames }: DescriptionListProps) {
   return (
@@ -19,7 +19,7 @@ function DescriptionList({ descs, classNames }: DescriptionListProps) {
           <dt
             className={[
               styles.desc__term,
-              desc.termVariant ? desc.termVariant : DescListTermVariant.light,
+              desc.termVariant ? desc.termVariant : descListTermVariant.light,
               classNames?.term,
             ].join(' ')}
           >
@@ -51,5 +51,4 @@ function DescriptionList({ descs, classNames }: DescriptionListProps) {
   )
 }
 
-export default DescriptionList
-export { DescListTermVariant }
+export { DescriptionList, descListTermVariant }

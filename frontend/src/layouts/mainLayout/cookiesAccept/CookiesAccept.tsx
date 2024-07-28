@@ -1,9 +1,11 @@
-import PopUpSkeleton, {
-  PopUpVerticalPosition,
-} from 'components/UI/popUps/skeletons/PopUpSkeleton/PopUpSkeleton'
-import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
-import styles from './CookiesAccept.module.scss'
+import {
+  Button,
+  buttonVariant,
+  PopUpSkeleton,
+  popUpVerticalPosition,
+} from 'components'
 import { CookiesAcceptProps } from './interfaces'
+import styles from './CookiesAccept.module.scss'
 
 function CookiesAccept({ onClose }: CookiesAcceptProps) {
   const onAcceptHandler = () => {
@@ -15,7 +17,7 @@ function CookiesAccept({ onClose }: CookiesAcceptProps) {
     <PopUpSkeleton
       showCloseButton={false}
       classNames={{ contentClassName: styles.popUp }}
-      verticalPosition={PopUpVerticalPosition.bottom}
+      verticalPosition={popUpVerticalPosition.bottom}
       showBack={false}
     >
       <div className={styles.modal}>
@@ -26,7 +28,7 @@ function CookiesAccept({ onClose }: CookiesAcceptProps) {
         <Button
           title="Принять и закрыть"
           className={styles.modal__btn}
-          variant={ButtonVariant.light}
+          variant={buttonVariant.light}
           onClick={onAcceptHandler}
         />
       </div>

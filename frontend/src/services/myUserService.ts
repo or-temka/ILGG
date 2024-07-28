@@ -1,11 +1,10 @@
 import { AxiosResponse } from 'axios'
 
 import $api from 'http/axios'
+import { myUser } from 'models'
 
-import { IMyUser } from 'models/myUser/IMyUser'
-
-export default class MyUserService {
-  static fetchMyData(): Promise<AxiosResponse<IMyUser>> {
-    return $api.get<IMyUser>('/user')
+export class MyUserService {
+  static fetchMyData(): Promise<AxiosResponse<myUser.IMyUser>> {
+    return $api.get<myUser.IMyUser>('/user')
   }
 }

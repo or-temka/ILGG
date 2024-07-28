@@ -1,6 +1,6 @@
-import { MongoId } from 'models/mongoDB'
+import { mongoDB } from "models"
 
 export type AppType = {
-  _id: MongoId
+  _id: mongoDB.id
   name: string
 }

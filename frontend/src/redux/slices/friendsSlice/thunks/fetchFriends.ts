@@ -1,10 +1,10 @@
 // Запрос на друзей
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
-import { IUserProfile } from 'models/user/IUserProfile'
+import { user } from 'models'
 
 const fetchFriends = createAsyncThunk('friends/fetchFriends', async () => {
-  const returnedData: IUserProfile[] = [
+  const returnedData: user.IUserProfile[] = [
     {
       _id: 1,
       name: 'Алина убивца',

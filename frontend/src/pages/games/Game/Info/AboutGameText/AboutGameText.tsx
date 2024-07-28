@@ -1,5 +1,5 @@
-import styles from './AboutGameText.module.scss'
 import { AboutGameTextProps } from './interfaces'
+import styles from './AboutGameText.module.scss'
 
 function AboutGameText({ classNames }: AboutGameTextProps) {
   return (

@@ -1,7 +1,6 @@
-import PopUpContainer from 'components/UI/popUps/skeletons/PopUpContainer/PopUpContainer'
-import LoadingSpiner from '../LoadingSpiner/LoadingSpiner'
-import styles from './LoadingPopUp.module.scss'
+import { LoadingSpiner, PopUpContainer } from 'components'
 import { LoadingPopUpProps } from './interfaces'
+import styles from './LoadingPopUp.module.scss'
 
 function LoadingPopUp({ classNames }: LoadingPopUpProps) {
   return (
@@ -18,4 +17,4 @@ function LoadingPopUp({ classNames }: LoadingPopUpProps) {
   )
 }
 
-export default LoadingPopUp
+export { LoadingPopUp }

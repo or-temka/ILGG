@@ -1,10 +1,10 @@
+import { textAreaVariant } from 'components'
 import { TextareaHTMLAttributes } from 'react'
 import { UseFormRegisterReturn } from 'react-hook-form'
 
-import { Variant } from './enums'
-
-export interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
-  variant?: Variant
+export interface TextAreaProps
+  extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+  variant?: textAreaVariant
   label?: string
   errorText?: string
   className?: string

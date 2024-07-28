@@ -1,10 +1,9 @@
 import { useState } from 'react'
 
-import PopUpContainer from 'components/UI/popUps/skeletons/PopUpContainer/PopUpContainer'
-import Input from 'components/UI/inputs/Input/Input'
 import MiniProfile from '../components/miniProfile/MiniProfile'
-import styles from './AddFriendPopUp.module.scss'
 import { AddFriendPopUpProps } from './interfaces'
+import { Input, PopUpContainer } from 'components'
+import styles from './AddFriendPopUp.module.scss'
 
 function AddFriendPopUp({ usersData, onClose }: AddFriendPopUpProps) {
   const [searchValue, setSearchValue] = useState<string>('')

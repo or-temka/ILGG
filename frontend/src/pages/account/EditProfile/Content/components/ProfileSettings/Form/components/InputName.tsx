@@ -1,6 +1,6 @@
-import Input from 'components/UI/inputs/Input/Input'
 import Validations from 'validations/validations'
 import { InputNameProps } from './interfaces'
+import { Input } from 'components'
 
 function InputName({ register, errors }: InputNameProps) {
   return (

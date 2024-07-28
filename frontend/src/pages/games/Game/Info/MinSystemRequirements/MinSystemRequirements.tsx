@@ -1,6 +1,6 @@
-import DescriptionList from 'components/UI/texts/DescriptionList/DescriptionList'
-import styles from './MinSystemRequirements.module.scss'
+import { DescriptionList } from 'components'
 import { MinSystemRequirementsProps } from './interfaces'
+import styles from './MinSystemRequirements.module.scss'
 
 const minSysReq = {
   windows: [

@@ -1,6 +1,6 @@
-import PopUpSkeleton from '../PopUpSkeleton/PopUpSkeleton'
-import styles from './PopUpContainer.module.scss'
+import { PopUpSkeleton } from '../skeletons'
 import { PopUpContainerProps } from './interfaces'
+import styles from './PopUpContainer.module.scss'
 
 function PopUpContainer({
   children,
@@ -45,4 +45,4 @@ function PopUpContainer({
   )
 }
 
-export default PopUpContainer
+export { PopUpContainer }

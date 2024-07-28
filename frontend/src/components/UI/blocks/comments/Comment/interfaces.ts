@@ -1,13 +1,13 @@
-import { ReactNode } from "react"
+import { ReactNode } from 'react'
 
-import { IUserProfile } from "models/user/IUserProfile"
+import { user } from 'models'
 
 export interface CommentProps {
   commentData: {
     text: string
     date: string
   }
-  userAuthor: IUserProfile
+  userAuthor: user.IUserProfile
   headerChildren?: ReactNode
   background?: boolean
   classNames?: {

@@ -1,6 +1,6 @@
-import { AppTheme } from 'models/application/types/AppTheme'
+import { application } from 'models'
 
-const appThemes: AppTheme[] = [
+const appThemes: application.AppTheme[] = [
   { _id: 1, name: 'Аниме' },
   { _id: 2, name: 'Выживание' },
   { _id: 3, name: 'Только для взрослых' },

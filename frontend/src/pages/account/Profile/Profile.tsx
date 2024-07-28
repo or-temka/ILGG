@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { IFullUserProfile } from 'models/user/IFullUserProfile'
 import Header from './Header/Header'
 import AdoptInfo from './AdoptInfo/AdoptInfo'
 import HeaderSkeleton from './Header/components/HeaderSkeleton'
 import { setPageName } from 'utils/setPageName'
+import { user } from 'models'
 import styles from './Profile.module.scss'
 
-const tempUserData: IFullUserProfile = {
+const tempUserData: user.IFullUserProfile = {
   _id: 1,
   imgName: 'profileImage.jpg',
   name: 'Приора',
@@ -30,7 +30,7 @@ const fetchUserData = () => {
 }
 
 function Profile() {
-  const [userData, setUserData] = useState<IFullUserProfile | null>(null)
+  const [userData, setUserData] = useState<user.IFullUserProfile | null>(null)
 
   const pageParams = useParams()
   const userId = pageParams.id

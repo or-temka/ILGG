@@ -1,5 +1,4 @@
-import ImgLightRightContnent from 'components/cards/ImgLightRightContent/ImgLightRightContnent'
-
+import { ImgLightRightContnent } from 'components'
 import styles from './UserGames.module.scss'
 
 function UserGames() {

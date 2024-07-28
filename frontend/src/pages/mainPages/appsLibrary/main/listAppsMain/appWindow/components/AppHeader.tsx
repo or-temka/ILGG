@@ -1,8 +1,7 @@
-import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
-import ButtonWithIcon from 'components/UI/buttons/ButtonWithIcon/ButtonWithIcon'
 import { ReactComponent as PlaySVG } from 'assets/svgs/play.svg'
-import styles from './AppHeader.module.scss'
 import { AppHeaderProps } from './interfaces'
+import { Button, buttonVariant, ButtonWithIcon } from 'components'
+import styles from './AppHeader.module.scss'
 
 function AppHeader({ classNames }: AppHeaderProps) {
   return (
@@ -30,7 +29,7 @@ function AppHeader({ classNames }: AppHeaderProps) {
             </span>
           </div>
         </div>
-        <Button title="Страница в магазине" variant={ButtonVariant.light} />
+        <Button title="Страница в магазине" variant={buttonVariant.light} />
       </div>
     </header>
   )

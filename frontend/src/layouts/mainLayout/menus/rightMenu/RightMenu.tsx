@@ -2,25 +2,31 @@ import { Suspense, lazy, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import { selectFriends } from '../../../../redux/slices/friendsSlice/slice'
-import { IUserProfile } from 'models/user/IUserProfile'
 import { selectMyUser } from '../../../../redux/slices/myProfile/slice'
-import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import AddFriendPopUp from './addFriendPopUp/AddFriendPopUp'
 import FriendMiniProfile from './friendMiniProfile/FriendMiniProfile'
 import MyMiniProfile from './myMiniProfile/MyMiniProfile'
-import TextLink from 'components/UI/links/TextLink/TextLink'
 import pageLink from 'pagesLinks'
 import LoadingRightMenu from './loadingRightMenu/LoadingRightMenu'
-import LoadingPopUp from 'components/UI/loaders/LoadingPopUp/LoadingPopUp'
 import { ReactComponent as SignInDoorSVG } from 'assets/svgs/door.svg'
 import menuStyles from '../Menu.module.scss'
-import styles from './RightMenu.module.scss'
-import useScrollVisibility from 'hooks/useScrollVisibility'
-import ScrollableContainer from 'components/frames/ScrollableContainer/ScrollableContainer'
 import { RightMenuProps } from './interfaces'
-const SignIn = lazy(() => import('components/main/SignIn/SignIn'))
+import { useScrollVisibility } from 'hooks'
+import { user } from 'models'
+import {
+  Button,
+  buttonVariant,
+  LoadingPopUp,
+  ScrollableContainer,
+  TextLink,
+} from 'components'
+import styles from './RightMenu.module.scss'
 
-const usersData: IUserProfile[] = [
+const SignIn = lazy(() =>
+  import('components').then((module) => ({ default: module.SignIn }))
+)
+
+const usersData: user.IUserProfile[] = [
   {
     _id: 1,
     name: 'Алина убивца',
@@ -150,7 +156,7 @@ function RightMenu({ className = '' }: RightMenuProps) {
           <Button
             title="Добавить"
             className={styles.rightMenu__addFriendBtn}
-            variant={ButtonVariant.shy}
+            variant={buttonVariant.shy}
             onClick={() =>
               setShowPopUp((prev) => ({ ...prev, addFriend: true }))
             }

@@ -1,11 +1,11 @@
-import FloatingPanelSkeleton from '../skeletons/FloatingPanelSkeleton/FloatingPanelSkeleton'
-import { FloatingNotificationVariant } from './enums'
-import styles from './FloatingNotification.module.scss'
+import { FloatingPanelSkeleton } from 'components'
+import { floatingNotificationVariant } from './enums'
 import { FloatingNotificationProps } from './interfaces'
+import styles from './FloatingNotification.module.scss'
 
 function FloatingNotification({
   className = '',
-  variant = FloatingNotificationVariant.msg,
+  variant = floatingNotificationVariant.msg,
   text = '',
   onClose = () => {},
   headerText = 'Уведомление',
@@ -29,5 +29,4 @@ function FloatingNotification({
   )
 }
 
-export default FloatingNotification
-export { FloatingNotificationVariant }
+export { FloatingNotification, floatingNotificationVariant }

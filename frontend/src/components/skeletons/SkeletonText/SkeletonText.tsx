@@ -1,10 +1,10 @@
 import getRandomInt from 'utils/getRandomInt'
-import styles from './SkeletonText.module.scss'
-import { SkeletonTextVariant } from './enums'
+import { skeletonTextVariant } from './enums'
 import { SkeletonTextProps } from './interfaces'
+import styles from './SkeletonText.module.scss'
 
 function SkeletonText({
-  variant = SkeletonTextVariant.simple, // types: simple, light
+  variant = skeletonTextVariant.simple, // types: simple, light
   className = '',
 }: SkeletonTextProps) {
   const randomWidth = getRandomInt(40, 100)
@@ -17,5 +17,4 @@ function SkeletonText({
   )
 }
 
-export default SkeletonText
-export { SkeletonTextVariant }
+export { SkeletonText, skeletonTextVariant }

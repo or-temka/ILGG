@@ -1,6 +1,6 @@
-import { AppType } from 'models/application/types/AppType'
+import { application } from 'models'
 
-const appTypes: AppType[] = [
+const appTypes: application.AppType[] = [
   { _id: 1, name: 'Игра' },
   { _id: 2, name: 'Приложение' },
 ]

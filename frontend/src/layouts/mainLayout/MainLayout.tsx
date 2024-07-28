@@ -4,9 +4,8 @@ import { Outlet } from 'react-router-dom'
 import Header from './header/Header'
 import LeftMenu from './menus/leftMenu/LeftMenu'
 import RightMenu from './menus/rightMenu/RightMenu'
-import LoadingSpiner from 'components/UI/loaders/LoadingSpiner/LoadingSpiner'
 import CookiesAccept from './cookiesAccept/CookiesAccept'
-
+import { LoadingSpiner } from 'components'
 import styles from './MainLayout.module.scss'
 
 function MainLayout() {

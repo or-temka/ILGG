@@ -1,5 +1,5 @@
-import styles from './CloseButton.module.scss'
 import { CloseButtonProps } from './interfaces'
+import styles from './CloseButton.module.scss'
 
 function CloseButton({
   isWithoutPadding = false,
@@ -23,4 +23,4 @@ function CloseButton({
   )
 }
 
-export default CloseButton
+export { CloseButton }

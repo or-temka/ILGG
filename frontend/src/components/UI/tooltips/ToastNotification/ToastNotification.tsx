@@ -1,7 +1,7 @@
 import { useCallback, useRef } from 'react'
 
-import styles from './ToastNotification.module.scss'
 import { ToastNotificationProps } from './interfaces'
+import styles from './ToastNotification.module.scss'
 
 function ToastNotification({
   children,
@@ -37,4 +37,4 @@ function ToastNotification({
   )
 }
 
-export default ToastNotification
+export { ToastNotification }

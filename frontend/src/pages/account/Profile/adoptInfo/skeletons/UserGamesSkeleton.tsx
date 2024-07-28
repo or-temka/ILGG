@@ -1,6 +1,4 @@
-import SkeletonText, {
-  SkeletonTextVariant,
-} from 'components/skeletons/SkeletonText/SkeletonText'
+import { SkeletonText, skeletonTextVariant } from 'components'
 import styles from '../UserGames/UserGames.module.scss'
 
 function UserGames() {
@@ -27,8 +25,8 @@ function UserGames() {
                 styles.skeleton__infoContainer,
               ].join(' ')}
             >
-              <SkeletonText variant={SkeletonTextVariant.light} />
-              <SkeletonText variant={SkeletonTextVariant.light} />
+              <SkeletonText variant={skeletonTextVariant.light} />
+              <SkeletonText variant={skeletonTextVariant.light} />
             </div>
           </div>
         </div>

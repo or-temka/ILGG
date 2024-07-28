@@ -1,5 +1,5 @@
-import { IMyUser } from 'models/myUser/IMyUser'
+import { myUser } from 'models'
 
 export interface MyMiniProfileProps {
-  myUserData: IMyUser | null
+  myUserData: myUser.IMyUser | null
 }

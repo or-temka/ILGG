@@ -1,6 +1,6 @@
-import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
-import styles from './Aside.module.scss'
+import { Button, buttonVariant } from 'components'
 import { AsideProps } from './interfaces'
+import styles from './Aside.module.scss'
 
 function Aside({ setContentType, activeContentType }: AsideProps) {
   return (
@@ -8,31 +8,31 @@ function Aside({ setContentType, activeContentType }: AsideProps) {
       <aside className={styles.aside}>
         <Button
           title="Профиль"
-          variant={ButtonVariant.menu}
+          variant={buttonVariant.menu}
           active={activeContentType === 'profile'}
           onClick={() => setContentType('profile')}
         />
         <Button
           title="Основная информация"
-          variant={ButtonVariant.menu}
+          variant={buttonVariant.menu}
           active={activeContentType === 'main'}
           onClick={() => setContentType('main')}
         />
         <Button
           title="Пароль"
-          variant={ButtonVariant.menu}
+          variant={buttonVariant.menu}
           active={activeContentType === 'password'}
           onClick={() => setContentType('password')}
         />
         <Button
           title="Аватар"
-          variant={ButtonVariant.menu}
+          variant={buttonVariant.menu}
           active={activeContentType === 'avatar'}
           onClick={() => setContentType('avatar')}
         />
         <Button
           title="Приватность"
-          variant={ButtonVariant.menu}
+          variant={buttonVariant.menu}
           active={activeContentType === 'privacy'}
           onClick={() => setContentType('privacy')}
         />

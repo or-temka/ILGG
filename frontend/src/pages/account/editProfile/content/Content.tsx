@@ -3,8 +3,8 @@ import MainInfoSettings from './components/MainInfoSettings/MainInfoSettings'
 import Password from './components/PasswordSettings/Password'
 import PrivacySettings from './components/PrivacySettings/PrivacySettings'
 import ProfileSettings from './components/ProfileSettings/ProfileSettings'
-import styles from './Content.module.scss'
 import { ContentProps } from './interfaces'
+import styles from './Content.module.scss'
 
 function Content({ contentType }: ContentProps) {
   return (

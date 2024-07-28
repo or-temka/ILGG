@@ -1,25 +1,24 @@
 import { useCallback, useState } from 'react'
 import { AxiosError } from 'axios'
 
-import useImagePreloader from 'hooks/useImagePreloader'
-import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
-import PopUpContainer from 'components/UI/popUps/skeletons/PopUpContainer/PopUpContainer'
-import LoadingPopUp from 'components/UI/loaders/LoadingPopUp/LoadingPopUp'
 import ImgEnvelope from 'assets/images/posters/email-envelope.png'
-import Input from 'components/UI/inputs/Input/Input'
-import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
-import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
 import RepeatButton from 'pages/account/signUp/SignUpEmail/components/VerifyEmail/RepeatButton/RepeatButton'
-import RecoveryPasswordService from 'services/recoveryPasswordservice'
-import {
-  RecoveryEmailError,
-  sendRecoveryActivationCodeResponse,
-} from 'models/response/RecoveryPasswordResponse'
 import EnterNewPassword from './EnterNewPassword/EnterNewPassword'
-import styles from './RecoveryPasswordVerifyEmail.module.scss'
 import { useForm } from 'react-hook-form'
 import { RecoveryPasswordVerifyEmailForm, VerifyEmailProps } from './interfaces'
 import Validations from 'validations/validations'
+import { useImagePreloader, useNotificationPanel } from 'hooks'
+import { response } from 'models'
+import {
+  Button,
+  buttonVariant,
+  floatingNotificationVariant,
+  Input,
+  LoadingPopUp,
+  PopUpContainer,
+} from 'components'
+import { RecoveryPasswordService } from 'services'
+import styles from './RecoveryPasswordVerifyEmail.module.scss'
 
 const preloadSrcList: string[] = [ImgEnvelope]
 
@@ -33,16 +32,16 @@ function RecoveryPasswordVerifyEmail({
       defaultValues: { activationCode: '' },
     })
   const addNotificationErrorPanel = useNotificationPanel({
-    variant: FloatingNotificationVariant.error,
+    variant: floatingNotificationVariant.error,
   })
   const addNotificationSuccessPanel = useNotificationPanel({
-    variant: FloatingNotificationVariant.success,
+    variant: floatingNotificationVariant.success,
   })
   const { imagesPreloaded } = useImagePreloader(preloadSrcList)
   const [disabledSendBtn, setDisabledSendBtn] = useState(false)
 
   const [userChangePassData, setUserChangePassData] =
-    useState<null | sendRecoveryActivationCodeResponse>(null)
+    useState<null | response.sendRecoveryActivationCodeResponse>(null)
 
   const onClickRepeatSendEmailHandler = useCallback(async () => {
     setDisabledSendBtn(true)
@@ -50,7 +49,7 @@ function RecoveryPasswordVerifyEmail({
       .then(() => {
         addNotificationSuccessPanel('Сообщение успешно отправлено!')
       })
-      .catch((error: AxiosError<RecoveryEmailError>) => {
+      .catch((error: AxiosError<response.RecoveryEmailError>) => {
         const errorMsg = error?.response?.data.errorMsg
         addNotificationErrorPanel(errorMsg || 'Произошла ошибка!')
       })
@@ -73,7 +72,7 @@ function RecoveryPasswordVerifyEmail({
             activationLink: data.activationLink,
           })
         })
-        .catch((error: AxiosError<RecoveryEmailError>) => {
+        .catch((error: AxiosError<response.RecoveryEmailError>) => {
           const errorMsg = error?.response?.data.errorMsg
           addNotificationErrorPanel(errorMsg || 'Произошла ошибка!')
         })
@@ -118,7 +117,7 @@ function RecoveryPasswordVerifyEmail({
                 <Button
                   type="submit"
                   title="Подтвердить"
-                  variant={ButtonVariant.primary}
+                  variant={buttonVariant.primary}
                   className={styles.modal__confirmEmailCodeBtn}
                   disabled={
                     watch('activationCode').length !== 6 || disabledSendBtn

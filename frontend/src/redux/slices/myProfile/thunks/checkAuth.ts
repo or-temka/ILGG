@@ -1,14 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
+import { response } from 'models'
 
-import { AuthResponse } from 'models/response/AuthResponse'
 import { API_URL } from 'variables'
 
 const checkAuth = createAsyncThunk(
   'myProfile/checkAuth',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get<AuthResponse>(
+      const response = await axios.get<response.AuthResponse>(
         `${API_URL}/user/refresh`,
         { withCredentials: true }
       )

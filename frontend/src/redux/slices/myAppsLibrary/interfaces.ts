@@ -1,7 +1,7 @@
-import { IAppFromLibrary } from 'models/application/IAppFromLibrary'
+import { application } from 'models'
 
 type AppsLibraryState = {
-  data: IAppFromLibrary[] | null
+  data: application.IAppFromLibrary[] | null
   loading: boolean
   error: string | null | undefined
 }
@@ -14,6 +14,6 @@ export interface ReducerAction {
 }
 
 export interface SetLibraryAppsAction extends ReducerAction {
-  payload: IAppFromLibrary[] | null
+  payload: application.IAppFromLibrary[] | null
 }
 //#endregion

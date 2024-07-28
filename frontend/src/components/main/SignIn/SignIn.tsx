@@ -2,22 +2,25 @@ import { Suspense, lazy, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
-import useImagePreloader from 'hooks/useImagePreloader'
-import useNotificationPanel from 'hooks/dispatch/useNotificationPanel'
-import Input, { InputVariant } from 'components/UI/inputs/Input/Input'
-import PopUpSkeleton from 'components/UI/popUps/skeletons/PopUpSkeleton/PopUpSkeleton'
-import Button, { ButtonVariant } from 'components/UI/buttons/Button/Button'
 import pageLink from 'pagesLinks'
 import login from '../../../redux/slices/myProfile/thunks/login'
-import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
-import LoadingPopUp from 'components/UI/loaders/LoadingPopUp/LoadingPopUp'
 import { ReactComponent as LogoSVG } from 'assets/svgs/logo.svg'
 import PosterImage from 'assets/images/posters/poster1.jpg'
-import styles from './SignIn.module.scss'
-import InputPassword from 'components/UI/inputs/InputPassword/InputPassword'
 import { useForm } from 'react-hook-form'
 import { SignInForm } from './interfaces'
 import Validations from 'validations/validations'
+import { useImagePreloader, useNotificationPanel } from 'hooks'
+import {
+  Button,
+  buttonVariant,
+  floatingNotificationVariant,
+  Input,
+  InputPassword,
+  inputVariant,
+  LoadingPopUp,
+  PopUpSkeleton,
+} from 'components'
+import styles from './SignIn.module.scss'
 
 const preloadSrcList: string[] = [PosterImage]
 
@@ -29,7 +32,7 @@ function SignIn({ onClose = () => {} }) {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const addNotificationErrorPanel = useNotificationPanel({
-    variant: FloatingNotificationVariant.error,
+    variant: floatingNotificationVariant.error,
   })
   const {
     register,
@@ -86,7 +89,7 @@ function SignIn({ onClose = () => {} }) {
                 register={register('login', Validations.UseForm.User.login)}
                 label="Логин:"
                 placeholder="Введите ваш логин"
-                variant={InputVariant.light}
+                variant={inputVariant.light}
                 errorText={errors.login?.message}
               />
               <InputPassword
@@ -105,7 +108,7 @@ function SignIn({ onClose = () => {} }) {
               <Button
                 title="Войти"
                 type="submit"
-                variant={ButtonVariant.primary}
+                variant={buttonVariant.primary}
                 disabled={isDisabledLoginBtn}
               />
               <span
@@ -116,7 +119,7 @@ function SignIn({ onClose = () => {} }) {
               </span>
               <Button
                 title="У меня нет аккаунта"
-                variant={ButtonVariant.light}
+                variant={buttonVariant.light}
                 type="button"
                 onClick={() => {
                   navigate(pageLink.signUpEmail)
@@ -141,4 +144,4 @@ function SignIn({ onClose = () => {} }) {
   )
 }
 
-export default SignIn
+export { SignIn }

@@ -1,6 +1,6 @@
-import { IUserProfile } from 'models/user/IUserProfile'
+import { user } from 'models'
 
 export interface AddFriendPopUpProps {
-  usersData: IUserProfile[] | []
+  usersData: user.IUserProfile[] | []
   onClose?: (...args: any[]) => any
 }

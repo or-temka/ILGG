@@ -1,6 +1,6 @@
 import AppInList from './components/AppInList'
-import styles from './AppsList.module.scss'
 import { AppsListProps } from './interfaces'
+import styles from './AppsList.module.scss'
 
 function AppsList({ apps, classNames }: AppsListProps) {
   const myGames = [...(apps.data || [])].filter((app) => app.types.includes(1))

@@ -1,11 +1,14 @@
-import { horizontalDirection, verticalDirection } from './enums'
-import styles from './FloatingPanelSkeleton.module.scss'
+import {
+  horizontalDirection as floatingPanelSkeletonHorizontalDirection,
+  verticalDirection as floatingPanelSkeletonVerticalDirection,
+} from './enums'
 import { FloatingPanelSkeletonProps } from './interfaces'
+import styles from './FloatingPanelSkeleton.module.scss'
 
 function FloatingPanelSkeleton({
   children,
-  posHorizontal = horizontalDirection.right,
-  posVertical = verticalDirection.bottom,
+  posHorizontal = floatingPanelSkeletonHorizontalDirection.right,
+  posVertical = floatingPanelSkeletonVerticalDirection.bottom,
   className = '',
 }: FloatingPanelSkeletonProps) {
   // Определение выравнивания
@@ -41,5 +44,8 @@ function FloatingPanelSkeleton({
   )
 }
 
-export default FloatingPanelSkeleton
-export { horizontalDirection, verticalDirection }
+export {
+  FloatingPanelSkeleton,
+  floatingPanelSkeletonHorizontalDirection,
+  floatingPanelSkeletonVerticalDirection,
+}

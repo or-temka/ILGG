@@ -1,11 +1,9 @@
 import { Link } from 'react-router-dom'
 
 import pageLink from 'pagesLinks'
-import Tooltip, {
-  VerticalDirection,
-} from 'components/UI/tooltips/Tooltip/Tooltip'
-import styles from './FriendsPanel.module.scss'
 import { FriendsPanelProps } from './interfaces'
+import { Tooltip, tooltipVerticalDirection } from 'components'
+import styles from './FriendsPanel.module.scss'
 
 function FriendsPanel({ friends }: FriendsPanelProps) {
   return (
@@ -16,7 +14,7 @@ function FriendsPanel({ friends }: FriendsPanelProps) {
         {friends.map((friend) => (
           <Link to={pageLink.profile + friend._id} key={friend._id}>
             <Tooltip
-              postitionVertical={VerticalDirection.bottom}
+              postitionVertical={tooltipVerticalDirection.bottom}
               text={friend.name}
             >
               <img

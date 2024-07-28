@@ -1,5 +1,5 @@
-import { IUserProfile } from "models/user/IUserProfile";
+import { user } from 'models'
 
 export interface FriendsPanelProps {
-  friends: IUserProfile[]
+  friends: user.IUserProfile[]
 }

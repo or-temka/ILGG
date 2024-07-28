@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom'
 
-import Button from 'components/UI/buttons/Button/Button'
 import pageLink from 'pagesLinks'
-import styles from './Header.module.scss'
 import { HeaderProps } from './interfaces'
+import { Button } from 'components'
+import styles from './Header.module.scss'
 
 function Header({ userData }: HeaderProps) {
   const navigate = useNavigate()

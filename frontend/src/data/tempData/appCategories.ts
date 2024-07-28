@@ -1,6 +1,6 @@
-import { AppCategory } from 'models/application/types/AppCategory'
+import { application } from 'models'
 
-const appCategories: AppCategory[] = [
+const appCategories: application.AppCategory[] = [
   { _id: 1, name: 'Экшен' },
   { _id: 2, name: 'Визуальная новелла' },
   { _id: 3, name: 'Головоломка' },

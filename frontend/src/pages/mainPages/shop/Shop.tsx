@@ -8,8 +8,8 @@ import Main from './Main/Main'
 import Filter from './Filter/Filter'
 import Header from './Header/Header'
 import { setPageName } from 'utils/setPageName'
-import styles from './Shop.module.scss'
 import fetchShopApps from '../../../redux/slices/shopApps/thunks/fetchShopApps'
+import styles from './Shop.module.scss'
 
 function Shop() {
   const dispatch = useDispatch<AppDispatch>()

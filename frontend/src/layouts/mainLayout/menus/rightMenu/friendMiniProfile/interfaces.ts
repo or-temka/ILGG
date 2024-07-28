@@ -1,5 +1,5 @@
-import { IUserProfile } from "models/user/IUserProfile";
+import { user } from 'models'
 
 export interface FriendMiniProfileProps {
-  userData: IUserProfile | null
+  userData: user.IUserProfile | null
 }

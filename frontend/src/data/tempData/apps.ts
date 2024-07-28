@@ -1,6 +1,7 @@
-import { IApplication } from 'models/application/IApplication'
+import { application } from "models"
 
-const apps: IApplication[] = [
+
+const apps: application.IApplication[] = [
   {
     _id: 1,
     name: 'Find number',

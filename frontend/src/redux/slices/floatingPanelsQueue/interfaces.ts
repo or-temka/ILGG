@@ -1,11 +1,11 @@
-import { FloatingNotificationVariant } from 'components/UI/floatingPanels/FloatingNotification/FloatingNotification'
+import { floatingNotificationVariant } from 'components'
 import { PanelVariant } from './slice'
 
 export default interface IFloatingPanelsQueue {
   id: string | number
   item: {
     type: PanelVariant
-    variant?: FloatingNotificationVariant
+    variant?: floatingNotificationVariant
     text?: string
   }
   lifeTime?: number

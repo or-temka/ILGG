@@ -4,4 +4,4 @@ function CardImageTextSkeleton() {
   return <div className={[styles.card, 'pulse'].join(' ')}></div>
 }
 
-export default CardImageTextSkeleton
+export { CardImageTextSkeleton }

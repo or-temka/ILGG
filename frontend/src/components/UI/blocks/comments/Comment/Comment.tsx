@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 
-import styles from './Comment.module.scss'
 import { CommentProps } from './interfaces'
+import styles from './Comment.module.scss'
 
 function Comment({
   commentData,
@@ -79,4 +79,4 @@ function Comment({
   )
 }
 
-export default Comment
+export { Comment }

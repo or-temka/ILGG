@@ -1,8 +1,8 @@
-import { MongoId } from 'models/mongoDB'
+import { mongoDB } from 'models'
 
 export interface IAppComment {
-  _id: MongoId
-  author: MongoId
+  _id: mongoDB.id
+  author: mongoDB.id
   dateCreate: string
   positive: boolean
   text: string

@@ -1,9 +1,8 @@
+import { buttonVariant } from 'components'
 import { ButtonHTMLAttributes } from 'react'
 
-import { ButtonVariant } from './enums'
-
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: ButtonVariant
+  variant?: buttonVariant
   active?: boolean
   className?: string
 

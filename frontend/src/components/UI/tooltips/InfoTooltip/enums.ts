@@ -1,9 +1,9 @@
-export enum HorizontalDirection {
+export enum horizontalDirection {
   right = 'right',
   left = 'left',
 }
 
-export enum VerticalDirection {
+export enum verticalDirection {
   top = 'top',
   bottom = 'bottom',
 }
