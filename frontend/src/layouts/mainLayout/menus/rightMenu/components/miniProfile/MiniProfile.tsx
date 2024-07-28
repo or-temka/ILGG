@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Tooltip from 'components/UI/tooltips/Tooltip/Tooltip'
 import styles from './MiniProfile.module.scss'
 import { MiniProfileProps } from './interfaces'
+import HoverableText from 'components/UI/texts/HoverableText/HoverableText'
 
 function MiniProfile({
   userData,
@@ -54,16 +55,10 @@ function MiniProfile({
               </>
             ) : (
               <>
-                <Tooltip text={userData.login}>
-                  <span
-                    className={[
-                      styles.aboutUser__name,
-                      classNames.username,
-                    ].join(' ')}
-                  >
-                    {userData.name}
-                  </span>
-                </Tooltip>
+                <HoverableText
+                  defaultText={userData.name}
+                  hoverText={userData.login}
+                />
 
                 <span
                   className={[

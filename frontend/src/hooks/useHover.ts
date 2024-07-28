@@ -1,10 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 
-function useHover(ref: React.RefObject<any>) {
+type useHoverOptions = {
+  mode?: 'start' | 'end' | number
+}
+
+function useHover(
+  ref: React.RefObject<Element>,
+  { mode = 'start' }: useHoverOptions = {}
+) {
   const [isHovering, setIsHovering] = useState(false)
 
-  const on = () => setIsHovering(true)
-  const off = () => setIsHovering(false)
+  const on = useCallback(() => setIsHovering(true), [])
+  const off = useCallback(() => {
+    if (mode === 'start') setIsHovering(false)
+    else if (mode === 'end') {
+      const node = ref.current
+      if (!node) return
+      const transitionDuration = getComputedStyle(node).transitionDuration
+      const duration = parseFloat(transitionDuration) * 1000
+      setTimeout(() => setIsHovering(false), duration)
+    } else setTimeout(() => setIsHovering(false), mode)
+  }, [mode, ref])
 
   useEffect(() => {
     if (!ref.current) return
@@ -20,7 +36,7 @@ function useHover(ref: React.RefObject<any>) {
       node.removeEventListener('mousemove', on)
       node.removeEventListener('mouseleave', off)
     }
-  }, [])
+  }, [ref, off, on])
 
   return isHovering
 }
