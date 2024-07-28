@@ -3,7 +3,6 @@ import { AxiosError } from 'axios'
 import { useForm } from 'react-hook-form'
 
 import RecoveryPasswordVerifyEmail from './RecoveryPasswordVerifyEmail/RecoveryPasswordVerifyEmail'
-import RecoveryPasswordService from 'services/recoveryPasswordservice'
 import { RecoveryPasswordForm, RecoveryPasswordProps } from './interfaces'
 import { GenericUseFormValidation } from 'validations/useFormValidations/generic'
 import { useNotificationPanel } from 'hooks'
@@ -15,6 +14,7 @@ import {
   Input,
   PopUpContainer,
 } from 'components'
+import { RecoveryPasswordService } from 'services'
 import styles from './RecoveryPassword.module.scss'
 
 function RecoveryPassword({ onClose, onCloseSignIn }: RecoveryPasswordProps) {

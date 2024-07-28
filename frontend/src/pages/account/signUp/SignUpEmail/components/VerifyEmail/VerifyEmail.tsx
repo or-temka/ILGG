@@ -3,7 +3,6 @@ import { useCallback, useState } from 'react'
 
 import ImgEnvelope from 'assets/images/posters/email-envelope.png'
 import RepeatButton from './RepeatButton/RepeatButton'
-import AuthService from 'services/authService'
 import pageLink from 'pagesLinks'
 import { useForm } from 'react-hook-form'
 import { VerifyEmailForm, VerifyEmailProps } from './interfaces'
@@ -17,6 +16,7 @@ import {
   LoadingPopUp,
   PopUpContainer,
 } from 'components'
+import { AuthService } from 'services'
 import styles from './VerifyEmail.module.scss'
 
 const preloadSrcList: string[] = [ImgEnvelope]

@@ -3,7 +3,6 @@ import { AxiosError } from 'axios'
 
 import ImgEnvelope from 'assets/images/posters/email-envelope.png'
 import RepeatButton from 'pages/account/signUp/SignUpEmail/components/VerifyEmail/RepeatButton/RepeatButton'
-import RecoveryPasswordService from 'services/recoveryPasswordservice'
 import EnterNewPassword from './EnterNewPassword/EnterNewPassword'
 import { useForm } from 'react-hook-form'
 import { RecoveryPasswordVerifyEmailForm, VerifyEmailProps } from './interfaces'
@@ -18,6 +17,7 @@ import {
   LoadingPopUp,
   PopUpContainer,
 } from 'components'
+import { RecoveryPasswordService } from 'services'
 import styles from './RecoveryPasswordVerifyEmail.module.scss'
 
 const preloadSrcList: string[] = [ImgEnvelope]

@@ -3,7 +3,7 @@ import { AxiosResponse } from 'axios'
 import $api from 'http/axios'
 import { response } from 'models'
 
-export default class RecoveryPasswordService {
+export class RecoveryPasswordService {
   static async recoveryByEmail(
     userLoginOrEmail: string
   ): Promise<AxiosResponse<void>> {

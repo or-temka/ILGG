@@ -3,7 +3,7 @@ import { AxiosResponse } from 'axios'
 import $api from 'http/axios'
 import { myUser } from 'models'
 
-export default class EditUserService {
+export class EditUserService {
   static async editProfile(
     name: string,
     about: string

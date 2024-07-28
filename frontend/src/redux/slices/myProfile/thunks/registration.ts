@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-
-import AuthService from 'services/authService'
+import { AuthService } from 'services'
 
 const registration = createAsyncThunk(
   'myProfile/registration',

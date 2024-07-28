@@ -6,7 +6,6 @@ import { useForm } from 'react-hook-form'
 import { setPageName } from 'utils/setPageName'
 import registration from '../../../../redux/slices/myProfile/thunks/registration'
 import AboutService from '../components/AboutService'
-import AuthService from 'services/authService'
 import { SignUpForm } from './interfaces'
 import Validations from 'validations/validations'
 import { useLocationQuery, useNotificationPanel } from 'hooks'
@@ -19,6 +18,7 @@ import {
   InputPassword,
   LoadingSpiner,
 } from 'components'
+import { AuthService } from 'services'
 import styles from '../SignUp.module.scss'
 
 function SignUp() {

@@ -2,7 +2,7 @@ import { UseFormSetError } from 'react-hook-form'
 import { Dispatch, SetStateAction } from 'react'
 
 import { SignUpEmailForm } from './interfaces'
-import AuthService from 'services/authService'
+import { AuthService } from 'services'
 
 const onSubmit = async (
   data: SignUpEmailForm,

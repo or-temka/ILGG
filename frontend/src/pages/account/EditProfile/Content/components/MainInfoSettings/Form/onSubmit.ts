@@ -1,8 +1,8 @@
 import { UseFormSetError } from 'react-hook-form'
 import { Dispatch, SetStateAction } from 'react'
 
-import EditUserService from 'services/editUserService'
 import { MainInfoSettingsForm } from './interfaces'
+import { EditUserService } from 'services'
 
 const onSubmit = async (
   data: MainInfoSettingsForm,

@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { AxiosError } from 'axios'
 
-import RecoveryPasswordService from 'services/recoveryPasswordservice'
 import { setMyUser } from '../../../../../../redux/slices/myProfile/slice'
 import { useForm } from 'react-hook-form'
 import { EnterNewPasswordForm, EnterNewPasswordProps } from './interfaces'
@@ -17,6 +16,7 @@ import {
   InputPassword,
   PopUpContainer,
 } from 'components'
+import { RecoveryPasswordService } from 'services'
 import styles from './EnterNewPassword.module.scss'
 
 function EnterNewPassword({

@@ -3,7 +3,7 @@ import { AxiosResponse } from 'axios'
 import $api from 'http/axios'
 import { response } from 'models'
 
-export default class AuthService {
+export class AuthService {
   static async login(
     login: string,
     password: string
