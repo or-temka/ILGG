@@ -1,0 +1,19 @@
+.popUp {
+  display: flex;
+  flex-flow: column;
+  gap: 40px;
+
+  &__textContent {
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-flow: row;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-left: 50px;
+  }
+}
