@@ -1,7 +1,7 @@
 import { mongoDB } from 'models'
 
 export interface IUserProfile {
-  id: mongoDB.id
+  _id: mongoDB.id
   name: string
   login: string
   imgName: string | null

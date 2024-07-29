@@ -12,7 +12,7 @@ function FriendsPanel({ friends }: FriendsPanelProps) {
 
       <div className={styles.panel__friends}>
         {friends.map((friend) => (
-          <Link to={pageLink.profile + friend.id} key={friend.id}>
+          <Link to={pageLink.profile + friend._id} key={friend._id}>
             <Tooltip
               postitionVertical={tooltipVerticalDirection.bottom}
               text={friend.name}

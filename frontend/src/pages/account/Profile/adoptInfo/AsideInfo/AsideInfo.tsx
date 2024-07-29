@@ -7,7 +7,7 @@ import styles from './AsideInfo.module.scss'
 
 const friends: user.IUserProfile[] = [
   {
-    id: 1,
+    _id: 1,
     name: 'Алинка',
     login: 'alina',
     imgName: 'alina.jpg',
@@ -15,7 +15,7 @@ const friends: user.IUserProfile[] = [
     avatar: null,
   },
   {
-    id: 2,
+    _id: 2,
     name: 'муха',
     login: 'muhtar',
     imgName: 'myhtar.jpg',

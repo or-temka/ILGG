@@ -5,7 +5,7 @@ import styles from './Comments.module.scss'
 const usersWithComments: IUserWithComment[] = [
   {
     userData: {
-      id: 1,
+      _id: 1,
       name: 'Алина убивца',
       login: 'alina',
       isOnline: true,
@@ -20,7 +20,7 @@ const usersWithComments: IUserWithComment[] = [
   },
   {
     userData: {
-      id: 2,
+      _id: 2,
       name: 'Freevel',
       login: 'freevel',
       isOnline: true,

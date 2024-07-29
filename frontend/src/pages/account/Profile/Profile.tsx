@@ -9,7 +9,7 @@ import { user } from 'models'
 import styles from './Profile.module.scss'
 
 const tempUserData: user.IFullUserProfile = {
-  id: 1,
+  _id: 1,
   imgName: 'profileImage.jpg',
   name: 'Приора',
   login: 'sversys',

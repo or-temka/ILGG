@@ -1,7 +1,7 @@
 import { myUser } from 'models'
 
 export interface IMyUser {
-  id: string
+  _id: string
   login: string
   name: string
   email: string

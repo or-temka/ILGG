@@ -1,3 +1,4 @@
+import UserDto from '../../../dtos/MyUserDto'
 import { serverError } from '../../../utils/serverLog'
 
 const editAvatar = async (req: any, res: any) => {
@@ -19,7 +20,8 @@ const editAvatar = async (req: any, res: any) => {
 
     User.save()
 
-    res.json({ message: 'Аватар успешно загружен!' })
+    const userDto = new UserDto(User)
+    res.json({ user: userDto })
   } catch (error: any) {
     serverError(error)
     res.status(500).json({

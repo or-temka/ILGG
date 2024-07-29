@@ -54,7 +54,7 @@ const recovery = async (req: any, res: any) => {
 
     const userDto = new UserDto(candidate)
     const tokens = TokenService.generateTokens({ ...userDto })
-    await TokenService.saveToken(userDto.id, tokens.refreshToken)
+    await TokenService.saveToken(userDto._id, tokens.refreshToken)
 
     // Сохранение Cookies
     res.cookie('refreshToken', tokens.refreshToken, {

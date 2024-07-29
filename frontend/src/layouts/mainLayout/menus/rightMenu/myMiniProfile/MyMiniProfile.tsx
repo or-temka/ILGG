@@ -17,7 +17,7 @@ function MyMiniProfile({ myUserData }: MyMiniProfileProps) {
   const profileButtons: Button[] = [
     {
       title: 'Мой профиль',
-      handler: () => navigate(pageLink.profile + myUserData?.id),
+      handler: () => navigate(pageLink.profile + myUserData?._id),
     },
     {
       title: 'Настройки профиля',

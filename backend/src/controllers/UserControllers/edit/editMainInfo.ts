@@ -1,6 +1,7 @@
 import { validationResult } from 'express-validator'
 
 import { serverError } from '../../../utils/serverLog'
+import UserDto from '../../../dtos/MyUserDto'
 
 const editMainInfo = async (req: any, res: any) => {
   try {
@@ -12,7 +13,8 @@ const editMainInfo = async (req: any, res: any) => {
     User.login = req.body.login || User?.login
     User.save()
 
-    res.json(User)
+    const userDto = new UserDto(User)
+    res.json({ user: userDto })
   } catch (error: any) {
     serverError(error)
     res.status(500).json({

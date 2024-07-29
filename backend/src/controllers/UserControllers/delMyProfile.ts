@@ -4,7 +4,7 @@ import UserModel from '../../models/User/User'
 
 const delMyProfile = async (req: any, res: any) => {
   try {
-    const userId = req.user.id
+    const userId = req.user._id
 
     UserModel.findOneAndDelete({ _id: userId })
       .then((doc) => {

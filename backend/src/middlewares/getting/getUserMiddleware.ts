@@ -3,7 +3,7 @@ import UserModel from '../../models/User/User'
 
 export default async (req: any, res: any, next: Function) => {
   try {
-    const userId = req.user.id
+    const userId = req.user._id
     const User = await UserModel.findById(userId)
 
     if (!User)

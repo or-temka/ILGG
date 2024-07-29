@@ -6,7 +6,7 @@ import { user } from 'models'
 const fetchFriends = createAsyncThunk('friends/fetchFriends', async () => {
   const returnedData: user.IUserProfile[] = [
     {
-      id: 1,
+      _id: 1,
       name: 'Алина убивца',
       login: 'alina',
       isOnline: true,
@@ -14,7 +14,7 @@ const fetchFriends = createAsyncThunk('friends/fetchFriends', async () => {
       avatar: null,
     },
     {
-      id: 2,
+      _id: 2,
       name: 'Freevel',
       login: 'freevel',
       isOnline: true,
@@ -22,7 +22,7 @@ const fetchFriends = createAsyncThunk('friends/fetchFriends', async () => {
       avatar: null,
     },
     {
-      id: 3,
+      _id: 3,
       name: 'мухтар в снегу 3000',
       login: 'myhtar',
       isOnline: false,
