@@ -1,4 +1,4 @@
-const getDateDifference = (
+export const getDateDifference = (
   date1: Date,
   date2: Date,
   returnType: 'h' | 'm' | 's'
@@ -16,5 +16,3 @@ const getDateDifference = (
       throw new Error('Указан неверный тип возращаемых данных для разницы дат.')
   }
 }
-
-export default getDateDifference

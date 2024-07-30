@@ -1,5 +1,5 @@
 import { UserModel } from '../../models'
-import { serverError } from '../../utils/serverLog'
+import { serverError } from '../../utils'
 
 const getMyData = async (req: any, res: any) => {
   try {

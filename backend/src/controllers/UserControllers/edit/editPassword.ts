@@ -1,8 +1,7 @@
 import { validationResult } from 'express-validator'
 import bcrypt from 'bcrypt'
 
-import { serverError } from '../../../utils/serverLog'
-import hashPassword from '../../../utils/auth/hashPassword'
+import { hashPassword, serverError } from '../../../utils'
 import { FullUserDto } from '../../../dtos'
 
 const editPassword = async (req: any, res: any) => {

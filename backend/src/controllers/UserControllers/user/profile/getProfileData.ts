@@ -1,4 +1,4 @@
-import { serverError } from '../../../../utils/serverLog'
+import { serverError } from '../../../../utils'
 import { SomeFullUserDto } from '../../../../dtos'
 import { UserModel } from '../../../../models'
 

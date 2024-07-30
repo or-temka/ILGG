@@ -1,5 +1,5 @@
 import { FullUserDto } from '../../../dtos'
-import { serverError } from '../../../utils/serverLog'
+import { serverError } from '../../../utils'
 import { UserInterface } from 'src/models/User/interfaces/UserInterface'
 import { PrivacyInterface } from 'src/models/User/Scheme/Privacy/interfaces/PrivacyInterface'
 

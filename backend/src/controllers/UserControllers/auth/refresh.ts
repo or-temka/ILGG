@@ -1,5 +1,4 @@
-import { serverError } from '../../../utils/serverLog'
-
+import { serverError } from '../../../utils'
 import TokenService from '../../../services/TokenService'
 import { FullUserDto } from '../../../dtos'
 import { UserModel } from '../../../models'

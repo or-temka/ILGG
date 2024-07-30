@@ -1,9 +1,7 @@
 import { validationResult } from 'express-validator'
 
-import { serverError } from '../../../utils/serverLog'
-import hashPassword from '../../../utils/auth/hashPassword'
+import { createDirectories, hashPassword, serverError } from '../../../utils'
 import TokenService from '../../../services/TokenService'
-import createDirectories from '../../../utils/fs/createDirectories'
 import { FullUserDto } from '../../../dtos'
 import { UnauthorizedEmailModel, UserModel } from '../../../models'
 

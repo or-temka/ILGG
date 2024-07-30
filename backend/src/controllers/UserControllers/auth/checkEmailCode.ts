@@ -1,7 +1,7 @@
 import { validationResult } from 'express-validator'
 
-import { serverError } from '../../../utils/serverLog'
 import { UnauthorizedEmailModel } from '../../../models'
+import { serverError } from '../../../utils'
 
 const checkEmailCode = async (req: any, res: any) => {
   try {

@@ -1,5 +1,5 @@
 import { FullUserDto } from '../../../dtos'
-import { serverError } from '../../../utils/serverLog'
+import { serverError } from '../../../utils'
 
 const editAvatar = async (req: any, res: any) => {
   try {

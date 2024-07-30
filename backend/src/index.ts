@@ -11,7 +11,7 @@ import {
   DB_NAME,
   SITE_FULL_URL,
 } from './variables'
-import { serverFatalError, serverLog } from './utils/serverLog'
+import { serverFatalError, serverLog } from './utils'
 import routes from './routes/routes'
 
 mongoose
