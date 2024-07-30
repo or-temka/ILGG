@@ -1,5 +1,6 @@
 import { about, name } from '../validationCases/userValidationCases'
 
-const editMyUserProfileValidation = [name().optional(), about().optional()]
-
-export default editMyUserProfileValidation
+export const editMyUserProfileValidation = [
+  name().optional(),
+  about().optional(),
+]

@@ -6,7 +6,7 @@ import {
   password,
 } from '../validationCases/userValidationCases'
 
-const regUserValidation = [
+export const regUserValidation = [
   name(),
   email(),
   body('activationEmailLink'),
@@ -14,5 +14,3 @@ const regUserValidation = [
   password(),
   password('confirmPassword'),
 ]
-
-export default regUserValidation
