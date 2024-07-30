@@ -1,9 +1,7 @@
 import { validationResult } from 'express-validator'
 
 import { serverError } from '../../../../utils/serverLog'
-
-import UserModel from '../../../../models/User/User'
-import RecoveryEmailModel from '../../../../models/RecoveryEmail/RecoveryEmail'
+import { RecoveryEmailModel, UserModel } from '../../../../models'
 
 const checkRecoveryEmailCode = async (req: any, res: any) => {
   try {

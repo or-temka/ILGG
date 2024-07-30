@@ -1,13 +1,10 @@
 import { v4 as uuidv4 } from 'uuid'
 
 import { serverError } from '../../../../utils/serverLog'
-
-import UserModel from '../../../../models/User/User'
-
 import MailService from '../../../../services/MailService'
 import getDateDifference from '../../../../utils/math/date/getDateDifference'
 import generateNumericCode from '../../../../utils/math/generate/generateNumericCode'
-import RecoveryEmailModel from '../../../../models/RecoveryEmail/RecoveryEmail'
+import { RecoveryEmailModel, UserModel } from '../../../../models'
 
 const recoveryByEmail = async (req: any, res: any) => {
   try {

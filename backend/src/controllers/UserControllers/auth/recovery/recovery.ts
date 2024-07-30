@@ -2,12 +2,9 @@ import { validationResult } from 'express-validator'
 
 import { serverError } from '../../../../utils/serverLog'
 import hashPassword from '../../../../utils/auth/hashPassword'
-
-import UserModel from '../../../../models/User/User'
-import RecoveryEmailModel from '../../../../models/RecoveryEmail/RecoveryEmail'
-
 import TokenService from '../../../../services/TokenService'
 import { FullUserDto } from '../../../../dtos'
+import { RecoveryEmailModel, UserModel } from '../../../../models'
 
 const recovery = async (req: any, res: any) => {
   try {

@@ -2,8 +2,8 @@ import { Request, Response } from 'express'
 
 import { serverError } from '../../utils/serverLog'
 
-import ApplicationModel from '../../models/Application/Application'
 import isMongoId from '../../utils/typeValidators/isValidMongoId'
+import { AppModel } from '../../models'
 
 const getAppFullData = async (req: Request, res: Response) => {
   try {
@@ -21,7 +21,7 @@ const getAppFullData = async (req: Request, res: Response) => {
       })
     }
 
-    const application = await ApplicationModel.findById(appId)
+    const application = await AppModel.findById(appId)
 
     if (!application) {
       return res.status(404).json({

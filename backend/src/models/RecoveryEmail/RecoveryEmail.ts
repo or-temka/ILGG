@@ -29,4 +29,6 @@ const RecoveryEmailSchema = new mongoose.Schema({
   },
 })
 
-export default mongoose.model('RecoveryEmail', RecoveryEmailSchema)
+const RecoveryEmailModel = mongoose.model('RecoveryEmail', RecoveryEmailSchema)
+
+export { RecoveryEmailModel }

@@ -1,5 +1,4 @@
 import { serverError } from '../../../utils/serverLog'
-
 import TokenService from '../../../services/TokenService'
 
 const logOut = async (req: any, res: any) => {

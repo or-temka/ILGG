@@ -1,9 +1,8 @@
 import { serverError } from '../../../utils/serverLog'
 
-import UserModel from '../../../models/User/User'
-
 import TokenService from '../../../services/TokenService'
 import { FullUserDto } from '../../../dtos'
+import { UserModel } from '../../../models'
 
 const refresh = async (req: any, res: any) => {
   try {

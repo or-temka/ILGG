@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
-import TokenModel from '../models/Token/Token'
 
 import { JWT_ACCESS_KEY, JWT_REFRESH_KEY } from '../PASSWORDS'
+import { TokenModel } from '../models'
 
 class TokenService {
   generateTokens(payload: any) {

@@ -1,6 +1,5 @@
+import { UserModel } from '../../models'
 import { serverError } from '../../utils/serverLog'
-
-import UserModel from '../../models/User/User'
 import isMongoId from '../../utils/typeValidators/isValidMongoId'
 
 const getFullUserData = async (req: any, res: any) => {

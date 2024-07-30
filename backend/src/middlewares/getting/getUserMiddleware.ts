@@ -1,5 +1,5 @@
+import { UserModel } from '../../models'
 import { serverError } from '../../utils/serverLog'
-import UserModel from '../../models/User/User'
 
 export default async (req: any, res: any, next: Function) => {
   try {

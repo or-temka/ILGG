@@ -1,10 +1,8 @@
 import { serverError } from '../../../../utils/serverLog'
 
-import UserModel from '../../../../models/User/User'
-
 import MailService from '../../../../services/MailService'
 import getDateDifference from '../../../../utils/math/date/getDateDifference'
-import RecoveryEmailModel from '../../../../models/RecoveryEmail/RecoveryEmail'
+import { RecoveryEmailModel, UserModel } from '../../../../models'
 
 const repeatRecoveryByEmail = async (req: any, res: any) => {
   try {
