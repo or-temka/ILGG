@@ -3,7 +3,7 @@ import { serverError } from '../../../utils/serverLog'
 import UserModel from '../../../models/User/User'
 
 import TokenService from '../../../services/TokenService'
-import UserDto from '../../../dtos/MyUserDto'
+import { FullUserDto } from '../../../dtos'
 
 const refresh = async (req: any, res: any) => {
   try {
@@ -25,7 +25,7 @@ const refresh = async (req: any, res: any) => {
 
     const user = await UserModel.findById(userData._id)
 
-    const userDto = new UserDto(user)
+    const userDto = new FullUserDto(user)
     const tokens = TokenService.generateTokens({ ...userDto })
 
     await TokenService.saveToken(userDto._id, tokens.refreshToken)

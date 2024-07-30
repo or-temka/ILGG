@@ -1,4 +1,4 @@
-import UserDto from '../../../dtos/MyUserDto'
+import { FullUserDto } from '../../../dtos'
 import { serverError } from '../../../utils/serverLog'
 import { UserInterface } from 'src/models/User/interfaces/UserInterface'
 import { PrivacyInterface } from 'src/models/User/Scheme/Privacy/interfaces/PrivacyInterface'
@@ -78,7 +78,7 @@ const editPrivacy = async (req: any, res: any) => {
 
     User.save()
 
-    const userDto = new UserDto(User)
+    const userDto = new FullUserDto(User)
     res.json({ user: userDto })
   } catch (error: any) {
     serverError(error)

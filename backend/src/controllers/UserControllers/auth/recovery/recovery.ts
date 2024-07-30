@@ -7,7 +7,7 @@ import UserModel from '../../../../models/User/User'
 import RecoveryEmailModel from '../../../../models/RecoveryEmail/RecoveryEmail'
 
 import TokenService from '../../../../services/TokenService'
-import UserDto from '../../../../dtos/MyUserDto'
+import { FullUserDto } from '../../../../dtos'
 
 const recovery = async (req: any, res: any) => {
   try {
@@ -52,7 +52,7 @@ const recovery = async (req: any, res: any) => {
     await candidate.save()
     await recoveryEmail.deleteOne()
 
-    const userDto = new UserDto(candidate)
+    const userDto = new FullUserDto(candidate)
     const tokens = TokenService.generateTokens({ ...userDto })
     await TokenService.saveToken(userDto._id, tokens.refreshToken)
 

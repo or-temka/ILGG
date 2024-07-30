@@ -5,8 +5,8 @@ import { serverError } from '../../../utils/serverLog'
 
 import UserModel from '../../../models/User/User'
 
-import UserDto from '../../../dtos/MyUserDto'
 import TokenService from '../../../services/TokenService'
+import { FullUserDto } from '../../../dtos'
 
 const signIn = async (req: any, res: any) => {
   try {
@@ -29,7 +29,7 @@ const signIn = async (req: any, res: any) => {
       })
     }
 
-    const userDto = new UserDto(user)
+    const userDto = new FullUserDto(user)
     const tokens = TokenService.generateTokens({ ...userDto })
 
     await TokenService.saveToken(userDto._id, tokens.refreshToken)

@@ -7,8 +7,8 @@ import UserModel from '../../../models/User/User'
 import UnauthorizedEmailModel from '../../../models/UnauthorizedEmail/UnauthorizedEmail'
 
 import TokenService from '../../../services/TokenService'
-import UserDto from '../../../dtos/MyUserDto'
 import createDirectories from '../../../utils/fs/createDirectories'
+import { FullUserDto } from '../../../dtos'
 
 const reg = async (req: any, res: any) => {
   try {
@@ -60,7 +60,7 @@ const reg = async (req: any, res: any) => {
     const dirsForCreate = ['profile', 'posts']
     createDirectories(dirsForCreate, `users/${user._id}/`)
 
-    const userDto = new UserDto(user)
+    const userDto = new FullUserDto(user)
     const tokens = TokenService.generateTokens({ ...userDto })
     await TokenService.saveToken(userDto._id, tokens.refreshToken)
 
