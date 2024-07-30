@@ -1,6 +1,6 @@
 import { serverError } from '../../../../utils/serverLog'
 import UserModel from '../../../../models/User/User'
-import SomeFullUserDto from '../../../../dtos/user/SomeFullUserDto'
+import { SomeFullUserDto } from '../../../../dtos'
 
 const getProfileData = async (req: any, res: any) => {
   try {

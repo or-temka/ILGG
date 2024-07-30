@@ -18,4 +18,4 @@ class SomeFullUserDto {
   }
 }
 
-export default SomeFullUserDto
+export { SomeFullUserDto }
