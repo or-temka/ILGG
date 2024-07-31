@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 
 import PrivacySchema from './Scheme/Privacy/Privacy'
 import AvatarSchema from './Scheme/Avatar/Avatar'
+import LevelSchema from './Scheme/Level/Level'
 
 const UserSchema = new mongoose.Schema({
   name: {
@@ -43,6 +44,11 @@ const UserSchema = new mongoose.Schema({
     type: PrivacySchema,
     required: true,
     default: () => ({}),
+  },
+
+  level: {
+    type: LevelSchema,
+    required: true,
   },
 })
 

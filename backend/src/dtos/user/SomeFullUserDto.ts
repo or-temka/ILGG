@@ -5,6 +5,7 @@ class SomeFullUserDto {
   isOnline
   about
   avatar
+  level
 
   constructor(model: any) {
     this._id = model._id
@@ -15,6 +16,7 @@ class SomeFullUserDto {
     this.avatar = {
       filename: model.avatar.filename,
     }
+    this.level = model.level
   }
 }
 
