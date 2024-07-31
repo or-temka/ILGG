@@ -73,6 +73,7 @@ function SignIn({ onClose = () => {} }) {
           <img
             src={require('assets/images/posters/poster1.jpg')}
             className={styles.poster__backgroundImg}
+            alt="ilgg постер"
           />
           <LogoSVG className={styles.poster__logo} />
         </div>

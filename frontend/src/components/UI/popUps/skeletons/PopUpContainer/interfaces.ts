@@ -1,5 +1,7 @@
-import { popUpHorizontalPosition, popUpVerticalPosition } from 'components'
 import { ReactNode } from 'react'
+
+import { popUpHorizontalPosition, popUpVerticalPosition } from 'components'
+import { PopUpSkeletonProps } from '../PopUpSkeleton/interfaces'
 
 export interface PopUpContainerProps {
   children: ReactNode

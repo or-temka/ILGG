@@ -2,6 +2,7 @@ import { CloseButton } from 'components'
 import { popUpHorizontalPosition, popUpVerticalPosition } from './enums'
 import { PopUpSkeletonProps } from './interfaces'
 import styles from './PopUpSkeleton.module.scss'
+import { useCallback, useEffect, useRef } from 'react'
 
 function PopUpSkeleton({
   children,
@@ -12,7 +13,45 @@ function PopUpSkeleton({
   classNames = {},
   verticalPosition = popUpVerticalPosition.center,
   horizontalPosition = popUpHorizontalPosition.center,
+  tabIndex,
 }: PopUpSkeletonProps) {
+  const popUpRef = useRef<HTMLDivElement>(null)
+  const lastFocusedElement = useRef<HTMLElement | null>(
+    document.activeElement as HTMLElement
+  )
+
+  const onUserClose = useCallback(() => {
+    lastFocusedElement.current?.focus()
+    onClose()
+  }, [onClose])
+
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onUserClose()
+      }
+    }
+    const popUpElement = popUpRef.current
+
+    if (popUpElement) {
+      popUpElement.addEventListener('keydown', handleEsc)
+
+      // Фокус на первый интерактивный элемент
+      const firstFocusableElement = popUpElement.querySelector(
+        'input, button, a, [tabindex]:not([tabindex="-1"])'
+      )
+      if (firstFocusableElement) {
+        ;(firstFocusableElement as HTMLElement).focus()
+      }
+    }
+
+    return () => {
+      if (popUpElement) {
+        popUpElement.removeEventListener('keydown', handleEsc)
+      }
+    }
+  }, [popUpRef, onUserClose])
+
   return (
     <div
       className={[
@@ -21,6 +60,8 @@ function PopUpSkeleton({
         horizontalPosition,
         classNames.className,
       ].join(' ')}
+      ref={popUpRef}
+      tabIndex={tabIndex || -1}
     >
       {showBack && (
         <div
@@ -29,7 +70,7 @@ function PopUpSkeleton({
             backgroundBlur ? styles.popUpSkeleton__back_blur : '',
             classNames.backClassName,
           ].join(' ')}
-          onClick={onClose}
+          onClick={onUserClose}
         ></div>
       )}
 
@@ -44,7 +85,7 @@ function PopUpSkeleton({
         {showCloseButton && (
           <CloseButton
             className={styles.popUpSkeleton__closeButton}
-            onClick={onClose}
+            onClick={onUserClose}
           />
         )}
       </div>

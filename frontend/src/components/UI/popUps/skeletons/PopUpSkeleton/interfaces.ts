@@ -15,4 +15,5 @@ export interface PopUpSkeletonProps {
     contentClassName?: string
     mainClassName?: string
   }
+  tabIndex?: number
 }

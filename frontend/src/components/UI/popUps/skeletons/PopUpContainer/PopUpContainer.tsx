@@ -11,6 +11,7 @@ function PopUpContainer({
   horizontalPosition,
   verticalPosition,
   classNames = {},
+  ...rest
 }: PopUpContainerProps) {
   return (
     <PopUpSkeleton
@@ -20,6 +21,7 @@ function PopUpContainer({
       horizontalPosition={horizontalPosition}
       verticalPosition={verticalPosition}
       classNames={{ contentClassName: classNames.wrapperClassName }}
+      {...rest}
     >
       <div className={[styles.popUpContainer, classNames.className].join(' ')}>
         {headerText && (
