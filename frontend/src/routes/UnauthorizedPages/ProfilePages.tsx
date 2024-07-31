@@ -8,7 +8,7 @@ const Profile = lazy(() => import('pages/account/Profile/Profile'))
 function ProfilePages() {
   return (
     <>
-      <Route path={pageLink.profile + ':id'} element={<Profile />}></Route>
+      <Route path={pageLink.profile + ':login'} element={<Profile />}></Route>
     </>
   )
 }

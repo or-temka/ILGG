@@ -7,41 +7,23 @@ import HeaderSkeleton from './Header/components/HeaderSkeleton'
 import { setPageName } from 'utils/setPageName'
 import { user } from 'models'
 import styles from './Profile.module.scss'
-
-const tempUserData: user.IFullUserProfile = {
-  _id: 1,
-  imgName: 'profileImage.jpg',
-  name: 'Приора',
-  login: 'sversys',
-  isOnline: true,
-  aboutText:
-    'Так давай запоем хоть толпой да хоть вдвоем.\n Мой вконтакте: https://vk.com/sup',
-  level: {
-    value: 74,
-    points: {
-      now: 840,
-      atLevel: 1000,
-    },
-  },
-  avatar: null,
-}
-
-const fetchUserData = () => {
-  return tempUserData
-}
+import { UserProfileService } from 'services'
 
 function Profile() {
-  const [userData, setUserData] = useState<user.IFullUserProfile | null>(null)
+  const [userData, setUserData] = useState<user.IUserProfile | null>(null)
 
   const pageParams = useParams()
-  const userId = pageParams.id
+  const userLogin = pageParams.login
 
-  //fetching data
   useEffect(() => {
-    setTimeout(() => {
-      setUserData(fetchUserData())
-    }, 1000)
-  }, [])
+    if (!userLogin) return
+    UserProfileService.fetchUserProfileData(userLogin)
+      .then((res) => {
+        const user = res.data.user
+        setUserData(user)
+      })
+      .catch((err) => console.log(err))
+  }, [userLogin])
 
   useEffect(() => {
     if (!userData) return

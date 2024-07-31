@@ -34,6 +34,14 @@ const usersData: user.IUserProfile[] = [
     isOnline: true,
     imgName: 'alina.jpg',
     avatar: null,
+    about: '',
+    level: {
+      value: 0,
+      points: {
+        now: 0,
+        atLevel: 1000,
+      },
+    },
   },
   {
     _id: 2,
@@ -42,6 +50,14 @@ const usersData: user.IUserProfile[] = [
     isOnline: true,
     imgName: 'serega.jpg',
     avatar: null,
+    about: '',
+    level: {
+      value: 0,
+      points: {
+        now: 0,
+        atLevel: 1000,
+      },
+    },
   },
   {
     _id: 3,
@@ -50,6 +66,14 @@ const usersData: user.IUserProfile[] = [
     isOnline: false,
     imgName: 'myhtar.jpg',
     avatar: null,
+    about: '',
+    level: {
+      value: 0,
+      points: {
+        now: 0,
+        atLevel: 1000,
+      },
+    },
   },
 ]
 

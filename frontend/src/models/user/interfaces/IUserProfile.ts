@@ -6,7 +6,15 @@ export interface IUserProfile {
   login: string
   imgName: string | null
   isOnline: boolean
+  about: string
   avatar: IMyUserAvatar | null
+  level: {
+    value: number
+    points: {
+      now: number
+      atLevel: number
+    }
+  }
 }
 
 interface IMyUserAvatar {

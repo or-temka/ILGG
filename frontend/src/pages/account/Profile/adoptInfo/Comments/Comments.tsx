@@ -11,6 +11,14 @@ const usersWithComments: IUserWithComment[] = [
       isOnline: true,
       imgName: 'alina.jpg',
       avatar: null,
+      about: "",
+      level: {
+        value: 0,
+        points: {
+          now: 0,
+          atLevel: 1000,
+        },
+      },
     },
     commentData: {
       id: 1,
@@ -26,6 +34,14 @@ const usersWithComments: IUserWithComment[] = [
       isOnline: true,
       imgName: 'serega.jpg',
       avatar: null,
+      about: "",
+      level: {
+        value: 0,
+        points: {
+          now: 0,
+          atLevel: 1000,
+        },
+      },
     },
     commentData: {
       id: 2,

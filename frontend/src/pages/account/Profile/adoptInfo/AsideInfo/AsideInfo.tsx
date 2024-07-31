@@ -13,6 +13,14 @@ const friends: user.IUserProfile[] = [
     imgName: 'alina.jpg',
     isOnline: true,
     avatar: null,
+    about: "",
+    level: {
+      value: 0,
+      points: {
+        now: 0,
+        atLevel: 1000,
+      },
+    },
   },
   {
     _id: 2,
@@ -21,6 +29,14 @@ const friends: user.IUserProfile[] = [
     imgName: 'myhtar.jpg',
     isOnline: false,
     avatar: null,
+    about: "",
+    level: {
+      value: 0,
+      points: {
+        now: 0,
+        atLevel: 1000,
+      },
+    },
   },
 ]
 

@@ -18,6 +18,14 @@ function Comments({ classNames }: CommentsProps) {
             imgName: 'profileImage.jpg',
             isOnline: true,
             avatar: null,
+            about: '',
+            level: {
+              value: 74,
+              points: {
+                now: 840,
+                atLevel: 1000,
+              },
+            },
           }}
           headerChildren={<CommentPositivity positive={true} />}
           classNames={{
@@ -37,6 +45,14 @@ function Comments({ classNames }: CommentsProps) {
             imgName: 'profileImage.jpg',
             isOnline: false,
             avatar: null,
+            about: '',
+            level: {
+              value: 74,
+              points: {
+                now: 840,
+                atLevel: 1000,
+              },
+            },
           }}
           headerChildren={<CommentPositivity positive={false} />}
           classNames={{

@@ -26,7 +26,7 @@ function Header({ userData }: HeaderProps) {
         <div className={styles.header__textInfo}>
           <h2 className={styles.header__username}>{userData.name}</h2>
           <div className={styles.header__aboutUserInfo}>
-            <p className={styles.header__aboutUserText}>{userData.aboutText}</p>
+            <p className={styles.header__aboutUserText}>{userData.about}</p>
           </div>
         </div>
       </div>
