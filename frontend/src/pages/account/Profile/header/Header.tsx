@@ -4,22 +4,27 @@ import pageLink from 'pagesLinks'
 import { HeaderProps } from './interfaces'
 import { Button } from 'components'
 import styles from './Header.module.scss'
+import { API_IMAGES_URL } from 'variables'
 
 function Header({ userData }: HeaderProps) {
   const navigate = useNavigate()
 
-  const profileImg = require('assets/images/profiles/large/profileImage.jpg')
+  const userAvatar = `${API_IMAGES_URL}/users/${userData._id}/profile/${userData.avatar?.filename}`
 
   const progressLineWidthInProcent =
     (userData.level.points.now / userData.level.points.atLevel) * 100
 
   return (
     <header className={styles.header}>
-      <img src={profileImg} className={styles.header__background}></img>
+      <img
+        src={userAvatar}
+        className={styles.header__background}
+        alt={`Аватар пользователя ${userData.name}`}
+      ></img>
 
       <div className={styles.header__mainInfo}>
         <img
-          src={profileImg}
+          src={userAvatar}
           alt="Фото профиля"
           className={styles.header__userImg}
         />
