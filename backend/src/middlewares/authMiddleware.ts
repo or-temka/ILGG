@@ -1,5 +1,4 @@
-import { serverError, serverMsg } from '../utils/serverLog'
-
+import { serverError, serverMsg } from '../utils'
 import TokenService from '../services/TokenService'
 
 // Check user Authorization via token

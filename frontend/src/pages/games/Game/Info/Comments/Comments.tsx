@@ -17,6 +17,7 @@ function Comments({ classNames }: CommentsProps) {
             name: 'Приора',
             imgName: 'profileImage.jpg',
             isOnline: true,
+            avatar: null,
           }}
           headerChildren={<CommentPositivity positive={true} />}
           classNames={{
@@ -35,6 +36,7 @@ function Comments({ classNames }: CommentsProps) {
             name: 'Приора2',
             imgName: 'profileImage.jpg',
             isOnline: false,
+            avatar: null,
           }}
           headerChildren={<CommentPositivity positive={false} />}
           classNames={{

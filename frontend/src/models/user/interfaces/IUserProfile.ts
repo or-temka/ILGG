@@ -1,4 +1,4 @@
-import { mongoDB } from "models"
+import { mongoDB } from 'models'
 
 export interface IUserProfile {
   _id: mongoDB.id
@@ -6,4 +6,9 @@ export interface IUserProfile {
   login: string
   imgName: string | null
   isOnline: boolean
+  avatar: IMyUserAvatar | null
+}
+
+interface IMyUserAvatar {
+  filename: string
 }

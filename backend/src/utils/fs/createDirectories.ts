@@ -1,9 +1,9 @@
 import fs from 'fs'
 
-import { serverError } from '../serverLog'
+import { serverError } from '../../utils'
 import { UPLOADS_DIR } from '../../variables'
 
-const createDirectories = (
+export const createDirectories = (
   directories: string[],
   prefix?: string,
   recursive = true
@@ -14,5 +14,3 @@ const createDirectories = (
     })
   })
 }
-
-export default createDirectories

@@ -1,11 +1,14 @@
 import { useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { AxiosResponse } from 'axios'
+import { useDispatch } from 'react-redux'
 
 import { AvatarSettingsForm } from './interfaces'
 import onSubmit from './onSubmit'
 import Validations from 'validations/validations'
 import ShowUploadedImage from './components/ShowUploadedImage'
 import { useNotificationPanel } from 'hooks'
+import { setMyUser } from '../../../../../../../redux/slices/myProfile/slice'
 import {
   Button,
   buttonVariant,
@@ -15,6 +18,7 @@ import {
 import styles from './Form.module.scss'
 
 function Form() {
+  const dispatch = useDispatch()
   const [isSendBtnLoading, setIsSendBtnLoading] = useState(false)
 
   const {
@@ -33,10 +37,11 @@ function Form() {
   })
 
   const onSubmited = useCallback(
-    (res: any) => {
+    (res: AxiosResponse) => {
       addNotificationSuccessPanel('Успешно сохранено!')
+      dispatch(setMyUser(res.data.user))
     },
-    [addNotificationSuccessPanel]
+    [addNotificationSuccessPanel, dispatch]
   )
 
   return (

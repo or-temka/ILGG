@@ -4,7 +4,7 @@ const types = ['image/png', 'image/jpeg', 'image/jpg']
 
 const storage = multer.diskStorage({
   destination(req: any, file, callback) {
-    const userId = req.user.id
+    const userId = req.user._id
     const uploadPath = `uploads/users/${userId}/profile/`
     callback(null, uploadPath)
   },

@@ -29,4 +29,9 @@ const UnauthorizedEmailSchema = new mongoose.Schema({
   },
 })
 
-export default mongoose.model('UnauthorizedEmail', UnauthorizedEmailSchema)
+const UnauthorizedEmailModel = mongoose.model(
+  'UnauthorizedEmail',
+  UnauthorizedEmailSchema
+)
+
+export { UnauthorizedEmailModel }

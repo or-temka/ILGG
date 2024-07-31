@@ -1,3 +1,4 @@
+// my user
 // auth
 export { default as signUp } from './UserControllers/auth/signUp'
 export { default as signUpEmail } from './UserControllers/auth/signUpEmail'
@@ -10,8 +11,6 @@ export { default as recoveryByEmail } from './UserControllers/auth/recovery/reco
 export { default as repeatRecoveryByEmail } from './UserControllers/auth/recovery/repeatRecoveryByEmail'
 export { default as checkRecoveryEmailCode } from './UserControllers/auth/recovery/checkRecoveryEmailCode'
 export { default as recovery } from './UserControllers/auth/recovery/recovery'
-
-// my user
 //edit
 export { default as editProfileInfo } from './UserControllers/edit/editProfileInfo'
 export { default as editMainInfo } from './UserControllers/edit/editMainInfo'
@@ -24,3 +23,7 @@ export { default as getMyData } from './UserControllers/getMyData'
 export { default as delMyProfile } from './UserControllers/delMyProfile'
 export { default as logOut } from './UserControllers/auth/logOut'
 export { default as refresh } from './UserControllers/auth/refresh'
+
+// other users
+// profile
+export { default as getProfileData } from './UserControllers/user/profile/getProfileData'

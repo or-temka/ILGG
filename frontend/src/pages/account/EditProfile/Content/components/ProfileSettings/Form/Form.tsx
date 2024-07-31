@@ -38,7 +38,8 @@ function Form() {
   const onSubmited = useCallback(
     (res: AxiosResponse) => {
       addNotificationSuccessPanel('Успешно сохранено!')
-      dispatch(setMyUser(res.data))
+
+      dispatch(setMyUser(res.data.user))
     },
     [addNotificationSuccessPanel, dispatch]
   )

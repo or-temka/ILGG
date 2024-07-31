@@ -12,6 +12,7 @@ const friends: user.IUserProfile[] = [
     login: 'alina',
     imgName: 'alina.jpg',
     isOnline: true,
+    avatar: null,
   },
   {
     _id: 2,
@@ -19,6 +20,7 @@ const friends: user.IUserProfile[] = [
     login: 'muhtar',
     imgName: 'myhtar.jpg',
     isOnline: false,
+    avatar: null,
   },
 ]
 

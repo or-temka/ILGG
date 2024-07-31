@@ -1,9 +1,7 @@
 import { password } from '../validationCases/userValidationCases'
 
-const editMyUserPasswordValidation = [
+export const editMyUserPasswordValidation = [
   password('oldPassword'),
   password('newPassword'),
   password('newPasswordConfirm'),
 ]
-
-export default editMyUserPasswordValidation

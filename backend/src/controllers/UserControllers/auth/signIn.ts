@@ -1,12 +1,10 @@
 import bcrypt from 'bcrypt'
 
 import { validationResult } from 'express-validator'
-import { serverError } from '../../../utils/serverLog'
-
-import UserModel from '../../../models/User/User'
-
-import UserDto from '../../../dtos/MyUserDto'
+import { serverError } from '../../../utils'
 import TokenService from '../../../services/TokenService'
+import { FullUserDto } from '../../../dtos'
+import { UserModel } from '../../../models'
 
 const signIn = async (req: any, res: any) => {
   try {
@@ -29,10 +27,10 @@ const signIn = async (req: any, res: any) => {
       })
     }
 
-    const userDto = new UserDto(user)
+    const userDto = new FullUserDto(user)
     const tokens = TokenService.generateTokens({ ...userDto })
 
-    await TokenService.saveToken(userDto.id, tokens.refreshToken)
+    await TokenService.saveToken(userDto._id, tokens.refreshToken)
 
     // Сохранение Cookies
     res.cookie('refreshToken', tokens.refreshToken, {

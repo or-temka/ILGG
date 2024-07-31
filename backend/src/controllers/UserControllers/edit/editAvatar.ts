@@ -1,4 +1,5 @@
-import { serverError } from '../../../utils/serverLog'
+import { FullUserDto } from '../../../dtos'
+import { serverError } from '../../../utils'
 
 const editAvatar = async (req: any, res: any) => {
   try {
@@ -19,7 +20,8 @@ const editAvatar = async (req: any, res: any) => {
 
     User.save()
 
-    res.json({ message: 'Аватар успешно загружен!' })
+    const userDto = new FullUserDto(User)
+    res.json({ user: userDto })
   } catch (error: any) {
     serverError(error)
     res.status(500).json({

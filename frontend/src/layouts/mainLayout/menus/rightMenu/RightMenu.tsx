@@ -33,6 +33,7 @@ const usersData: user.IUserProfile[] = [
     login: 'alina',
     isOnline: true,
     imgName: 'alina.jpg',
+    avatar: null,
   },
   {
     _id: 2,
@@ -40,6 +41,7 @@ const usersData: user.IUserProfile[] = [
     login: 'freevel',
     isOnline: true,
     imgName: 'serega.jpg',
+    avatar: null,
   },
   {
     _id: 3,
@@ -47,6 +49,7 @@ const usersData: user.IUserProfile[] = [
     login: 'myhtar',
     isOnline: false,
     imgName: 'myhtar.jpg',
+    avatar: null,
   },
 ]
 

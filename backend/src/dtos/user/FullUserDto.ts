@@ -1,6 +1,6 @@
-class UserDto {
+class FullUserDto {
+  _id
   email
-  id
   isActivated
   name
   login
@@ -8,10 +8,11 @@ class UserDto {
   balance
   privacy
   about
+  avatar
 
   constructor(model: any) {
+    this._id = model._id
     this.email = model.email
-    this.id = model._id
     this.isActivated = model.isActivated
     this.name = model.name
     this.login = model.login
@@ -22,7 +23,10 @@ class UserDto {
       currency: 'руб.',
     }
     this.privacy = model.privacy
+    this.avatar = {
+      filename: model.avatar.filename,
+    }
   }
 }
 
-export default UserDto
+export { FullUserDto }

@@ -1,6 +1,7 @@
 import { validationResult } from 'express-validator'
 
-import { serverError } from '../../../utils/serverLog'
+import { serverError } from '../../../utils'
+import { FullUserDto } from '../../../dtos'
 
 const editProfileInfo = async (req: any, res: any) => {
   try {
@@ -13,7 +14,8 @@ const editProfileInfo = async (req: any, res: any) => {
     User.about = req.body.about || User?.about
     User.save()
 
-    res.json(User)
+    const userDto = new FullUserDto(User)
+    res.json({ user: userDto })
   } catch (error: any) {
     serverError(error)
     res.status(500).json({

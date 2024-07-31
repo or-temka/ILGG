@@ -1,9 +1,7 @@
-import { serverError } from '../../../utils/serverLog'
-
-import UserModel from '../../../models/User/User'
-
+import { serverError } from '../../../utils'
 import TokenService from '../../../services/TokenService'
-import UserDto from '../../../dtos/MyUserDto'
+import { FullUserDto } from '../../../dtos'
+import { UserModel } from '../../../models'
 
 const refresh = async (req: any, res: any) => {
   try {
@@ -23,12 +21,12 @@ const refresh = async (req: any, res: any) => {
       })
     }
 
-    const user = await UserModel.findById(userData.id)
+    const user = await UserModel.findById(userData._id)
 
-    const userDto = new UserDto(user)
+    const userDto = new FullUserDto(user)
     const tokens = TokenService.generateTokens({ ...userDto })
 
-    await TokenService.saveToken(userDto.id, tokens.refreshToken)
+    await TokenService.saveToken(userDto._id, tokens.refreshToken)
 
     // Сохранение Cookies
     res.cookie('refreshToken', tokens.refreshToken, {

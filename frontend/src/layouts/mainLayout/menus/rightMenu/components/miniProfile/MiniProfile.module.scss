@@ -65,6 +65,12 @@
     }
   }
 
+  &__nameWrapper {
+    display: block;
+    overflow: hidden;
+    width: 150px;
+  }
+
   &__onlineStatus {
     @include smallText;
     color: var(--grey-text-color);

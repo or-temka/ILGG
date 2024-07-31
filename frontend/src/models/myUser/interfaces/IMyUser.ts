@@ -1,7 +1,7 @@
 import { myUser } from 'models'
 
 export interface IMyUser {
-  id: string
+  _id: string
   login: string
   name: string
   email: string
@@ -10,4 +10,9 @@ export interface IMyUser {
   isOnline: Boolean
   about: string
   privacy: myUser.IMyUserPrivacy
+  avatar: IMyUserAvatar | null
+}
+
+interface IMyUserAvatar {
+  filename: string
 }

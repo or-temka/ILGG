@@ -11,6 +11,7 @@ const fetchFriends = createAsyncThunk('friends/fetchFriends', async () => {
       login: 'alina',
       isOnline: true,
       imgName: 'alina.jpg',
+      avatar: null,
     },
     {
       _id: 2,
@@ -18,6 +19,7 @@ const fetchFriends = createAsyncThunk('friends/fetchFriends', async () => {
       login: 'freevel',
       isOnline: true,
       imgName: 'serega.jpg',
+      avatar: null,
     },
     {
       _id: 3,
@@ -25,6 +27,7 @@ const fetchFriends = createAsyncThunk('friends/fetchFriends', async () => {
       login: 'myhtar',
       isOnline: false,
       imgName: 'myhtar.jpg',
+      avatar: null,
     },
   ]
   return returnedData

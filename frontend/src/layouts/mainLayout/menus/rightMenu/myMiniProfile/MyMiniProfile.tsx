@@ -9,15 +9,19 @@ import { ReactComponent as ArrowSVG } from 'assets/svgs/arrow.svg'
 import { Button } from '../components/miniProfile/interfaces'
 import { MyMiniProfileProps } from './interfaces'
 import styles from './MyMiniProfile.module.scss'
+import { PopUpConfirm } from 'components'
 
 function MyMiniProfile({ myUserData }: MyMiniProfileProps) {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
+  const [isShowProfile, setIsShowProfile] = useState(false)
+  const [isShowExitPopUp, setIsShowExitPopUp] = useState(false)
+
   const profileButtons: Button[] = [
     {
       title: 'Мой профиль',
-      handler: () => navigate(pageLink.profile + myUserData?.id),
+      handler: () => navigate(pageLink.profile + myUserData?.login),
     },
     {
       title: 'Настройки профиля',
@@ -25,31 +29,38 @@ function MyMiniProfile({ myUserData }: MyMiniProfileProps) {
     },
     {
       title: 'Выйти',
-      handler: () => {
-        dispatch<any>(logout())
-      },
+      handler: () => setIsShowExitPopUp(true),
     },
   ]
 
-  const [isShowProfile, setIsShowProfile] = useState(false)
-
   return (
-    <MiniProfile
-      buttons={profileButtons}
-      userData={myUserData}
-      classNames={{ username: styles.profile__username }}
-      iconComponent={
-        <div
-          className={[
-            styles.profile__icon,
-            isShowProfile ? styles.profile__icon_active : '',
-          ].join(' ')}
+    <>
+      <MiniProfile
+        buttons={profileButtons}
+        userData={myUserData}
+        classNames={{ username: styles.profile__username }}
+        iconComponent={
+          <div
+            className={[
+              styles.profile__icon,
+              isShowProfile ? styles.profile__icon_active : '',
+            ].join(' ')}
+          >
+            <ArrowSVG />
+          </div>
+        }
+        onClickProfile={(showProfile) => setIsShowProfile(showProfile)}
+      />
+
+      {isShowExitPopUp && (
+        <PopUpConfirm
+          onClose={() => setIsShowExitPopUp(false)}
+          onConfirm={() => dispatch<any>(logout())}
         >
-          <ArrowSVG />
-        </div>
-      }
-      onClickProfile={(showProfile) => setIsShowProfile(showProfile)}
-    />
+          Вы действительно хотите выйти?
+        </PopUpConfirm>
+      )}
+    </>
   )
 }
 

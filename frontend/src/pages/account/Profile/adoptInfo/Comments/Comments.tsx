@@ -10,6 +10,7 @@ const usersWithComments: IUserWithComment[] = [
       login: 'alina',
       isOnline: true,
       imgName: 'alina.jpg',
+      avatar: null,
     },
     commentData: {
       id: 1,
@@ -24,6 +25,7 @@ const usersWithComments: IUserWithComment[] = [
       login: 'freevel',
       isOnline: true,
       imgName: 'serega.jpg',
+      avatar: null,
     },
     commentData: {
       id: 2,

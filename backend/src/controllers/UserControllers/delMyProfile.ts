@@ -1,10 +1,9 @@
-import { serverError } from '../../utils/serverLog'
-
-import UserModel from '../../models/User/User'
+import { UserModel } from '../../models'
+import { serverError } from '../../utils'
 
 const delMyProfile = async (req: any, res: any) => {
   try {
-    const userId = req.user.id
+    const userId = req.user._id
 
     UserModel.findOneAndDelete({ _id: userId })
       .then((doc) => {

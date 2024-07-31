@@ -23,6 +23,7 @@ const tempUserData: user.IFullUserProfile = {
       atLevel: 1000,
     },
   },
+  avatar: null,
 }
 
 const fetchUserData = () => {

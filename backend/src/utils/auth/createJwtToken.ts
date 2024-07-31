@@ -3,7 +3,7 @@ import { Types } from 'mongoose'
 
 import { JWT_ACCESS_KEY } from '../../PASSWORDS'
 
-const createJwtTokent = (userId: Types.ObjectId) => {
+export const createJwtTokent = (userId: Types.ObjectId) => {
   return jwt.sign(
     {
       _id: userId,
@@ -11,5 +11,3 @@ const createJwtTokent = (userId: Types.ObjectId) => {
     JWT_ACCESS_KEY
   )
 }
-
-export default createJwtTokent

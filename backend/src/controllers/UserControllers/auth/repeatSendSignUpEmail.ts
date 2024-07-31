@@ -1,12 +1,8 @@
 import { validationResult } from 'express-validator'
 
-import { serverError } from '../../../utils/serverLog'
-
-import UserModel from '../../../models/User/User'
-import UnauthorizedEmailModel from '../../../models/UnauthorizedEmail/UnauthorizedEmail'
-
+import { getDateDifference, serverError } from '../../../utils'
 import MailService from '../../../services/MailService'
-import getDateDifference from '../../../utils/math/date/getDateDifference'
+import { UnauthorizedEmailModel, UserModel } from '../../../models'
 
 const repeatSignUpEmail = async (req: any, res: any) => {
   try {
