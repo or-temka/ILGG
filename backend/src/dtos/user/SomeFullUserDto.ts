@@ -13,9 +13,12 @@ class SomeFullUserDto {
     this.login = model.login
     this.isOnline = model.isOnline
     this.about = model.about
-    this.avatar = {
-      filename: model.avatar.filename,
-    }
+    this.avatar =
+      model.avatar === null
+        ? null
+        : {
+            filename: model.avatar.filename,
+          }
     this.level = model.level
   }
 }

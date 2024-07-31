@@ -52,7 +52,7 @@ const reg = async (req: any, res: any) => {
     const user = await doc.save()
 
     // Создание папки с uploads для данного пользователя для загрузки его личных файлов
-    const dirsForCreate = ['profile', 'posts']
+    const dirsForCreate = ['profile/avatar', 'posts']
     createDirectories(dirsForCreate, `users/${user._id}/`)
 
     const userDto = new FullUserDto(user)

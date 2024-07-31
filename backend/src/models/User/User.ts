@@ -49,6 +49,7 @@ const UserSchema = new mongoose.Schema({
   level: {
     type: LevelSchema,
     required: true,
+    default: () => ({}),
   },
 })
 

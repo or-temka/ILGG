@@ -23,9 +23,12 @@ class FullUserDto {
       currency: 'руб.',
     }
     this.privacy = model.privacy
-    this.avatar = {
-      filename: model.avatar.filename,
-    }
+    this.avatar =
+      model.avatar === null
+        ? null
+        : {
+            filename: model.avatar.filename,
+          }
   }
 }
 
