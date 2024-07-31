@@ -1,5 +1,15 @@
 export interface AvatarInterface {
-  filename: string
   originalFilename: string
   size: number
+  qualities: {
+    good: {
+      filename: string
+    }
+    medium: {
+      filename: string
+    }
+    low: {
+      filename: string
+    }
+  }
 }

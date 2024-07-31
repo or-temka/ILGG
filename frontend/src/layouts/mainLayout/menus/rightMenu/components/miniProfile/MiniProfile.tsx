@@ -31,7 +31,7 @@ function MiniProfile({
             ></div>
           ) : (
             <img
-              src={`${API_IMAGES_URL}/users/${userData._id}/profile/${userData.avatar?.filename}`}
+              src={`${API_IMAGES_URL}/users/${userData._id}/profile/avatar/${userData.avatar?.qualities.low.filename}`}
               alt={userData.login}
               className={[styles.aboutUser__image, classNames.img].join(' ')}
             ></img>

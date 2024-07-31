@@ -27,7 +27,7 @@ class FullUserDto {
       model.avatar === null
         ? null
         : {
-            filename: model.avatar.filename,
+            qualities: model.avatar.qualities,
           }
   }
 }

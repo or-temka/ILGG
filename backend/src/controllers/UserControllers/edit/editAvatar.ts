@@ -1,3 +1,4 @@
+import { AvatarInterface } from 'src/models/User/Scheme/Avatar/interfaces/AvatarInterface'
 import { FullUserDto } from '../../../dtos'
 import { serverError } from '../../../utils'
 
@@ -14,7 +15,18 @@ const editAvatar = async (req: any, res: any) => {
     User.avatar = {}
     const userAvatar = User.avatar
 
-    userAvatar.filename = file.filename
+    const avatarQualities: AvatarInterface['qualities'] = {
+      good: {
+        filename: file.filename,
+      },
+      medium: {
+        filename: file.filename,
+      },
+      low: {
+        filename: file.filename,
+      },
+    }
+    userAvatar.qualities = avatarQualities
     userAvatar.originalFilename = file.originalname
     userAvatar.size = file.size
 

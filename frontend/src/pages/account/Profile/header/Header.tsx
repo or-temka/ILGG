@@ -9,7 +9,7 @@ import { API_IMAGES_URL } from 'variables'
 function Header({ userData }: HeaderProps) {
   const navigate = useNavigate()
 
-  const userAvatar = `${API_IMAGES_URL}/users/${userData._id}/profile/${userData.avatar?.filename}`
+  const userAvatar = `${API_IMAGES_URL}/users/${userData._id}/profile/avatar/${userData.avatar?.qualities.medium.filename}`
 
   const progressLineWidthInProcent =
     (userData.level.points.now / userData.level.points.atLevel) * 100

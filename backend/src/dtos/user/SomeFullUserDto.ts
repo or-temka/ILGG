@@ -17,7 +17,7 @@ class SomeFullUserDto {
       model.avatar === null
         ? null
         : {
-            filename: model.avatar.filename,
+            qualities: model.avatar.qualities,
           }
     this.level = model.level
   }

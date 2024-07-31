@@ -4,8 +4,9 @@ import GamesPrivacySchema from './Scheme/GamesPrivacy'
 import InventoryPrivacySchema from './Scheme/InventoryPrivacy'
 import MessagesPrivacySchema from './Scheme/MessagesPrivacy'
 import ProfilePrivacySchema from './Scheme/ProfilePrivacy'
+import { PrivacyInterface } from './interfaces/PrivacyInterface'
 
-const PrivacySchema = new mongoose.Schema({
+const PrivacySchema = new mongoose.Schema<PrivacyInterface>({
   games: {
     type: GamesPrivacySchema,
     required: true,

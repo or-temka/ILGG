@@ -18,5 +18,15 @@ export interface IUserProfile {
 }
 
 interface IMyUserAvatar {
-  filename: string
+  qualities: {
+    good: {
+      filename: string
+    }
+    medium: {
+      filename: string
+    }
+    low: {
+      filename: string
+    }
+  }
 }
