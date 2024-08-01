@@ -17,13 +17,13 @@ const editAvatar = async (req: any, res: any) => {
 
     const avatarQualities: AvatarInterface['qualities'] = {
       good: {
-        filename: file.filename,
+        filename: `${file.filename}`,
       },
       medium: {
-        filename: file.filename,
+        filename: `m-${file.filename}`,
       },
       low: {
-        filename: file.filename,
+        filename: `l-${file.filename}`,
       },
     }
     userAvatar.qualities = avatarQualities

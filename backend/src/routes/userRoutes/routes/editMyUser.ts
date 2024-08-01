@@ -9,6 +9,7 @@ import {
 } from '../../../validations/userValidation/validation'
 import * as UserController from '../../../controllers/UserController'
 import imageUploadMiddleware from '../../../middlewares/upload/image.uploadMiddleware'
+import { resizeAvatarImageMiddleware } from '../../../middlewares/upload/resize/avatar.resizeImageMiddleware'
 
 const router = Router()
 
@@ -44,6 +45,7 @@ router.patch(
   authMiddleware,
   getUserMiddleware,
   imageUploadMiddleware.single('avatar'),
+  resizeAvatarImageMiddleware,
   UserController.editAvatar
 )
 
